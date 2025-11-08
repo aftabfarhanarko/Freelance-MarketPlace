@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import { HiOutlineUsers } from "react-icons/hi";
 import { FaRegHandshake } from "react-icons/fa6";
@@ -7,8 +7,20 @@ import { HiOutlineSupport } from "react-icons/hi";
 import news from "../assets/h21.png";
 import news2 from "../assets/h22.png";
 import news3 from "../assets/h23.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import blog1 from "../assets/blog-1.jpg";
+import blog2 from "../assets/blog-2.jpg";
+import blog3 from "../assets/blog-3.jpg";
+import blog4 from "../assets/blog-4.jpg";
 
 const Home = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation duration in ms
+      once: true, // whether animation should happen only once - while scrolling down
+    });
+  }, []);
   return (
     <div>
       <section>
@@ -24,7 +36,10 @@ const Home = () => {
             Most viewed and all-time top-selling services
           </p>
           <div className=" grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-4">
-            <div className="border border-base-300 rounded-lg flex flex-col text-center py-7  ">
+            <div
+              data-aos="fade-up"
+              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7  "
+            >
               <div className="hover:animate-bounce">
                 <HiOutlineUsers className="w-11 h-8 mx-auto "></HiOutlineUsers>
               </div>
@@ -34,7 +49,10 @@ const Home = () => {
                 instantly.
               </p>
             </div>
-            <div className="border border-base-300 rounded-lg flex flex-col text-center py-7 ">
+            <div
+              data-aos="fade-up"
+              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 "
+            >
               <div className="hover:animate-bounce">
                 <FaRegHandshake className="w-11 h-8 mx-auto "></FaRegHandshake>
               </div>
@@ -45,7 +63,10 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="border border-base-300 rounded-lg flex flex-col text-center py-7 ">
+            <div
+              data-aos="fade-up"
+              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 "
+            >
               <div className="hover:animate-bounce">
                 <HiOutlineCreditCard className="w-11 h-8 mx-auto "></HiOutlineCreditCard>
               </div>
@@ -55,7 +76,10 @@ const Home = () => {
                 when you're satisfied.
               </p>
             </div>
-            <div className="border border-base-300 rounded-lg flex flex-col text-center py-7 ">
+            <div
+              data-aos="fade-up"
+              className="border px-3 border-base-300 rounded-lg flex flex-col text-center py-7 "
+            >
               <div className="hover:animate-bounce">
                 <HiOutlineSupport className="w-11 h-8 mx-auto "></HiOutlineSupport>
               </div>
@@ -117,7 +141,7 @@ const Home = () => {
             </button>
           </div>
 
-          <div className="relative w-full max-w-lg mx-auto">
+          <div data-aos="fade-up" className="relative w-full max-w-lg mx-auto">
             <img
               src={news}
               alt="News main"
@@ -135,6 +159,106 @@ const Home = () => {
               alt="News tertiary"
               className="absolute left-3 bottom-17 border border-gray-300 rounded-2xl w-19 sm:w-30 md:w-44"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="w-11/12 mx-auto mb-35">
+        <h1 className="text-3xl font-semibold text-left ">Our Blog</h1>
+        <p className="text-lg text-left mt-1 mb-15">
+          Aliquam lacinia diam quis lacus euismod
+        </p>
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+            {/* Image container with hover scale */}
+            <div className="overflow-hidden">
+              <img
+                src={blog1}
+                alt="Beautiful Landscape"
+                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            {/* Text content */}
+            <div className="p-6">
+              <h2 className="text-lg  mb-2 text-gray-800">December 2, 2022</h2>
+              <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
+                Front becomes an official Instagram Marketing Partner
+              </p>
+
+              <p className="text-gray-600  transition-colors cursor-pointer">
+                Front is proud to announce its official partnership with
+                Instagram as a verified Marketing Partne
+              </p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+            {/* Image container with hover scale */}
+            <div className="overflow-hidden">
+              <img
+                src={blog2}
+                alt="Beautiful Landscape"
+                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            {/* Text content */}
+            <div className="p-6">
+              <h2 className="text-lg  mb-2 text-gray-800">June 14, 2024</h2>
+              <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
+                Start an online business and work from home
+              </p>
+
+              <p className="text-gray-600  transition-colors cursor-pointer">
+                Launching your own online business lets you unlock the freedom
+                to work
+              </p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+            {/* Image container with hover scale */}
+            <div className="overflow-hidden">
+              <img
+                src={blog3}
+                alt="Beautiful Landscape"
+                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            {/* Text content */}
+            <div className="p-6">
+              <h2 className="text-lg  mb-2 text-gray-800">December 29, 2023</h2>
+              <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
+                Start an online business and work from home right now
+              </p>
+
+              <p className="text-gray-600  transition-colors cursor-pointer">
+                Start your online business today and enjoy the freedom of
+                working from home
+              </p>
+            </div>
+          </div>
+
+          <div data-aos="fade-up" className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500">
+            {/* Image container with hover scale */}
+            <div className="overflow-hidden">
+              <img
+                src={blog4}
+                alt="Beautiful Landscape"
+                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
+            {/* Text content */}
+            <div className="p-6">
+              <h2 className="text-lg  mb-2 text-gray-800">December 19, 2024</h2>
+              <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
+                Start an online business and work from home with complete guide.
+              </p>
+
+              <p className="text-gray-600  transition-colors cursor-pointer">
+                Start your online business, work from home, step-by-step
+                complete guide.
+              </p>
+            </div>
           </div>
         </div>
       </section>
