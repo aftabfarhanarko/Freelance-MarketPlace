@@ -1,25 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
+import { Link } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [show, setShow] = useState(true);
+  const { emailpasswordLoginUser, googleLogin } = useContext(AuthContext);
 
   const handelLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({email, password});
-    
+    console.log({ email, password });
+
+    emailpasswordLoginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Login Successfully");
+      })
+      .catch((err) => {
+        console.log(err.code);
+        toast.error(err.code);
+      });
   };
+
+  const handelGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        toast.success("Login Successfully");
+        console.log(result.user);
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r  p-4">
       <form
         onSubmit={handelLogin}
-        className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-md"
+        className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-lg"
       >
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Register Now
+          Login Now
         </h2>
         {/* Email */}
         <label className="block mb-4">
@@ -28,7 +53,7 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="you@example.com"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
             required
           />
         </label>
@@ -41,7 +66,7 @@ const Login = () => {
               type={show ? "password" : "text"}
               name="password"
               placeholder="Enter password"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
               required
             />
           </label>
@@ -64,7 +89,7 @@ const Login = () => {
           />
           <span className="ml-2 text-gray-700 text-sm">
             I agree to the{" "}
-            <a href="#" className="text-pink-600 hover:underline">
+            <a href="#" className="text-orange-600 hover:underline">
               terms and conditions
             </a>
           </span>
@@ -73,9 +98,9 @@ const Login = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md transition-colors"
+          className="w-full relative py-2 px-8 border-2 border-orange-500 font-semibold text-[16px] text-white rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-gradient-to-r from-orange-500 to-amber-400 bg-[length:200%_200%] bg-[position:left_center] hover:bg-[position:right_center] shadow-md hover:shadow-xl"
         >
-          Register
+          <span className="relative z-10">Login</span>
         </button>
 
         {/* Or separator */}
@@ -87,6 +112,7 @@ const Login = () => {
 
         {/* Google Button */}
         <button
+          onClick={handelGoogle}
           type="button"
           className="w-full border border-gray-300 rounded-md py-2 flex items-center justify-center hover:bg-gray-100 transition-colors"
         >
@@ -114,6 +140,15 @@ const Login = () => {
           </svg>
           Continue with Google
         </button>
+        <p className="text-center mt-1.5 font-medium">
+          If you don’t have an account yet ?
+          <Link
+            to="/register"
+            className=" hover:text-orange-500 hover:underline"
+          >
+            sign up now
+          </Link>{" "}
+        </p>
       </form>
     </div>
   );

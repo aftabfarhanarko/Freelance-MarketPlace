@@ -1,27 +1,71 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [show, setShow] = useState(true);
-  // from-purple-400 via-pink-500 to-red-500
+  const { signUpUser, updeatUserInfo, googleLogin } = useContext(AuthContext);
+  const [passErr, setPassErr] = useState("");
+  const pageNaviget = useNavigate();
 
   const handelSubmite = (e) => {
     e.preventDefault();
     console.log("Submite ");
-    const name = e.target.name.value;
+    const displayName = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photoURL = e.target.photoUrl.value;
+    console.log(photoURL);
 
-    console.log({ name, email, password, photoURL });
+    const data = {
+      displayName,
+      photoURL,
+    };
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setPassErr(
+        "Minimum 6 characters with at least 1 uppercase (A-Z) & 1 lowercase (a-z) letter"
+      );
+      return;
+    }
+
+    // chack pasword validitions
+    setPassErr(" ");
+    signUpUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        updeatUserInfo(data).then(() => {
+          toast.success("Account Signup Successfully");
+          setPassErr(true);
+          pageNaviget("/");
+        });
+      })
+      .catch((err) => {
+        console.log(err.code);
+        toast.error(err.code);
+      });
+  };
+
+  const googleRegister = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("Google Login", result.user);
+        toast.success("Account Signup Successfully");
+        pageNaviget("/");
+      })
+      .catch((err) => {
+        toast.error(err.code);
+      });
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r  p-4">
       <form
         onSubmit={handelSubmite}
-        className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-md"
+        className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-lg"
       >
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Register Now
@@ -34,7 +78,7 @@ const Register = () => {
             type="text"
             name="name"
             placeholder="Your full name"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
             required
           />
         </label>
@@ -46,7 +90,7 @@ const Register = () => {
             type="email"
             name="email"
             placeholder="you@example.com"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
             required
           />
         </label>
@@ -59,7 +103,7 @@ const Register = () => {
               type={show ? "password" : "text"}
               name="password"
               placeholder="Enter password"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
               required
             />
           </label>
@@ -70,15 +114,14 @@ const Register = () => {
               <FaEye className="absolute right-3.5 z-2 top-10.5 " />
             )}
           </div>
-        </div>
 
-        {/* Forget Password Link */}
-        <div className="text-right mb-4">
-          <a href="#" className="text-sm text-pink-600 hover:underline">
-            Forgot password?
-          </a>
+          {passErr && (
+            <p className="text-xs font-semibold text-red-600 mb-4">
+              {" "}
+              {passErr}{" "}
+            </p>
+          )}
         </div>
-
         {/* Photo URL */}
         <label className="block mb-4">
           <span className="text-gray-700 font-semibold">Photo URL</span>
@@ -86,7 +129,7 @@ const Register = () => {
             type="url"
             name="photoUrl"
             placeholder="https://example.com/photo.jpg"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </label>
 
@@ -100,7 +143,7 @@ const Register = () => {
           />
           <span className="ml-2 text-gray-700 text-sm">
             I agree to the{" "}
-            <a href="#" className="text-pink-600 hover:underline">
+            <a href="#" className="text-orange-500 hover:underline">
               terms and conditions
             </a>
           </span>
@@ -109,9 +152,9 @@ const Register = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md transition-colors"
+          className="w-full relative py-2 px-8 border-2 border-orange-500 font-semibold text-[16px] text-white rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-gradient-to-r from-orange-500 to-amber-400 bg-[length:200%_200%] bg-[position:left_center] hover:bg-[position:right_center] shadow-md hover:shadow-xl"
         >
-          Register
+          <span className="relative z-10">Register</span>
         </button>
 
         {/* Or separator */}
@@ -123,6 +166,7 @@ const Register = () => {
 
         {/* Google Button */}
         <button
+          onClick={googleRegister}
           type="button"
           className="w-full border border-gray-300 rounded-md py-2 flex items-center justify-center hover:bg-gray-100 transition-colors"
         >
@@ -150,6 +194,12 @@ const Register = () => {
           </svg>
           Continue with Google
         </button>
+        <p className="text-center mt-2 font-medium">
+          Already have an account ?
+          <Link to="/login" className=" hover:text-orange-500 hover:underline">
+            Log in Now
+          </Link>{" "}
+        </p>
       </form>
     </div>
   );

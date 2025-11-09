@@ -73,7 +73,7 @@ const Home = () => {
             >
               <div className="group-hover:animate-bounce">
                 {" "}
-                <HiOutlineUsers className="w-11 h-8 mx-auto animate-pulse text-gray-900" />
+                <HiOutlineUsers className="w-11 h-8 mx-auto font-bold animate-pulse  text-orange-500" />
               </div>
 
               <h2 className="text-lg font-medium mt-3">Post a job</h2>
@@ -89,7 +89,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                <FaRegHandshake className="w-11 h-8 mx-auto animate-pulse text-gray-900"></FaRegHandshake>
+                <FaRegHandshake className="w-11 h-8 mx-auto animate-pulse text-orange-500"></FaRegHandshake>
               </div>
               <h2 className="text-lg font-medium">Choose freelancers</h2>
               <p className="text-gray-800 text-md">
@@ -104,7 +104,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                <HiOutlineCreditCard className="w-11 h-8 mx-auto animate-pulse text-gray-900"></HiOutlineCreditCard>
+                <HiOutlineCreditCard className="w-11 h-8 mx-auto animate-pulse text-orange-500"></HiOutlineCreditCard>
               </div>
               <h2 className="text-lg font-medium">Pay safely</h2>
               <p className="text-gray-800 text-md">
@@ -118,7 +118,7 @@ const Home = () => {
                     transition-all duration-300 hover:bg-base-200 group"
             >
               <div className="group-hover:animate-bounce">
-                <HiOutlineSupport className="w-11 h-8 mx-auto animate-pulse text-gray-900"></HiOutlineSupport>
+                <HiOutlineSupport className="w-11 h-8 mx-auto animate-pulse text-orange-500"></HiOutlineSupport>
               </div>
               <h2 className="text-lg font-medium">We’re here to help</h2>
               <p className="text-gray-800 text-md">
@@ -130,11 +130,12 @@ const Home = () => {
         </div>
       </section>
 
-       
-       <section className="w-11/12 mx-auto mb-35">
-        <h1 className="text-2xl md:text-3xl text-gray-900 text-center font-semibold" >Letas 6 Job Detlise</h1>
-       </section>
- 
+      <section className="w-11/12 mx-auto mb-35">
+        <h1 className="text-2xl md:text-3xl text-gray-900 text-center font-semibold">
+          Letas 6 Job Detlise
+        </h1>
+      </section>
+
       <section className="mb-35 w-11/12   lg:w-8/12 mx-auto">
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-20 justify-between">
           <div className=" flex flex-col justify-center  space-y-3">
@@ -177,27 +178,28 @@ const Home = () => {
                 advance your career.{" "}
               </p>
             </div>
-            <button class="relative mt-4 w-[170px] flex items-center gap-1 py-1 px-9 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+             <button class="relative w-[150px] flex items-center gap-1 py-2 px-8 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                Visite Now
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  Visit Now
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div data-aos="fade-up" className="relative w-full max-w-lg mx-auto">
@@ -247,7 +249,7 @@ const Home = () => {
                 name="my-accordion-det-1"
               >
                 <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-gray-800">
+                  <h2 className="text-lg  mb-2 text-orange-500">
                     December 2, 2022
                   </h2>
                   <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
@@ -283,7 +285,7 @@ const Home = () => {
                 name="my-accordion-det-1"
               >
                 <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-gray-800">June 14, 2024</h2>
+                  <h2 className="text-lg  mb-2 text-orange-500">June 14, 2024</h2>
                   <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
                     Start an online business and work from home
                   </p>
@@ -317,7 +319,7 @@ const Home = () => {
                 name="my-accordion-det-1"
               >
                 <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-gray-800">
+                  <h2 className="text-lg  mb-2 text-orange-500">
                     December 29, 2023
                   </h2>
                   <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
@@ -353,7 +355,7 @@ const Home = () => {
                 name="my-accordion-det-1"
               >
                 <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-gray-800">
+                  <h2 className="text-lg  mb-2 text-orange-500">
                     December 19, 2024
                   </h2>
                   <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
@@ -371,8 +373,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-     
-     <section className="w-full bg-[#f6faf7] py-20 px-5 mb-35">
+
+      <section className="w-full bg-[#f6faf7] py-20 px-5 mb-35">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
           {/* Left Side */}
           <div className="flex-1 text-center md:text-left">
@@ -388,7 +390,7 @@ const Home = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900">
+                <h3 className="text-2xl font-semibold text-orange-500">
                   4.9/
                   <CountUp start={0} end={5} />{" "}
                 </h3>
@@ -397,7 +399,7 @@ const Home = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900">
+                <h3 className="text-2xl font-semibold text-orange-500">
                   {" "}
                   <CountUp start={0} end={95}></CountUp>%
                 </h3>
@@ -406,7 +408,7 @@ const Home = () => {
                 </p>
               </div>
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900">
+                <h3 className="text-2xl font-semibold text-orange-500">
                   Award Winner
                 </h3>
                 <p className="text-gray-500 text-sm">
@@ -419,7 +421,7 @@ const Home = () => {
           {/* Right Side */}
           <div className="flex-1">
             <div className="bg-white shadow-md rounded-2xl p-8 max-w-md mx-auto">
-              <h4 className="text-green-600 font-semibold mb-3">Great Work</h4>
+              <h4 className="text-orange-500 font-semibold mb-3">Great Work</h4>
               <p className="text-gray-700 mb-6">
                 Discover a global network of experts ready to bring your ideas
                 to life. From startups to enterprises, we make it simple to
@@ -456,7 +458,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
 
       <section className="w-11/12 mx-auto mb-35   ">
         <h1 className="text-3xl font-semibold text-center ">
@@ -484,7 +485,7 @@ const Home = () => {
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               Robert Fox
             </h3>
-            <p className="text-sm text-gray-500">Nursing Assistant</p>
+            <p className="text-sm text-orange-500">Nursing Assistant</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -523,27 +524,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+             <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -562,7 +564,7 @@ const Home = () => {
 
             {/* Name & Role */}
             <h3 className="mt-4 text-lg font-semibold text-gray-900">Upwork</h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-orange-500">
               Darrell Steward Jacob Howard
             </p>
 
@@ -603,27 +605,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+              <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -642,7 +645,7 @@ const Home = () => {
 
             {/* Name & Role */}
             <h3 className="mt-4 text-lg font-semibold text-gray-900">Online</h3>
-            <p className="text-sm text-gray-500">Noah Collins</p>
+            <p className="text-sm text-orange-500">Noah Collins</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -680,27 +683,28 @@ const Home = () => {
               </div>
             </div>
 
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+          <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -721,7 +725,7 @@ const Home = () => {
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               Official
             </h3>
-            <p className="text-sm text-gray-500">Isabella Hayes</p>
+            <p className="text-sm text-orange-500">Isabella Hayes</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -760,27 +764,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+           <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -799,7 +804,7 @@ const Home = () => {
 
             {/* Name & Role */}
             <h3 className="mt-4 text-lg font-semibold text-gray-900">Fiver</h3>
-            <p className="text-sm text-gray-500">Korim Bangima</p>
+            <p className="text-sm text-orange-500">Korim Bangima</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -838,27 +843,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+          <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -879,7 +885,7 @@ const Home = () => {
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               Market Place
             </h3>
-            <p className="text-sm text-gray-500">JOS Don</p>
+            <p className="text-sm text-orange-500">JOS Don</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -918,27 +924,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+         <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -959,7 +966,7 @@ const Home = () => {
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               Official
             </h3>
-            <p className="text-sm text-gray-500">Merry Doms</p>
+            <p className="text-sm text-orange-500">Merry Doms</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -998,27 +1005,28 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+      <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
 
           <div
@@ -1039,7 +1047,7 @@ const Home = () => {
             <h3 className="mt-4 text-lg font-semibold text-gray-900">
               Market{" "}
             </h3>
-            <p className="text-sm text-gray-500">Limu Islam</p>
+            <p className="text-sm text-orange-500">Limu Islam</p>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
@@ -1078,38 +1086,37 @@ const Home = () => {
             </div>
 
             {/* View Profile Button */}
-            <button class="relative flex items-center gap-1 py-1 px-7 mt-6 border-[4px] border-transparent font-semibold text-[16px] text-green-500 rounded-xl shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
+           <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+                {/* <!-- Left arrow --> */}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
 
-              <span class="relative z-[1] translate-x-[-12px] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3 group-hover:text-[#212121]">
-                View Profile
-              </span>
+                <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                  View Profile
+                </span>
 
-              <span class="circle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20px] h-[20px] bg-green-400 rounded-full opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+                <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
-              <svg
-                viewBox="0 0 24 24"
-                class="arr-1 absolute right-4 w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-[#212121]"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                >
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg>
+              </button>
           </div>
         </div>
       </section>
-
-      
 
       <section className=" w-12/12 mx-auto bg-gray-50 mb-35">
         <div className="w-11/12 mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
-            <span className="px-4 py-1 text-sm rounded-full  text-gray-700 font-semibold">
+            <span className="px-4 py-1 text-sm rounded-full  text-orange-500 font-semibold">
               Success Business Award
             </span>
             <h2 className="text-2xl md:text-3xl font-semibold  text-gray-800 mt-4">
@@ -1126,13 +1133,13 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-6  mx-auto">
             {/* Card 1 */}
             <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all hover:bg-base-200  group">
-              <div className="flex justify-center mb-4 animate-pulse ">
+              <div className="flex justify-center mb-4  ">
                 <Briefcase
                   size={40}
-                  className="text-gray-600 group-hover:animate-bounce"
+                  className="text-gray-800 group-hover:animate-bounce"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800">
+              <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
                   <CountUp start={0} end={12376} duration={2.5} separator="," />
                 )}
@@ -1142,13 +1149,13 @@ const Home = () => {
 
             {/* Card 2 */}
             <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
-              <div className="flex justify-center mb-4 animate-pulse">
+              <div className="flex justify-center mb-4 ">
                 <Users
                   size={40}
-                  className="text-gray-600 group-hover:animate-bounce"
+                  className="text-gray-800 group-hover:animate-bounce"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800">
+              <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
                   <CountUp start={0} end={89562} duration={2.5} separator="," />
                 )}
@@ -1158,13 +1165,13 @@ const Home = () => {
 
             {/* Card 3 */}
             <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
-              <div className="flex justify-center mb-4 animate-pulse">
+              <div className="flex justify-center mb-4">
                 <FileText
                   size={40}
-                  className="text-gray-600 group-hover:animate-bounce"
+                  className="text-gray-800 group-hover:animate-bounce"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800">
+              <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
                   <CountUp start={0} end={28166} duration={2.5} separator="," />
                 )}
@@ -1174,13 +1181,13 @@ const Home = () => {
 
             {/* Card 4 */}
             <div className="bg-white shadow-md rounded-2xl py-10 text-center hover:shadow-lg transition-all group">
-              <div className="flex justify-center mb-4 animate-pulse">
+              <div className="flex justify-center mb-4 ">
                 <Building2
                   size={40}
-                  className="text-gray-600 group-hover:animate-bounce"
+                  className="text-gray-800 group-hover:animate-bounce"
                 />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800">
+              <h3 className="text-3xl font-bold text-orange-500">
                 {inView && (
                   <CountUp start={0} end={8966} duration={2.5} separator="," />
                 )}
@@ -1190,7 +1197,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
 
       <section className="w-11/12 mx-auto mb-35">
         <h1 className="text-3xl font-semibold text-center ">

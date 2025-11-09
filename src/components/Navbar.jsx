@@ -7,22 +7,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const link = (
-    <div className="flex gap-4 list-none">
-      <li>
-        <NavLink>Home</NavLink>
-      </li>
-      <li>
-        <NavLink>All Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink>Add a Job</NavLink>
-      </li>
-      <li>
-        <NavLink>My Accepted Tasks</NavLink>
-      </li>
-    </div>
-  );
+
   return (
     <div className="bg-red-400">
       <div className="z-40 bg-white shadow py-1    fixed w-full">
@@ -32,12 +17,28 @@ const Navbar = () => {
               className="w-16 rounded-4xl border mr-2 border-gray-500 "
               src={logo}
             ></img>
-            <a className=" font-bold text-xl">
-              Freelance <span className="text-primary">MarketPlace</span>
+            <a
+              className=" font-semibold text-lg  text-orange-500
+ md:text-xl "
+            >
+              Freelance <span className="">MarketPlace</span>
             </a>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{link}</ul>
+            <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
+              <li>
+                <NavLink>Home</NavLink>
+              </li>
+              <li>
+                <NavLink>All Jobs</NavLink>
+              </li>
+              <li>
+                <NavLink>Add a Job</NavLink>
+              </li>
+              <li>
+                <NavLink>My Accepted Tasks</NavLink>
+              </li>
+            </ul>
           </div>
           <div className="navbar-end">
             {/* <div className=" hidden md:block  ">
@@ -77,10 +78,12 @@ const Navbar = () => {
               </div>
             )}
           </div> */}
+          <Link to="/login">
             <button className="btn btn-outline ">Login</button>
-          <Link to="/register">
-          <button className="btn btn-secondary ">Register</button>
           </Link>
+            <Link to="/register">
+              <button className="btn btn-secondary ">Register</button>
+            </Link>
 
             <div className="block  md:hidden relative ">
               {/* menu toggle btn */}
@@ -170,8 +173,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-
-  /* <button class="relative flex items-center gap-1 py-4 px-9 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-full shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+/* <button class="relative flex items-center gap-1 py-4 px-9 border-[4px] border-transparent font-semibold text-[16px] text-green-400 rounded-full shadow-[0_0_0_2px_rgba(132,255,0,1)] cursor-pointer overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
               <svg
                 viewBox="0 0 24 24"
                 class="arr-2 absolute left-[-25%] w-6 fill-green-400 z-[9] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-[#212121]"
@@ -192,4 +194,3 @@ export default Navbar;
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
               </svg>
             </button> */
-
