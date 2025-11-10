@@ -4,14 +4,22 @@ import usePrivetApi from "../Hooks/PriverAPI";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MyAcceptedTasks = () => {
   const [loding, setLoding] = useState(false);
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
-  const [doneJobs, setDoneJobs] = useState({});
-
   const apies = usePrivetApi();
+
+  useEffect(() => {
+      AOS.init({
+        duration: 2000,
+        once: true, 
+      });
+    }, [])
 
   useEffect(() => {
     setLoding(true);
@@ -22,7 +30,7 @@ const MyAcceptedTasks = () => {
     });
   }, [apies, user]);
 
-  const iosTime = jobs.create_at;
+  const iosTime = jobs?.create_at;
   const time = new Date(iosTime).toLocaleTimeString("en-GB", {
     timeZone: "Asia/Dhaka",
     hour: "2-digit",
@@ -31,7 +39,8 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
-  // delet Buttons
+
+  // delet Buttons kaj bakei
   const handelDelete = (id) => {
     apies.delete(`task/${id}`).then((result) => {
       if (result.data.deletedCount) {
@@ -40,22 +49,19 @@ const MyAcceptedTasks = () => {
       }
     });
   };
+  const hanndelCLear = () => {};
 
-  const handleDoneToggle = (jobId) => {
-    toast.success("Job Accepted Done");
-    setDoneJobs((prev) => ({
-      ...prev,
-      [jobId]: !prev[jobId],
-    }));
-  };
 
   if (loding) {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
     <div className="bg-gradient-to-br from-orange-50 via-white to-red-50">
-      <div className=" w-11/12 mx-auto min-h-screen pt-25 ">
-        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+      <h1 className="text-center text-3xl  font-semibold pt-15">
+        This is Your Accepts Job Sections
+      </h1>
+      <div className=" w-11/12 mx-auto min-h-screen pt-10 ">
+        <div className="overflow-hidden rounded-lg md:border md:border-gray-200 md:bg-white md:shadow-sm">
           {/* Desktop Table View */}
           <div className="overflow-x-auto hidden md:block">
             <table className="min-w-full divide-y divide-gray-200">
@@ -97,7 +103,6 @@ const MyAcceptedTasks = () => {
                   </tr>
                 ) : (
                   jobs.map((job, index) => {
-                    const isDone = doneJobs[job._id]; // নির্দিষ্ট job এর done অবস্থা
                     return (
                       <tr
                         key={index}
@@ -153,32 +158,19 @@ const MyAcceptedTasks = () => {
                         {/* Actions */}
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                           <div className="flex items-center justify-center space-x-3">
-                            {!isDone ? (
-                              <div className="flex gap-3">
-                                <button
-                                  onClick={() => handleDoneToggle(job._id)}
-                                  className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
-                                >
-                                  <CheckCircleIcon className="w-4 h-4 mr-1" />
-                                  Done
-                                </button>
-                                <button
-                                  onClick={() => handelDelete(job._id)}
-                                  className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
-                                >
-                                  <XCircleIcon className="w-4 h-4 mr-1" />
-                                  Clear
-                                </button>
-                              </div>
-                            ) : (
-                              <button
-                                disabled
-                                className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 opacity-70 cursor-not-allowed"
-                              >
+                            <div className="flex gap-3">
+                              <button className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition">
                                 <CheckCircleIcon className="w-4 h-4 mr-1" />
                                 Done
                               </button>
-                            )}
+                              <button
+                                onClick={() => handelDelete(job._id)}
+                                className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
+                              >
+                                <XCircleIcon className="w-4 h-4 mr-1" />
+                                Clear
+                              </button>
+                            </div>
                           </div>
                         </td>
                       </tr>
@@ -190,18 +182,18 @@ const MyAcceptedTasks = () => {
           </div>
 
           {/* Mobile Card View */}
-          <div className="block md:hidden p-4 space-y-5">
-            {jobs.length === 0 ? (
+          <div className="block md:hidden p-4 space-y-5 ">
+            {jobs?.length === 0 ? (
               <p className="text-center text-gray-500">
                 No job applications found.
               </p>
             ) : (
-              jobs.map((job, index) => {
-                const isDone = doneJobs[job._id];
+              jobs?.map((job, index) => {
                 return (
                   <div
                     key={index}
-                    className="border border-gray-200 rounded-lg shadow-sm p-4 space-y-3"
+                    data-aos="fade-up"
+                    className="border bg-white border-gray-300  rounded-lg shadow-lg p-4 space-y-3"
                   >
                     <div className="flex items-center space-x-3">
                       {job?.coverImage ? (
@@ -236,33 +228,20 @@ const MyAcceptedTasks = () => {
                       <span className="text-xs text-gray-500 truncate max-w-[60%]">
                         {job?.acceptsUserEmail}
                       </span>
-
-                      {!isDone ? (
-                        <div className="flex gap-2">
-                          <button
-                            onClick={() => handleDoneToggle(job._id)}
-                            className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
-                          >
-                            <CheckCircleIcon className="w-4 h-4 mr-1" />
-                            Done
-                          </button>
-                          <button
-                            onClick={() => handelDelete(job._id)}
-                            className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition"
-                          >
-                            <XCircleIcon className="w-4 h-4 mr-1" />
-                            Clear
-                          </button>
-                        </div>
-                      ) : (
-                        <button
-                          disabled
-                          className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 opacity-70 cursor-not-allowed"
-                        >
-                          <CheckCircleIcon className="w-4 h-4 mr-1" />
-                          Done
-                        </button>
-                      )}
+                      <button
+                        onClick={handelDelete}
+                        className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
+                      >
+                        <CheckCircleIcon className="w-4 h-4 mr-1" />
+                        Done
+                      </button>
+                      <button
+                        onClick={hanndelCLear}
+                        className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition"
+                      >
+                        <XCircleIcon className="w-4 h-4 mr-1" />
+                        Clear
+                      </button>
                     </div>
                   </div>
                 );

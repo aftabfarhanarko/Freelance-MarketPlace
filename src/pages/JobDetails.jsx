@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useAxiosData } from "../Hooks/DataFetch";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
@@ -8,16 +8,13 @@ import { FiEdit } from "react-icons/fi";
 import { useAuth } from "../Hooks/UseAuth";
 
 const JobDetails = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [loding, setLoding] = useState(true);
   const [job, setJob] = useState([]);
   const { id } = useParams();
   const apise = useAxiosData();
   const [isAccepted, setIsAccepted] = useState(false);
   const pageNaviget = useNavigate();
-  
-
-
 
   useEffect(() => {
     setLoding(false);
@@ -28,32 +25,25 @@ const JobDetails = () => {
     });
   }, [apise, id]);
 
-
-
-
   const handleAcceptJob = () => {
     setIsAccepted(true);
-      const postDataNow = {
-      title : job.title,
-      postedBy:job.postedBy,
-      category:job.category,
-      acceptsUserEmail:user.email,
-      coverImage:job.coverImage,
-      summary:job.summary,
-      create_at:new Date()
+    const postDataNow = {
+      title: job.title,
+      postedBy: job.postedBy,
+      category: job.category,
+      acceptsUserEmail: user.email,
+      coverImage: job.coverImage,
+      summary: job.summary,
+      create_at: new Date(),
     };
-    
-    apise.post('task',postDataNow)
-    .then(result => {
+
+    apise.post("task", postDataNow).then((result) => {
       console.log(result.data);
       toast.success("Congratulations! You have accepted this job.");
-      pageNaviget('/accecptjob')
-    })
+      pageNaviget("/accecptjob");
+    });
     console.log(postDataNow);
-    
-
   };
-
 
   const iosTime = job.create_at;
   const time = new Date(iosTime).toLocaleTimeString("en-GB", {
@@ -71,7 +61,7 @@ const JobDetails = () => {
     <div>
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-12 px-4">
         <h1 className="text-2xl font-semibold text-center mb-15 md:text-3xl">
-         Full job details
+          Full job details
         </h1>
         <div className="max-w-6xl mx-auto">
           {/* Cover Image */}
@@ -145,7 +135,8 @@ const JobDetails = () => {
                   </div>
                 </div>
                 <div className="mt-4 flex gap-4">
-                  <Link to={`/edit/${job._id}`}
+                  <Link
+                    to={`/edit/${job._id}`}
                     className="
                  px-6 py-1.5 
   text-orange-500 font-medium 

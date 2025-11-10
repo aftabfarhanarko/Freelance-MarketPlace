@@ -2,6 +2,8 @@ import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
 import Footer from "../components/Footer";
 import { Toaster } from "react-hot-toast";
+// import { Toaster, toast } from 'sonner'
+
 
 const MainLayout = () => {
   return (
@@ -17,12 +19,13 @@ const MainLayout = () => {
       <footer>
         <Footer></Footer>
       </footer>
+      {/* <Toaster position="top-center" /> */}
       <Toaster
         position="top-center"
         reverseOrder={false}
         gutter={12}
         containerStyle={{
-          top: 20,
+          top: 30,
           right: 20,
         }}
         toastOptions={{

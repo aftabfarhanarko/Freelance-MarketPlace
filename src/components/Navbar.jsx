@@ -101,10 +101,10 @@ const Navbar = () => {
                     {" "}
                     <button
                       className="
-                 px-6 py-1.5 
+                 px-6 py-2 
   text-orange-500 font-medium 
   bg-white 
-  border-2 border-orange-500 
+  outline
   rounded-md 
   transition-all duration-300 ease-out 
   hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500 
@@ -126,7 +126,7 @@ const Navbar = () => {
                       className="
                    px-6 py-2 
   text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  
-  transform transition-all duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
+  transform transition-all  duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
   hover:scale-105 active:scale-95 
   focus:outline-none focus:ring-4 focus:ring-orange-300
                   "

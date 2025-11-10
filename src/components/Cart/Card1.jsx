@@ -6,8 +6,8 @@ import { Link } from "react-router";
 const Card1 = ({ job }) => {
   useEffect(() => {
     AOS.init({
-      duration: 2000, // animation duration in ms
-      once: true, // whether animation should happen only once - while scrolling down
+      duration: 2000,
+      once: true, 
     });
   }, []);
   const { title, postedBy, category, summary, coverImage, userEmail, _id } =
