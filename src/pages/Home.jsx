@@ -34,7 +34,9 @@ import pic4 from "../assets/women7.jpg";
 import pic7 from "../assets/postes.png";
 import pic5 from "../assets/women2.png";
 import pic6 from "../assets/women4.png";
+import my from "../assets/my.jpg";
 import CountUp from "react-countup";
+
 import ScrollTrigger from "react-scroll-trigger";
 import { Briefcase, Users, FileText, Building2 } from "lucide-react";
 import { useInView } from "react-intersection-observer";
@@ -50,7 +52,7 @@ const Home = () => {
     AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
   }, []);
   return (
-    <div>
+    <div className="">
       <section>
         <Banner></Banner>
       </section>
@@ -183,8 +185,9 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }} // ✅ scroll trigger for mobile
             className="flex flex-col justify-center space-y-3"
           >
-            <h1 className="text-3xl font-semibold space-y-1">
-              Experience a quicker, simpler, and <br />
+            <h1 className="text-3xl md:text-4xl font-semibold space-y-1">
+              Experience a quicker, simpler
+              <br />
               <span className="mt-1">more effective job search</span>
             </h1>
 
@@ -264,154 +267,231 @@ const Home = () => {
           Aliquam lacinia diam quis lacus euismod
         </p>
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-          <div
-            data-aos="fade-up"
-            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7"
+        >
+          {/* Card 1 */}
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            whileHover={{
+              y: -12,
+              scale: 1.03,
+              transition: { duration: 0.3 },
+            }}
+            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
           >
-            {/* Image container with hover scale */}
-            <div className="overflow-hidden">
+            {/* Glow Effect on Hover */}
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+
+            {/* Image with Parallax Zoom */}
+            <motion.div
+              className="overflow-hidden"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
               <img
                 src={blog1}
-                alt="Beautiful Landscape"
-                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+                alt="Instagram Marketing"
+                className="w-full h-60 object-cover"
               />
-            </div>
-            {/* Text content */}
-            <div className="p-6">
-              <details
-                className="collapse bg-base-100 "
-                name="my-accordion-det-1"
-              >
-                <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-orange-500">
-                    December 2, 2022
-                  </h2>
-                  <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
-                    Front becomes an official Instagram Marketing Partner
-                  </p>
-                </summary>
-                <div className="collapse-content text-sm">
-                  <p className="text-gray-600  transition-colors cursor-pointer">
-                    Front is proud to announce its official partnership with
-                    Instagram as a verified Marketing Partne
-                  </p>
-                </div>
-              </details>
-            </div>
-          </div>
+            </motion.div>
 
-          <div
-            data-aos="fade-up"
-            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+            <div className="p-6 space-y-3">
+              <motion.details
+                className="collapse bg-transparent border-none"
+                initial={false}
+              >
+                <motion.summary
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.h2
+                    className="text-lg mb-2 text-orange-500 font-bold"
+                    initial={{ x: -20 }}
+                    whileInView={{ x: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    December 2, 2022
+                  </motion.h2>
+                  <motion.p
+                    className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    Front becomes an official Instagram Marketing Partner
+                  </motion.p>
+                </motion.summary>
+
+                <motion.div
+                  className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                  <p>
+                    Front is proud to announce its official partnership with
+                    Instagram as a verified Marketing Partner. This
+                    collaboration opens new doors for creators and businesses
+                    worldwide.
+                  </p>
+                </motion.div>
+              </motion.details>
+            </div>
+          </motion.div>
+
+          {/* Card 2 */}
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            whileHover={{ y: -12, scale: 1.03 }}
+            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
           >
-            {/* Image container with hover scale */}
-            <div className="overflow-hidden">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+
+            <motion.div
+              className="overflow-hidden"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
               <img
                 src={blog2}
-                alt="Beautiful Landscape"
-                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+                alt="Work from Home"
+                className="w-full h-60 object-cover"
               />
-            </div>
-            {/* Text content */}
-            <div className="p-6">
-              <details
-                className="collapse bg-base-100 "
-                name="my-accordion-det-1"
-              >
-                <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-orange-500">
-                    June 14, 2024
-                  </h2>
-                  <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
-                    Start an online business and work from home
-                  </p>
-                </summary>
-                <div className="collapse-content text-sm">
-                  <p className="text-gray-600  transition-colors cursor-pointer">
-                    Launching your own online business lets you unlock the
-                    freedom to work
-                  </p>
-                </div>
-              </details>
-            </div>
-          </div>
+            </motion.div>
 
-          <div
-            data-aos="fade-up"
-            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+            <div className="p-6 space-y-3">
+              <motion.details className="collapse bg-transparent border-none">
+                <motion.summary
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  whileHover={{ x: 4 }}
+                >
+                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
+                    June 14, 2024
+                  </motion.h2>
+                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
+                    Start an online business and work from home
+                  </motion.p>
+                </motion.summary>
+                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                  <p>
+                    Launching your own online business lets you unlock the
+                    freedom to work from anywhere in the world with just a
+                    laptop and internet.
+                  </p>
+                </motion.div>
+              </motion.details>
+            </div>
+          </motion.div>
+
+          {/* Card 3 */}
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            whileHover={{ y: -12, scale: 1.03 }}
+            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
           >
-            {/* Image container with hover scale */}
-            <div className="overflow-hidden">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+
+            <motion.div
+              className="overflow-hidden"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
               <img
                 src={blog3}
-                alt="Beautiful Landscape"
-                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+                alt="Online Business Guide"
+                className="w-full h-60 object-cover"
               />
-            </div>
-            {/* Text content */}
-            <div className="p-6">
-              <details
-                className="collapse bg-base-100 "
-                name="my-accordion-det-1"
-              >
-                <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-orange-500">
-                    December 29, 2023
-                  </h2>
-                  <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
-                    Start an online business and work from home right now
-                  </p>
-                </summary>
-                <div className="collapse-content text-sm">
-                  <p className="text-gray-600  transition-colors cursor-pointer">
-                    Start your online business today and enjoy the freedom of
-                    working from home
-                  </p>
-                </div>
-              </details>
-            </div>
-          </div>
+            </motion.div>
 
-          <div
-            data-aos="fade-up"
-            className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-500"
+            <div className="p-6 space-y-3">
+              <motion.details className="collapse bg-transparent border-none">
+                <motion.summary
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  whileHover={{ x: 4 }}
+                >
+                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
+                    December 29, 2023
+                  </motion.h2>
+                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
+                    Start an online business and work from home right now
+                  </motion.p>
+                </motion.summary>
+                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                  <p>
+                    Start your online business today and enjoy the freedom of
+                    working from home. No office, no boss, just you and your
+                    dreams.
+                  </p>
+                </motion.div>
+              </motion.details>
+            </div>
+          </motion.div>
+
+          {/* Card 4 */}
+          <motion.div
+            initial={{ y: 60, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            whileHover={{ y: -12, scale: 1.03 }}
+            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
           >
-            {/* Image container with hover scale */}
-            <div className="overflow-hidden">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+
+            <motion.div
+              className="overflow-hidden"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
               <img
                 src={blog4}
-                alt="Beautiful Landscape"
-                className="w-full h-60 object-cover transform transition-transform duration-500 hover:scale-110"
+                alt="Complete Guide"
+                className="w-full h-60 object-cover"
               />
-            </div>
-            {/* Text content */}
-            <div className="p-6">
-              <details
-                className="collapse bg-base-100 "
-                name="my-accordion-det-1"
-              >
-                <summary className="collapse-title font-semibold">
-                  <h2 className="text-lg  mb-2 text-orange-500">
+            </motion.div>
+
+            <div className="p-6 space-y-3">
+              <motion.details className="collapse bg-transparent border-none">
+                <motion.summary
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  whileHover={{ x: 4 }}
+                >
+                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
                     December 19, 2024
-                  </h2>
-                  <p className="text-gray-600 mb-4 hover:underline hover:text-pink-500 transition-colors cursor-pointer">
+                  </motion.h2>
+                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
                     Start an online business and work home guide.
+                  </motion.p>
+                </motion.summary>
+                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                  <p>
+                    Step-by-step complete guide to launch your online business
+                    from home. From idea to income – everything covered!
                   </p>
-                </summary>
-                <div className="collapse-content text-sm">
-                  <p className="text-gray-600  transition-colors cursor-pointer">
-                    Start your online business, work from home, step-by-step
-                    complete guide.
-                  </p>
-                </div>
-              </details>
+                </motion.div>
+              </motion.details>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
-      <section className="w-full bg-orange-50 py-20 px-5 mb-35 overflow-hidden">
+      <section className="w-full bg-gray-50 py-20 px-5 mb-35 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
           {/* Left Side Animation */}
           <motion.div
@@ -421,7 +501,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="flex-1 text-center md:text-left"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
               Find the Perfect Freelancer for Your Next Big Project
             </h2>
 
@@ -1201,24 +1281,27 @@ const Home = () => {
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
             <h2
-             data-aos="fade-up"
-          data-aos-duration="1000"
-          data-aos-easing="ease-out-cubic"
-            className="px-4 py-1 text-sm rounded-full  text-orange-500 font-semibold">
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-easing="ease-out-cubic"
+              className="px-4 py-1 text-sm rounded-full  text-orange-500 font-semibold"
+            >
               Success Business Award
             </h2>
-            <h2 
+            <h2
               data-aos="fade-up"
-          data-aos-duration="1500"
-          data-aos-easing="ease-out-cubic"
-            className="text-2xl md:text-3xl font-semibold  text-gray-800 mt-4">
+              data-aos-duration="1500"
+              data-aos-easing="ease-out-cubic"
+              className="text-3xl md:text-4xl font-semibold  text-gray-800 mt-4"
+            >
               Our Success & Award
             </h2>
-            <p 
-             data-aos="fade-up"
-          data-aos-duration="2500"
-          data-aos-easing="ease-out-cubic"
-            className="max-w-2xl mx-auto mt-3 text-gray-500">
+            <p
+              data-aos="fade-up"
+              data-aos-duration="2500"
+              data-aos-easing="ease-out-cubic"
+              className="max-w-2xl mx-auto mt-3 text-gray-500"
+            >
               We take pride in our journey of connecting skilled freelancers
               with global clients. Through dedication, trust, and innovation,
               we’ve built a thriving marketplace where talent meets opportunity.
@@ -1295,9 +1378,132 @@ const Home = () => {
       </section>
 
       {/* Website About Sections */}
-      <section>
-        <h1>“About The Platform</h1>
-      </section>
+        <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <h2
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                data-aos-easing="ease-out-cubic"
+                className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
+              >
+                About{" "}
+                <span className="text-orange-500">Freelance Marketplace</span>
+              </h2>
+              <p
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-easing="ease-out-cubic"
+                className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+              >
+                Connecting talented freelancers with businesses worldwide. Get
+                your projects done faster, smarter, and with guaranteed quality.
+              </p>
+            </motion.div>
+
+            <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left: Image with floating animation */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative"
+              >
+                <motion.img
+                  src={my}
+                  alt="Freelancers working together"
+                  className="rounded-2xl shadow-2xl w-full object-cover"
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 6,
+                    ease: "easeInOut",
+                  }}
+                />
+                <div className="absolute -bottom-6 -right-2 md:-right-6 bg-orange-500 text-white px-6 py-3 rounded-xl shadow-lg">
+                  <p className="text-2xl font-bold">100K+</p>
+                  <p className="text-sm">Happy Clients</p>
+                </div>
+              </motion.div>
+
+              {/* Right: Content with staggered animations */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="space-y-6"
+              >
+                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                  <span className="text-orange-500"> Why Choose </span> Our
+                  Platform?
+                </h3>
+             
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  We bridge the gap between skilled freelancers and businesses
+                  looking for top-tier talent. Whether you're a developer,
+                  designer, marketer, or writer — find your next opportunity
+                  here.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                  {[
+                    {
+                      icon: "🚀",
+                      title: "Fast Hiring",
+                      desc: "Post jobs & get responses in hours",
+                    },
+                    {
+                      icon: "🔒",
+                      title: "Secure Payments",
+                      desc: "Escrow protection until job done",
+                    },
+                    {
+                      icon: "⭐",
+                      title: "Verified Talent",
+                      desc: "Only skilled & reviewed freelancers",
+                    },
+                    {
+                      icon: "💬",
+                      title: "24/7 Support",
+                      desc: "We're always here to help",
+                    },
+                  ].map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={inView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                      className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700"
+                    >
+                      <div className="text-4xl mb-3">{feature.icon}</div>
+                      <h4 className="font-semibold text-lg text-gray-800 dark:text-white">
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        {feature.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+                {/* CTA Button - Same style as Home page */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                >
+                  <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                    Start Hiring Today
+                  </button>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
       <section className="w-11/12 mx-auto mb-35">
         <h1
