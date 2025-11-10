@@ -17,7 +17,6 @@ const usePrivetApi = () => {
       if (user.accessToken) {
         configs.headers.authorization = `Bearer ${user.accessToken}`;
       }
-
       return configs;
     });
 

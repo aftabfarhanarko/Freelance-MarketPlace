@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useAxiosData } from "../Hooks/DataFetch";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
 import { MdMarkEmailRead } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
 
 const JobDetails = () => {
   const [loding, setLoding] = useState(true);
@@ -46,7 +47,7 @@ const JobDetails = () => {
     <div>
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-12 px-4">
         <h1 className="text-2xl font-semibold text-center mb-15 md:text-3xl">
-          Job Information{" "}
+         Full job details
         </h1>
         <div className="max-w-6xl mx-auto">
           {/* Cover Image */}
@@ -108,7 +109,7 @@ const JobDetails = () => {
                   Client Information
                 </h2>
                 <div className="flex items-center gap-5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center text-white text-md font-medium shadow-lg">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-400 to-orange-400 flex items-center justify-center text-white text-md font-medium shadow-lg">
                     <MdMarkEmailRead />
                   </div>
 
@@ -118,6 +119,28 @@ const JobDetails = () => {
                     </p>
                     <p className="text-gray-600">{job.userEmail}</p>
                   </div>
+                </div>
+                <div className="mt-4 flex gap-4">
+                  <Link to={`/edit/${job._id}`}
+                    className="
+                 px-6 py-1.5 
+  text-orange-500 font-medium 
+  bg-white 
+  border-2 border-orange-500 
+  rounded-md 
+  transition-all duration-300 ease-out 
+  hover:bg-gradient-to-r hover:from-orange-400 hover:to-orange-500 
+  hover:text-white 
+  hover:shadow-xl 
+  hover:scale-105 
+  active:scale-95 
+  focus:outline-none focus:ring-4 focus:ring-orange-300
+                  flex items-center justify-center gap-2
+                  
+                  "
+                  >
+                    <FiEdit /> Edit Now
+                  </Link>
                 </div>
               </div>
             </div>
@@ -154,7 +177,7 @@ const JobDetails = () => {
                 ) : (
                   <button
                     onClick={handleAcceptJob}
-                    className="w-full py-2.5 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold text-xl rounded-xl hover:from-orange-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
+                    className="w-full py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300 shadow-xl"
                   >
                     Accept This Job
                   </button>

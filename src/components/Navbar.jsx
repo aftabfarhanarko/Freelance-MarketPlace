@@ -47,6 +47,11 @@ const Navbar = () => {
                   <NavLink to="/accecptjob">My Accepted Tasks</NavLink>
                 </li>
               )}
+              {user && (
+                <li>
+                  <NavLink to="/">My Add Job</NavLink>
+                </li>
+              )}
             </ul>
           </div>
           <div className="navbar-end">
