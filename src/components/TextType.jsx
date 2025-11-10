@@ -41,7 +41,16 @@ const TextType = ({
     }
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, text, index, typingSpeed, deletingSpeed, pauseDuration, textColors]);
+  }, [
+    displayText,
+    isDeleting,
+    text,
+    index,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+    textColors,
+  ]);
 
   return (
     <span

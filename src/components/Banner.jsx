@@ -4,40 +4,30 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// Images
 import banner1 from "../assets/hero4.png";
 import banner4 from "../assets/hero1.jpg";
 import banner5 from "../assets/her.jpg";
 import banner6 from "../assets/hero3.jpg";
 
-// ✅ Correct import — fix this line
 import TextType from "./TextType";
 
 const Banner = () => {
   const slides = [
     {
       img: banner1,
-      title: [
-        "Mentioning how reliable the marketplace platform, Create a Job"
-      ],
+      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
     },
     {
       img: banner6,
-      title: [
-       "Mentioning how reliable the marketplace platform, Create a Job"
-      ],
+      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
     },
     {
       img: banner5,
-      title: [
-       "Mentioning how reliable the marketplace platform, Create a Job"
-      ],
+      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
     },
     {
       img: banner4,
-      title: [
-      "Mentioning how reliable the marketplace platform, Create a Job"
-      ],
+      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
     },
   ];
 
