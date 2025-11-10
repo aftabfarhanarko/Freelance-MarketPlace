@@ -107,7 +107,7 @@ const AddJod = () => {
               name="coverImage"
               required
               placeholder="https://i.ibb.co/... (imgbb recommended)"
-              className="w-full px-4 py-3 border outline-none border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+              className="w-full px-4 py-3 border outline-none border-gray-900 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
             />
             <p className="mt-2 text-xs text-gray-500">
               Recommended size: 1200×600px
@@ -160,7 +160,7 @@ const AddJod = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-10 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-xl"
+              className="px-10 py-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold text-lg rounded-xl hover:from-orange-600 hover:to-red-700 transition-all transform hover:scale-105 shadow-xl"
             >
               Post Job Now
             </button>

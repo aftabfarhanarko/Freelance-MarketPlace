@@ -5,7 +5,6 @@ import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
 import { MdMarkEmailRead } from "react-icons/md";
 
-
 const JobDetails = () => {
   const [loding, setLoding] = useState(true);
   const [job, setJob] = useState([]);
@@ -27,19 +26,17 @@ const JobDetails = () => {
     toast.success("Congratulations! You have accepted this job.");
   };
 
-const iosTime = job.create_at;  
+  const iosTime = job.create_at;
 
-const time = new Date(iosTime).toLocaleTimeString("en-GB", {
-  timeZone: "Asia/Dhaka",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: false,
-});
+  const time = new Date(iosTime).toLocaleTimeString("en-GB", {
+    timeZone: "Asia/Dhaka",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
 
-console.log(time); // 03:23:17
-
-
+  console.log(time); // 03:23:17
 
   if (!loding) {
     return <LodingSpinner></LodingSpinner>;
@@ -92,9 +89,7 @@ console.log(time); // 03:23:17
                 <span className="px-5 py-2 bg-orange-500 text-white font-bold rounded-full text-sm shadow-lg">
                   {job?.category}
                 </span>
-                <span className="text-gray-600">
-                  Posted on:  {time}
-                </span>
+                <span className="text-gray-600">Posted on: {time}</span>
               </div>
 
               {/* Description */}
@@ -114,8 +109,7 @@ console.log(time); // 03:23:17
                 </h2>
                 <div className="flex items-center gap-5">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-600 flex items-center justify-center text-white text-md font-medium shadow-lg">
-                  <MdMarkEmailRead />
-
+                    <MdMarkEmailRead />
                   </div>
 
                   <div>
