@@ -7,8 +7,8 @@ const LodingSpinner = () => {
         {/* Spinner */}
         <div className="relative">
           <div className="w-16 h-16 border-4 border-gray-200 border-t-4 border-t-blue-600 rounded-full animate-spin"></div>
-          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-4 border-t-purple-500 rounded-full animate-spin animation-delay-200"></div>
-          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-4 border-t-pink-500 rounded-full animate-spin animation-delay-400"></div>
+          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-4 border-t-orange-500 rounded-full animate-spin animation-delay-200"></div>
+          <div className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-4 border-t-orange-500 rounded-full animate-spin animation-delay-400"></div>
         </div>
 
         {/* Loading Text with Dots Animation */}

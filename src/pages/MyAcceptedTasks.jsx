@@ -15,13 +15,17 @@ const MyAcceptedTasks = () => {
   const apies = usePrivetApi();
 
   useEffect(() => {
-      AOS.init({
-        duration: 2000,
-        once: true, 
-      });
-    }, [])
+    AOS.init({
+      duration: 2000,
+      once: true,
+    });
+  }, []);
 
   useEffect(() => {
+    if (!user?.email) {
+      <LodingSpinner></LodingSpinner>;
+      return;
+    }
     setLoding(true);
     apies.get(`task?email=${user?.email}`).then((result) => {
       console.log("Data is Sccepts", result.data);
@@ -29,6 +33,22 @@ const MyAcceptedTasks = () => {
       setLoding(false);
     });
   }, [apies, user]);
+
+  // delet Buttons kaj bakei
+  const handelClear = (_id) => {
+    if (!user?.email) {
+      <LodingSpinner></LodingSpinner>;
+      return;
+    }
+    //  setLoding(true)
+    apies.delete(`task/${_id}?email=${user?.email}`).then((result) => {
+      if (result.data.deletedCount) {
+        setJobs((prevJobs) => prevJobs.filter((one) => one._id !== _id));
+        toast.success("Successfully Deleat Your Accesspts Jobs");
+        setLoding(false);
+      }
+    });
+  };
 
   const iosTime = jobs?.create_at;
   const time = new Date(iosTime).toLocaleTimeString("en-GB", {
@@ -39,25 +59,19 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
-
-  // delet Buttons kaj bakei
-  const handelDelete = (id) => {
-    apies.delete(`task/${id}`).then((result) => {
-      if (result.data.deletedCount) {
-        setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
-        toast.success("Successfully Delet Your Jobs");
-      }
-    });
-  };
-  const hanndelCLear = () => {};
-
+  // const hanndelCLear = () => {};
 
   if (loding) {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className="bg-gradient-to-br from-orange-50 via-white to-red-50">
-      <h1 className="text-center text-3xl  font-semibold pt-15">
+    <div className="min-h-screen bg-[url('/background2.png')] bg-cover bg-center0">
+      <h1
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-easing="ease-out-cubic"
+        className="text-center text-3xl  font-semibold pt-15"
+      >
         This is Your Accepts Job Sections
       </h1>
       <div className=" w-11/12 mx-auto min-h-screen pt-10 ">
@@ -164,7 +178,7 @@ const MyAcceptedTasks = () => {
                                 Done
                               </button>
                               <button
-                                onClick={() => handelDelete(job._id)}
+                                onClick={() => handelClear(job._id)}
                                 className="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition"
                               >
                                 <XCircleIcon className="w-4 h-4 mr-1" />
@@ -229,14 +243,14 @@ const MyAcceptedTasks = () => {
                         {job?.acceptsUserEmail}
                       </span>
                       <button
-                        onClick={handelDelete}
+                        onClick={""}
                         className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition"
                       >
                         <CheckCircleIcon className="w-4 h-4 mr-1" />
                         Done
                       </button>
                       <button
-                        onClick={hanndelCLear}
+                        onClick={""}
                         className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition"
                       >
                         <XCircleIcon className="w-4 h-4 mr-1" />

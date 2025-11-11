@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r  p-4">
+    <div className="min-h-screen flex items-center bg-[url('/background2.png')] bg-cover bg-center0 justify-center   p-4">
       <form
         onSubmit={handelLogin}
         className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-lg"
