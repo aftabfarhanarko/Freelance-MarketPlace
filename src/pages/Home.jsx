@@ -52,7 +52,7 @@ const Home = () => {
     AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
   }, []);
   return (
-    <div className="">
+    <div className=" bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <section>
         <Banner></Banner>
       </section>
@@ -95,7 +95,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
               <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
                 Post a job
               </h2>
-              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Write your project details clearly and attract the right talent
                 instantly.
               </p>
@@ -120,7 +120,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
                 Choose freelancers
               </h2>
-              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Browse verified profiles, compare experience, and select the
                 best fit for your work.
               </p>
@@ -145,7 +145,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
                 Pay safely
               </h2>
-              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 All payments are protected with secure escrow, released only
                 when you're satisfied.
               </p>
@@ -170,7 +170,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
                 We’re here to help
               </h2>
-              <p className="text-gray-800 text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
                 Our support team is available anytime to guide you, answer
                 questions, and assist.
               </p>
@@ -190,7 +190,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true, amount: 0.5 }} // ✅ scroll trigger for mobile
+            viewport={{ once: true, amount: 0.5 }} 
             className="flex flex-col justify-center space-y-3"
           >
             <h1 className="text-3xl md:text-4xl font-semibold space-y-1">
@@ -271,11 +271,9 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
-          className="text-3xl md:text-4xl font-semibold text-center opacity-0"
-        >
+          className="text-3xl md:text-4xl font-semibold text-center opacity-0" >
           Our Blog
         </h1>
-
         <p
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -509,7 +507,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </motion.div>
       </section>
 
-      <section className="w-full bg-gray-50 py-20 px-5 mb-35 overflow-hidden">
+      <section className="w-full  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-20 px-5 mb-35 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
           {/* Left Side Animation */}
           <motion.div
@@ -519,11 +517,11 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             viewport={{ once: true, amount: 0.5 }}
             className="flex-1 text-center md:text-left"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
+            <h2 className="text-3xl md:text-4xl font-semibold  mb-3">
               Find the Perfect Freelancer for Your Next Big Project
             </h2>
 
-            <p className="text-gray-500 mb-8">
+            <p className=" mb-8">
               Freeio is a modern freelance marketplace that connects talented
               professionals with clients around the world. Whether you’re a
               designer, developer, writer, or marketer — we help you grow your
@@ -542,7 +540,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                   4.9/
                   <CountUp start={0} end={5} duration={2} />{" "}
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className=" text-sm">
                   Clients rate professionals on Freeio
                 </p>
               </div>
@@ -551,7 +549,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 <h3 className="text-2xl font-semibold text-orange-500">
                   <CountUp start={0} end={95} duration={2}></CountUp>%
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className=" text-sm">
                   90% of customers are satisfied
                 </p>
               </div>
@@ -560,7 +558,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 <h3 className="text-2xl font-semibold text-orange-500">
                   Award Winner
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className=" text-sm">
                   G2’s 2025 Best Software Awards
                 </p>
               </div>
@@ -1294,7 +1292,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className=" w-12/12 mx-auto bg-gray-50 mb-35">
+      <section className=" w-12/12 mx-auto  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
         <div className="w-11/12 mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
@@ -1310,7 +1308,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               data-aos="fade-up"
               data-aos-duration="1500"
               data-aos-easing="ease-out-cubic"
-              className="text-3xl md:text-4xl font-semibold  text-gray-800 mt-4"
+              className="text-3xl md:text-4xl font-semibold   mt-4"
             >
               Our Success & Award
             </h2>
@@ -1318,7 +1316,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               data-aos="fade-up"
               data-aos-duration="2500"
               data-aos-easing="ease-out-cubic"
-              className="max-w-2xl mx-auto mt-3 text-gray-500"
+              className="max-w-2xl mx-auto mt-3 "
             >
               We take pride in our journey of connecting skilled freelancers
               with global clients. Through dedication, trust, and innovation,
@@ -1587,6 +1585,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           </div>
         </Marquee>
       </section>
+      
     </div>
   );
 };

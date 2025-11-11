@@ -134,7 +134,6 @@ const JobDetails = () => {
                     <p className="text-gray-600">{job.userEmail}</p>
                   </div>
                 </div>
-               
               </div>
             </div>
 
@@ -142,10 +141,13 @@ const JobDetails = () => {
             <div className="md:col-span-1">
               <div className="bg-white rounded-2xl shadow-xl p-8 border border-orange-200 sticky top-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">
-                  Take this Job
+                  {
+                    user.email === job.userEmail ? " This is Your Post" : "  Take this Job "
+                  }
+                
                 </h3>
 
-                {isAccepted ? (
+                {user.email === job.userEmail ? " " :  isAccepted ? (
                   <div className="text-center">
                     <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
                       <svg
@@ -187,7 +189,11 @@ const JobDetails = () => {
                   </p>
                   <p className="flex justify-between">
                     <span>Status:</span>
-                    <span className="text-green-600 font-bold">Open</span>
+                    <span className="text-green-600 font-bold">
+                       {
+                    user.email === job.userEmail ? "Your Post" : "Open"
+                  }
+                      </span>
                   </p>
                 </div>
               </div>

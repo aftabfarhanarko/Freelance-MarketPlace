@@ -6,15 +6,15 @@ import toast from "react-hot-toast";
 import { useAxiosData } from "../Hooks/DataFetch";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import usePrivetApi from "../Hooks/PriverAPI";
 
 const UpdateJob = () => {
   const [loding, setLoding] = useState(false);
   const [job, setJob] = useState(null);
   const { id } = useParams();
   const { user } = useAuth();
-  const apies = useAxiosData();
+  const apies = usePrivetApi();
   const naviget = useNavigate();
-  // console.log(id);
 
   useEffect(() => {
     AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
@@ -49,7 +49,7 @@ const UpdateJob = () => {
     };
     console.log(postDataNow);
 
-    apies.patch(`jobs/${job._id}`, postDataNow).then((result) => {
+    apies.patch(`updeat/${job._id}`, postDataNow).then((result) => {
       if (result.data.modifiedCount) {
         toast.success("Your Updeat Successfully");
         naviget("/alljob");
@@ -212,3 +212,11 @@ const UpdateJob = () => {
 };
 
 export default UpdateJob;
+
+// Web Development   
+//               Mobile App Development   
+//               Graphics Designing   
+//               Digital Marketing   
+//               Content Writing   
+//               Video Editing   
+//               UI/UX Design   

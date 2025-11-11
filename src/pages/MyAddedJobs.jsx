@@ -15,15 +15,15 @@ const MyAddedJobs = () => {
   const apise = usePrivetApi();
   console.log("My add pages", user.email);
 
-    useEffect(() => {
-      AOS.init({
-        duration: 2000,
-        once: true,
-      });
-    }, []);
-  
   useEffect(() => {
-     if (!user?.email) {
+    AOS.init({
+      duration: 2000,
+      once: true,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!user?.email) {
       <LodingSpinner></LodingSpinner>;
       return;
     }
@@ -36,9 +36,9 @@ const MyAddedJobs = () => {
   }, [user.email, apise]);
 
   const handleDelete1 = (id) => {
-     if(!user.email){
-      <LodingSpinner></LodingSpinner>
-      return ;
+    if (!user.email) {
+      <LodingSpinner></LodingSpinner>;
+      return;
     }
     apise.delete(`jobs/${id}?email=${user.email}`).then((result) => {
       console.log("Data Delet Now", result.data);
@@ -61,11 +61,12 @@ const MyAddedJobs = () => {
   return (
     <div className="min-h-[80vh] bg-[url('/background3.png')] bg-cover bg-center">
       <section className="max-w-7xl mx-auto p-5">
-        <h2 
-         data-aos="fade-up"
-            data-aos-duration="1500"
-            data-aos-easing="ease-out-cubic"
-        className="text-2xl font-bold text-gray-800 mb-6">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-easing="ease-out-cubic"
+          className="text-2xl font-bold text-gray-800 mb-6"
+        >
           My Posted Jobs <span className="text-orange-500">{jobs.length}</span>
         </h2>
 
@@ -134,9 +135,9 @@ const MyAddedJobs = () => {
         <div className="block  md:hidden mt-6 space-y-4">
           {jobs.map((job, index) => (
             <div
-             data-aos="fade-up"
-            // data-aos-duration="500"
-            // data-aos-easing="ease-out-cubic"
+              data-aos="fade-up"
+              // data-aos-duration="500"
+              // data-aos-easing="ease-out-cubic"
               key={index}
               className="border border-gray-200 bg-white rounded-lg p-4 shadow-sm"
             >

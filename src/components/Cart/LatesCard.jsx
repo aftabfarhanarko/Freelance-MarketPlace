@@ -67,7 +67,7 @@ const LatesCard = () => {
               data-aos="fade-up"
               data-aos-duration="2500"
               data-aos-easing="ease-out-cubic"
-              className="text-lg md:text-xl text-center mt-2 mb-12 text-gray-600"
+              className="text-lg md:text-xl text-center mt-2 mb-12 "
             >
               Most viewed and all-time top-selling services
             </p>
