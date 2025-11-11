@@ -61,7 +61,7 @@ const LatesCard = () => {
               data-aos-easing="ease-out-cubic"
               className="text-3xl md:text-4xl font-semibold text-center opacity-0"
             >
-              Trending Services
+              Trending Job Placment
             </h1>
             <p
               data-aos="fade-up"
@@ -91,7 +91,7 @@ const LatesCard = () => {
               className="p-2 md:p-2 bg-white border-1 border-orange-600 rounded-full shadow-2xl hover:bg-orange-50 transition-all duration-300 pointer-events-auto"
               aria-label="Next"
             >
-              <ArrowRight className="w-6 h-4 md:w-5 md:h-5 text-orange-600" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-orange-600" />
             </button>
           </div>
 
@@ -115,7 +115,7 @@ const LatesCard = () => {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Link to={`/detlise/${job._id}`} className="block">
+                  <Link to={`/detlise/${job._id}`} className="block z-10">
                     <div className="bg-white rounded-xl shadow-xl overflow-hidden group border border-orange-100 hover:border-orange-300 transition-all">
                       {/* Image */}
                       <div className="relative overflow-hidden">
@@ -125,7 +125,6 @@ const LatesCard = () => {
                             job.coverImage ||
                             "https://via.placeholder.com/400x250?text=No+Image"
                           }
-                          alt={job.title}
                           className="w-full h-52 object-cover"
                           loading="lazy"
                           onError={(e) => {
@@ -137,7 +136,7 @@ const LatesCard = () => {
                         {/* Featured Badge */}
                         {index === 0 && (
                           <div className="absolute top-4 left-0 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-5 py-2 rounded-r-full text-sm font-bold shadow-xl -rotate-12">
-                            Featured
+                            Freelancing
                           </div>
                         )}
 
@@ -153,7 +152,7 @@ const LatesCard = () => {
                       {/* Body */}
                       <div className="p-5 space-y-3">
                         {/* Category */}
-                        <span className="inline-block px-4 py-1.5 text-xs font-bold text-orange-700 bg-orange-100 rounded-full">
+                        <span className="inline-block px-4 py-1.5 text-xs font-bold text-orange-500 bg-orange-100 rounded-full">
                           {job.category || "Unknown"}
                         </span>
 
@@ -183,12 +182,30 @@ const LatesCard = () => {
 
                         {/* View Details */}
                         <div className="flex items-end justify-between pt-3">
-                          <motion.div
-                            whileHover={{ x: 6 }}
-                            className="flex items-center gap-1 text-orange-600 font-bold text-sm"
-                          >
-                            View Details
-                            <ArrowRight className="w-4 h-4" />
+                          <motion.div whileHover={{ x: 6 }}>
+                            {/* className="flex items-center gap-1 text-orange-600 font-bold text-sm" */}
+
+                            <button className="relative inline-flex items-center gap-3 py-1 px-8 md:px-8  border-1 border-orange-500 font-medium text-md text-orange-400 rounded-full overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent hover:border-orange-400 shadow-2xl">
+                              <svg
+                                viewBox="0 0 24 24"
+                                className="absolute left-[-40%] w-5 z-10 transition-all duration-700 group-hover:left-3 group-hover:fill-white"
+                              >
+                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+                              </svg>
+
+                              <span className="relative z-10 transition-all duration-700 group-hover:text-white  group-hover:translate-x-4">
+                                Visit Now
+                              </span>
+
+                              <span className="absolute inset-0 bg-orange-500 rounded-full scale-0 transition-all duration-700 group-hover:scale-150 opacity-0 group-hover:opacity-100" />
+
+                              <svg
+                                viewBox="0 0 24 24"
+                                className="absolute right-2 w-5 fill-orange-400 z-10 transition-all duration-700 group-hover:right-[-40%] group-hover:fill-white"
+                              >
+                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+                              </svg>
+                            </button>
                           </motion.div>
                         </div>
                       </div>

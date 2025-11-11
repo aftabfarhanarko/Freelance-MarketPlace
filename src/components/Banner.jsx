@@ -76,7 +76,7 @@ const Banner = () => {
                   </h1>
 
                   {/* Button */}
-                  <button className="relative inline-flex items-center gap-3 py-2 px-14 md:px-14 border-2 border-orange-500 font-bold text-lg md:text-xl text-orange-400 rounded-full overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent hover:border-orange-400 shadow-2xl">
+                  <button className="relative inline-flex items-center gap-3 py-1 px-13 md:px-14 border-2 border-orange-500 font-semibold text-lg md:text-xl text-orange-400 rounded-full overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent hover:border-orange-400 shadow-2xl">
                     <svg
                       viewBox="0 0 24 24"
                       className="absolute left-[-40%] w-5 z-10 transition-all duration-700 group-hover:left-8 group-hover:fill-white"
@@ -92,7 +92,7 @@ const Banner = () => {
 
                     <svg
                       viewBox="0 0 24 24"
-                      className="absolute right-8 w-5 fill-orange-400 z-10 transition-all duration-700 group-hover:right-[-40%] group-hover:fill-white"
+                      className="absolute right-4 w-5 fill-orange-400 z-10 transition-all duration-700 group-hover:right-[-40%] group-hover:fill-white"
                     >
                       <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
                     </svg>

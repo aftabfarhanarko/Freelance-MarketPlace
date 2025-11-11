@@ -81,7 +81,9 @@ const Home = () => {
             <div
               data-aos="fade-up"
               className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
-                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
+transition-transform transition-shadow transition-colors
+duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
             >
               <div
                 className="mx-auto w-11 h-11 text-orange-500 transition-transform duration-500
@@ -104,7 +106,9 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay="100"
               className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
-                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
+transition-transform transition-shadow transition-colors
+duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             >
               <div
                 className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
@@ -127,7 +131,9 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay="200"
               className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
-                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
+transition-transform transition-shadow transition-colors
+duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             >
               <div
                 className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
@@ -150,7 +156,9 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay="300"
               className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
-                       transition-all duration-500 hover:bg-orange-50 hover:shadow-lg hover:scale-105 group"
+transition-transform transition-shadow transition-colors
+duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             >
               <div
                 className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
@@ -207,17 +215,27 @@ const Home = () => {
               </p>
             </div>
 
-            <button className="relative w-[150px] flex items-center gap-1 py-2 px-8 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+            <button class="relative flex mt-5  w-[195px]  items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              {/* <!-- Left arrow --> */}
               <svg
                 viewBox="0 0 24 24"
-                className="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
+                class="absolute left-[-25%] w-5 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-2 group-hover:fill-white"
               >
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
               </svg>
-              <span className="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                Visit Now
+
+              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+                View Profile
               </span>
-              <span className="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+
+              <svg
+                viewBox="0 0 24 24"
+                class="absolute right-2 w-5 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+              >
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+              </svg>
             </button>
           </motion.div>
 
@@ -1378,132 +1396,131 @@ const Home = () => {
       </section>
 
       {/* Website About Sections */}
-        <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
+      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-easing="ease-out-cubic"
+              className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
             >
-              <h2
-                data-aos="fade-up"
-                data-aos-duration="1500"
-                data-aos-easing="ease-out-cubic"
-                className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
-              >
-                About{" "}
-                <span className="text-orange-500">Freelance Marketplace</span>
-              </h2>
-              <p
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-easing="ease-out-cubic"
-                className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-              >
-                Connecting talented freelancers with businesses worldwide. Get
-                your projects done faster, smarter, and with guaranteed quality.
-              </p>
+              About{" "}
+              <span className="text-orange-500">Freelance Marketplace</span>
+            </h2>
+            <p
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-easing="ease-out-cubic"
+              className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            >
+              Connecting talented freelancers with businesses worldwide. Get
+              your projects done faster, smarter, and with guaranteed quality.
+            </p>
+          </motion.div>
+
+          <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left: Image with floating animation */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative"
+            >
+              <motion.img
+                src={my}
+                alt="Freelancers working together"
+                className="rounded-2xl shadow-2xl w-full object-cover border border-base-300"
+                animate={{ y: [0, -15, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: "easeInOut",
+                }}
+              />
+              <div className="absolute -bottom-6 -right-2 md:-right-6 bg-orange-500 text-white px-6 py-3 rounded-xl shadow-lg">
+                <p className="text-2xl font-bold">100K+</p>
+                <p className="text-sm">Happy Clients</p>
+              </div>
             </motion.div>
 
-            <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left: Image with floating animation */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative"
-              >
-                <motion.img
-                  src={my}
-                  alt="Freelancers working together"
-                  className="rounded-2xl shadow-2xl w-full object-cover border border-base-300"
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 6,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="absolute -bottom-6 -right-2 md:-right-6 bg-orange-500 text-white px-6 py-3 rounded-xl shadow-lg">
-                  <p className="text-2xl font-bold">100K+</p>
-                  <p className="text-sm">Happy Clients</p>
-                </div>
-              </motion.div>
+            {/* Right: Content with staggered animations */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="space-y-6"
+            >
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                <span className="text-orange-500"> Why Choose </span> Our
+                Platform?
+              </h3>
 
-              {/* Right: Content with staggered animations */}
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                We bridge the gap between skilled freelancers and businesses
+                looking for top-tier talent. Whether you're a developer,
+                designer, marketer, or writer — find your next opportunity here.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                {[
+                  {
+                    icon: "🚀",
+                    title: "Fast Hiring",
+                    desc: "Post jobs & get responses in hours",
+                  },
+                  {
+                    icon: "🔒",
+                    title: "Secure Payments",
+                    desc: "Escrow protection until job done",
+                  },
+                  {
+                    icon: "⭐",
+                    title: "Verified Talent",
+                    desc: "Only skilled & reviewed freelancers",
+                  },
+                  {
+                    icon: "💬",
+                    title: "24/7 Support",
+                    desc: "We're always here to help",
+                  },
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700"
+                  >
+                    <div className="text-4xl mb-3">{feature.icon}</div>
+                    <h4 className="font-semibold text-lg text-gray-800 dark:text-white">
+                      {feature.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+              {/* CTA Button - Same style as Home page */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="space-y-6"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 1.2 }}
               >
-                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                  <span className="text-orange-500"> Why Choose </span> Our
-                  Platform?
-                </h3>
-             
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  We bridge the gap between skilled freelancers and businesses
-                  looking for top-tier talent. Whether you're a developer,
-                  designer, marketer, or writer — find your next opportunity
-                  here.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                  {[
-                    {
-                      icon: "🚀",
-                      title: "Fast Hiring",
-                      desc: "Post jobs & get responses in hours",
-                    },
-                    {
-                      icon: "🔒",
-                      title: "Secure Payments",
-                      desc: "Escrow protection until job done",
-                    },
-                    {
-                      icon: "⭐",
-                      title: "Verified Talent",
-                      desc: "Only skilled & reviewed freelancers",
-                    },
-                    {
-                      icon: "💬",
-                      title: "24/7 Support",
-                      desc: "We're always here to help",
-                    },
-                  ].map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                      className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700"
-                    >
-                      <div className="text-4xl mb-3">{feature.icon}</div>
-                      <h4 className="font-semibold text-lg text-gray-800 dark:text-white">
-                        {feature.title}
-                      </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                        {feature.desc}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-                {/* CTA Button - Same style as Home page */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.8, delay: 1.2 }}
-                >
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                    Start Hiring Today
-                  </button>
-                </motion.div>
+                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                  Start Hiring Today
+                </button>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
       <section className="w-11/12 mx-auto mb-35">
         <h1

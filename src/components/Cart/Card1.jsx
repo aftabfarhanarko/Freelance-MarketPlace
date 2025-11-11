@@ -59,7 +59,9 @@ const Card1 = ({ job }) => {
 
           <Link
             to={`/detlise/${_id}`}
-            class="relative flex items-center gap-1 py-1.5 px-7 md:px-7 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent"
+
+            
+            class="relative flex items-center gap-1 py-1 px-7 md:px-7 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent"
           >
             {/* <!-- Left arrow --> */}
             <svg
