@@ -31,11 +31,7 @@ const Navbar = () => {
     <div className="  py-1  border-b border-base-300   w-full">
       <div className="navbar  w-11/12 mx-auto ">
         <div className="navbar-start">
-          <img
-            className="w-30 md:w-35 rounded-lg  "
-            src={logo}
-          ></img>
-         
+          <img className="w-30 md:w-35 rounded-lg  " src={logo}></img>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
@@ -63,31 +59,45 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className=" hidden md:block  ">
             {user ? (
-              <div className="flex items-center gap-3">
-                <input
-                  onChange={(e) => handleTheme(e.target.checked)}
-                  type="checkbox"
-                  defaultChecked={localStorage.getItem("theme") === "dark"}
-                  className="toggle"
-                />
-                <div className="hidden  md:block ">
-                  <div className="">
-                    <img
-                      className=" w-7 md:w-13 rounded-full"
-                      src={user.photoURL}
-                    ></img>
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className=" m-1">
+                  <div className="hidden  md:block ">
+                    <div className="">
+                      <img
+                        className=" w-7 md:w-13 rounded-full"
+                        src={user.photoURL}
+                      ></img>
+                    </div>
                   </div>
                 </div>
-                <button
-                  onClick={handelLogOut}
-                  className="px-6 py-2 
+                <ul
+                  tabIndex="-1"
+                  className="dropdown-content z-5 menu bg-base-100 rounded-box  w-42 p-4 shadow-sm"
+                >
+                  {user && (
+                    <div className="flex items-center flex-col gap-3">
+                      <input
+                        onChange={(e) => handleTheme(e.target.checked)}
+                        type="checkbox"
+                        defaultChecked={
+                          localStorage.getItem("theme") === "dark"
+                        }
+                        className="toggle"
+                      />
+
+                      <button
+                        onClick={handelLogOut}
+                        className="px-6 py-2 
                  text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  shadow-lg 
                    transform transition-all duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
                      hover:scale-105 active:scale-95 
                       focus:outline-none focus:ring-4 focus:ring-orange-300"
-                >
-                  Logout
-                </button>
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </ul>
               </div>
             ) : (
               <div className="flex gap-3">
@@ -154,9 +164,6 @@ const Navbar = () => {
               style={{ width: "50%" }}
             >
               <div className="p-6">
-                <h2 className="text-xl font-semibold ">
-                  <span className="text-primary">Smart</span> Deals
-                </h2>
                 <div className="mt-5 ml-2">
                   {user ? (
                     <>
@@ -186,27 +193,31 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink to="/creatJob" onClick={() => setOpen(false)}>
-                      Add a Job
+                      Add Job
                     </NavLink>
                   </li>
                   {user && (
                     <li>
                       <NavLink to="/accecptjob" onClick={() => setOpen(false)}>
-                        My Accepted Tasks
+                        Accepted Job
                       </NavLink>
                     </li>
                   )}
                   {user && (
                     <li>
                       <NavLink to="/myAddjobs" onClick={() => setOpen(false)}>
-                        My Add Job
+                        Add Job
                       </NavLink>
                     </li>
                   )}
                   {user ? (
                     <button
                       onClick={handelLogOut}
-                      className="btn btn-outline text-primary hover:bg-primary hover:text-white"
+                      className="px-6 py-2 
+                 text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  shadow-lg 
+                   transform transition-all duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
+                     hover:scale-105 active:scale-95 
+                      focus:outline-none focus:ring-4 focus:ring-orange-300"
                     >
                       Logout
                     </button>

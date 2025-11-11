@@ -83,7 +83,7 @@ const MyAddedJobs = () => {
           {/* Body */}
           <div className="divide-y divide-gray-200">
             {jobs.length === 0
-              ? "No Jobs Post You"
+              ? <h1 className=" py-15 text-center"> No Jobs Post You</h1>
               : jobs.map((job, index) => (
                   <div
                     key={index}
