@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const insert = axios.create({
-  baseURL: "http://localhost:4000/",
+  baseURL: "https://server-freelance-marketplace.vercel.app/",
 });
 
 export const useAxiosData = () => {

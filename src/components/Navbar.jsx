@@ -168,7 +168,7 @@ const Navbar = () => {
                 onClick={() => setOpen(!open)}
                 className="btn-ghost dark:text-white  text-[32px] font-bold  top-7 right-5 z-50 text-black hover:text-orange-500 transition-colors"
               >
-                {open && <IoClose /> }
+                {open && <IoClose />}
               </button>
               <div className="p-6">
                 <div className="mt-5 ml-2">
@@ -233,8 +233,26 @@ const Navbar = () => {
                     </button>
                   ) : (
                     <Link to="/login">
-                      <button className="btn btn-outline text-primary hover:bg-primary hover:text-white">
-                        Login Now
+                      {" "}
+                      <button
+                        className="
+                 px-6 py-2 
+  text-orange-500 font-medium 
+  bg-white 
+  outline
+  rounded-md 
+  transition-all duration-300 ease-out 
+  bg-gradient-to-r  hover:from-orange-500 hover:to-orange-400 
+  hover:text-white 
+  hover:shadow-xl 
+  hover:scale-105 
+  active:scale-95 
+  focus:outline-none focus:ring-4 focus:ring-orange-300
+                  
+                  
+                  "
+                      >
+                        Login
                       </button>
                     </Link>
                   )}

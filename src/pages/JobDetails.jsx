@@ -167,7 +167,7 @@ const JobDetails = () => {
                     <p className="text-green-600 font-bold text-lg">
                      Accepted!
                     </p>
-                    <p className="text-sm text-gray-600 mt-2">Redirecting...</p>
+                    <Link to="/accecptjob" className="text-sm text-gray-600 mt-2">Redirecting...</Link>
                   </div>
                 ) : (
                   <button

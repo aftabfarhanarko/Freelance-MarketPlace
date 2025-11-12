@@ -5,7 +5,7 @@
 🔗 [https://your-live-site-link.netlify.app](https://your-live-site-link.netlify.app)
 
 ### 🌍 Server Live URL
-🔗 [https://your-server-name.vercel.app](https://your-server-name.vercel.app)
+🔗 https://server-freelance-marketplace.vercel.app/
 
 ---
 

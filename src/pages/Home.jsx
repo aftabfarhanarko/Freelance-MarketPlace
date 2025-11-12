@@ -20,7 +20,7 @@ import blog4 from "../assets/blog-4.jpg";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 
-import upone from '../assets/ARKO.jpg'
+import upone from "../assets/ARKO.jpg";
 
 import company from "../assets/1.png";
 import company2 from "../assets/2.png";
@@ -77,7 +77,7 @@ const Home = () => {
             Most viewed and all-time top-selling services
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
             <div
               data-aos="fade-up"
@@ -290,7 +290,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7"
         >
           {/* Card 1 */}
           <motion.div
@@ -534,7 +534,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 1, delay: 0.2 }}
               viewport={{ once: true }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-8"
             >
