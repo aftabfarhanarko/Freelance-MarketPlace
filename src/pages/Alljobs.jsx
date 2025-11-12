@@ -143,7 +143,7 @@ const Alljobs = () => {
 
               {/* Sorting Section */}
               {selectedCategory === "All" && (
-                <div className="md:pl-0 pl-2"> 
+                <div className="md:pl-0 pl-2">
                   <div onClick={haldelSort}>
                     <select
                       onChange={(e) => setValue(e.target.value)}
