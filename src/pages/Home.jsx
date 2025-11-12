@@ -184,56 +184,59 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         <LatesCard></LatesCard>
       </section>
 
-      <section className="mb-15 md:mb-20 w-11/12 lg:w-8/12 mx-auto">
-        <div className=" flex flex-col-reverse md:flex-row gap-10   md:gap-50 justify-between">
+      <section className="mb-15 md:mb-20 lg:w-8/12 px-2 mx-auto">
+        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-30 justify-between items-center">
           {/* Left side text animation */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-col justify-center space-y-3"
+            className="flex flex-col justify-center space-y-3 text-center md:text-left w-full md:w-1/2"
           >
-            <h1 className="text-3xl md:text-4xl font-semibold  ">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug">
               Experience a quicker, simpler
               <br />
-              <span className="mt-1">more effective job search</span>
+              <span className="mt-1 block">more effective job search</span>
             </h1>
 
-            <p className=" text-md md:text-lg">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300">
               Our platform offers intuitive tools, personalized job
               recommendations, and valuable resources to streamline your job
               search process.
             </p>
 
-            <div className="mt-3 text-xs">
-              <p className="text-lg">
+            <div className="mt-3 space-y-2 text-gray-600 dark:text-gray-300">
+              <p className="text-sm sm:text-base md:text-lg">
                 Easily browse job listings with smart filters
               </p>
-              <p className="text-lg">Receive personalized job suggestions</p>
-              <p className="text-lg">
+              <p className="text-sm sm:text-base md:text-lg">
+                Receive personalized job suggestions
+              </p>
+              <p className="text-sm sm:text-base md:text-lg">
                 Access resources to improve your resume and ace interviews.
               </p>
             </div>
 
-            <button class="relative flex mt-5  w-[195px]  items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
+            {/* CTA button */}
+            <button className="relative flex mt-5 mx-auto md:mx-0 w-[180px] sm:w-[195px] items-center gap-1 py-1 px-10 sm:px-12 border-2 border-orange-500 font-semibold text-[15px] sm:text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
+              {/* Left arrow */}
               <svg
                 viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-5 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-2 group-hover:fill-white"
+                className="absolute left-[-25%] w-5 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-2 group-hover:fill-white"
               >
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
               </svg>
 
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
+              <span className="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
                 View Profile
               </span>
 
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
+              <span className="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
 
               <svg
                 viewBox="0 0 24 24"
-                class="absolute right-2 w-5 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
+                className="absolute right-2 w-5 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
               >
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
               </svg>
@@ -245,23 +248,23 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true, amount: 0.5 }} // ✅ mobile friendly scroll trigger
-            className="relative w-full max-w-lg mx-auto"
+            viewport={{ once: true, amount: 0.5 }}
+            className="relative w-full md:w-1/2 flex justify-center"
           >
             <img
               src={news}
               alt="News main"
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg max-w-sm sm:max-w-md md:max-w-lg mx-auto"
             />
             <img
               src={news2}
               alt="News secondary"
-              className="absolute right-0 top-19 border bg-white border-base-300 rounded-lg w-20 sm:w-36 md:w-38"
+              className="absolute right-2 sm:right-4 top-6 sm:top-10 border bg-white border-base-300 rounded-lg w-20 sm:w-28 md:w-36"
             />
             <img
               src={news3}
               alt="News tertiary"
-              className="absolute left-3 bottom-17 border border-gray-300 rounded-2xl w-19 sm:w-30 md:w-44"
+              className="absolute left-2 sm:left-4 bottom-6 sm:bottom-10 border border-gray-300 rounded-2xl w-20 sm:w-28 md:w-40"
             />
           </motion.div>
         </div>
@@ -510,21 +513,22 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </motion.div>
       </section>
 
-      <section className="w-full  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-20 px-5 mb-15 md:mb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
+      {/* res */}
+      <section className="w-full bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-16 sm:py-20 px-5 mb-10 md:mb-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row justify-between items-center gap-10 lg:gap-12">
           {/* Left Side Animation */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.5 }}
-            className="flex-1 text-center md:text-left"
+            className="flex-1 text-center lg:text-left w-full"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold  mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 leading-snug">
               Find the Perfect Freelancer for Your Next Big Project
             </h2>
 
-            <p className=" mb-8">
+            <p className="text-sm sm:text-base md:text-lg mb-8 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
               Freeio is a modern freelance marketplace that connects talented
               professionals with clients around the world. Whether you’re a
               designer, developer, writer, or marketer — we help you grow your
@@ -536,28 +540,34 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 justify-center lg:justify-start"
             >
-              <div>
+              <div className="text-center lg:text-left">
                 <h3 className="text-2xl font-semibold text-orange-500">
                   4.9/
-                  <CountUp start={0} end={5} duration={2} />{" "}
+                  <CountUp start={0} end={5} duration={2} />
                 </h3>
-                <p className=" text-sm">Clients rate professionals on Freeio</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Clients rate professionals on Freeio
+                </p>
               </div>
 
-              <div>
+              <div className="text-center lg:text-left">
                 <h3 className="text-2xl font-semibold text-orange-500">
-                  <CountUp start={0} end={95} duration={2}></CountUp>%
+                  <CountUp start={0} end={95} duration={2} />%
                 </h3>
-                <p className=" text-sm">90% of customers are satisfied</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  90% of customers are satisfied
+                </p>
               </div>
 
-              <div>
+              <div className="text-center lg:text-left">
                 <h3 className="text-2xl font-semibold text-orange-500">
                   Award Winner
                 </h3>
-                <p className=" text-sm">G2’s 2025 Best Software Awards</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  G2’s 2025 Best Software Awards
+                </p>
               </div>
             </motion.div>
           </motion.div>
@@ -568,16 +578,18 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             whileInView={{ x: 0, opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="flex-1"
+            className="flex-1 w-full flex flex-col items-center"
           >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="bg-white shadow-xl rounded-2xl p-8 max-w-md mx-auto hover:shadow-2xl transition-all duration-500"
+              className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md mx-auto hover:shadow-2xl transition-all duration-500"
             >
-              <h4 className="text-orange-500 font-semibold mb-3">Great Work</h4>
-              <p className="text-gray-700 mb-6">
+              <h4 className="text-orange-500 font-semibold mb-3 text-lg sm:text-xl">
+                Great Work
+              </h4>
+              <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-6">
                 Discover a global network of experts ready to bring your ideas
                 to life. From startups to enterprises, we make it simple to
                 hire, manage, and pay freelancers — all in one secure platform.
@@ -587,7 +599,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.8 }}
-                className="flex items-center gap-3"
+                className="flex items-center justify-center lg:justify-start gap-3"
               >
                 <img
                   src="https://i.pravatar.cc/50?img=5"
@@ -595,8 +607,12 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                   className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <p className="font-medium text-gray-900">Courtney Henry</p>
-                  <p className="text-sm text-gray-500">Web Designer</p>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    Courtney Henry
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Web Designer
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
@@ -606,10 +622,10 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="flex justify-center items-center gap-6 mt-6"
+              className="flex justify-center items-center gap-4 sm:gap-6 mt-6"
             >
-              <button className="p-2 rounded-full border hover:bg-gray-100 transition">
-                <HiOutlineArrowLeft className="text-xl text-gray-700" />
+              <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                <HiOutlineArrowLeft className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
               </button>
               <div className="flex gap-2">
                 <span className="w-2 h-2 rounded-full bg-gray-400"></span>
@@ -617,14 +633,15 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 <span className="w-2 h-2 rounded-full bg-gray-900"></span>
                 <span className="w-2 h-2 rounded-full bg-gray-400"></span>
               </div>
-              <button className="p-2 rounded-full border hover:bg-gray-100 transition">
-                <HiOutlineArrowRight className="text-xl text-gray-700" />
+              <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                <HiOutlineArrowRight className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
               </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
+      {/* res */}
       <section className="w-11/12 mx-auto mb-15 md:mb-20  ">
         <h1
           data-aos="fade-up"
@@ -1383,20 +1400,19 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
       </section>
 
       {/* Website About Sections */}
-      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
+      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-10 md:mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-10 md:mb-12"
           >
             <h2
               data-aos="fade-up"
               data-aos-duration="1500"
-              data-aos-easing="ease-out-cubic"
-              className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
             >
               About{" "}
               <span className="text-orange-500">Freelance Marketplace</span>
@@ -1404,26 +1420,28 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <p
               data-aos="fade-up"
               data-aos-duration="2000"
-              data-aos-easing="ease-out-cubic"
-              className="text-md md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+              className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             >
               Connecting talented freelancers with businesses worldwide. Get
               your projects done faster, smarter, and with guaranteed quality.
             </p>
           </motion.div>
 
-          <div ref={ref} className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Image with floating animation */}
+          <div
+            ref={ref}
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center"
+          >
+            {/* Left: Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
+              className="relative flex justify-center"
             >
               <motion.img
                 src={upone}
                 alt="Freelancers working together"
-                className="rounded-2xl shadow-2xl w-full object-cover border border-base-300"
+                className="rounded-2xl shadow-2xl w-full max-w-md md:max-w-lg object-cover border border-base-300"
                 animate={{ y: [0, -15, 0] }}
                 transition={{
                   repeat: Infinity,
@@ -1431,30 +1449,32 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                   ease: "easeInOut",
                 }}
               />
-              <div className="absolute -bottom-6 -right-2 md:-right-6 bg-orange-500 text-white px-6 py-3 rounded-xl shadow-lg">
-                <p className="text-2xl font-bold">100K+</p>
-                <p className="text-sm">Happy Clients</p>
+              <div className="absolute bottom-2 right-2 sm:-bottom-4 sm:-right-4 bg-orange-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl shadow-lg text-center">
+                <p className="text-lg sm:text-2xl font-bold">100K+</p>
+                <p className="text-xs sm:text-sm">Happy Clients</p>
               </div>
             </motion.div>
 
-            {/* Right: Content with staggered animations */}
+            {/* Right: Content */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="space-y-6"
+              className="space-y-5 sm:space-y-6 text-center md:text-left"
             >
-              <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                <span className="text-orange-500"> Why Choose </span> Our
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-white">
+                <span className="text-orange-500">Why Choose</span> Our
                 Platform?
               </h3>
 
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                 We bridge the gap between skilled freelancers and businesses
                 looking for top-tier talent. Whether you're a developer,
                 designer, marketer, or writer — find your next opportunity here.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+
+              {/* Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
                 {[
                   {
                     icon: "🚀",
@@ -1482,25 +1502,29 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                    className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700"
+                    className="bg-white dark:bg-gray-800 p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700"
                   >
-                    <div className="text-4xl mb-3">{feature.icon}</div>
-                    <h4 className="font-semibold text-lg text-gray-800 dark:text-white">
+                    <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">
+                      {feature.icon}
+                    </div>
+                    <h4 className="font-semibold text-base sm:text-lg text-gray-800 dark:text-white">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {feature.desc}
                     </p>
                   </motion.div>
                 ))}
               </div>
-              {/* CTA Button - Same style as Home page */}
+
+              {/* CTA Button */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.8, delay: 1.2 }}
+                className="pt-3"
               >
-                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
                   Start Hiring Today
                 </button>
               </motion.div>

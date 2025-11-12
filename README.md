@@ -2,7 +2,7 @@
 
 ### 🌐 Live Site URL
 
-🔗 [https://your-live-site-link.netlify.app](https://your-live-site-link.netlify.app)
+🔗 https://freelance-marketplace-a3cd2.web.app/
 
 ### 🌍 Server Live URL
 🔗 https://server-freelance-marketplace.vercel.app/
