@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
@@ -7,6 +7,7 @@ import { useAxiosData } from "../Hooks/DataFetch";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import usePrivetApi from "../Hooks/PriverAPI";
+import { BiLeftArrowAlt } from "react-icons/bi";
 
 const UpdateJob = () => {
   const [loding, setLoding] = useState(false);
@@ -62,14 +63,15 @@ const UpdateJob = () => {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className="bg-[url('/background2.png')] bg-cover bg-center0">
+    <div className="bg-gradient-to-b from-gray-50 to-white dark:text-white dark:from-gray-900 dark:to-gray-8000">
       <div className="max-w-4xl mx-auto px-4 py-12">
+ <Link to="/myAddjobs" className=" font-semibold  flex text-lg items-center gap-1 mb-10"><BiLeftArrowAlt className="w-7" /> Back To Post All</Link>
         <div className="text-center mb-10">
           <h1
             data-aos="fade-up"
             data-aos-duration="1500"
             data-aos-easing="ease-out-cubic"
-            className="text-3xl md:text-4xl font-bold text-gray-900"
+            className="text-3xl md:text-4xl font-bold dark:text-white text-gray-900"
           >
             Edit This Job
           </h1>
@@ -77,7 +79,7 @@ const UpdateJob = () => {
             data-aos="fade-up"
             data-aos-duration="1500"
             data-aos-easing="ease-out-cubic"
-            className="mt-3 text-lg text-gray-600"
+            className="mt-3 text-lg  dark:text-white text-gray-600"
           >
             Reach thousands of skilled freelancers instantly
           </p>
@@ -110,7 +112,7 @@ const UpdateJob = () => {
                 name="title"
                 defaultValue={job?.title}
                 placeholder="Your Job Title"
-                className=" w-full outline-none px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                className=" w-full  dark:text-black outline-none px-4 py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
               />
             </div>
 
@@ -123,7 +125,7 @@ const UpdateJob = () => {
                 name="category"
                 defaultValue={job?.category}
                 placeholder="Please select a category"
-                className=" w-full px-4 outline-none py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all "
+                className=" w-full px-4  dark:text-black outline-none py-3 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all "
               >
                 <option value="">Choose a category</option>
                 <option>Web Development</option>
@@ -146,7 +148,7 @@ const UpdateJob = () => {
                 name="coverImage"
                 defaultValue={job?.coverImage}
                 placeholder="https://i.ibb.co/... (imgbb recommended)"
-                className="w-full px-4 py-3 border outline-none border-gray-900 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                className="w-full px-4 dark:text-black py-3 border outline-none border-gray-900 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all"
               />
               <p className="mt-2 text-xs text-gray-500">
                 Recommended size: 1200×600px
@@ -163,7 +165,7 @@ const UpdateJob = () => {
                 rows="9"
                 name="textarea"
                 defaultValue={job?.summary}
-                className="  w-full px-4 py-3 border outline-none rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all resize-none "
+                className="  w-full px-4 py-3 dark:text-black border outline-none rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all resize-none "
               />
             </div>
 
@@ -176,7 +178,7 @@ const UpdateJob = () => {
                 type="text"
                 name="name"
                 defaultValue={user?.displayName}
-                className="  w-full px-4 py-3 outline-none border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all  "
+                className="  w-full px-4 dark:text-black py-3 outline-none border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all  "
               />
             </div>
 
@@ -188,7 +190,7 @@ const UpdateJob = () => {
               <input
                 disabled
                 defaultValue={user?.email}
-                className="w-full px-4 py-3 border outline-none rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all  "
+                className="w-full px-4 py-3 dark:text-black border outline-none rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all  "
               />
             </div>
           </div>
@@ -213,10 +215,3 @@ const UpdateJob = () => {
 
 export default UpdateJob;
 
-// Web Development   
-//               Mobile App Development   
-//               Graphics Designing   
-//               Digital Marketing   
-//               Content Writing   
-//               Video Editing   
-//               UI/UX Design   

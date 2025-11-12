@@ -1,24 +1,24 @@
 import React from "react";
-import logo from "../assets/TTT.png";
+import logo from "../assets/oooo.png";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa6";
-import x from "../assets/x.png";
+import x from "../assets/twitter2.png";
 import toast from "react-hot-toast";
+import { Link } from "react-router";
 const Footer = () => {
-
   const handelSubmit = (e) => {
     e.preventDefault();
     toast.success("Successfully Subscribe Now");
     e.target.reset();
-  }
+  };
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
       <div className="w-11/12 mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* About */}
           <div>
             <h3 className="text-xl font-semibold mb-4 text-white">About Us</h3>
@@ -28,7 +28,7 @@ const Footer = () => {
               quality work and creative solutions. Empowering freelancers to
               grow, earn, and shine globally.
             </p>
-            <img className="w-30 md:w-35 rounded-lg mt-4 " src={logo}></img>
+            <img className="w-34" src={logo}></img>
           </div>
 
           {/* Quick Links */}
@@ -44,17 +44,17 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#" className="hover:text-orange-500 transition">
-                  Services
+                  All Job
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-orange-500 transition">
-                  About
+                  Add Job
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-orange-500 transition">
-                  Contact
+                  Success
                 </a>
               </li>
               <li>
@@ -65,49 +65,59 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">Contact</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li className=" hover:text-orange-500">
-                Email: support@example.com
-              </li>
-              <li className=" hover:text-orange-500">Phone: +1 234 567 890</li>
-              <li className=" hover:text-orange-500">
-                Address: 1234 Street, City, Country
-              </li>
-            </ul>
-          </div>
           <div>
             <div>
               <h3 className="text-xl font-semibold mb-4 text-white">
-                Services
+                Jobs Plisement
               </h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-orange-500 transition">
-                    Branding
-                  </a>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    Web Development
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-orange-500 transition">
-                    Design
-                  </a>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    Mobile App Development
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-orange-500 transition">
-                    Marketing
-                  </a>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    Digital Marketing
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-orange-500 transition">
-                    Advertisement
-                  </a>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    Content Writing
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-orange-500 transition">
-                    Blog
-                  </a>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    Video Editing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/alljob"
+                    className="hover:text-orange-500 transition"
+                  >
+                    UI/UX Design
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -126,9 +136,11 @@ const Footer = () => {
               <a
                 href="#"
                 className="p-1.5 rounded-full bg-gray-800 hover:bg-orange-500 transition"
-                aria-label="Twitter"
               >
-                <img className="w-5 h-5 rounded-full" src={x}></img>
+                <img
+                  className="w-5 h-5 hover:text-white rounded-full"
+                  src={x}
+                ></img>
               </a>
               <a
                 href="#"
@@ -145,7 +157,10 @@ const Footer = () => {
                 <FaLinkedinIn />
               </a>
             </div>
-            <form onSubmit={handelSubmit} className="join mt-6 w-full max-w-md mx-auto">
+            <form
+              onSubmit={handelSubmit}
+              className="join mt-6 w-full max-w-md mx-auto"
+            >
               {/* Input */}
               <input
                 type="text"
@@ -164,7 +179,6 @@ const Footer = () => {
 
               {/* Button */}
               <button
-
                 className="
     btn join-item 
     px-3 
@@ -180,14 +194,14 @@ const Footer = () => {
     transition-all duration-300 ease-out
   "
               >
-                subscribe now
+                Subscribe Now
               </button>
             </form>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+        <div className="border-t border-gray-700 mt-10 hover:text-white pt-6 text-center text-gray-500 text-sm">
           &copy; {new Date().getFullYear()} YourCompany. All rights reserved.
         </div>
       </div>

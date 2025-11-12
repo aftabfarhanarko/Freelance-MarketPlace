@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { TbMenu2 } from "react-icons/tb";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useAuth } from "../Hooks/UseAuth";
-import logo from "../assets/TTT.png";
+import logo from "../assets/oooo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +31,7 @@ const Navbar = () => {
     <div className="  py-1  border-b border-base-300   w-full">
       <div className="navbar  w-11/12 mx-auto ">
         <div className="navbar-start">
-          <img className="w-30 md:w-35 rounded-lg  " src={logo}></img>
+          <img className="w-30" src={logo}></img>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
@@ -39,27 +39,28 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/alljob">All Jobs</NavLink>
+              <NavLink to="/alljob">Find Jobs</NavLink>
             </li>
             <li>
-              <NavLink to="/creatJob">Add Job</NavLink>
+              <NavLink to="/creatJob">Post a Job</NavLink>
             </li>
             {user && (
               <li>
-                <NavLink to="/accecptjob">Accepted Tasks</NavLink>
+                <NavLink to="/accecptjob">In Progress</NavLink>
               </li>
             )}
             {user && (
               <li>
-                <NavLink to="/myAddjobs">Post Job</NavLink>
+                <NavLink to="/myAddjobs">Posted Jobs</NavLink>
               </li>
             )}
           </ul>
         </div>
+
         <div className="navbar-end">
           <div className=" hidden md:block  ">
             {user ? (
-              <div className="dropdown dropdown-end">
+              <div className=" dropdown dropdown-end">
                 <div tabIndex={0} role="button" className=" m-1">
                   <div className="hidden  md:block ">
                     <div className="">
@@ -72,7 +73,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex="-1"
-                  className="dropdown-content z-5 menu bg-base-100 rounded-box mt-5  w-42 p-4 shadow-sm"
+                  className="  dropdown-content z-5 menu bg-base-100 rounded-box mt-5  w-42 p-4 shadow-sm"
                 >
                   {user && (
                     <div className="flex items-center flex-col gap-3">
@@ -147,7 +148,7 @@ const Navbar = () => {
             {/* menu toggle btn */}
             <button
               onClick={() => setOpen(!open)}
-              className="btn-ghost text-[32px] font-bold  top-7 right-5  text-black hover:text-green-700 transition-colors"
+              className="btn-ghost text-[32px] font-bold  top-7 right-5  text-black hover:text-orange-500 dark:text-white transition-colors"
             >
               {open ? <IoClose /> : <TbMenu2 />}
             </button>
@@ -163,12 +164,12 @@ const Navbar = () => {
             `}
               style={{ width: "50%" }}
             >
-                <button
-              onClick={() => setOpen(!open)}
-              className="btn-ghost  text-[32px] font-bold  top-7 right-5 z-50 text-black hover:text-green-700 transition-colors"
-            >
-              {open ? <IoClose /> : <TbMenu2 />}
-            </button>
+              <button
+                onClick={() => setOpen(!open)}
+                className="btn-ghost dark:text-white  text-[32px] font-bold  top-7 right-5 z-50 text-black hover:text-orange-500 transition-colors"
+              >
+                {open && <IoClose /> }
+              </button>
               <div className="p-6">
                 <div className="mt-5 ml-2">
                   {user ? (
@@ -183,10 +184,13 @@ const Navbar = () => {
                   )}
                 </div>
 
-                <ul className="menu  text-lg space-y-3">
-                  {/* <NavLink to="/" >
-                      Home
-                    </NavLink> */}
+                <ul className="menu  text-lg space-y-3 mt-4 ">
+                  <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                    className="toggle ml-2"
+                  />
                   <li>
                     <NavLink to="/" onClick={() => setOpen(false)}>
                       Home

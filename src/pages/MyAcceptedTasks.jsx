@@ -59,7 +59,7 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
-  // Mobile 
+  // Mobile
   const hanndelCLearMobile = (_id) => {
     if (!user?.email) {
       <LodingSpinner></LodingSpinner>;
@@ -79,19 +79,19 @@ const MyAcceptedTasks = () => {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className="min-h-screen bg-[url('/background2.png')] bg-cover bg-center0">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:text-white dark:from-gray-900 dark:to-gray-800">
       <h1
         data-aos="fade-up"
         data-aos-duration="1500"
         data-aos-easing="ease-out-cubic"
-        className="text-center text-3xl dark:text-black  font-semibold pt-15"
+        className="text-center text-3xl dark:text-white  font-semibold pt-15"
       >
         This is Your Accepts Job Sections
       </h1>
       <div className=" w-11/12 mx-auto min-h-screen pt-10 ">
-        <div className="overflow-hidden rounded-lg md:border md:border-gray-200 md:bg-white md:shadow-sm">
+        <div className="overflow-hidden rounded-lg md:border  md:border-gray-200 md:bg-white md:shadow-sm">
           {/* Desktop Table View */}
-          <div className="overflow-x-auto hidden md:block">
+          <div className="overflow-x-auto hidden dark:bg-gray-900 md:block">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>

@@ -40,7 +40,7 @@ const JobDetails = () => {
     apise.post("task", postDataNow).then((result) => {
       console.log(result.data);
       toast.success("Congratulations! You have accepted this job.");
-      pageNaviget("/accecptjob");
+
     });
     console.log(postDataNow);
   };
@@ -59,7 +59,7 @@ const JobDetails = () => {
 
   return (
     <div>
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-12 px-4">
+      <div className="min-h-screen dark:bg-gray-950  py-12 px-4">
         <h1 className="text-2xl font-semibold text-center mb-15 md:text-3xl">
           Full job details
         </h1>
@@ -165,7 +165,7 @@ const JobDetails = () => {
                       </svg>
                     </div>
                     <p className="text-green-600 font-bold text-lg">
-                      Job Accepted!
+                     Accepted!
                     </p>
                     <p className="text-sm text-gray-600 mt-2">Redirecting...</p>
                   </div>
@@ -174,7 +174,7 @@ const JobDetails = () => {
                     onClick={handleAcceptJob}
                     className="w-full py-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold text-lg rounded-xl hover:from-orange-500 hover:to-orange-400 transform hover:scale-105 transition-all duration-300 shadow-xl"
                   >
-                    Accept This Job
+                    Accept for Interview
                   </button>
                 )}
 

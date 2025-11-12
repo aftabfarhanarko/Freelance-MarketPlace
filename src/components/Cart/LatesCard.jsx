@@ -32,20 +32,21 @@ const LatesCard = () => {
             data-aos-duration="1200"
             className="text-3xl md:text-4xl font-semibold "
           >
-            Latest Community Programs
+            Latest Jobs Posted
           </h1>
           <p
             data-aos="fade-up"
             data-aos-duration="1800"
             className=" mt-3 text-lg"
           >
-            Discover our most recent community support initiatives.
+            Discover our most recent community Jobs support initiatives.
           </p>
         </div>
 
         {/* Swiper Section */}
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
+          
           spaceBetween={30}
           slidesPerView={1}
           navigation

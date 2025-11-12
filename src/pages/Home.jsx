@@ -20,6 +20,8 @@ import blog4 from "../assets/blog-4.jpg";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 
+import upone from '../assets/ARKO.jpg'
+
 import company from "../assets/1.png";
 import company2 from "../assets/2.png";
 import company3 from "../assets/3.png";
@@ -34,7 +36,6 @@ import pic4 from "../assets/women7.jpg";
 import pic7 from "../assets/postes.png";
 import pic5 from "../assets/women2.png";
 import pic6 from "../assets/women4.png";
-import my from "../assets/gemine.png";
 import CountUp from "react-countup";
 
 import ScrollTrigger from "react-scroll-trigger";
@@ -57,7 +58,7 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
-      <section className="w-11/12 mx-auto mt-35 mb-35">
+      <section className="w-11/12 mx-auto mt-20 md:mt-35 mb-15 md:mb-20">
         <div>
           <h1
             data-aos="fade-up"
@@ -71,16 +72,16 @@ const Home = () => {
             data-aos="fade-up"
             data-aos-duration="2500"
             data-aos-easing="ease-out-cubic"
-            className="text-lg md:text-xl text-center mt-2 mb-12"
+            className="text-md md:text-lg text-center mt-2 mb-12"
           >
             Most viewed and all-time top-selling services
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
             <div
               data-aos="fade-up"
-              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
 transition-transform transition-shadow transition-colors
 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
 hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
@@ -105,7 +106,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
             <div
               data-aos="fade-up"
               data-aos-delay="100"
-              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
 transition-transform transition-shadow transition-colors
 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
 hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
@@ -130,7 +131,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <div
               data-aos="fade-up"
               data-aos-delay="200"
-              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
 transition-transform transition-shadow transition-colors
 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
 hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
@@ -155,7 +156,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <div
               data-aos="fade-up"
               data-aos-delay="300"
-              className="border px-5 border-base-300 rounded-lg flex flex-col text-center py-8
+              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
 transition-transform transition-shadow transition-colors
 duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
 hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
@@ -179,27 +180,27 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="md:w-11/12 mx-auto mb-35">
+      <section className="md:w-11/12 mx-auto mb-15 md:mb-20">
         <LatesCard></LatesCard>
       </section>
 
-      <section className="mb-35 w-11/12 lg:w-8/12 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 justify-between">
+      <section className="mb-15 md:mb-20 w-11/12 lg:w-8/12 mx-auto">
+        <div className=" flex flex-col-reverse md:flex-row gap-10   md:gap-50 justify-between">
           {/* Left side text animation */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true, amount: 0.5 }} 
+            viewport={{ once: true, amount: 0.5 }}
             className="flex flex-col justify-center space-y-3"
           >
-            <h1 className="text-3xl md:text-4xl font-semibold space-y-1">
+            <h1 className="text-3xl md:text-4xl font-semibold  ">
               Experience a quicker, simpler
               <br />
               <span className="mt-1">more effective job search</span>
             </h1>
 
-            <p className="text-lg">
+            <p className=" text-md md:text-lg">
               Our platform offers intuitive tools, personalized job
               recommendations, and valuable resources to streamline your job
               search process.
@@ -266,19 +267,20 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto mb-35">
+      <section className="w-11/12 mx-auto mb-15 md:mb-20">
         <h1
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
-          className="text-3xl md:text-4xl font-semibold text-center opacity-0" >
+          className="text-3xl md:text-4xl font-semibold text-center "
+        >
           Our Blog
         </h1>
         <p
           data-aos="fade-up"
           data-aos-duration="1500"
           data-aos-easing="ease-out-cubic"
-          className="text-lg md:text-xl text-center mt-2 mb-12"
+          className="text- md:text-lg text-center mt-2 mb-12"
         >
           Aliquam lacinia diam quis lacus euismod
         </p>
@@ -288,7 +290,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7"
+          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7"
         >
           {/* Card 1 */}
           <motion.div
@@ -315,11 +317,11 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               <img
                 src={blog1}
                 alt="Instagram Marketing"
-                className="w-full h-60 object-cover"
+                className="w-full  h-60 object-cover"
               />
             </motion.div>
 
-            <div className="p-6 space-y-3">
+            <div className=" px-3.5 py-2.5  md:p-6  md:space-y-3">
               <motion.details
                 className="collapse bg-transparent border-none"
                 initial={false}
@@ -343,7 +345,8 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    Front becomes an official Instagram Marketing Partner
+                    Front becomes an official Instagram Marketing Partner{" "}
+                    <br></br>
                   </motion.p>
                 </motion.summary>
 
@@ -388,7 +391,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               />
             </motion.div>
 
-            <div className="p-6 space-y-3">
+            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
                   className="collapse-title p-0 font-semibold cursor-pointer list-none"
@@ -435,7 +438,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               />
             </motion.div>
 
-            <div className="p-6 space-y-3">
+            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
                   className="collapse-title p-0 font-semibold cursor-pointer list-none"
@@ -482,7 +485,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               />
             </motion.div>
 
-            <div className="p-6 space-y-3">
+            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
                   className="collapse-title p-0 font-semibold cursor-pointer list-none"
@@ -507,7 +510,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </motion.div>
       </section>
 
-      <section className="w-full  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-20 px-5 mb-35 overflow-hidden">
+      <section className="w-full  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-20 px-5 mb-15 md:mb-20 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
           {/* Left Side Animation */}
           <motion.div
@@ -540,27 +543,21 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                   4.9/
                   <CountUp start={0} end={5} duration={2} />{" "}
                 </h3>
-                <p className=" text-sm">
-                  Clients rate professionals on Freeio
-                </p>
+                <p className=" text-sm">Clients rate professionals on Freeio</p>
               </div>
 
               <div>
                 <h3 className="text-2xl font-semibold text-orange-500">
                   <CountUp start={0} end={95} duration={2}></CountUp>%
                 </h3>
-                <p className=" text-sm">
-                  90% of customers are satisfied
-                </p>
+                <p className=" text-sm">90% of customers are satisfied</p>
               </div>
 
               <div>
                 <h3 className="text-2xl font-semibold text-orange-500">
                   Award Winner
                 </h3>
-                <p className=" text-sm">
-                  G2’s 2025 Best Software Awards
-                </p>
+                <p className=" text-sm">G2’s 2025 Best Software Awards</p>
               </div>
             </motion.div>
           </motion.div>
@@ -628,7 +625,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto mb-35   ">
+      <section className="w-11/12 mx-auto mb-15 md:mb-20  ">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -641,7 +638,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           data-aos="fade-up"
           data-aos-duration="2000"
           data-aos-easing="ease-out-cubic"
-          className="text-lg md:text-xl text-center mt-2 mb-12"
+          className="text-md md:text-lg text-center mt-2 mb-12"
         >
           Meet the professionals behind every successful project
         </p>
@@ -1292,7 +1289,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className=" w-12/12 mx-auto  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
+      <section className=" w-12/12 mx-auto  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
         <div className="w-11/12 mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
@@ -1316,7 +1313,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               data-aos="fade-up"
               data-aos-duration="2500"
               data-aos-easing="ease-out-cubic"
-              className="max-w-2xl mx-auto mt-3 "
+              className="max-w-2xl text-md md:text-lg mx-auto mt-3 "
             >
               We take pride in our journey of connecting skilled freelancers
               with global clients. Through dedication, trust, and innovation,
@@ -1335,9 +1332,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 />
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
-                {inView && (
-                  <CountUp start={0} end={12376}  separator="," />
-                )}
+                {inView && <CountUp start={0} end={12376} separator="," />}
               </h3>
               <p className="text-gray-500 mt-2">Live Jobs</p>
             </div>
@@ -1351,9 +1346,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 />
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
-                {inView && (
-                  <CountUp start={0} end={89562}  separator="," />
-                )}
+                {inView && <CountUp start={0} end={89562} separator="," />}
               </h3>
               <p className="text-gray-500 mt-2">Jobs Candidate</p>
             </div>
@@ -1367,9 +1360,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 />
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
-                {inView && (
-                  <CountUp start={0} end={28166}  separator="," />
-                )}
+                {inView && <CountUp start={0} end={28166} separator="," />}
               </h3>
               <p className="text-gray-500 mt-2">Active Resume</p>
             </div>
@@ -1383,9 +1374,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                 />
               </div>
               <h3 className="text-3xl font-bold text-orange-500">
-                {inView && (
-                  <CountUp start={0} end={8966}  separator="," />
-                )}
+                {inView && <CountUp start={0} end={8966} separator="," />}
               </h3>
               <p className="text-gray-500 mt-2">Companies</p>
             </div>
@@ -1394,7 +1383,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
       </section>
 
       {/* Website About Sections */}
-      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-35">
+      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
@@ -1416,7 +1405,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               data-aos="fade-up"
               data-aos-duration="2000"
               data-aos-easing="ease-out-cubic"
-              className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+              className="text-md md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
             >
               Connecting talented freelancers with businesses worldwide. Get
               your projects done faster, smarter, and with guaranteed quality.
@@ -1432,13 +1421,13 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
               className="relative"
             >
               <motion.img
-                src={my}
+                src={upone}
                 alt="Freelancers working together"
                 className="rounded-2xl shadow-2xl w-full object-cover border border-base-300"
                 animate={{ y: [0, -15, 0] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 6,
+                  duration: 8,
                   ease: "easeInOut",
                 }}
               />
@@ -1533,7 +1522,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           data-aos="fade-up"
           data-aos-duration="2000"
           data-aos-easing="ease-out-cubic"
-          className="text-lg md:text-xl text-center mt-2 mb-12"
+          className="text-md md:text-lg text-center mt-2 mb-12"
         >
           Building lasting partnerships through quality, trust, and innovation
         </p>
@@ -1585,7 +1574,6 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           </div>
         </Marquee>
       </section>
-      
     </div>
   );
 };

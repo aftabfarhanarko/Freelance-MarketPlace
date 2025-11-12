@@ -33,6 +33,7 @@
     "sonner": "^2.0.7",
     "sweetalert2": "^11.26.3",
     "swiper": "^12.0.3",
+    "tailwind-scrollbar-hide": "^4.0.0",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {

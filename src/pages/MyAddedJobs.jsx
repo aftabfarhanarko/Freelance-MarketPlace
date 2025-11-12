@@ -94,13 +94,13 @@ const MyAddedJobs = () => {
     return <LodingSpinner></LodingSpinner>;
   }
   return (
-    <div className="min-h-[80vh] bg-[url('/background3.png')] bg-cover bg-center">
+    <div className="min-h-[80vh] bg-gradient-to-b from-gray-50 to-white dark:text-white dark:from-gray-900 dark:to-gray-800">
       <section className="max-w-7xl mx-auto p-5">
         <h2
           data-aos="fade-up"
           data-aos-duration="1500"
           data-aos-easing="ease-out-cubic"
-          className="text-2xl font-bold text-gray-800 mb-6"
+          className="text-2xl font-bold dark:text-white text-gray-800 mb-6"
         >
           My Posted Jobs <span className="text-orange-500">{jobs.length}</span>
         </h2>
@@ -118,7 +118,7 @@ const MyAddedJobs = () => {
           {/* Body */}
           <div className="divide-y divide-gray-200">
             {jobs.length === 0 ? (
-              <h1 className=" py-15 text-center"> No Jobs Post You</h1>
+              <h1 className=" py-15 text-center dark:text-black"> No Jobs Post You</h1>
             ) : (
               jobs.map((job, index) => (
                 <div
