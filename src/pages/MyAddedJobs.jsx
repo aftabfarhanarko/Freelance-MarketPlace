@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import usePrivetApi from "../Hooks/PriverAPI";
-import { PencilIcon, TrashIcon } from "lucide-react";
-import { NavLink, Link } from "react-router";
+import { PencilIcon, TrashIcon, BriefcaseIcon } from "lucide-react";
+import { Link } from "react-router";
 import toast from "react-hot-toast";
 import LodingSpinner from "../components/LodingSpinner";
 import AOS from "aos";
@@ -14,210 +14,182 @@ const MyAddedJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [loding, setLoding] = useState(false);
   const apise = usePrivetApi();
-  console.log("My add pages", user.email);
 
   useEffect(() => {
-    AOS.init({
-      duration: 2000,
-      once: true,
-    });
+    AOS.init({ duration: 1200, once: true });
   }, []);
 
   useEffect(() => {
-    if (!user?.email) {
-      <LodingSpinner></LodingSpinner>;
-      return;
-    }
+    if (!user?.email) return;
     setLoding(true);
     apise.get(`myadd?email=${user?.email}`).then((result) => {
-      console.log("Data insert ", result.data);
       setJobs(result.data);
       setLoding(false);
     });
-  }, [user.email, apise]);
+  }, [user?.email, apise]);
 
-  const handleDelete1 = (id) => {
-    if (!user.email) {
-      <LodingSpinner></LodingSpinner>;
-      return;
-    }
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "Delete This Jobs Post From Database",
+      text: "This job post will be permanently deleted",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#f97316",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-        apise.delete(`jobs/${id}?email=${user.email}`).then((result) => {
-          console.log("Data Delet Now", result.data);
-          setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
-          toast.success("Delet Successfully");
+        apise.delete(`jobs/${id}?email=${user?.email}`).then(() => {
+          setJobs((prev) => prev.filter((j) => j._id !== id));
+          toast.success("Job deleted successfully");
         });
       }
     });
   };
 
-  const handleDelete2 = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Delete This Jobs Post From Database",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-        apise.delete(`jobs/${id}`).then((result) => {
-          console.log("Data Delet Now", result.data);
-          setJobs((prevJobs) => prevJobs.filter((one) => one._id !== id));
-          toast.success("Delet Successfully");
-        });
-      }
-    });
-  };
+  if (loding) return <LodingSpinner />;
 
-  if (loding) {
-    return <LodingSpinner></LodingSpinner>;
-  }
   return (
-    <div className="min-h-[80vh] bg-gradient-to-b from-gray-50 to-white dark:text-white dark:from-gray-900 dark:to-gray-800">
-      <section className="max-w-7xl mx-auto p-5">
-        <h2
-          data-aos="fade-up"
-          data-aos-duration="1500"
-          data-aos-easing="ease-out-cubic"
-          className="text-2xl font-bold dark:text-white text-gray-800 mb-6"
-        >
-          My Posted Jobs <span className="text-orange-500">{jobs.length}</span>
-        </h2>
+    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
 
-        <div className="overflow-hidden my-10 hidden md:block rounded-lg border border-gray-200 bg-white shadow-sm">
-          {/* Header */}
-          <div className="hidden md:grid grid-cols-6 bg-gray-50 text-xs font-semibold uppercase text-gray-600 px-6 py-3">
-            <span className="col-span-2">Job Title</span>
-            <span>Category</span>
-            <span>Posted By</span>
-            <span>Applicant</span>
-            <span className="text-right">Actions</span>
-          </div>
+      {/* ===== HERO ===== */}
+      <div className="text-center pt-16 pb-10">
+        <h1 className="text-4xl md:text-5xl font-bold">
+          My <span className="text-orange-500">Posted Jobs</span>
+        </h1>
+        <p className="mt-4 text-gray-500 max-w-xl mx-auto">
+          Manage all the jobs you have posted. You can edit or delete them anytime.
+        </p>
+      </div>
 
-          {/* Body */}
-          <div className="divide-y divide-gray-200">
-            {jobs.length === 0 ? (
-              <h1 className=" py-15 text-center dark:text-black"> No Jobs Post You</h1>
-            ) : (
-              jobs.map((job, index) => (
-                <div
-                  key={index}
-                  className="grid grid-cols-1 md:grid-cols-6 items-center px-6 py-4 hover:bg-gray-50 transition"
-                >
-                  {/* Job Info */}
-                  <div className="flex items-center space-x-4 col-span-2">
-                    <img
-                      src={job.coverImage}
-                      className="w-14 h-14 rounded-md object-cover border border-gray-300"
-                    />
-                    <div>
-                      <h3 className="text-sm font-semibold text-gray-800">
-                        {job.title}
-                      </h3>
-                      <p className="text-xs w-[250px] text-gray-500 line-clamp-1">
-                        {job.summary}
-                      </p>
-                    </div>
-                  </div>
+      {/* ===== STATS ===== */}
+      <div className="w-11/12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow text-center">
+          <h2 className="text-3xl font-bold text-orange-500">{jobs.length}</h2>
+          <p className="text-sm text-gray-500 mt-1">Total Posted</p>
+        </div>
+        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow text-center">
+          <h2 className="text-3xl font-bold text-orange-500">{jobs.length}</h2>
+          <p className="text-sm text-gray-500 mt-1">Active Jobs</p>
+        </div>
+        <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow text-center">
+          <h2 className="text-3xl font-bold text-orange-500">—</h2>
+          <p className="text-sm text-gray-500 mt-1">Closed</p>
+        </div>
+      </div>
 
-                  <div className="text-sm text-gray-600">{job.category}</div>
-                  <div className="text-sm text-gray-600">{job.postedBy}</div>
-                  <div className="text-sm text-gray-600">{job.userEmail}</div>
+      {/* ===== INFO BANNER ===== */}
+      <div className="w-11/12 max-w-6xl mx-auto mb-10 bg-orange-50 border border-orange-200 text-orange-700 px-6 py-4 rounded-xl">
+        📌 These are the jobs you have created. Keep them updated for better applicants.
+      </div>
 
-                  {/* Actions */}
-                  <div className="flex justify-end gap-2 mt-3 md:mt-0">
-                    <Link
-                      to={`/edit/${job._id}`}
-                      className="flex items-center gap-1 bg-orange-500 text-white text-xs px-3 py-2 rounded-md hover:bg-orange-600 transition"
-                    >
-                      <PencilIcon className="w-4 h-4" />
-                      Edit
-                    </Link>
-                    <button
-                      onClick={() => handleDelete1(job._id)}
-                      className="flex items-center gap-1 bg-orange-100 text-orange-600 text-xs px-3 py-2 rounded-md hover:bg-orange-200 transition"
-                    >
-                      <TrashIcon className="w-4 h-4" />
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+      {/* ===== DESKTOP TABLE ===== */}
+      <div className="w-11/12 max-w-6xl mx-auto hidden md:block bg-white dark:bg-gray-900 rounded-xl shadow overflow-hidden">
+        <div className="grid grid-cols-6 bg-gray-200 px-6 py-3 text-xs font-semibold uppercase text-gray-600">
+          <span className="col-span-2">Job</span>
+          <span>Category</span>
+          <span>Posted By</span>
+          <span>Applicant</span>
+          <span className="text-right">Actions</span>
         </div>
 
-        {/* Mobile view as cards */}
-        <div className="block  md:hidden mt-6 space-y-4">
-          {jobs.map((job, index) => (
+        {jobs.length === 0 ? (
+          <p className="py-14 text-center text-gray-500">
+            You haven't posted any job yet.
+          </p>
+        ) : (
+          jobs.map((job) => (
             <div
-              data-aos="fade-up"
-              // data-aos-duration="500"
-              // data-aos-easing="ease-out-cubic"
-              key={index}
-              className="border border-gray-200 bg-white rounded-lg p-4 shadow-sm"
+              key={job._id}
+              className="grid grid-cols-6 items-center px-6 py-4 border-t border-base-300 hover:bg-gray-50 transition"
             >
-              <div className="flex items-center space-x-3 mb-3">
+              <div className="col-span-2 flex items-center gap-4">
                 <img
                   src={job.coverImage}
-                  alt={job.title}
-                  className="w-12 h-12 rounded-md object-cover border border-gray-300"
+                  className="w-14 h-14 rounded-lg object-cover border border-base-300 "
                 />
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-800">
-                    {job.title}
-                  </h3>
+                  <h3 className="text-sm font-semibold">{job.title}</h3>
+                  <p className="text-xs text-gray-500 line-clamp-1">
+                    {job.summary}
+                  </p>
+                </div>
+              </div>
+
+              <span className="text-sm">{job.category}</span>
+              <span className="text-sm">{job.postedBy}</span>
+              <span className="text-sm">{job.userEmail}</span>
+
+              <div className="flex justify-end gap-2">
+                <Link
+                  to={`/edit/${job._id}`}
+                  className="px-3 py-2 text-xs rounded-md bg-orange-500 text-white hover:bg-orange-600 flex items-center gap-1"
+                >
+                  <PencilIcon className="w-4 h-4" /> Edit
+                </Link>
+                <button
+                  onClick={() => handleDelete(job._id)}
+                  className="px-3 py-2 text-xs rounded-md bg-orange-100 text-orange-600 hover:bg-orange-200 flex items-center gap-1"
+                >
+                  <TrashIcon className="w-4 h-4" /> Delete
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* ===== MOBILE CARDS ===== */}
+      <div className="w-11/12 max-w-6xl mx-auto md:hidden space-y-4 pb-12">
+        {jobs.length === 0 ? (
+          <p className="text-center text-gray-500">
+            No jobs posted yet.
+          </p>
+        ) : (
+          jobs.map((job) => (
+            <div
+              key={job._id}
+              data-aos="fade-up"
+              className="bg-white dark:bg-gray-900 border rounded-xl p-4 shadow"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <img
+                  src={job.coverImage}
+                  className="w-12 h-12 rounded-md object-cover border"
+                />
+                <div>
+                  <h3 className="font-semibold text-sm">{job.title}</h3>
                   <p className="text-xs text-gray-500">{job.category}</p>
                 </div>
               </div>
+
               <p className="text-sm text-gray-600 line-clamp-2 mb-2">
                 {job.summary}
               </p>
-              <p className="text-xs text-gray-500 mb-2">{job.userEmail}</p>
+
+              <p className="text-xs text-gray-500 mb-3">
+                {job.userEmail}
+              </p>
+
               <div className="flex gap-2">
                 <Link
                   to={`/edit/${job._id}`}
-                  className="flex items-center gap-1 bg-orange-500 text-white text-xs px-3 py-2 rounded-md hover:bg-orange-600 transition"
+                  className="flex-1 text-center py-2 text-xs rounded-md bg-orange-500 text-white"
                 >
-                  <PencilIcon className="w-4 h-4" />
                   Edit
                 </Link>
-
-                {/* delete button */}
                 <button
-                  onClick={() => handleDelete2(job._id)}
-                  className="flex items-center gap-1 bg-orange-100 text-orange-600 text-xs px-3 py-1.5 rounded-md hover:bg-orange-200 transition"
+                  onClick={() => handleDelete(job._id)}
+                  className="flex-1 py-2 text-xs rounded-md bg-orange-100 text-orange-600"
                 >
-                  <TrashIcon className="w-4 h-4" />
                   Delete
                 </button>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+          ))
+        )}
+      </div>
+    </section>
   );
 };
 
