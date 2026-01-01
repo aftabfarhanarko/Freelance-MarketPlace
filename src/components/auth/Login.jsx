@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
 
@@ -9,156 +9,163 @@ const Login = () => {
   const [show, setShow] = useState(true);
   const { emailpasswordLoginUser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
-  const pageNaviget = useNavigate()
-  console.log("Login Pages", location);
-  
+  const navigate = useNavigate();
 
-  const handelLogin = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({ email, password });
 
     emailpasswordLoginUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success("Login Successfully");
-        pageNaviget(location.state ? location.state : "/")
+      .then(() => {
+        toast.success("Login Successful!");
+        navigate(location.state || "/");
       })
       .catch((err) => {
-        console.log(err.code);
-        toast.error(err.code);
+        toast.error(err.code || "Login failed");
       });
   };
 
-  const handelGoogle = () => {
+  const handleGoogle = () => {
     googleLogin()
-      .then((result) => {
-        toast.success("Login Successfully");
-        console.log(result.user);
-         pageNaviget(location.state ? location.state : "/")
+      .then(() => {
+        toast.success("Login Successful!");
+        navigate(location.state || "/");
       })
       .catch((err) => {
-        toast.error(err.code);
+        toast.error(err.code || "Google login failed");
       });
   };
 
   return (
-    <div className="min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 justify-center   p-4">
-      <form
-        onSubmit={handelLogin}
-        className="bg-white rounded-lg shadow-lg  border border-base-300 p-8 w-full max-w-lg"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-          Login Now
-        </h2>
-        {/* Email */}
-        <label className="block mb-4">
-          <span className="text-gray-700 font-semibold">Email</span>
-          <input
-            type="email"
-            name="email"
-            placeholder="you@example.com"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 dark:text-black focus:ring-orange-500"
-            required
-          />
-        </label>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-orange-950 dark:to-amber-950 px-4 transition-all duration-1000">
+      {/* Subtle orange decorative overlay */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+      </div>
 
-        {/* Password */}
-        <div className=" relative">
-          <label className="block mb-2">
-            <span className="text-gray-700 font-semibold">Password</span>
-            <input
-              type={show ? "password" : "text"}
-              name="password"
-              placeholder="Enter password"
-              className="mt-1 block w-full dark:text-black  rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              required
-            />
-          </label>
-          <div onClick={() => setShow(!show)}>
-            {show ? (
-              <IoMdEyeOff className="absolute right-3.5 z-2 top-10.5 " />
-            ) : (
-              <FaEye className="absolute right-3.5 z-2 top-10.5 " />
-            )}
+      <div className="relative z-10 w-full max-w-2xl">
+        <div className="backdrop-blur-2xl bg-white/80 dark:bg-black/60 border border-white/20 dark:border-white/10 rounded-xl shadow-sm  md:shadow-xl p-10 transition-all duration-700">
+          {/* Title */}
+          <div className="text-center mb-10">
+            <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-600 dark:from-orange-400 dark:to-amber-400 bg-clip-text text-transparent">
+              Welcome Back
+            </h1>
+            <p className="mt-4 text-gray-600 dark:text-gray-300 text-lg">
+              Sign in to continue
+            </p>
           </div>
-        </div>
 
-        {/* Checkbox */}
-        <label className="flex items-center mb-6">
-          <input
-            type="checkbox"
-            name="terms"
-            className="h-4 w-4 text-pink-500 focus:ring-pink-400 border-gray-300 rounded"
-            required
-          />
-          <span className="ml-2 text-gray-700 text-sm">
-            I agree to the{" "}
-            <a href="#" className="text-orange-600 hover:underline">
-              terms and conditions
-            </a>
-          </span>
-        </label>
+          <form onSubmit={handleLogin} className="space-y-6">
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                className="w-full px-5 py-4 rounded-2xl bg-white/50 dark:bg-white/10 border border-gray-300 dark:border-white/20 
+                         focus:border-orange-500 dark:focus:border-amber-500 focus:outline-none focus:ring-4 
+                         focus:ring-orange-500/20 dark:focus:ring-amber-500/20 transition-all duration-300 
+                         placeholder-gray-500 dark:placeholder-gray-400"
+              />
+            </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full relative py-2 px-8 border-2 border-orange-500 font-semibold text-[16px] text-white rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-gradient-to-r from-orange-500 to-amber-400 bg-[length:200%_200%] bg-[position:left_center] hover:bg-[position:right_center] shadow-md hover:shadow-xl"
-        >
-          <span className="relative z-10">Login</span>
-        </button>
+            {/* Password */}
+            <div className="relative">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+                Password
+              </label>
+              <input
+                type={show ? "password" : "text"}
+                name="password"
+                placeholder="••••••••••"
+                required
+                className="w-full px-5 py-4 pr-14 rounded-2xl bg-white/50 dark:bg-white/10 border border-gray-300 dark:border-white/20 
+                         focus:border-orange-500 dark:focus:border-amber-500 focus:outline-none focus:ring-4 
+                         focus:ring-orange-500/20 dark:focus:ring-amber-500/20 transition-all duration-300 
+                         placeholder-gray-500 dark:placeholder-gray-400"
+              />
+              <button
+                type="button"
+                onClick={() => setShow(!show)}
+                className="absolute right-4 top-11 text-gray-500 dark:text-gray-400 hover:text-orange-600 dark:hover:text-amber-500 transition"
+              >
+                {show ? <IoMdEyeOff size={22} /> : <FaEye size={22} />}
+              </button>
+            </div>
 
-        {/* Or separator */}
-        <div className="flex items-center my-6">
-          <hr className="flex-grow border-gray-300" />
-          <span className="mx-3 text-gray-500">or</span>
-          <hr className="flex-grow border-gray-300" />
-        </div>
+            {/* Terms */}
+            <label className="flex items-center text-sm">
+              <input
+                type="checkbox"
+                required
+                className="w-5 h-5 rounded border-gray-300 dark:border-white/30 text-orange-600 dark:text-amber-500 
+                         focus:ring-orange-500 dark:focus:ring-amber-500 focus:ring-offset-0"
+              />
+              <span className="ml-3 text-gray-600 dark:text-gray-300">
+                I agree to the{" "}
+                <a href="#" className="text-orange-600 dark:text-amber-400 hover:underline font-medium">
+                  Terms & Conditions
+                </a>
+              </span>
+            </label>
 
-        {/* Google Button */}
-        <button
-          onClick={handelGoogle}
-          type="button"
-          className="  flex       
-          w-full relative py-2 px-8 border-2 border-orange-500 font-semibold text-[16px]  rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-gradient-to-r from-orange-500 to-amber-400 bg-[length:200%_200%] bg-[position:left_center] hover:bg-[position:right_center] shadow-md hover:shadow-xl text-white
-          
-          items-center justify-center  "
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            viewBox="0 0 533.5 544.3"
-            xmlns="http://www.w3.org/2000/svg"
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-4 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-orange-600 to-amber-600 
+                       hover:from-orange-700 hover:to-amber-700 transform hover:scale-[1.02] shadow-xl 
+                       hover:shadow-orange-500/30 dark:hover:shadow-amber-500/30 transition-all duration-500 
+                       relative overflow-hidden group"
+            >
+              <span className="relative z-10">Sign In</span>
+              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-full transition-transform duration-700"></div>
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="flex items-center my-8">
+            <div className="flex-1 h-px bg-gray-300 dark:bg-white/20"></div>
+            <span className="px-4 text-sm text-gray-500 dark:text-gray-400">or</span>
+            <div className="flex-1 h-px bg-gray-300 dark:bg-white/20"></div>
+          </div>
+
+          {/* Google Button */}
+          <button
+            type="button"
+            onClick={handleGoogle}
+            className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-gray-300 dark:border-white/20 
+                     bg-white/50 dark:bg-white/5 hover:bg-white/70 dark:hover:bg-white/10 backdrop-blur-sm 
+                     transition-all duration-300 group"
           >
-            <path
-              d="M533.5 278.4c0-17.4-1.5-34.1-4.3-50.4H272v95.6h146.9c-6.4 34.8-26 64.3-55.9 84.1v69.8h90.1c52.7-48.5 83.4-120.1 83.4-199.1z"
-              fill="#4285F4"
-            />
-            <path
-              d="M272 544.3c72.5 0 133.5-23.9 178-64.9l-90.1-69.8c-25 16.8-57.1 26.7-87.9 26.7-67.5 0-124.9-45.6-145.5-107.1H34.9v67.3C79.1 488.3 168.6 544.3 272 544.3z"
-              fill="#34A853"
-            />
-            <path
-              d="M126.5 323.2c-10.6-31.3-10.6-65.4 0-96.7V159.2H34.9c-39.3 76.3-39.3 167.6 0 243.9l91.6-69.9z"
-              fill="#FBBC05"
-            />
-            <path
-              d="M272 107.7c37.1 0 70.5 12.8 96.8 33.9l72.7-72.7C406.2 24.7 348.5 0 272 0 168.6 0 79.1 56 34.9 140.4l91.6 67.3c20.6-61.5 78-107.7 145.5-107.7z"
-              fill="#EA4335"
-            />
-          </svg>
-          Continue with Google
-        </button>
-        <p className="text-center dark:text-black mt-1.5 font-medium">
-          If you don’t have an account yet ?
-          <Link
-            to="/register"
-            className=" text-orange-500 underline"
-          >
-            sign up now
-          </Link>{" "}
-        </p>
-      </form>
+            <svg className="w-6 h-6" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
+              <path d="M533.5 278.4c0-17.4-1.5-34.1-4.3-50.4H272v95.6h146.9c-6.4 34.8-26 64.3-55.9 84.1v69.8h90.1c52.7-48.5 83.4-120.1 83.4-199.1z" fill="#4285F4"/>
+              <path d="M272 544.3c72.5 0 133.5-23.9 178-64.9l-90.1-69.8c-25 16.8-57.1 26.7-87.9 26.7-67.5 0-124.9-45.6-145.5-107.1H34.9v67.3C79.1 488.3 168.6 544.3 272 544.3z" fill="#34A853"/>
+              <path d="M126.5 323.2c-10.6-31.3-10.6-65.4 0-96.7V159.2H34.9c-39.3 76.3-39.3 167.6 0 243.9l91.6-69.9z" fill="#FBBC05"/>
+              <path d="M272 107.7c37.1 0 70.5 12.8 96.8 33.9l72.7-72.7C406.2 24.7 348.5 0 272 0 168.6 0 79.1 56 34.9 140.4l91.6 67.3c20.6-61.5 78-107.7 145.5-107.7z" fill="#EA4335"/>
+            </svg>
+            <span className="font-semibold text-gray-800 dark:text-gray-200">
+              Continue with Google
+            </span>
+          </button>
+
+          {/* Sign Up Link */}
+          <p className="text-center mt-8 text-gray-600 dark:text-gray-300">
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              className="font-bold text-orange-600 dark:text-amber-400 hover:underline transition"
+            >
+              Sign up now
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

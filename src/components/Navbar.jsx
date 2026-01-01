@@ -8,6 +8,7 @@ import {
 import { motion } from "framer-motion";
 import { useAuth } from "../Hooks/UseAuth";
 import logo from "../assets/oooo.png";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
@@ -123,7 +124,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       to="/register"
-                      className="px-5 py-1.5 rounded-xl text-white font-semibold bg-gradient-to-r from-[#C2410C] to-[#e85d04] shadow-lg transition-all duration-300 hover:scale-105"
+                      className="px-5 py-2 rounded-xl text-white font-semibold bg-gradient-to-r from-[#C2410C] to-[#e85d04] shadow-lg transition-all duration-300 hover:scale-105"
                     >
                       Register
                     </Link>
@@ -186,7 +187,10 @@ const Navbar = () => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
+             {
+              user && <MdOutlineDashboardCustomize className=" h-8 w-8" />
 
+             }
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
