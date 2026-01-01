@@ -1553,7 +1553,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
 
         <Marquee className="">
           <div className="flex items-center gap-x-25 mt-15">
-            <img src={company} alt="Company 1" className="h-8 object-contain" />
+            <img src={company} alt="Company 1" className="h-8 object-contain mr-4" />
             <img
               src={company2}
               alt="Company 2"

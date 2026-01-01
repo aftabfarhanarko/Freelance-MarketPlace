@@ -1,0 +1,1556 @@
+{
+  "info": {
+    "_postman_id": "6183bca5-30a5-4348-81fc-479f987bb07c",
+    "name": "CleverERP",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "b7b61f05-185e-4676-9b81-047eceabb01e",
+      "name": "AUTH",
+      "item": [
+        {
+          "id": "1279877d-e1bb-4508-a8f1-d55bf47d744e",
+          "name": "ConfrimPassword",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiam9obkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ1c2VybmFtZSI6ImpvaG5fZG9lIiwiaWF0IjoxNzU4MzEzNDEyLCJleHAiOjE3NTgzOTk4MTJ9.bjzu9SZwbum-IJU2hxrbfHFsXvix3ztjlzKdpFmnsgQ\",\n  \"newPassword\": \"newpassword123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/auth/confirm-reset-password",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "confirm-reset-password"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "f3fda325-fc84-4404-89e0-8ce5636eb78b",
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \n  \n  \"email\": \"john@gmail.com\",\n  \"password\": \"123\"\n\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/auth/login",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "c05d3038-039f-4238-a796-d301a6a1572f",
+          "name": "ResetPassword",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@gmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/auth/reset-password",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "reset-password"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "763cd0d9-75e2-46c4-b62f-4f0cf24645bb",
+          "name": "UpdatePassword",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"123456\",\n  \"newPassword\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/auth/update-password/2",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "update-password",
+                "2"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "9f98005a-43cd-405d-8f31-bc5fbd962c2e",
+      "name": "CUSTOMER",
+      "item": [
+        {
+          "id": "b825e82a-47dc-4cf1-81b8-8527a53d562c",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/customer",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "customer"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "46e61089-7250-4d64-88d4-135ea4e40c93",
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/customer/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "customer",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "2d473857-7e79-4330-9cdc-1887455d897e",
+          "name": "Edit",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ovi\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/customer/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "customer",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "bbeaf488-4639-47b7-876e-bc060f89f7ef",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/customer",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "customer"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "2610e671-c76f-4efe-8508-0a76c979b749",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/customer/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "customer",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "1fd7231f-aafd-44a2-86c6-a794161e101c",
+      "name": "DUEPAYMENTS",
+      "item": [
+        {
+          "id": "4eb14ae2-3f3f-400e-811e-5f659c8e19d2",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1500.00,\n  \"dueDate\": \"2025-09-30\",\n  \"status\": \"PENDING\",\n  \"customerId\": 1,\n  \"inventoryId\": 1,\n  \"quantity\": 1\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/due-payments",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "bbf89f92-4532-4b61-86c7-0dbc0eef3263",
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "0d64fed1-1b13-42c8-a4ce-c6584accb5a2",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "6d156cf5-8bde-4131-b512-e1e0a292a86e",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/2",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "2"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "22ab8d15-92dc-424a-848d-0ed83593215b",
+          "name": "overdue",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/overdue",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "overdue"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "e5192892-911f-4142-82bc-d7af5b6eb82c",
+          "name": "pedding",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/pending",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "pending"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "7c4d7271-2afb-4abe-8295-46caf556ed32",
+          "name": "send-reminder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/2/send-reminder",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "2",
+                "send-reminder"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "81c70aab-47ce-4e80-b438-787f959f9217",
+          "name": "summary",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/summary",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "summary"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "85bab2f8-6f52-4e51-950a-4fc6017bc410",
+          "name": "update-overdue-status",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/due-payments/update-overdue-status",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "due-payments",
+                "update-overdue-status"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "8ecbff69-5eb0-4b2c-a185-e52db4ab3f8c",
+      "name": "INVENTORY",
+      "item": [
+        {
+          "id": "cf5a0261-cc76-4d54-ae8b-a02882776ea4",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "https://app.requestly.io/echo",
+              "host": [
+                "app",
+                "requestly",
+                "io"
+              ],
+              "path": [
+                "echo"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "fa8b9b23-945d-4ad5-aec8-772716588db8",
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/inventory/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "inventory",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "9e0609db-e818-4c1d-aba4-d28710708a5a",
+          "name": "Edit",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 33,\n  \"perPrice\": 99.99,\n  \"productId\": 1\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/inventory/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "inventory",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "7be1a404-29dc-45b1-8195-27af9ecbcf1b",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/inventory",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "inventory"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "fa6f4b01-b8f3-423c-9b1c-5d7f6c99ce19",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/inventory/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "inventory",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "7338c6cc-d766-4c45-babb-c0fb169978fa",
+      "name": "PACKAGES",
+      "item": [
+        {
+          "id": "40bc9ca8-c74a-43d2-9057-d5bd05e983a8",
+          "name": "Active/Dactive",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/packages/toggle-active/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages",
+                "toggle-active",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "5de648c1-13b0-4959-b55b-de7a28b9b96f",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Standard Package\",\n  \"nameBn\": \"স্ট্যান্ডার্ড প্যাকেজ\",\n  \"description\": \"This package is designed for small to medium businesses.\",\n  \"descriptionBn\": \"এই প্যাকেজটি ছোট ও মাঝারি ব্যবসার জন্য উপযুক্ত।\",\n  \"priceMonthly\": 999.99,\n  \"priceYearly\": 9999.99,\n  \"maxProducts\": 200,\n  \"maxUsers\": 5,\n  \"maxCustomers\": 1000,\n  \"features\": [\n    \"inventory\",\n    \"invoice\",\n    \"reports\",\n    \"multi_user\"\n  ],\n  \"isPopular\": true,\n  \"isActive\": true,\n  \"sortOrder\": 1\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/packages",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "aa871a26-4f99-4d82-b976-9f2c93130488",
+          "name": "Edit",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Standard Package1\",\n  \"nameBn\": \"স্ট্যান্ডার্ড প্যাকেজ\",\n  \"description\": \"This package is designed for small to medium businesses.\",\n  \"descriptionBn\": \"এই প্যাকেজটি ছোট ও মাঝারি ব্যবসার জন্য উপযুক্ত।\",\n  \"priceMonthly\": 999.99,\n  \"priceYearly\": 9999.99,\n  \"maxProducts\": 200,\n  \"maxUsers\": 5,\n  \"maxCustomers\": 1000,\n  \"features\": [\n    \"inventory\",\n    \"invoice\",\n    \"reports\",\n    \"multi_user\"\n  ],\n  \"isPopular\": true,\n  \"isActive\": true,\n  \"sortOrder\": 1\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/packages/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "46f68ae0-9238-4f4d-bc81-1e7279699772",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/packages",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "7621d2f5-2944-4e28-a732-3b13ea9aec77",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/packages/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "7b328d60-f1a5-44c2-bec4-f792ab97f922",
+          "name": "Popular",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/packages/popular",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "packages",
+                "popular"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "d4ba10b8-55aa-4cf7-811c-4dac9c9b96ea",
+      "name": "POS",
+      "item": [
+        {
+          "id": "b9cc985b-b6c4-4a72-adeb-274629637c43",
+          "name": "Cencel",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions/1/cancel",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions",
+                "1",
+                "cancel"
+              ],
+              "protocol": "http",
+              "query": [
+                {
+                  "key": "transactionNumber",
+                  "value": "POS202509230001",
+                  "disabled": false
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "f098d512-37e0-4815-bedf-030fabfcae59",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": 1,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2,\n      \"unitPrice\": 500\n    }\n  ],\n  \"paymentMethod\": \"cash\",\n  \"discount\": 100,\n  \"paidAmount\": 2100,\n  \"notes\": \"Customer paid in cash\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "04b43198-3edd-4f65-8c39-1c95df43ea75",
+          "name": "DailyReport",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/pos/sales/daily",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "sales",
+                "daily"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "85a26fff-75fb-4148-be1d-1c832964cac7",
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "045a6464-02ce-430d-833f-b8478749b116",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "87c7501e-2045-45b9-85ed-61c147fd12bc",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "4b69cd33-6a2f-4420-9721-9e25e3ad0052",
+          "name": "Payment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paidAmount\": 5000,\n  \"paymentMethod\": \"cash\",\n  \"changeAmount\": 200\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/pos/transactions/1/payment",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "pos",
+                "transactions",
+                "1",
+                "payment"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "ac8640d6-0ae1-46a8-89d3-30d515fd8078",
+      "name": "PRODUCTS",
+      "item": [
+        {
+          "id": "f2cca01d-5721-42e8-bc60-3b4b9eda2f24",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n  \"name\": \"Sample Product\",\n  \"SKU\": \"SKU-12345\",\n\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/products",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "products"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "d2302a88-1097-4044-b13b-ee5400278fac",
+          "name": "Delete",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/products/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "products",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "14e61274-20a3-4567-bf87-2565671c2cd4",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://app.requestly.io/echo",
+              "host": [
+                "app",
+                "requestly",
+                "io"
+              ],
+              "path": [
+                "echo"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "923a9ea8-7dc0-468d-991c-3958814888e5",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://app.requestly.io/echo",
+              "host": [
+                "app",
+                "requestly",
+                "io"
+              ],
+              "path": [
+                "echo"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "d334a463-f2ad-4c1d-9c29-ec659812dc4b",
+      "name": "SELLS",
+      "item": [
+        {
+          "id": "6def3c77-b029-4e31-9943-157e246f3b35",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\n  \"items\": [\n    { \"inventoryId\": 1, \"quantity\": 1, \"unitPrice\": 1000 }\n  ],\n  \"paymentMethod\": \"cash\",\n  \"discount\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/sales",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "2154037c-6acb-4bce-95d7-b26ad203e72c",
+          "name": "Discount",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Updated notes\",\n  \"discount\": 10.0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/sales/4",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales",
+                "4"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "481a806e-5ca3-4d73-a7fe-880d4e5eaab7",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "39464e79-9306-4181-aac8-f818d31f8cf5",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales/4",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales",
+                "4"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "dbea0377-174e-4253-a0a4-93ac77119b38",
+          "name": "PaidAmount",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "000ba08e-8def-45bc-9a6a-f4a48af54d14",
+          "name": "Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales/report",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales",
+                "report"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "97018a5a-da4e-44d9-97fe-905ad7561f58",
+          "name": "saleNumber",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "547de54b-2f27-4805-be41-ed2610e6b532",
+          "name": "SaleStatus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/sales/number/SALE-20250922-0001",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "sales",
+                "number",
+                "SALE-20250922-0001"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "279cfb84-c659-40b0-8b68-6fb8ad9319d9",
+      "name": "SUBCRIPTION",
+      "item": [
+        {
+          "id": "22dcf0cf-fa42-4fe1-8e68-8b3f4929a6c3",
+          "name": "checkout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"packageId\": 1,\n  \"billingCycle\": \"monthly\" ,\n  \"userId\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/subscription/checkout",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription",
+                "checkout"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "389da7d9-7417-4f36-a816-ef624eaa250a",
+          "name": "Delete",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://app.requestly.io/echo",
+              "host": [
+                "app",
+                "requestly",
+                "io"
+              ],
+              "path": [
+                "echo"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "9825d3f7-3209-4860-ae1f-ca200b93d0cb",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/subscription",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "8a021edf-e77e-44f9-ae36-84cc2b4ce46a",
+          "name": "GetByUserSubscription",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/subscription/user/3",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription",
+                "user",
+                "3"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "8f2f78ca-d2cf-4fc9-b972-dcf49bf511ae",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/subscription/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "87a88e7c-2e84-422c-8c0b-a45df185e612",
+          "name": "payment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://app.requestly.io/echo",
+              "host": [
+                "app",
+                "requestly",
+                "io"
+              ],
+              "path": [
+                "echo"
+              ],
+              "protocol": "https"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "2c99b9b7-ac7e-4f48-8222-f047e416fc19",
+          "name": "SubscriptionCancel",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"No longer needed\" \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/subscription/4/cancel",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription",
+                "4",
+                "cancel"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "27d2eb70-b42d-4694-8913-b3e7f0859132",
+          "name": "SubscriptionStatus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/subscription/status/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "subscription",
+                "status",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    },
+    {
+      "id": "55ca27aa-1cd8-48de-bc46-7c08da98c2c6",
+      "name": "USER",
+      "item": [
+        {
+          "id": "a583688b-f693-43fb-a574-b6297f38a2f0",
+          "name": "Active/Dactive",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/users/toggle-status/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users",
+                "toggle-status",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "8f11fe39-dfa4-464b-a0e8-4c3a03064af4",
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/users",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "b2e9ef62-d1ac-4715-81c8-7851fbecde3e",
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/users/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "16e186d5-bcdf-46d1-9f2b-f190754f600d",
+          "name": "Edit",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/users/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "1be64299-1027-4dde-9946-0b00a61e2e04",
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/users",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "e4d73bcb-ba30-4de2-babb-327fc58b9c43",
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/users/1",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "users",
+                "1"
+              ],
+              "protocol": "http"
+            }
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "variable": []
+    }
+  ]
+}
