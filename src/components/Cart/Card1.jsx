@@ -1,62 +1,82 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // সংশোধন: react-router থেকে সঠিক ইম্পোর্ট
 
 const Card1 = ({ job }) => {
   useEffect(() => {
     AOS.init({
-      duration: 2000,
+      duration: 1200,
       once: true,
+      easing: "ease-out-cubic",
     });
   }, []);
+
   const { title, postedBy, category, summary, coverImage, userEmail, _id } =
     job;
 
   return (
     <div
       data-aos="fade-up"
-      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 space-y-4"
+      className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100/50 backdrop-blur-sm"
     >
-      {/* Cover Image */}
-      <div className="h-48 overflow-hidden">
+      {/* Cover Image with Gradient Overlay */}
+      <div className="relative h-64 overflow-hidden">
         <img
           src={
-            coverImage || "https://via.placeholder.com/600x300?text=Job+Image"
+            coverImage || "https://via.placeholder.com/800x400?text=Premium+Job"
           }
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
         />
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 text-xs font-semibold text-white bg-orange-600 rounded-full shadow-md">
+
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+        {/* Category Badge - Premium Style */}
+        <div className="absolute top-6 left-6">
+          <span className="px-4 py-2 text-xs font-bold tracking-wider uppercase text-white bg-orange-600/90 backdrop-blur-md rounded-full shadow-lg border border-white/20">
             {category}
           </span>
         </div>
+
+        {/* Subtle shine effect on hover */}
+        <div className="absolute inset-0 translate-x-full bg-gradient-to-l from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[-100%]" />
       </div>
 
       {/* Card Body */}
-      <div className="p-6 space-y-6">
-        <h3 className="text-xl font-bold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300">
+      <div className="p-8 space-y-2 bg-gradient-to-b from-white to-gray-50/30">
+        {/* Title */}
+        <h3 className="text-xl font-extrabold text-gray-900 line-clamp-2 leading-tight group-hover:text-orange-600 transition-colors duration-500">
           {title}
         </h3>
 
-        <div className="flex items-center mt-3 text-sm text-gray-600">
-          <div className="w-10 h-10 rounded-full  flex items-center justify-center text-orange-600 font-bold bg-orange-200">
-            {postedBy.charAt(0)}
+        {/* Poster Info */}
+        <div className="flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+            {postedBy.charAt(0).toUpperCase()}
           </div>
-          <span className="ml-3 font-medium">{postedBy}</span>
+          <div>
+            <p className="font-semibold text-gray-800">{postedBy}</p>
+            <p className="text-sm text-gray-500">@{userEmail.split("@")[0]}</p>
+          </div>
         </div>
 
-        <p className="mt-4 line-clamp-2 text-gray-600  text-sm leading-relaxed">
+        {/* Summary */}
+        <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
           {summary}
         </p>
 
-        <div className="mt-5 flex items-center justify-between">
-          <span className="text-xs text-gray-500">
-            Posted by:{" "}
-            <span className="font-medium">{userEmail.split("@")[0]}</span>
+        {/* Bottom Actions */}
+        <div className="flex items-center justify-between pt-4">
+          <span className="text-sm text-gray-500">
+            Posted by{" "}
+            <span className="font-medium text-gray-700">
+              {userEmail.split("@")[0]}
+            </span>
           </span>
 
+          {/* Premium Button */}
           <Link
             to={`/detlise/${_id}`}
             class="relative flex items-center gap-1 py-1 px-7 md:px-7 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent"
@@ -84,6 +104,9 @@ const Card1 = ({ job }) => {
           </Link>
         </div>
       </div>
+
+      {/* Subtle bottom glow on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-transparent opacity-0 scale-x-0 transition-all duration-700 group-hover:opacity-100 group-hover:scale-x-100" />
     </div>
   );
 };
