@@ -41,7 +41,6 @@ import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import { Briefcase, Users, FileText, Building2 } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import LatesCard from "../components/Cart/LatesCard";
 
 const Home = () => {
   const { ref, inView } = useInView({
@@ -180,9 +179,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="md:w-11/12 mx-auto mb-15 md:mb-20">
-        <LatesCard></LatesCard>
-      </section>
+     
 
       <section className="mb-15 md:mb-20 lg:w-8/12 px-2 mx-auto">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-30 justify-between items-center">

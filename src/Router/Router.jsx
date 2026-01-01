@@ -37,23 +37,23 @@ export const router = createBrowserRouter([
       },
       {
        path:"/creatJob",
-       element:<PrivetRouter><AddJod></AddJod></PrivetRouter>
+       element:<AddJod></AddJod>
       },
       {
        path:"/myAddjobs",
-       element: <PrivetRouter><MyAddedJobs></MyAddedJobs></PrivetRouter>
+       element: <MyAddedJobs></MyAddedJobs>
       },
       {
        path:"/accecptjob",
-       element: <PrivetRouter><MyAcceptedTasks></MyAcceptedTasks></PrivetRouter>
+       element: <MyAcceptedTasks></MyAcceptedTasks>
       },
       {
        path:"/detlise/:id",
-       element: <PrivetRouter><JobDetails></JobDetails></PrivetRouter>
+       element: <JobDetails></JobDetails>
       },
       {
         path:"/edit/:id",
-        element:<PrivetRouter><UpdateJob></UpdateJob></PrivetRouter>
+        element:<UpdateJob></UpdateJob>
       },
       {
         path:"*",

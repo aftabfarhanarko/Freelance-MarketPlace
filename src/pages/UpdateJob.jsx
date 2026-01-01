@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import toast from "react-hot-toast";
-import { useAxiosData } from "../Hooks/DataFetch";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import usePrivetApi from "../Hooks/PriverAPI";

@@ -1,276 +1,313 @@
 import { Link, NavLink } from "react-router";
 import { useEffect, useState } from "react";
-import { IoClose } from "react-icons/io5";
-import { TbMenu2 } from "react-icons/tb";
-import { FaRegUserCircle } from "react-icons/fa";
+import { 
+  Menu, X, Home, User, Moon, Sun, 
+  ChevronDown, Briefcase, PlusCircle, 
+  CheckCircle, FileText 
+} from "lucide-react";
+import { motion } from "framer-motion";
 import { useAuth } from "../Hooks/UseAuth";
 import logo from "../assets/oooo.png";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const { user, logOutUser } = useAuth();
-  console.log(user);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileDropdown, setProfileDropdown] = useState(false);
 
+  // THEME STATE
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [darkMode, setDarkMode] = useState(theme === "dark");
 
   useEffect(() => {
-    const html = document.querySelector("html");
+    const html = document.documentElement;
     html.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+    setDarkMode(theme === "dark");
   }, [theme]);
 
-  const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light");
+  const handleThemeToggle = () => {
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const handelLogOut = () => {
     logOutUser();
   };
 
+  // Dynamic Theme Classes
+  const bgPrimary = darkMode ? "bg-gray-900" : "bg-white";
+  const textPrimary = darkMode ? "text-white" : "text-gray-900";
+  const textSecondary = darkMode ? "text-gray-300" : "text-gray-700";
+  const textMuted = darkMode ? "text-gray-400" : "text-gray-600";
+  const borderColor = darkMode ? "border-gray-800" : "border-gray-200";
+  const hoverBg = darkMode ? "hover:bg-gray-800" : "hover:bg-gray-100";
+
   return (
-    <div className="  py-1  border-b border-base-300   w-full">
-      <div className="navbar  w-11/12 mx-auto ">
-        <div className="navbar-start">
-          <img className="w-30" src={logo}></img>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className=" menu-horizontal px-1 flex gap-8 list-none text-lg font-medium">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/alljob">Find Jobs</NavLink>
-            </li>
-            <li>
-              <NavLink to="/creatJob">Post a Job</NavLink>
-            </li>
-            {user && (
-              <li>
-                <NavLink to="/accecptjob">In Progress</NavLink>
-              </li>
-            )}
-            {user && (
-              <li>
-                <NavLink to="/myAddjobs">Posted Jobs</NavLink>
-              </li>
-            )}
-          </ul>
-        </div>
+    <nav
+      className={`${bgPrimary} border-b ${borderColor} shadow-sm transition-colors duration-300 sticky top-0 z-50`}
+    >
+      <div className="w-11/12 mx-auto py-0.5 px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo Section */}
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Logo" className="h-8 w-auto" />
+          </div>
 
-        <div className="navbar-end">
-          <div className=" hidden md:block  ">
-            {user ? (
-              <div className=" dropdown dropdown-end">
-                <div tabIndex={0} role="button" className=" m-1">
-                  <div className="hidden  md:block ">
-                    <div className="">
-                      <img
-                        className=" w-7 md:w-13 rounded-full"
-                        src={user.photoURL}
-                      ></img>
-                    </div>
-                  </div>
-                </div>
-                <ul
-                  tabIndex="-1"
-                  className="  dropdown-content z-5 menu bg-base-100 rounded-box mt-5  w-42 p-4 shadow-sm"
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            <NavLink
+              to="/"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
+            >
+              <Home className="w-5 h-5" />
+              <span className="font-medium">Home</span>
+            </NavLink>
+            
+            <NavLink
+              to="/alljob"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
+            >
+              <Briefcase className="w-5 h-5" />
+              <span className="font-medium">Find Jobs</span>
+            </NavLink>
+            
+            <NavLink
+              to="/creatJob"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
+            >
+              <PlusCircle className="w-5 h-5" />
+              <span className="font-medium">Post a Job</span>
+            </NavLink>
+            
+            {user && (
+              <>
+                <NavLink
+                  to="/accecptjob"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
                 >
-                  {user && (
-                    <div className="flex items-center flex-col gap-3">
-                      <input
-                        onChange={(e) => handleTheme(e.target.checked)}
-                        type="checkbox"
-                        defaultChecked={
-                          localStorage.getItem("theme") === "dark"
-                        }
-                        className="toggle"
-                      />
-
-                      <button
-                        onClick={handelLogOut}
-                        className="px-6 py-2 
-                 text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  shadow-lg 
-                   transform transition-all duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
-                     hover:scale-105 active:scale-95 
-                      focus:outline-none focus:ring-4 focus:ring-orange-300"
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  )}
-                </ul>
-              </div>
-            ) : (
-              <div className="flex gap-3">
-                <Link to="/login">
-                  {" "}
-                  <button
-                    className="
-                 px-6 py-2 
-  text-orange-500 font-medium 
-  bg-white 
-  outline
-  rounded-md 
-  transition-all duration-300 ease-out 
-  bg-gradient-to-r  hover:from-orange-500 hover:to-orange-400 
-  hover:text-white 
-  hover:shadow-xl 
-  hover:scale-105 
-  active:scale-95 
-  focus:outline-none focus:ring-4 focus:ring-orange-300
-                  
-                  
-                  "
-                  >
-                    Login
-                  </button>
-                </Link>
-                <Link to="/register">
-                  {" "}
-                  <button
-                    className="
-                   px-6 py-2 
-  text-white font-medium  rounded-md
-  bg-gradient-to-r from-orange-400 to-orange-500  hover:from-orange-500 hover:to-orange-400 
-  transform transition-all  duration-300 ease-out  hover:shadow-xl 
-  hover:scale-105 active:scale-95 
-  focus:outline-none focus:ring-4 focus:ring-orange-300
-                  "
-                  >
-                    Register
-                  </button>
-                </Link>
-              </div>
+                  <CheckCircle className="w-5 h-5" />
+                  <span className="font-medium">In Progress</span>
+                </NavLink>
+                
+                <NavLink
+                  to="/myAddjobs"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
+                >
+                  <FileText className="w-5 h-5" />
+                  <span className="font-medium">Posted Jobs</span>
+                </NavLink>
+              </>
             )}
           </div>
 
-          <div className="block  md:hidden relative ">
-            {/* menu toggle btn */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="btn-ghost text-[32px] font-bold  top-7 right-5  text-black hover:text-orange-500 dark:text-white transition-colors"
-            >
-              {open ? <IoClose /> : <TbMenu2 />}
-            </button>
-
-            {/* RIGHT DRAWER MENU */}
-            <div
-              className={`fixed top-0 right-0 h-full bg-base-200 shadow-xl transition-all duration-500 ease-in-out z-40 
-               ${
-                 open
-                   ? "translate-x-0 opacity-100"
-                   : "translate-x-full opacity-0"
-               }
-            `}
-              style={{ width: "50%" }}
-            >
+          {/* Right Section */}
+          <div className="flex items-center gap-3">
+            {/* Profile Dropdown (Desktop) */}
+            <div className="relative hidden md:block">
               <button
-                onClick={() => setOpen(!open)}
-                className="btn-ghost dark:text-white  text-[32px] font-bold  top-7 right-5 z-50 text-black hover:text-orange-500 transition-colors"
+                onClick={() => setProfileDropdown(!profileDropdown)}
+                className={`flex items-center gap-2 p-1 rounded-lg ${hoverBg} transition-all duration-200`}
               >
-                {open && <IoClose />}
-              </button>
-              <div className="p-6">
-                <div className="mt-5 ml-2">
-                  {user ? (
-                    <>
-                      <img
-                        className="w-[45px] rounded-full"
-                        src={user.photoURL}
-                      />
-                    </>
-                  ) : (
-                    <FaRegUserCircle className="w-10 h-10 text-black/80" />
-                  )}
-                </div>
-
-                <ul className="menu  text-lg space-y-3 mt-4 ">
-                  <input
-                    onChange={(e) => handleTheme(e.target.checked)}
-                    type="checkbox"
-                    defaultChecked={localStorage.getItem("theme") === "dark"}
-                    className="toggle ml-2"
+                {user ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-11 h-11 rounded-full object-cover"
                   />
-                  <li>
-                    <NavLink to="/" onClick={() => setOpen(false)}>
-                      Home
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/alljob" onClick={() => setOpen(false)}>
-                      All Jobs
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/creatJob" onClick={() => setOpen(false)}>
-                      Add Job
-                    </NavLink>
-                  </li>
-                  {user && (
-                    <li>
-                      <NavLink to="/accecptjob" onClick={() => setOpen(false)}>
-                        Accepted Job
-                      </NavLink>
-                    </li>
-                  )}
-                  {user && (
-                    <li>
-                      <NavLink to="/myAddjobs" onClick={() => setOpen(false)}>
-                        Add Job
-                      </NavLink>
-                    </li>
-                  )}
-                  {user ? (
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <Link
+                      to="/login"
+                      className="px-5 py-1.5 rounded-xl font-semibold text-[#e85d04] border-2 border-[#e85d04] transition-all duration-300 hover:bg-gradient-to-r from-[#C2410C] to-[#e85d04] hover:text-white hover:scale-105"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="px-5 py-1.5 rounded-xl text-white font-semibold bg-gradient-to-r from-[#C2410C] to-[#e85d04] shadow-lg transition-all duration-300 hover:scale-105"
+                    >
+                      Register
+                    </Link>
+                  </div>
+                )}
+                {user && (
+                  <ChevronDown
+                    className={`w-4 h-4 ${textSecondary} transition-transform duration-200 ${
+                      profileDropdown ? "rotate-180" : ""
+                    }`}
+                  />
+                )}
+              </button>
+
+              {user && profileDropdown && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`absolute right-0 mt-2 w-56 ${bgPrimary} rounded-xl shadow-xl border ${borderColor} py-2`}
+                >
+                  <div className={`px-5 py-3 border-b ${borderColor}`}>
+                    <p className={`font-semibold ${textPrimary}`}>
+                      {user.displayName || "User"}
+                    </p>
+                    <p className={`text-sm ${textMuted}`}>{user.email}</p>
+                  </div>
+
+                  <Link
+                    to="/profile"
+                    className={`flex items-center gap-3 px-5 py-2 ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+                  >
+                    <User className="w-4 h-4" />
+                    <span>Profile</span>
+                  </Link>
+
+                  <div className={`border-t ${borderColor} mt-2 pt-2`}>
                     <button
                       onClick={handelLogOut}
-                      className="px-6 py-2 
-                 text-white font-medium bg-gradient-to-r from-orange-500 to-orange-600  rounded-md  shadow-lg 
-                   transform transition-all duration-300 ease-out hover:from-orange-600 hover:to-orange-700 hover:shadow-xl 
-                     hover:scale-105 active:scale-95 
-                      focus:outline-none focus:ring-4 focus:ring-orange-300"
+                      className="w-full text-left flex items-center gap-3 px-4 py-2 text-orange-500 bg-orange-50 rounded-lg hover:bg-orange-100 transition-all"
                     >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      </svg>
                       Logout
                     </button>
-                  ) : (
-                    <Link to="/login">
-                      {" "}
-                      <button
-                        className="
-                 px-6 py-2 
-  text-orange-500 font-medium 
-  bg-white 
-  outline
-  rounded-md 
-  transition-all duration-300 ease-out 
-  bg-gradient-to-r  hover:from-orange-500 hover:to-orange-400 
-  hover:text-white 
-  hover:shadow-xl 
-  hover:scale-105 
-  active:scale-95 
-  focus:outline-none focus:ring-4 focus:ring-orange-300
-                  
-                  
-                  "
-                      >
-                        Login
-                      </button>
-                    </Link>
-                  )}
-                </ul>
-              </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
-            {/* Overlay click to close */}
-            {open && (
-              <div
-                onClick={() => setOpen(false)}
-                className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 transition-opacity"
-              ></div>
-            )}
+            {/* Theme Toggle */}
+            <button
+              onClick={handleThemeToggle}
+              className={`p-2 rounded-lg ${hoverBg} ${textSecondary} hover:text-orange-500 transition-all duration-200`}
+              title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`md:hidden p-2 rounded-lg ${hoverBg} ${textSecondary} transition-all`}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className={`md:hidden py-4 pb-6 border-t ${borderColor}`}
+          >
+            <div className="space-y-1">
+              {/* User Profile (Mobile) */}
+              {user && (
+                <div className="px-4 py-3 flex items-center gap-3">
+                  <img
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className={`font-semibold ${textPrimary}`}>
+                      {user.displayName || "User"}
+                    </p>
+                    <p className={`text-sm ${textMuted}`}>{user.email}</p>
+                  </div>
+                </div>
+              )}
+
+              <NavLink
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+              >
+                <Home className="w-5 h-5" />
+                <span className="font-medium">Home</span>
+              </NavLink>
+
+              <NavLink
+                to="/alljob"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+              >
+                <Briefcase className="w-5 h-5" />
+                <span className="font-medium">Find Jobs</span>
+              </NavLink>
+
+              <NavLink
+                to="/creatJob"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+              >
+                <PlusCircle className="w-5 h-5" />
+                <span className="font-medium">Post a Job</span>
+              </NavLink>
+
+              {user && (
+                <>
+                  <NavLink
+                    to="/accecptjob"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+                  >
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="font-medium">In Progress</span>
+                  </NavLink>
+
+                  <NavLink
+                    to="/myAddjobs"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all`}
+                  >
+                    <FileText className="w-5 h-5" />
+                    <span className="font-medium">Posted Jobs</span>
+                  </NavLink>
+                </>
+              )}
+
+              {user ? (
+                <div className="px-4 pt-2">
+                  <button
+                    onClick={() => {
+                      handelLogOut();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full px-6 py-2 rounded-lg font-semibold bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col px-4 gap-3 pt-2">
+                  <Link
+                    to="/login"
+                    className="px-6 py-2 text-center rounded-lg font-semibold text-[#e85d04] border-2 border-[#e85d04] transition-all duration-300 hover:bg-gradient-to-r from-[#C2410C] to-[#e85d04] hover:text-white"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="px-6 py-2 text-center rounded-lg font-semibold bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Register
+                  </Link>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
-    </div>
+    </nav>
   );
 };
 
