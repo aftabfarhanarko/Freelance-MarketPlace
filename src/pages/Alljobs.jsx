@@ -81,7 +81,7 @@ const Alljobs = () => {
           </p>
 
           {/* Search UI */}
-          <div className="mt-8 flex items-center bg-white dark:bg-gray-900 rounded-full shadow-lg px-4 py-2">
+          <div className="mt-8 flex items-center bg-white dark:bg-gray-900 rounded-full shadow-sm px-4 py-2">
             <Search className="text-gray-400" size={20} />
             <input
               type="text"
@@ -112,7 +112,7 @@ const Alljobs = () => {
         </div>
 
         {/* ===== FILTER SECTION ===== */}
-        <div className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl border border-base-300 rounded-2xl p-6 shadow-xl">
+        <div className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl border border-base-300 rounded-2xl p-6 shadow-md">
           <Swiper
             modules={[Navigation]}
             navigation={{
