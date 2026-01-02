@@ -1,12 +1,10 @@
 import React from 'react';
-import error from '../assets/error.png'
+import JobNotFound from '../components/JobNotFound';
 
 const ErrorPages = () => {
     return (
-        <div className='flex justify-center items-center mx-auto min-h-screen'>
- 
- <img src={error}></img>
-            
+        <div className='min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900'>
+             <JobNotFound type="404" />
         </div>
     );
 };

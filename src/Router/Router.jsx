@@ -12,6 +12,7 @@ import AddJod from "../pages/AddJod";
 import JobDetails from "../pages/JobDetails";
 import UpdateJob from "../pages/UpdateJob";
 import Pricing from "../pages/Pricing";
+import Dashbord from "../pages/Dashbord/Dashbord";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path:"/edit/:id",
         element:<UpdateJob></UpdateJob>
+      },
+      {
+        path:"/dashbord",
+        element:<Dashbord></Dashbord>
       },
       {
         path:"*",
