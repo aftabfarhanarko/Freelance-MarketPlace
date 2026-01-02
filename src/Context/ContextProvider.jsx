@@ -21,7 +21,7 @@ const ContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updeatUserInfo = (data) => {
+  const updateUserInfo = (data) => {
     setLoding(true);
     return updateProfile(auth.currentUser, data);
   };
@@ -52,7 +52,7 @@ const ContextProvider = ({ children }) => {
 
   const allInfo = {
     signUpUser,
-    updeatUserInfo,
+    updateUserInfo,
     googleLogin,
     user,
     loding,

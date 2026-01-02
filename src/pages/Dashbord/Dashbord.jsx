@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useAuth } from "../../Hooks/UseAuth";
 import { useTheme } from "../../Context/ThemeContext";
 import { motion } from "framer-motion";
@@ -33,9 +32,9 @@ import {
   Zap,
   CheckCircle,
 } from "lucide-react";
-import usePrivetApi from "../../Hooks/PriverAPI";
-import StatCard from "./StartCard";
+import StatCard from "./StatCard";
 import { useQuery } from "@tanstack/react-query";
+import usePrivateApi from "../../Hooks/PrivateAPI";
 
 // Mock Data for Charts
 const revenueData = [
@@ -155,7 +154,7 @@ const quickActions = [
 const Dashbord = () => {
   const { user } = useAuth();
   const { theme } = useTheme();
-  const axiosScrure = usePrivetApi();
+  const axiosScrure = usePrivateApi();
   const isDark = theme === "dark";
   const chartGridColor = isDark ? "#374151" : "#E5E7EB";
   const chartTextColor = isDark ? "#9CA3AF" : "#9CA3AF";
@@ -191,8 +190,6 @@ const Dashbord = () => {
 
   const {
     data: categories = [],
-    isLoading,
-    error,
   } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {

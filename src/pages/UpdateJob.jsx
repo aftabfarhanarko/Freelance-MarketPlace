@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../Hooks/UseAuth";
-import LodingSpinner from "../components/LodingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import usePrivetApi from "../Hooks/PriverAPI";
+import { motion, AnimatePresence } from "framer-motion";
+import usePrivateApi from "../Hooks/PrivateAPI";
 import { 
   ArrowLeft, Briefcase, Globe, Image as ImageIcon, FileText, User, Mail, Save,
   Sparkles, Shield, AlertCircle, CheckCircle, TrendingUp, Clock, Eye, Crown, Zap, Star, Award, BarChart3
@@ -17,12 +16,8 @@ const UpdateJob = () => {
   const [jobScore, setJobScore] = useState(70); // Mock score
   const { id } = useParams();
   const { user } = useAuth();
-  const apies = usePrivetApi();
+  const apies = usePrivateApi();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true, easing: "ease-out" });
-  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -41,7 +36,8 @@ const UpdateJob = () => {
     const coverImage = e.target.coverImage.value;
     const create_at = new Date();
     const userEmail = user.email;
-
+   console.log("Dara");
+   
     const postDataNow = {
       title,
       postedBy,
@@ -52,7 +48,7 @@ const UpdateJob = () => {
       create_at,
     };
 
-    apies.patch(`updeat/${job._id}`, postDataNow).then((result) => {
+    apies.patch(`jobs/${job._id}`, postDataNow).then((result) => {
       if (result.data.modifiedCount) {
         toast.success("Job Updated Successfully");
         navigate("/alljob");
@@ -60,13 +56,18 @@ const UpdateJob = () => {
     });
   };
 
-  if (loading) return <LodingSpinner />;
+  if (loading) return <LoadingSpinner />;
 
   return (
     <section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4" data-aos="fade-down">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4"
+        >
           <div>
             <Link
               to="/myAddjobs"
@@ -91,10 +92,15 @@ const UpdateJob = () => {
               Last saved: Just now
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Top Feature Banner */}
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-1 shadow-lg mb-8" data-aos="fade-up">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-1 shadow-lg mb-8"
+        >
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-orange-100 dark:bg-orange-900/50 rounded-full text-orange-600 dark:text-orange-400">
@@ -109,11 +115,16 @@ const UpdateJob = () => {
               View Analytics
             </button>
           </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Form Column */}
-          <div className="lg:col-span-2 space-y-8" data-aos="fade-up" data-aos-delay="100">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:col-span-2 space-y-8"
+          >
             {/* Main Form Card */}
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
               {/* Decorative Line */}
@@ -267,10 +278,15 @@ const UpdateJob = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </motion.div>
 
           {/* Sidebar Column */}
-          <div className="space-y-6" data-aos="fade-left" data-aos-delay="200">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="space-y-6"
+          >
             
             {/* Widget 0: Premium Upgrade (New) */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-xl">
@@ -412,7 +428,7 @@ const UpdateJob = () => {
                 Read Community Guidelines
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

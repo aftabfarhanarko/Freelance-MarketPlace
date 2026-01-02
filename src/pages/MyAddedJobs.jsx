@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
-import usePrivetApi from "../Hooks/PriverAPI";
 import { 
   PencilIcon, TrashIcon, BriefcaseIcon, Layers, CheckCircle, Eye, 
   Calendar, User, Search, Grid, List, Filter, ArrowUpDown, Clock
 } from "lucide-react";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
-import LodingSpinner from "../components/LodingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
 import { motion, AnimatePresence } from "framer-motion";
+import usePrivateApi from "../Hooks/PrivateAPI";
 
 const MyAddedJobs = () => {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
   const [loding, setLoding] = useState(false);
-  const apise = usePrivetApi();
+  const apise = usePrivateApi();
 
   // New Features State
   const [searchTerm, setSearchTerm] = useState("");
@@ -75,7 +75,7 @@ const MyAddedJobs = () => {
     });
   };
 
-  if (loding) return <LodingSpinner />;
+  if (loding) return <LoadingSpinner />;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">

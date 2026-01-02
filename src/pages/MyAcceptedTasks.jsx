@@ -3,19 +3,19 @@ import {
   ArrowUpDown, Grid, List, Clock, User, CheckCircle
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import usePrivetApi from "../Hooks/PriverAPI";
 import { useAuth } from "../Hooks/UseAuth";
-import LodingSpinner from "../components/LodingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion, AnimatePresence } from "framer-motion";
+import usePrivateApi from "../Hooks/PrivateAPI";
 
 const MyAcceptedTasks = () => {
   const [loding, setLoding] = useState(false);
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
-  const apies = usePrivetApi();
+  const apies = usePrivateApi();
 
   // New Features State
   const [searchTerm, setSearchTerm] = useState("");
@@ -73,7 +73,7 @@ const MyAcceptedTasks = () => {
     hour12: false,
   });
 
-  if (loding) return <LodingSpinner />;
+  if (loding) return <LoadingSpinner />;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">

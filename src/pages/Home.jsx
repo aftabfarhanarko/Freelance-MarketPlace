@@ -89,65 +89,127 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
-      <section id="New Sections add Prowerfull and reletev features" className="w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24 space-y-24">
-        
+      <section
+        id="New Sections add Prowerfull and reletev features"
+        className="w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24 space-y-24"
+      >
         {/* 1. Trusted By Section */}
         <div className="text-center" data-aos="fade-in">
-          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">Trusted by 4,000+ companies</p>
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">
+            Trusted by 4,000+ companies
+          </p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-             <img src={company} alt="Company 1" className="h-8 md:h-10 w-auto dark:invert" />
-             <img src={company2} alt="Company 2" className="h-8 md:h-10 w-auto dark:invert" />
-             <img src={company3} alt="Company 3" className="h-8 md:h-10 w-auto dark:invert" />
-             <img src={company4} alt="Company 4" className="h-8 md:h-10 w-auto dark:invert" />
-             <img src={company5} alt="Company 5" className="h-8 md:h-10 w-auto dark:invert" />
+            <img
+              src={company}
+              alt="Company 1"
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
+            <img
+              src={company2}
+              alt="Company 2"
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
+            <img
+              src={company3}
+              alt="Company 3"
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
+            <img
+              src={company4}
+              alt="Company 4"
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
+            <img
+              src={company5}
+              alt="Company 5"
+              className="h-8 md:h-10 w-auto dark:invert"
+            />
           </div>
         </div>
 
         {/* 2. Success Metrics (Stats) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-200 dark:divide-gray-700">
-            <div className="text-center">
-                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={890} duration={2.5} />M</h3>
-                <p className="text-gray-600 dark:text-gray-400">Total Freelancers</p>
-            </div>
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={750} duration={2.5} />k+</h3>
-                <p className="text-gray-600 dark:text-gray-400">Positive Reviews</p>
-            </div>
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={100} duration={2.5} />M</h3>
-                <p className="text-gray-600 dark:text-gray-400">Orders Received</p>
-            </div>
-             <div className="text-center">
-                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={336} duration={2.5} />M</h3>
-                <p className="text-gray-600 dark:text-gray-400">Projects Completed</p>
-            </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              <CountUp end={890} duration={2.5} />M
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Total Freelancers
+            </p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              <CountUp end={750} duration={2.5} />
+              k+
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">Positive Reviews</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              <CountUp end={100} duration={2.5} />M
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">Orders Received</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              <CountUp end={336} duration={2.5} />M
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Projects Completed
+            </p>
+          </div>
         </div>
 
         {/* 3. Why Choose Us (Value Prop) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-blue-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-6">
-                   <Shield className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Proof of Quality</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Check any pro’s work samples, client reviews, and identity verification.</p>
+          <div
+            className="bg-blue-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            data-aos="fade-up"
+          >
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+              <Shield className="w-6 h-6" />
             </div>
-            <div className="bg-green-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay="100">
-                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 mb-6">
-                   <DollarSign className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">No Cost Until You Hire</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Interview potential fits for your job, negotiate rates, and only pay for work you approve.</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Proof of Quality
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Check any pro’s work samples, client reviews, and identity
+              verification.
+            </p>
+          </div>
+          <div
+            className="bg-green-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 mb-6">
+              <DollarSign className="w-6 h-6" />
             </div>
-             <div className="bg-purple-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay="200">
-                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 mb-6">
-                   <CheckCircle className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Safe & Secure</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Focus on your work knowing we help protect your data and privacy. We’re here with 24/7 support.</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              No Cost Until You Hire
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Interview potential fits for your job, negotiate rates, and only
+              pay for work you approve.
+            </p>
+          </div>
+          <div
+            className="bg-purple-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+              <CheckCircle className="w-6 h-6" />
             </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Safe & Secure
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Focus on your work knowing we help protect your data and privacy.
+              We’re here with 24/7 support.
+            </p>
+          </div>
         </div>
-
       </section>
 
       <section className=" w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
@@ -494,12 +556,13 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             </div>
           </motion.div>
         </motion.div>
-
-       
       </section>
 
       {/* res */}
-      <section id="job-finnd sections" className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24">
+      <section
+        id="job-find-sections"
+        className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24"
+      >
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -996,7 +1059,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Simple, Transparent <span className="text-orange-500">Pricing</span>
+              Simple, Transparent{" "}
+              <span className="text-orange-500">Pricing</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300">
               Choose the plan that fits your needs. No hidden fees.
@@ -1005,15 +1069,33 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Basic Plan */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative" data-aos="fade-up" data-aos-delay="0">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Basic</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">For casual freelancers</p>
+            <div
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Basic
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
+                For casual freelancers
+              </p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-bold text-gray-900 dark:text-white">Free</span>
+                <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                  Free
+                </span>
               </div>
               <ul className="space-y-4 mb-8">
-                {['5 Bids per month', 'Basic Profile', 'Standard Support', '5% Service Fee'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                {[
+                  "5 Bids per month",
+                  "Basic Profile",
+                  "Standard Support",
+                  "5% Service Fee",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300"
+                  >
                     <Check className="w-5 h-5 text-green-500" /> {feature}
                   </li>
                 ))}
@@ -1024,17 +1106,34 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             </div>
 
             {/* Pro Plan */}
-            <div className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 shadow-2xl border border-orange-500 transform scale-105 relative z-10" data-aos="fade-up" data-aos-delay="100">
-              <div className="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>
+            <div
+              className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 shadow-2xl border border-orange-500 transform scale-105 relative z-10"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">
+                POPULAR
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Pro</h3>
-              <p className="text-gray-400 text-sm mb-6">For serious professionals</p>
+              <p className="text-gray-400 text-sm mb-6">
+                For serious professionals
+              </p>
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-bold text-white">$19</span>
                 <span className="text-gray-400">/mo</span>
               </div>
               <ul className="space-y-4 mb-8">
-                {['50 Bids per month', 'Verified Badge', 'Priority Support', '2% Service Fee', 'Highlighted Proposals'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
+                {[
+                  "50 Bids per month",
+                  "Verified Badge",
+                  "Priority Support",
+                  "2% Service Fee",
+                  "Highlighted Proposals",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 text-sm text-gray-300"
+                  >
                     <Check className="w-5 h-5 text-orange-500" /> {feature}
                   </li>
                 ))}
@@ -1045,16 +1144,35 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             </div>
 
             {/* Enterprise Plan */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative" data-aos="fade-up" data-aos-delay="200">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">For agencies & teams</p>
+            <div
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Enterprise
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
+                For agencies & teams
+              </p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-bold text-gray-900 dark:text-white">$99</span>
+                <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                  $99
+                </span>
                 <span className="text-gray-400">/mo</span>
               </div>
               <ul className="space-y-4 mb-8">
-                {['Unlimited Bids', 'Team Management', 'Dedicated Manager', '0% Service Fee', 'Custom Contracts'].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                {[
+                  "Unlimited Bids",
+                  "Team Management",
+                  "Dedicated Manager",
+                  "0% Service Fee",
+                  "Custom Contracts",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300"
+                  >
                     <Check className="w-5 h-5 text-green-500" /> {feature}
                   </li>
                 ))}
@@ -1303,9 +1421,6 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-    
-  
-
       {/* 6. Top Rated Freelancers Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1320,10 +1435,34 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Alex Morgan", role: "Product Designer", rate: "$65/hr", rating: 4.9, img: "https://i.ibb.co.com/HfKz1QK0/image.png" },
-              { name: "Sarah Connor", role: "React Developer", rate: "$80/hr", rating: 5.0, img: "https://i.ibb.co.com/Mk5bvwKv/image.png" },
-              { name: "John Doe", role: "SEO Specialist", rate: "$50/hr", rating: 4.8, img: "https://i.ibb.co.com/QZZvhNf/image.png" },
-              { name: "Emily Blunt", role: "Content Writer", rate: "$45/hr", rating: 4.9, img: "https://i.ibb.co.com/R49nK4FZ/image.png" },
+              {
+                name: "Alex Morgan",
+                role: "Product Designer",
+                rate: "$65/hr",
+                rating: 4.9,
+                img: "https://i.ibb.co.com/HfKz1QK0/image.png",
+              },
+              {
+                name: "Sarah Connor",
+                role: "React Developer",
+                rate: "$80/hr",
+                rating: 5.0,
+                img: "https://i.ibb.co.com/Mk5bvwKv/image.png",
+              },
+              {
+                name: "John Doe",
+                role: "SEO Specialist",
+                rate: "$50/hr",
+                rating: 4.8,
+                img: "https://i.ibb.co.com/QZZvhNf/image.png",
+              },
+              {
+                name: "Emily Blunt",
+                role: "Content Writer",
+                rate: "$45/hr",
+                rating: 4.9,
+                img: "https://i.ibb.co.com/R49nK4FZ/image.png",
+              },
             ].map((freelancer, index) => (
               <div
                 key={index}
@@ -1333,21 +1472,37 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
               >
                 <div className="relative w-24 h-24 mx-auto mb-4">
                   <div className="absolute inset-0 bg-orange-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity transform scale-110"></div>
-                  <img src={freelancer.img} alt={freelancer.name} className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform" />
+                  <img
+                    src={freelancer.img}
+                    alt={freelancer.name}
+                    className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform"
+                  />
                   <div className="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-100 dark:border-gray-700 shadow-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 fill-current" />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{freelancer.name}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{freelancer.role}</p>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                  {freelancer.name}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  {freelancer.role}
+                </p>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="font-bold text-gray-900 dark:text-white">{freelancer.rating}</span>
-                  <span className="text-gray-400 text-sm">({Math.floor(Math.random() * 50) + 10} jobs)</span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {freelancer.rating}
+                  </span>
+                  <span className="text-gray-400 text-sm">
+                    ({Math.floor(Math.random() * 50) + 10} jobs)
+                  </span>
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
-                  <span className="font-bold text-gray-900 dark:text-white">{freelancer.rate}</span>
-                  <button className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">View Profile</button>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {freelancer.rate}
+                  </span>
+                  <button className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+                    View Profile
+                  </button>
                 </div>
               </div>
             ))}
@@ -1358,16 +1513,24 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       {/* 7. Trending Skills Section */}
       <section className="py-20 bg-white dark:bg-gray-800">
         <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
-             <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Trending <span className="text-orange-500">Skills</span>
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Skills that are in high demand right now
-                </p>
-             </div>
-             <a href="#" className="text-orange-500 font-semibold hover:underline mt-4 md:mt-0">View all skills</a>
+          <div
+            className="flex flex-col md:flex-row justify-between items-end mb-12"
+            data-aos="fade-up"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Trending <span className="text-orange-500">Skills</span>
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Skills that are in high demand right now
+              </p>
+            </div>
+            <a
+              href="#"
+              className="text-orange-500 font-semibold hover:underline mt-4 md:mt-0"
+            >
+              View all skills
+            </a>
           </div>
 
           <div className="flex flex-wrap gap-4">
@@ -1389,8 +1552,12 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                 data-aos-delay={index * 50}
                 className="group flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-700 hover:border-orange-500 transition-all cursor-pointer"
               >
-                <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">{skill.name}</span>
-                <span className="text-xs font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">{skill.growth}</span>
+                <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">
+                  {skill.name}
+                </span>
+                <span className="text-xs font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
+                  {skill.growth}
+                </span>
               </div>
             ))}
           </div>
@@ -1414,7 +1581,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                   Stay ahead of the curve
                 </h2>
                 <p className="text-orange-100 text-lg mb-8">
-                  Get the latest freelance tips, industry trends, and job opportunities delivered to your inbox.
+                  Get the latest freelance tips, industry trends, and job
+                  opportunities delivered to your inbox.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <input
@@ -1427,7 +1595,11 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                   </button>
                 </div>
                 <p className="text-orange-100 text-sm mt-4">
-                  We care about your data in our <a href="#" className="underline hover:text-white">privacy policy</a>.
+                  We care about your data in our{" "}
+                  <a href="#" className="underline hover:text-white">
+                    privacy policy
+                  </a>
+                  .
                 </p>
               </div>
               <div className="hidden md:flex justify-center">
@@ -1438,7 +1610,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-        <div className=" max-w-11/12 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2">
+      <div className=" max-w-11/12 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2">
         {/* 5. FAQ Section */}
         <section className="py-20  ">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -1597,59 +1769,37 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         >
           Building lasting partnerships through quality, trust, and innovation
         </p>
-
-        <Marquee className="">
-          <div className="flex items-center gap-x-25 mt-15">
-            <img
-              src={company}
-              alt="Company 1"
-              className="h-8 object-contain mr-4"
-            />
-            <img
-              src={company2}
-              alt="Company 2"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company3}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company4}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company5}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company6}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img src={company} alt="Company 1" className="h-8 object-contain" />
-            <img
-              src={company2}
-              alt="Company 2"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company3}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
-            <img
-              src={company4}
-              alt="Company 3"
-              className="h-8 dark:text-white object-contain"
-            />
+      </section>
+      {/* Trusted By Section */}
+      <section className="py-12 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-700">
+        <div className="text-center mb-8">
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
+            Trusted by 10,000+ Companies Worldwide
+          </p>
+        </div>
+        <Marquee
+          className=""
+          gradient={true}
+          gradientColor={
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? [31, 41, 55]
+              : [249, 250, 251]
+          }
+        >
+          <div className="flex items-center gap-x-16 mt-4 pr-16">
+            {[company, company2, company3, company4, company5, company6].map(
+              (logo, index) => (
+                <img
+                  key={index}
+                  src={logo}
+                  alt={`Company ${index + 1}`}
+                  className="h-8 md:h-10 object-contain opacity-50 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0"
+                />
+              )
+            )}
           </div>
         </Marquee>
       </section>
-
     </div>
   );
 };

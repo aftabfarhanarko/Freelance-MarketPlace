@@ -49,15 +49,14 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-20">
+    <div className="min-h-screen pt-30 bg-gray-50 dark:bg-gray-900 pb-20">
       {/* 1. Cover Section */}
-      <div className="relative h-48 md:h-64 bg-gradient-to-r from-orange-500 to-pink-600 overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-r from-orange-400 to-pink-500">
+         <div className="absolute inset-0 bg-black opacity-10"></div>
+         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
       </div>
 
-      <div className="w-11/12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+      <div className="w-11/12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* 2. Left Column: Profile Card */}
           <motion.div

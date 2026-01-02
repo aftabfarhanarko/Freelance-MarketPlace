@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAxiosData } from "../Hooks/DataFetch";
-import LodingSpinner from "../components/LodingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import Card1 from "../components/Cart/Card1";
 import JobNotFound from "../components/JobNotFound";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -21,7 +21,7 @@ const categories = [
   "UI/UX Design",
 ];
 
-const Alljobs = () => {
+const Alljobs = ({ isDashboard = false }) => {
   const [alljob, setAlljob] = useState([]);
   const [loding, setLoding] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -72,87 +72,98 @@ const Alljobs = () => {
     });
   };
 
-  if (loding) return <LodingSpinner />;
+  if (loding) return <LoadingSpinner />;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      {/* Background Decoration */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
-      </div>
+    <div className={`min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 ${isDashboard ? 'p-0' : ''}`}>
+      {/* Background Decoration - Only show if not dashboard */}
+      {!isDashboard && (
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+        </div>
+      )}
 
-      <div className="relative  max-w-11/12 mx-auto py-12 md:py-20">
+      <div className={`relative max-w-11/12 mx-auto ${isDashboard ? 'py-6' : 'py-12 md:py-20'}`}>
         
-        {/* ===== HERO SECTION ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium text-sm mb-6">
-            <Briefcase className="w-4 h-4" />
-            <span>Over {alljob.length}+ Jobs Available</span>
+        {/* ===== HERO SECTION - Different for Dashboard ===== */}
+        {isDashboard ? (
+          <div className="mb-8">
+             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Browse Jobs</h1>
+             <p className="text-gray-500 dark:text-gray-400">Find the perfect project for your skills.</p>
           </div>
+        ) : (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium text-sm mb-6">
+              <Briefcase className="w-4 h-4" />
+              <span>Over {alljob.length}+ Jobs Available</span>
+            </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white mb-6">
-            Find Your Next
-            <span className="relative inline-block px-4">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600">Dream Job</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-orange-200 dark:bg-orange-900/50 -z-0 skew-x-12"></span>
-            </span>
-          </h1>
-          
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Browse verified freelance & remote jobs tailored for your skills. 
-            Connect with top clients and start your next project today.
-          </p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white mb-6">
+              Find Your Next
+              <span className="relative inline-block px-4">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600">Dream Job</span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-orange-200 dark:bg-orange-900/50 -z-0 skew-x-12"></span>
+              </span>
+            </h1>
+            
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Browse verified freelance & remote jobs tailored for your skills. 
+              Connect with top clients and start your next project today.
+            </p>
 
-          {/* Search Bar */}
-          <div className="mt-10 max-w-2xl mx-auto relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
-            <div className="relative flex items-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-2 border border-gray-100 dark:border-gray-700">
-              <div className="pl-4 text-gray-400">
-                <Search className="w-6 h-6" />
+            {/* Search Bar - Public Version */}
+            <div className="mt-10 max-w-2xl mx-auto relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
+              <div className="relative flex items-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-2 border border-gray-100 dark:border-gray-700">
+                <div className="pl-4 text-gray-400">
+                  <Search className="w-6 h-6" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search by job title, keywords, or skills..."
+                  className="w-full px-4 py-3 bg-transparent text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none text-lg"
+                />
+                <button className="hidden sm:block px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-orange-500/25">
+                  Search
+                </button>
               </div>
-              <input
-                type="text"
-                placeholder="Search by job title, keywords, or skills..."
-                className="w-full px-4 py-3 bg-transparent text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none text-lg"
-              />
-              <button className="hidden sm:block px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-orange-500/25">
-                Search
-              </button>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
 
-        {/* ===== STATS BAR ===== */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
-        >
-          {[
-            { title: "Total Jobs", value: alljob.length > 0 ? `${alljob.length}+` : "Loading...", icon: "📊" },
-            { title: "Categories", value: categories.length, icon: "📑" },
-            { title: "Verified Clients", value: "100%", icon: "✅" },
-            { title: "Remote Friendly", value: "Yes", icon: "🌍" },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all text-center group"
-            >
-              <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {item.value}
-              </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide mt-1">{item.title}</p>
-            </div>
-          ))}
-        </motion.div>
+        {/* ===== STATS BAR - Hide on Dashboard to save space ===== */}
+        {!isDashboard && (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          >
+            {[
+              { title: "Total Jobs", value: alljob.length > 0 ? `${alljob.length}+` : "Loading...", icon: "📊" },
+              { title: "Categories", value: categories.length, icon: "📑" },
+              { title: "Verified Clients", value: "100%", icon: "✅" },
+              { title: "Remote Friendly", value: "Yes", icon: "🌍" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all text-center group"
+              >
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {item.value}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide mt-1">{item.title}</p>
+              </div>
+            ))}
+          </motion.div>
+        )}
 
         {/* ===== FILTERS & SORT ===== */}
         <motion.div 

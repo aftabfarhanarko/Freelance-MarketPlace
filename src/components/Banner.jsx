@@ -15,19 +15,19 @@ const Banner = () => {
   const slides = [
     {
       img: banner1,
-      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
+      title: ["Find the Perfect Freelance Services for Your Business"],
     },
     {
       img: banner6,
-      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
+      title: ["Hire the Best Talent from Around the World Today"],
     },
     {
       img: banner5,
-      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
+      title: ["Collaborate Securely and Get Work Done Efficiently"],
     },
     {
       img: banner4,
-      title: ["Mentioning how reliable the marketplace platform, Create a Job"],
+      title: ["Join a Community of Expert Freelancers and Clients"],
     },
   ];
 

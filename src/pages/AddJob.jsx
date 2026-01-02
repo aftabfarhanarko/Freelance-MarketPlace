@@ -18,17 +18,17 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
-import LodingSpinner from "../components/LodingSpinner";
-import usePrivetApi from "../Hooks/PriverAPI";
+import LoadingSpinner from "../components/LoadingSpinner";
+import usePrivateApi from "../Hooks/PrivateAPI";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
 
-const AddJod = () => {
+const AddJob = () => {
   const { user } = useAuth();
-  const priverApi = usePrivetApi();
+  const priverApi = usePrivateApi();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -77,7 +77,7 @@ const AddJod = () => {
   };
 
   if (!loading) {
-    return <LodingSpinner />;
+    return <LoadingSpinner />;
   }
 
   return (
@@ -355,4 +355,4 @@ const AddJod = () => {
   );
 };
 
-export default AddJod;
+export default AddJob;

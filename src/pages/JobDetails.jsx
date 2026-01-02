@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useAxiosData } from "../Hooks/DataFetch";
-import LodingSpinner from "../components/LodingSpinner";
+import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import { useAuth } from "../Hooks/UseAuth";
 import { motion, AnimatePresence } from "framer-motion";
@@ -94,7 +94,7 @@ const JobDetails = () => {
   };
 
   if (!loding) {
-    return <LodingSpinner></LodingSpinner>;
+    return <LoadingSpinner></LoadingSpinner>;
   }
 
   return (

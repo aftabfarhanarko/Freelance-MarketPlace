@@ -4,12 +4,14 @@ import { IoMdEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
+import usePrivateApi from "../../Hooks/PrivateAPI";
 
 const Login = () => {
   const [show, setShow] = useState(true);
   const { emailpasswordLoginUser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosScrure = usePrivateApi();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,8 +19,18 @@ const Login = () => {
     const password = e.target.password.value;
 
     emailpasswordLoginUser(email, password)
-      .then(() => {
+      .then(async (res) => {
         toast.success("Login Successful!");
+        console.log("User", res.user);
+        const userData = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photoURL: res?.user?.photoURL,
+          providerId: res?.user?.providerId,
+          createdAt: new Date().toISOString(),
+        };
+        const response = await axiosScrure.post("users", userData);
+        // console.log("API response:", response.data);
         navigate(location.state || "/");
       })
       .catch((err) => {
@@ -27,12 +39,32 @@ const Login = () => {
   };
 
   const handleGoogle = () => {
+    toast.loading("Logging in with Google...");
     googleLogin()
-      .then(() => {
+      .then(async (res) => {
+        toast.dismiss(); // remove loading
         toast.success("Login Successful!");
+        console.log("Google login res:", res);
+
+        const userData = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photoURL: res?.user?.photoURL,
+          providerId: res?.user?.providerId,
+          createdAt: new Date().toISOString(),
+        };
+          console.log(userData);
+          
+        // const response = await axiosScrure.post("users", userData);
+        // console.log("API response:", response.data);
+
+        // Confirm navigate is working
+        console.log("Navigating to:", location.state || "/");
         navigate(location.state || "/");
       })
       .catch((err) => {
+        toast.dismiss();
+        console.error("Google login error:", err);
         toast.error(err.code || "Google login failed");
       });
   };
@@ -109,7 +141,10 @@ const Login = () => {
               />
               <span className="ml-3 text-gray-600 dark:text-gray-300">
                 I agree to the{" "}
-                <a href="#" className="text-orange-600 dark:text-amber-400 hover:underline font-medium">
+                <a
+                  href="#"
+                  className="text-orange-600 dark:text-amber-400 hover:underline font-medium"
+                >
                   Terms & Conditions
                 </a>
               </span>
@@ -131,7 +166,9 @@ const Login = () => {
           {/* Divider */}
           <div className="flex items-center my-8">
             <div className="flex-1 h-px bg-gray-300 dark:bg-white/20"></div>
-            <span className="px-4 text-sm text-gray-500 dark:text-gray-400">or</span>
+            <span className="px-4 text-sm text-gray-500 dark:text-gray-400">
+              or
+            </span>
             <div className="flex-1 h-px bg-gray-300 dark:bg-white/20"></div>
           </div>
 
@@ -143,11 +180,27 @@ const Login = () => {
                      bg-white/50 dark:bg-white/5 hover:bg-white/70 dark:hover:bg-white/10 backdrop-blur-sm 
                      transition-all duration-300 group"
           >
-            <svg className="w-6 h-6" viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg">
-              <path d="M533.5 278.4c0-17.4-1.5-34.1-4.3-50.4H272v95.6h146.9c-6.4 34.8-26 64.3-55.9 84.1v69.8h90.1c52.7-48.5 83.4-120.1 83.4-199.1z" fill="#4285F4"/>
-              <path d="M272 544.3c72.5 0 133.5-23.9 178-64.9l-90.1-69.8c-25 16.8-57.1 26.7-87.9 26.7-67.5 0-124.9-45.6-145.5-107.1H34.9v67.3C79.1 488.3 168.6 544.3 272 544.3z" fill="#34A853"/>
-              <path d="M126.5 323.2c-10.6-31.3-10.6-65.4 0-96.7V159.2H34.9c-39.3 76.3-39.3 167.6 0 243.9l91.6-69.9z" fill="#FBBC05"/>
-              <path d="M272 107.7c37.1 0 70.5 12.8 96.8 33.9l72.7-72.7C406.2 24.7 348.5 0 272 0 168.6 0 79.1 56 34.9 140.4l91.6 67.3c20.6-61.5 78-107.7 145.5-107.7z" fill="#EA4335"/>
+            <svg
+              className="w-6 h-6"
+              viewBox="0 0 533.5 544.3"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M533.5 278.4c0-17.4-1.5-34.1-4.3-50.4H272v95.6h146.9c-6.4 34.8-26 64.3-55.9 84.1v69.8h90.1c52.7-48.5 83.4-120.1 83.4-199.1z"
+                fill="#4285F4"
+              />
+              <path
+                d="M272 544.3c72.5 0 133.5-23.9 178-64.9l-90.1-69.8c-25 16.8-57.1 26.7-87.9 26.7-67.5 0-124.9-45.6-145.5-107.1H34.9v67.3C79.1 488.3 168.6 544.3 272 544.3z"
+                fill="#34A853"
+              />
+              <path
+                d="M126.5 323.2c-10.6-31.3-10.6-65.4 0-96.7V159.2H34.9c-39.3 76.3-39.3 167.6 0 243.9l91.6-69.9z"
+                fill="#FBBC05"
+              />
+              <path
+                d="M272 107.7c37.1 0 70.5 12.8 96.8 33.9l72.7-72.7C406.2 24.7 348.5 0 272 0 168.6 0 79.1 56 34.9 140.4l91.6 67.3c20.6-61.5 78-107.7 145.5-107.7z"
+                fill="#EA4335"
+              />
             </svg>
             <span className="font-semibold text-gray-800 dark:text-gray-200">
               Continue with Google

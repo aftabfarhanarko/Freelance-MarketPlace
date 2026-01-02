@@ -4,11 +4,9 @@ import Home from "../pages/Home";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
 import ErrorPages from "../error/ErrorPages";
-import PrivetRouter from "./PrivetRouter";
 import Alljobs from "../pages/Alljobs";
 import MyAddedJobs from "../pages/MyAddedJobs";
 import MyAcceptedTasks from "../pages/MyAcceptedTasks";
-import AddJod from "../pages/AddJod";
 import JobDetails from "../pages/JobDetails";
 import UpdateJob from "../pages/UpdateJob";
 import Pricing from "../pages/Pricing";
@@ -17,6 +15,11 @@ import DashbordLayout from "../Layout/DashbordLayout";
 import Contact from "../pages/Dashbord/Contact";
 import Blog from "../pages/Dashbord/Blog";
 import Support from "../pages/Dashbord/Support";
+import Profile from "../pages/Profile";
+import AddJob from "../pages/AddJob";
+import TotalUser from "../pages/Dashbord/TotalUser";
+import TotalAcceptsJobs from "../pages/Dashbord/TotalAcceptsJobs";
+import AllJobs from "../pages/Dashbord/AllJobs";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/creatJob",
-        element: <AddJod></AddJod>,
+        element: <AddJob></AddJob>,
       },
       {
         path: "/myAddjobs",
@@ -63,6 +66,10 @@ export const router = createBrowserRouter([
         path: "/edit/:id",
         element: <UpdateJob></UpdateJob>,
       },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
 
       {
         path: "*",
@@ -79,16 +86,36 @@ export const router = createBrowserRouter([
         element: <Dashbord></Dashbord>,
       },
       {
-        path:"/dashbord/contact",
-        element: <Contact></Contact>
+        path: "/dashbord/contact",
+        element: <Contact></Contact>,
       },
       {
-        path:"/dashbord/blog",
-        element: <Blog></Blog>
+        path: "/dashbord/blog",
+        element: <Blog></Blog>,
       },
       {
-        path:"/dashbord/support",
-        element: <Support></Support>
+        path: "/dashbord/alljob",
+        element: <Alljobs></Alljobs>,
+      },
+      {
+        path: "/dashbord/support",
+        element: <Support></Support>,
+      },
+      {
+        path: "/dashbord/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/dashbord/totalUser",
+        element:<TotalUser></TotalUser>
+      },
+      {
+        path: "/dashbord/totalAcceptsJobs",
+        element:<TotalAcceptsJobs></TotalAcceptsJobs>
+      },
+      {
+        path: "/dashbord/allJobs",
+        element:<AllJobs></AllJobs>
       },
     ],
   },

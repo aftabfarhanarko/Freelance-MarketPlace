@@ -4,12 +4,11 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 const insert = axios.create({
-  
-  // baseURL: "https://server-freelance-marketplace.vercel.app/",
-  baseURL: "http://localhost:4000/",
+  baseURL: "https://server-freelance-marketplace.vercel.app/",
+  // baseURL: "http://localhost:4000/",
 });
 
-const usePrivetApi = () => {
+const usePrivateApi = () => {
   const { user, logOutUser } = useAuth();
   const navigetPage = useNavigate();
 
@@ -47,4 +46,4 @@ const usePrivetApi = () => {
   return insert;
 };
 
-export default usePrivetApi;
+export default usePrivateApi;

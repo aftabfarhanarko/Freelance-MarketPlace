@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../Hooks/UseAuth";
 import { useTheme } from "../Context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,6 +23,9 @@ import {
   User,
   Shield,
   HelpCircle,
+  BookOpen,
+  CheckCircle,
+  LifeBuoy,
 } from "lucide-react";
 
 const DashbordLayout = () => {
@@ -31,6 +34,7 @@ const DashbordLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const location = useLocation();
 
   const SidebarItem = ({ icon: Icon, label, active = false, to }) => (
     <Link
@@ -99,6 +103,7 @@ const DashbordLayout = () => {
 
         {/* Sidebar Links */}
         <div className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+          {/* Overview Section */}
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-2">
             Overview
           </div>
@@ -110,18 +115,61 @@ const DashbordLayout = () => {
           />
           <SidebarItem
             icon={Briefcase}
-            label="All Jobs"
+            label="Browse Jobs"
             to="/alljob"
+            active={location.pathname === "/alljob"}
           />
-          <SidebarItem icon={Users} label="Freelancers" />
-          <SidebarItem icon={FileText} label="Applications" />
 
+          {/* Job Management Section */}
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
-            Management
+            Platform Management
           </div>
-          <SidebarItem icon={MessageSquare} label="Messages" />
-          <SidebarItem icon={Calendar} label="Calendar" />
-          <SidebarItem icon={Settings} label="Settings" />
+          <SidebarItem 
+            icon={Users} 
+            label="Total Users" 
+            to="/dashbord/totalUser" 
+            active={location.pathname === "/dashbord/totalUser"}
+          />
+          <SidebarItem 
+            icon={CheckCircle} 
+            label="Total Accepted Jobs" 
+            to="/dashbord/totalAcceptsJobs" 
+            active={location.pathname === "/dashbord/totalAcceptsJobs"}
+          />
+          <SidebarItem 
+            icon={Briefcase} 
+            label="All Jobs" 
+            to="/dashbord/allJobs" 
+            active={location.pathname === "/dashbord/allJobs"}
+          />
+
+          {/* Resources Section */}
+          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
+            Resources
+          </div>
+          <SidebarItem 
+            icon={BookOpen} 
+            label="Blog & News" 
+            to="/dashbord/blog" 
+            active={location.pathname === "/dashbord/blog"}
+          />
+
+          {/* Support Section */}
+          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
+            Support
+          </div>
+          <SidebarItem 
+            icon={LifeBuoy} 
+            label="Help Center" 
+            to="/dashbord/support" 
+            active={location.pathname === "/dashbord/support"}
+          />
+          <SidebarItem 
+            icon={HelpCircle} 
+            label="Contact Support" 
+            to="/dashbord/contact" 
+            active={location.pathname === "/dashbord/contact"}
+          />
         </div>
 
         {/* User Profile Snippet */}
