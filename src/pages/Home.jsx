@@ -93,41 +93,9 @@ const Home = () => {
         id="New Sections add Prowerfull and reletev features"
         className="w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24 space-y-24"
       >
-        {/* 1. Trusted By Section */}
-        <div className="text-center" data-aos="fade-in">
-          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">
-            Trusted by 4,000+ companies
-          </p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-            <img
-              src={company}
-              alt="Company 1"
-              className="h-8 md:h-10 w-auto dark:invert"
-            />
-            <img
-              src={company2}
-              alt="Company 2"
-              className="h-8 md:h-10 w-auto dark:invert"
-            />
-            <img
-              src={company3}
-              alt="Company 3"
-              className="h-8 md:h-10 w-auto dark:invert"
-            />
-            <img
-              src={company4}
-              alt="Company 4"
-              className="h-8 md:h-10 w-auto dark:invert"
-            />
-            <img
-              src={company5}
-              alt="Company 5"
-              className="h-8 md:h-10 w-auto dark:invert"
-            />
-          </div>
-        </div>
+       
 
-        {/* 2. Success Metrics (Stats) */}
+        {/* 2. Success Metrics (Stats)
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-200 dark:divide-gray-700">
           <div className="text-center">
             <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -158,7 +126,7 @@ const Home = () => {
               Projects Completed
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* 3. Why Choose Us (Value Prop) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1573,7 +1541,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
           >
             {/* Abstract Shapes */}
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-yellow-300 opacity-20 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-amber-300 opacity-20 rounded-full blur-2xl"></div>
 
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
               <div>
