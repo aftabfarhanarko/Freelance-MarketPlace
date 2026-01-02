@@ -34,6 +34,8 @@ import {
   CheckCircle,
 } from "lucide-react";
 import usePrivetApi from "../../Hooks/PriverAPI";
+import StatCard from "./StartCard";
+import { useQuery } from "@tanstack/react-query";
 
 // Mock Data for Charts
 const revenueData = [
@@ -44,13 +46,6 @@ const revenueData = [
   { name: "May", revenue: 6890, jobs: 42 },
   { name: "Jun", revenue: 5390, jobs: 30 },
   { name: "Jul", revenue: 8490, jobs: 55 },
-];
-
-const categoryData = [
-  { name: "Design", value: 35 },
-  { name: "Development", value: 45 },
-  { name: "Marketing", value: 25 },
-  { name: "Writing", value: 15 },
 ];
 
 const projectStatusData = [
@@ -157,23 +152,10 @@ const quickActions = [
   },
 ];
 
-const Dashbord =  () => {
-    const axiosScrure = usePrivetApi()
+const Dashbord = () => {
   const { user } = useAuth();
   const { theme } = useTheme();
-  const [categories ,setCategories] = useState("")
-const fetchdata = async () => {
-  try {
-    const res = await axiosScrure.get("/categoryJob");
-    console.log(res.data);
-    setCategories(res.data);
-  } catch (error) {
-    console.error("Fetch error:", error);
-  }
-};
-console.log(categories);
-
-
+  const axiosScrure = usePrivetApi();
   const isDark = theme === "dark";
   const chartGridColor = isDark ? "#374151" : "#E5E7EB";
   const chartTextColor = isDark ? "#9CA3AF" : "#9CA3AF";
@@ -204,6 +186,35 @@ console.log(categories);
       transition: { type: "spring", stiffness: 100 },
     },
   };
+
+  // Daynamick Daya
+
+  const {
+    data: categories = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      const res = await axiosScrure.get("categoryJob");
+      return res.data;
+    },
+  });
+  const categoryData = categories.map((item) => ({
+    name: item.category,
+    value: item.count,
+  }));
+  const COLORS = [
+  "#F97316", // orange
+  "#3B82F6", // blue
+  "#10B981", // green
+  "#A855F7", // purple
+  "#EF4444", // red
+  "#17B8A6", // teal
+];
+
+
+  console.log(categoryData);
 
   return (
     <motion.div
@@ -513,37 +524,35 @@ console.log(categories);
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
               Jobs by Category
             </h3>
-            <div className="h-[200px] w-full">
+            <div className="h-[400px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={categoryData}
                   layout="vertical"
-                  margin={{ left: 20 }}
+                  margin={{ top: 10, right: 0, left: 40, bottom: 10 }}
                 >
                   <XAxis type="number" hide />
+
                   <YAxis
                     type="category"
                     dataKey="name"
-                    width={80}
-                    tick={{ fill: chartTextColor, fontSize: 12 }}
+                    width={120}
+                    tick={{ fill: chartTextColor, fontSize: 13 }}
                     axisLine={false}
                     tickLine={false}
                   />
+
                   <Tooltip
                     cursor={{ fill: "transparent" }}
                     contentStyle={tooltipStyle}
                     itemStyle={{ color: isDark ? "#fff" : "#111827" }}
                   />
-                  <Bar
-                    dataKey="value"
-                    fill="#F97316"
-                    radius={[0, 4, 4, 0]}
-                    barSize={20}
-                  >
+
+                  <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={22}>
                     {categoryData.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
-                        fill={index % 2 === 0 ? "#F97316" : "#F59E0B"}
+                        fill={COLORS[index % COLORS.length]}
                       />
                     ))}
                   </Bar>
@@ -603,44 +612,5 @@ console.log(categories);
     </motion.div>
   );
 };
-
-// Helper Component for Stats Cards
-const StatCard = ({
-  title,
-  value,
-  trend,
-  isPositive,
-  icon: Icon,
-  color,
-  bgColor,
-}) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-    <div className="flex justify-between items-start mb-4">
-      <div className={`p-3 rounded-xl ${bgColor} ${color}`}>
-        <Icon className="w-6 h-6" />
-      </div>
-      <div
-        className={`flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-lg ${
-          isPositive
-            ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
-            : "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400"
-        }`}
-      >
-        {isPositive ? (
-          <ArrowUpRight className="w-3 h-3" />
-        ) : (
-          <ArrowDownRight className="w-3 h-3" />
-        )}
-        {trend}
-      </div>
-    </div>
-    <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium">
-      {title}
-    </h3>
-    <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
-      {value}
-    </p>
-  </div>
-);
 
 export default Dashbord;

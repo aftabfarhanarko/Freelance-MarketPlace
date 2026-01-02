@@ -4,7 +4,9 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 const insert = axios.create({
-  baseURL: "https://server-freelance-marketplace.vercel.app/",
+  
+  // baseURL: "https://server-freelance-marketplace.vercel.app/",
+  baseURL: "http://localhost:4000/",
 });
 
 const usePrivetApi = () => {

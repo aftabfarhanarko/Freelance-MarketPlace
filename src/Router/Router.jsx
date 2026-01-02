@@ -14,6 +14,9 @@ import UpdateJob from "../pages/UpdateJob";
 import Pricing from "../pages/Pricing";
 import Dashbord from "../pages/Dashbord/Dashbord";
 import DashbordLayout from "../Layout/DashbordLayout";
+import Contact from "../pages/Dashbord/Contact";
+import Blog from "../pages/Dashbord/Blog";
+import Support from "../pages/Dashbord/Support";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +77,18 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Dashbord></Dashbord>,
+      },
+      {
+        path:"/dashbord/contact",
+        element: <Contact></Contact>
+      },
+      {
+        path:"/dashbord/blog",
+        element: <Blog></Blog>
+      },
+      {
+        path:"/dashbord/support",
+        element: <Support></Support>
       },
     ],
   },
