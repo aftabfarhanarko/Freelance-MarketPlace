@@ -12,7 +12,9 @@ import {
   TrendingUp,
   HelpCircle,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  ChevronRight,
+  Home
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
@@ -81,20 +83,38 @@ const AddJod = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Back Link */}
+        {/* Professional Page Header */}
         <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 mb-8 shadow-lg border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden"
         >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div className="flex items-center gap-4 relative z-10">
+            <div className="p-4 bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/40 rounded-2xl border border-orange-200 dark:border-orange-700/50 shadow-inner">
+              <Briefcase className="w-8 h-8 text-orange-600 dark:text-orange-400" />
+            </div>
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Post a New Job</h1>
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-1.5">
+                <Link to="/" className="flex items-center gap-1 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                  <Home className="w-3.5 h-3.5" />
+                  Home
+                </Link>
+                <ChevronRight className="w-4 h-4 text-gray-300 dark:text-gray-600" />
+                <span className="text-gray-900 dark:text-white font-medium bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs">Post Job</span>
+              </div>
+            </div>
+          </div>
+
           <Link
             to="/alljob"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400 font-medium mb-8 transition-colors group"
+            className="flex items-center gap-2 px-5 py-2.5 bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-xl transition-all font-medium group border border-gray-200 dark:border-gray-600 relative z-10"
           >
-            <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:shadow-md transition-all border border-gray-100 dark:border-gray-700">
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            </div>
-            <span>Back to All Jobs</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to Jobs</span>
           </Link>
         </motion.div>
 

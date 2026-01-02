@@ -11,8 +11,9 @@ const MainLayout = () => {
       <nav>
         <Navbar></Navbar>
       </nav>
-      {/* <div className="h-[89px]"></div> */}
-      <main className="pb-20">
+      {/* Spacer for fixed navbar */}
+      <div className="h-16"></div>
+      <main className="pb-20 min-h-[calc(100vh-300px)]">
         <Outlet></Outlet>
       </main>
 
