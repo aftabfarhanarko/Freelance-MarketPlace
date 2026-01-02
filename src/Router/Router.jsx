@@ -11,6 +11,7 @@ import MyAcceptedTasks from "../pages/MyAcceptedTasks";
 import AddJod from "../pages/AddJod";
 import JobDetails from "../pages/JobDetails";
 import UpdateJob from "../pages/UpdateJob";
+import Pricing from "../pages/Pricing";
 
 
 
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
        path:"/myAddjobs",
        element: <MyAddedJobs></MyAddedJobs>
+      },
+      {
+       path:"/pricing",
+       element: <Pricing />
       },
       {
        path:"/accecptjob",

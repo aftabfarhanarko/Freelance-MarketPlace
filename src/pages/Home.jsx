@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import {
   HiOutlineArrowLeft,
@@ -39,10 +39,40 @@ import pic6 from "../assets/women4.png";
 import CountUp from "react-countup";
 
 import ScrollTrigger from "react-scroll-trigger";
-import { Briefcase, Users, FileText, Building2 } from "lucide-react";
+import {
+  Briefcase,
+  Users,
+  FileText,
+  Building2,
+  CheckCircle,
+  Search,
+  DollarSign,
+  Star,
+  HelpCircle,
+  ChevronDown,
+  ChevronUp,
+  Code,
+  PenTool,
+  Monitor,
+  Smartphone,
+  Globe,
+  Database,
+  Clock,
+  MapPin,
+  Check,
+  Download,
+  Shield,
+  Zap,
+} from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 const Home = () => {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -57,13 +87,13 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
-      <section className="w-11/12 mx-auto mt-20 md:mt-35 mb-15 md:mb-20">
+      <section className=" max-w-11/12 mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
         <div>
           <h1
             data-aos="fade-up"
             data-aos-duration="1500"
             data-aos-easing="ease-out-cubic"
-            className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+            className="text-3xl md:text-4xl font-bold text-center opacity-0 text-gray-900 dark:text-white"
           >
             Need something done?
           </h1>
@@ -71,31 +101,26 @@ const Home = () => {
             data-aos="fade-up"
             data-aos-duration="2500"
             data-aos-easing="ease-out-cubic"
-            className="text-md md:text-lg text-center mt-2 mb-12"
+            className="text-base md:text-lg text-center mt-3 mb-12 text-gray-600 dark:text-gray-300"
           >
             Most viewed and all-time top-selling services
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {/* Card 1 */}
             <div
               data-aos="fade-up"
-              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
-transition-transform transition-shadow transition-colors
-duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
+              className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-8 shadow-sm rounded-2xl flex flex-col text-center 
+transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             >
-              <div
-                className="mx-auto w-11 h-11 text-orange-500 transition-transform duration-500
-                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
-              >
-                <HiOutlineUsers className="w-full h-full" />
+              <div className="mx-auto w-14 h-14 text-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <HiOutlineUsers className="w-7 h-7" />
               </div>
 
-              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors group-hover:text-orange-500">
                 Post a job
               </h2>
-              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
                 Write your project details clearly and attract the right talent
                 instantly.
               </p>
@@ -105,22 +130,17 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform "
             <div
               data-aos="fade-up"
               data-aos-delay="100"
-              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
-transition-transform transition-shadow transition-colors
-duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
+              className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-8 shadow-sm rounded-2xl flex flex-col text-center 
+transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             >
-              <div
-                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
-                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
-              >
-                <FaRegHandshake className="w-full h-full" />
+              <div className="mx-auto w-14 h-14 text-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <FaRegHandshake className="w-7 h-7" />
               </div>
 
-              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors group-hover:text-orange-500">
                 Choose freelancers
               </h2>
-              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
                 Browse verified profiles, compare experience, and select the
                 best fit for your work.
               </p>
@@ -130,22 +150,17 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <div
               data-aos="fade-up"
               data-aos-delay="200"
-              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
-transition-transform transition-shadow transition-colors
-duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
+              className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-8 shadow-sm rounded-2xl flex flex-col text-center 
+transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             >
-              <div
-                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
-                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
-              >
-                <HiOutlineCreditCard className="w-full h-full" />
+              <div className="mx-auto w-14 h-14 text-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <HiOutlineCreditCard className="w-7 h-7" />
               </div>
 
-              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors group-hover:text-orange-500">
                 Pay safely
               </h2>
-              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
                 All payments are protected with secure escrow, released only
                 when you're satisfied.
               </p>
@@ -155,22 +170,17 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             <div
               data-aos="fade-up"
               data-aos-delay="300"
-              className="border px-5 border-gray-300 shadow-md rounded-lg flex flex-col text-center py-8
-transition-transform transition-shadow transition-colors
-duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
+              className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-8 shadow-sm rounded-2xl flex flex-col text-center 
+transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             >
-              <div
-                className="mx-auto w-14 h-14 text-orange-500 transition-transform duration-500
-                            group-hover:scale-110 group-hover:-rotate-3 animate-float flex items-center justify-center text-3xl"
-              >
-                <HiOutlineSupport className="w-full h-full" />
+              <div className="mx-auto w-14 h-14 text-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-full flex items-center justify-center text-3xl mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                <HiOutlineSupport className="w-7 h-7" />
               </div>
 
-              <h2 className="text-lg font-medium mt-4 transition-colors duration-500 group-hover:text-orange-500">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 transition-colors group-hover:text-orange-500">
                 We’re here to help
               </h2>
-              <p className=" text-md mt-2 transition-opacity duration-700 group-hover:opacity-80">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
                 Our support team is available anytime to guide you, answer
                 questions, and assist.
               </p>
@@ -179,65 +189,55 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-     
-
-      <section className="mb-15 md:mb-20 lg:w-8/12 px-2 mx-auto">
-        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-30 justify-between items-center">
+      <section className="mb-16 md:mb-24 max-w-7xl mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-24 justify-between items-center">
           {/* Left side text animation */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-col justify-center space-y-3 text-center md:text-left w-full md:w-1/2"
+            className="flex flex-col justify-center space-y-5 text-center lg:text-left w-full lg:w-1/2"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
               Experience a quicker, simpler
-              <br />
-              <span className="mt-1 block">more effective job search</span>
+              <span className="block text-orange-500 mt-2">
+                more effective job search
+              </span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Our platform offers intuitive tools, personalized job
               recommendations, and valuable resources to streamline your job
               search process.
             </p>
 
-            <div className="mt-3 space-y-2 text-gray-600 dark:text-gray-300">
-              <p className="text-sm sm:text-base md:text-lg">
-                Easily browse job listings with smart filters
-              </p>
-              <p className="text-sm sm:text-base md:text-lg">
-                Receive personalized job suggestions
-              </p>
-              <p className="text-sm sm:text-base md:text-lg">
-                Access resources to improve your resume and ace interviews.
-              </p>
+            <div className="space-y-3 text-gray-700 dark:text-gray-200">
+              <div className="flex items-center justify-center lg:justify-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                <p className="text-base sm:text-lg font-medium">
+                  Easily browse job listings with smart filters
+                </p>
+              </div>
+              <div className="flex items-center justify-center lg:justify-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                <p className="text-base sm:text-lg font-medium">
+                  Receive personalized job suggestions
+                </p>
+              </div>
+              <div className="flex items-center justify-center lg:justify-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                <p className="text-base sm:text-lg font-medium">
+                  Access resources to improve your resume
+                </p>
+              </div>
             </div>
 
             {/* CTA button */}
-            <button className="relative flex mt-5 mx-auto md:mx-0 w-[180px] sm:w-[195px] items-center gap-1 py-1 px-10 sm:px-12 border-2 border-orange-500 font-semibold text-[15px] sm:text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* Left arrow */}
-              <svg
-                viewBox="0 0 24 24"
-                className="absolute left-[-25%] w-5 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-2 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span className="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span className="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                className="absolute right-2 w-5 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
+            {/* <button className="relative flex mt-6 mx-auto lg:mx-0 items-center gap-2 py-3 px-8 border-2 border-orange-500 font-bold text-lg text-orange-500 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-white group">
+              <span className="relative z-10">View Profile</span>
+              <HiOutlineArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+            </button> */}
           </motion.div>
 
           {/* Right side image animation */}
@@ -246,33 +246,35 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true, amount: 0.5 }}
-            className="relative w-full md:w-1/2 flex justify-center"
+            className="relative w-full lg:w-1/2 flex justify-center"
           >
-            <img
-              src={news}
-              alt="News main"
-              className="w-full h-auto rounded-lg max-w-sm sm:max-w-md md:max-w-lg mx-auto"
-            />
-            <img
-              src={news2}
-              alt="News secondary"
-              className="absolute right-2 sm:right-4 top-6 sm:top-10 border bg-white border-base-300 rounded-lg w-20 sm:w-28 md:w-36"
-            />
-            <img
-              src={news3}
-              alt="News tertiary"
-              className="absolute left-2 sm:left-4 bottom-6 sm:bottom-10 border border-gray-300 rounded-2xl w-20 sm:w-28 md:w-40"
-            />
+            <div className="relative w-full max-w-lg mx-auto">
+              <img
+                src={news}
+                alt="News main"
+                className="w-full h-auto rounded-2xl shadow-2xl"
+              />
+              <img
+                src={news2}
+                alt="News secondary"
+                className="absolute -right-4 md:-right-8 top-10 border-4 border-white dark:border-gray-800 bg-white rounded-xl w-24 sm:w-32 shadow-xl animate-bounce-slow"
+              />
+              <img
+                src={news3}
+                alt="News tertiary"
+                className="absolute -left-4 md:-left-8 bottom-10 border-4 border-white dark:border-gray-800 bg-white rounded-xl w-24 sm:w-32 shadow-xl animate-bounce-slow-delay"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto mb-15 md:mb-20">
+      <section className="max-w-11/12 mx-auto mb-16 md:mb-24">
         <h1
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
-          className="text-3xl md:text-4xl font-semibold text-center "
+          className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white"
         >
           Our Blog
         </h1>
@@ -280,9 +282,9 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           data-aos="fade-up"
           data-aos-duration="1500"
           data-aos-easing="ease-out-cubic"
-          className="text- md:text-lg text-center mt-2 mb-12"
+          className="text-base md:text-lg text-center mt-3 mb-12 text-gray-600 dark:text-gray-300"
         >
-          Aliquam lacinia diam quis lacus euismod
+          See how you can up your career game
         </p>
 
         <motion.div
@@ -290,7 +292,7 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {/* Card 1 */}
           <motion.div
@@ -300,39 +302,39 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             transition={{ duration: 0.7, delay: 0.1 }}
             whileHover={{
               y: -12,
-              scale: 1.03,
+              scale: 1.02,
               transition: { duration: 0.3 },
             }}
-            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
+            className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
             {/* Glow Effect on Hover */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             {/* Image with Parallax Zoom */}
             <motion.div
-              className="overflow-hidden"
+              className="overflow-hidden h-52 w-full"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6 }}
             >
               <img
                 src={blog1}
                 alt="Instagram Marketing"
-                className="w-full  h-60 object-cover"
+                className="w-full h-full object-cover"
               />
             </motion.div>
 
-            <div className=" px-3.5 py-2.5  md:p-6  md:space-y-3">
+            <div className="p-5 flex flex-col h-[calc(100%-13rem)]">
               <motion.details
                 className="collapse bg-transparent border-none"
                 initial={false}
               >
                 <motion.summary
-                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none min-h-0"
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.3 }}
                 >
                   <motion.h2
-                    className="text-lg mb-2 text-orange-500 font-bold"
+                    className="text-sm font-bold text-orange-500 mb-2 uppercase tracking-wide"
                     initial={{ x: -20 }}
                     whileInView={{ x: 0 }}
                     transition={{ duration: 0.5 }}
@@ -340,18 +342,17 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
                     December 2, 2022
                   </motion.h2>
                   <motion.p
-                    className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors"
+                    className="text-gray-900 dark:text-white text-lg font-bold hover:text-orange-600 transition-colors line-clamp-2"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    Front becomes an official Instagram Marketing Partner{" "}
-                    <br></br>
+                    Front becomes an official Instagram Marketing Partner
                   </motion.p>
                 </motion.summary>
 
                 <motion.div
-                  className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200"
+                  className="collapse-content text-sm text-gray-600 dark:text-gray-300 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700"
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -374,37 +375,37 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            whileHover={{ y: -12, scale: 1.03 }}
-            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
+            whileHover={{ y: -12, scale: 1.02 }}
+            className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
-              className="overflow-hidden"
+              className="overflow-hidden h-52 w-full"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6 }}
             >
               <img
                 src={blog2}
                 alt="Work from Home"
-                className="w-full h-60 object-cover"
+                className="w-full h-full object-cover"
               />
             </motion.div>
 
-            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
+            <div className="p-5 flex flex-col h-[calc(100%-13rem)]">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
-                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none min-h-0"
                   whileHover={{ x: 4 }}
                 >
-                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
+                  <motion.h2 className="text-sm font-bold text-orange-500 mb-2 uppercase tracking-wide">
                     June 14, 2024
                   </motion.h2>
-                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
+                  <motion.p className="text-gray-900 dark:text-white text-lg font-bold hover:text-orange-600 transition-colors line-clamp-2">
                     Start an online business and work from home
                   </motion.p>
                 </motion.summary>
-                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                <motion.div className="collapse-content text-sm text-gray-600 dark:text-gray-300 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                   <p>
                     Launching your own online business lets you unlock the
                     freedom to work from anywhere in the world with just a
@@ -421,37 +422,37 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            whileHover={{ y: -12, scale: 1.03 }}
-            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
+            whileHover={{ y: -12, scale: 1.02 }}
+            className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
-              className="overflow-hidden"
+              className="overflow-hidden h-52 w-full"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6 }}
             >
               <img
                 src={blog3}
                 alt="Online Business Guide"
-                className="w-full h-60 object-cover"
+                className="w-full h-full object-cover"
               />
             </motion.div>
 
-            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
+            <div className="p-5 flex flex-col h-[calc(100%-13rem)]">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
-                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none min-h-0"
                   whileHover={{ x: 4 }}
                 >
-                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
+                  <motion.h2 className="text-sm font-bold text-orange-500 mb-2 uppercase tracking-wide">
                     December 29, 2023
                   </motion.h2>
-                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
+                  <motion.p className="text-gray-900 dark:text-white text-lg font-bold hover:text-orange-600 transition-colors line-clamp-2">
                     Start an online business and work from home right now
                   </motion.p>
                 </motion.summary>
-                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                <motion.div className="collapse-content text-sm text-gray-600 dark:text-gray-300 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                   <p>
                     Start your online business today and enjoy the freedom of
                     working from home. No office, no boss, just you and your
@@ -468,183 +469,66 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            whileHover={{ y: -12, scale: 1.03 }}
-            className="group relative max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-orange-200"
+            whileHover={{ y: -12, scale: 1.02 }}
+            className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
-              className="overflow-hidden"
+              className="overflow-hidden h-52 w-full"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.6 }}
             >
               <img
                 src={blog4}
-                alt="Complete Guide"
-                className="w-full h-60 object-cover"
+                alt="Virtual Assistant"
+                className="w-full h-full object-cover"
               />
             </motion.div>
 
-            <div className="px-3.5 py-2.5  md:p-6  md:space-y-3">
+            <div className="p-5 flex flex-col h-[calc(100%-13rem)]">
               <motion.details className="collapse bg-transparent border-none">
                 <motion.summary
-                  className="collapse-title p-0 font-semibold cursor-pointer list-none"
+                  className="collapse-title p-0 font-semibold cursor-pointer list-none min-h-0"
                   whileHover={{ x: 4 }}
                 >
-                  <motion.h2 className="text-lg mb-2 text-orange-500 font-bold">
-                    December 19, 2024
+                  <motion.h2 className="text-sm font-bold text-orange-500 mb-2 uppercase tracking-wide">
+                    January 5, 2024
                   </motion.h2>
-                  <motion.p className="text-gray-700 text-base font-medium hover:text-pink-600 transition-colors">
-                    Start an online business and work home guide.
+                  <motion.p className="text-gray-900 dark:text-white text-lg font-bold hover:text-orange-600 transition-colors line-clamp-2">
+                    How to become a Virtual Assistant and earn money
                   </motion.p>
                 </motion.summary>
-                <motion.div className="collapse-content text-sm text-gray-600 mt-3 pt-3 border-t border-gray-200">
+                <motion.div className="collapse-content text-sm text-gray-600 dark:text-gray-300 mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                   <p>
-                    Step-by-step complete guide to launch your online business
-                    from home. From idea to income – everything covered!
+                    Virtual assistants are in high demand. Learn the skills you
+                    need to start your career and find your first clients today.
                   </p>
                 </motion.div>
               </motion.details>
             </div>
           </motion.div>
         </motion.div>
-      </section>
 
-      {/* res */}
-      <section className="w-full bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-16 sm:py-20 px-5 mb-10 md:mb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row justify-between items-center gap-10 lg:gap-12">
-          {/* Left Side Animation */}
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
-            className="flex-1 text-center lg:text-left w-full"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 leading-snug">
-              Find the Perfect Freelancer for Your Next Big Project
-            </h2>
-
-            <p className="text-sm sm:text-base md:text-lg mb-8 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0">
-              Freeio is a modern freelance marketplace that connects talented
-              professionals with clients around the world. Whether you’re a
-              designer, developer, writer, or marketer — we help you grow your
-              business and showcase your skills.
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 justify-center lg:justify-start"
-            >
-              <div className="text-center lg:text-left">
-                <h3 className="text-2xl font-semibold text-orange-500">
-                  4.9/
-                  <CountUp start={0} end={5} duration={2} />
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Clients rate professionals on Freeio
-                </p>
-              </div>
-
-              <div className="text-center lg:text-left">
-                <h3 className="text-2xl font-semibold text-orange-500">
-                  <CountUp start={0} end={95} duration={2} />%
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  90% of customers are satisfied
-                </p>
-              </div>
-
-              <div className="text-center lg:text-left">
-                <h3 className="text-2xl font-semibold text-orange-500">
-                  Award Winner
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  G2’s 2025 Best Software Awards
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Side Animation */}
-          <motion.div
-            initial={{ x: 100, opacity: 0, scale: 0.9 }}
-            whileInView={{ x: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="flex-1 w-full flex flex-col items-center"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md mx-auto hover:shadow-2xl transition-all duration-500"
-            >
-              <h4 className="text-orange-500 font-semibold mb-3 text-lg sm:text-xl">
-                Great Work
-              </h4>
-              <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-6">
-                Discover a global network of experts ready to bring your ideas
-                to life. From startups to enterprises, we make it simple to
-                hire, manage, and pay freelancers — all in one secure platform.
-              </p>
-
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.8 }}
-                className="flex items-center justify-center lg:justify-start gap-3"
-              >
-                <img
-                  src="https://i.pravatar.cc/50?img=5"
-                  alt="user"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-white">
-                    Courtney Henry
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Web Designer
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Bottom Slider Arrows */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="flex justify-center items-center gap-4 sm:gap-6 mt-6"
-            >
-              <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                <HiOutlineArrowLeft className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
-              </button>
-              <div className="flex gap-2">
-                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-                <span className="w-2 h-2 rounded-full bg-gray-900"></span>
-                <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-              </div>
-              <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-                <HiOutlineArrowRight className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
-              </button>
-            </motion.div>
-          </motion.div>
+        <div className="flex justify-center mt-12 md:mt-16">
+          <div className="flex gap-2">
+            <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+            <span className="w-2 h-2 rounded-full bg-gray-900"></span>
+            <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+          </div>
+          <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+            <HiOutlineArrowRight className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
+          </button>
         </div>
       </section>
 
       {/* res */}
-      <section className="w-11/12 mx-auto mb-15 md:mb-20  ">
+      <section id="job-finnd sections" className="max-w-11/12 mx-auto mb-16 md:mb-24">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
           data-aos-easing="ease-out-cubic"
-          className="text-3xl md:text-4xl font-semibold text-center opacity-0"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white"
         >
           Top Rated Performer
         </h1>
@@ -652,658 +536,200 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
           data-aos="fade-up"
           data-aos-duration="2000"
           data-aos-easing="ease-out-cubic"
-          className="text-md md:text-lg text-center mt-2 mb-12"
+          className="text-base md:text-lg text-center mt-3 mb-12 text-gray-600 dark:text-gray-300"
         >
           Meet the professionals behind every successful project
         </p>
 
-        <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-12    mx-auto w-full">
-          <div
-            data-aos="zoom-in"
-            className=" mx-auto w-[360px] md:justify-items-normal bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src="https://i.pravatar.cc/150?img=32"
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto w-full">
+          {[
+            {
+              name: "Robert Fox",
+              role: "Nursing Assistant",
+              img: "https://i.pravatar.cc/150?img=32",
+              rating: "4.9",
+              reviews: "595",
+              skills: ["Figma", "Sketch", "HTML5"],
+              location: "London",
+              rate: "$90 / hr",
+              success: "98%",
+              aos: "zoom-in",
+            },
+            {
+              name: "Darrell Steward",
+              role: "Product Designer",
+              img: pic3,
+              rating: "4.9",
+              reviews: "2195",
+              skills: ["React", "Sketch", "JS"],
+              location: "London",
+              rate: "$120 / hr",
+              success: "98%",
+              aos: "zoom-in-left",
+            },
+            {
+              name: "Noah Collins",
+              role: "Backend Developer",
+              img: pic5,
+              rating: "4.8",
+              reviews: "495",
+              skills: ["Go", "Docker", "C++"],
+              location: "London",
+              rate: "$320 / hr",
+              success: "78%",
+              aos: "zoom-in-up",
+            },
+            {
+              name: "Isabella Hayes",
+              role: "Data Scientist",
+              img: pic6,
+              rating: "4.9",
+              reviews: "7195",
+              skills: ["C#", "Python", "Java"],
+              location: "London",
+              rate: "$720 / hr",
+              success: "98%",
+              aos: "fade-up",
+            },
+            {
+              name: "Korim Bangima",
+              role: "Full Stack Dev",
+              img: pic1,
+              rating: "4.5",
+              reviews: "295",
+              skills: ["Figma", "SQL", "Node.js"],
+              location: "London",
+              rate: "$50 / hr",
+              success: "58%",
+              aos: "fade-down-right",
+            },
+            {
+              name: "JOS Don",
+              role: "UI/UX Designer",
+              img: pic2,
+              rating: "4.9",
+              reviews: "675",
+              skills: ["Figma", "C++", "MongoDB"],
+              location: "London",
+              rate: "$320 / hr",
+              success: "78%",
+              aos: "fade-up-right",
+            },
+            {
+              name: "Merry Doms",
+              role: "Project Manager",
+              img: pic4,
+              rating: "4.8",
+              reviews: "1675",
+              skills: ["Agile", "C++", "PHP"],
+              location: "London",
+              rate: "$1320 / hr",
+              success: "88%",
+              aos: "zoom-in-right",
+            },
+            {
+              name: "Limu Islam",
+              role: "Market Analyst",
+              img: pic7,
+              rating: "4.9",
+              reviews: "975",
+              skills: ["SEO", "C++", "PHP"],
+              location: "London",
+              rate: "$170 / hr",
+              success: "48%",
+              aos: "zoom-in-right",
+            },
+          ].map((performer, index) => (
+            <div
+              key={index}
+              data-aos={performer.aos}
+              className="mx-auto w-full max-w-[360px] bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden"
+            >
+              {/* Hover Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              Robert Fox
-            </h3>
-            <p className="text-sm text-orange-500">Nursing Assistant</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">4.9</span>
-              <span className="text-gray-400">(595 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Figma
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Sketch
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                HTML5
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
+              {/* Profile Image */}
+              <div className="relative mb-4">
+                <div className="p-1 rounded-full border-2 border-gray-100 dark:border-gray-700 group-hover:border-orange-500 transition-colors duration-300">
+                  <img
+                    src={performer.img}
+                    alt={performer.name}
+                    className="w-24 h-24 rounded-full object-cover"
+                  />
+                </div>
+                <span className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full shadow-sm"></span>
               </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$90 / hr</p>
+
+              {/* Name & Role */}
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors duration-300 text-center">
+                {performer.name}
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3 text-center">
+                {performer.role}
+              </p>
+
+              {/* Rating */}
+              <div className="flex items-center gap-2 bg-orange-50 dark:bg-orange-900/20 px-3 py-1 rounded-full mb-4">
+                <span className="text-orange-500 text-sm">★</span>
+                <span className="font-bold text-gray-900 dark:text-white text-sm">
+                  {performer.rating}
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  ({performer.reviews} reviews)
+                </span>
               </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%98</p>
+
+              {/* Skills */}
+              <div className="flex flex-wrap justify-center gap-2 mb-6 w-full">
+                {performer.skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-lg text-xs font-semibold border border-transparent hover:border-orange-200 dark:hover:border-orange-900 transition-all"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            </div>
 
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="zoom-in-left"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic3}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Upwork</h3>
-            <p className="text-sm text-orange-500">
-              Darrell Steward Jacob Howard
-            </p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">6.9</span>
-              <span className="text-gray-400">(2195 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                React
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Sketch
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                JS
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
+              {/* Info Grid */}
+              <div className="grid grid-cols-3 w-full border-t border-gray-100 dark:border-gray-700 pt-4 mb-6">
+                <div className="text-center px-2 border-r border-gray-100 dark:border-gray-700">
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">
+                    Location
+                  </p>
+                  <p className="font-bold text-gray-900 dark:text-white text-sm">
+                    {performer.location}
+                  </p>
+                </div>
+                <div className="text-center px-2 border-r border-gray-100 dark:border-gray-700">
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">
+                    Rate
+                  </p>
+                  <p className="font-bold text-gray-900 dark:text-white text-sm">
+                    {performer.rate}
+                  </p>
+                </div>
+                <div className="text-center px-2">
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-1">
+                    Success
+                  </p>
+                  <p className="font-bold text-gray-900 dark:text-white text-sm">
+                    {performer.success}
+                  </p>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$120 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%68</p>
-              </div>
+
+              {/* View Profile Button */}
+              <button className="w-full py-3 rounded-xl font-bold text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm hover:shadow-orange-500/30 flex items-center justify-center gap-2">
+                View Profile{" "}
+                <HiOutlineArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
             </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="zoom-in-up"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic5}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Online</h3>
-            <p className="text-sm text-orange-500">Noah Collins</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">3.9</span>
-              <span className="text-gray-400">(495 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Go
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Doker
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                C++
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$320 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%78</p>
-              </div>
-            </div>
-
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="fade-up"
-            className=" mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic6}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              Official
-            </h3>
-            <p className="text-sm text-orange-500">Isabella Hayes</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">8.9</span>
-              <span className="text-gray-400">(7195 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                C#
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Python
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Java
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$720 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%98</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="fade-down-right"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic1}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">Fiver</h3>
-            <p className="text-sm text-orange-500">Korim Bangima</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">3.9</span>
-              <span className="text-gray-400">(295 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Figma
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                SQL
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Node.js
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$50 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%58</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="fade-up-right"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic2}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              Market Place
-            </h3>
-            <p className="text-sm text-orange-500">JOS Don</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">4.9</span>
-              <span className="text-gray-400">(675 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                Figma
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                C++
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                MongoDb
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$320 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%78</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="zoom-in-right"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic4}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              Official
-            </h3>
-            <p className="text-sm text-orange-500">Merry Doms</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">3.9</span>
-              <span className="text-gray-400">(1675 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                ALl
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                C++
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                HP
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$1320 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%88</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div
-            data-aos="zoom-in-right"
-            className="mx-auto w-[360px] bg-white rounded-2xl shadow-md border border-gray-100 p-6 flex flex-col items-center transition-all duration-300 hover:shadow-lg"
-          >
-            {/* Profile Image */}
-            <div className="relative">
-              <img
-                src={pic7}
-                alt="Robert Fox"
-                className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-            </div>
-
-            {/* Name & Role */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              Market{" "}
-            </h3>
-            <p className="text-sm text-orange-500">Limu Islam</p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1 mt-2 text-sm text-gray-700">
-              <span className="text-yellow-400 text-base">★</span>
-              <span className="font-medium">5.9</span>
-              <span className="text-gray-400">(975 reviews)</span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-4">
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                New
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                C++
-              </span>
-              <span className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
-                PHP
-              </span>
-            </div>
-
-            {/* Info Section */}
-            <div className="grid grid-cols-3 gap-4 text-sm mt-5 text-gray-700">
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Location</p>
-                <p className="font-semibold">London</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Rate</p>
-                <p className="font-semibold">$170 / hr</p>
-              </div>
-              <div className="text-center">
-                <p className="text-gray-400 text-xs">Job Success</p>
-                <p className="font-semibold">%48</p>
-              </div>
-            </div>
-
-            {/* View Profile Button */}
-            <button class="relative flex mt-5   items-center gap-1 py-1 px-12 border-2 border-orange-500 font-semibold text-[16px] text-orange-500 rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group bg-transparent">
-              {/* <!-- Left arrow --> */}
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute left-[-25%] w-6 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:left-4 group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-
-              <span class="relative z-10 -translate-x-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-2 group-hover:text-white">
-                View Profile
-              </span>
-
-              <span class="absolute inset-0 m-auto w-[20px] h-[20px] bg-orange-500 rounded-full opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:w-[220px] group-hover:h-[220px] group-hover:opacity-100"></span>
-
-              <svg
-                viewBox="0 0 24 24"
-                class="absolute right-4 w-6 fill-orange-500 z-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:right-[-25%] group-hover:fill-white"
-              >
-                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-              </svg>
-            </button>
-          </div>
+          ))}
         </div>
       </section>
 
-      <section className=" w-12/12 mx-auto  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
+      <section className=" max-w-11/12  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
         <div className="w-11/12 mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
@@ -1530,7 +956,445 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
         </div>
       </section>
 
-      <section className="w-11/12 mx-auto ">
+      {/* 1. How It Works Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              How It <span className="text-orange-500">Works</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Get your work done in 4 easy steps. Safe, secure, and fast.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <Users className="w-10 h-10 text-orange-500" />,
+                title: "Create Account",
+                desc: "Sign up for free, set up your profile, and browse opportunities.",
+              },
+              {
+                icon: <Search className="w-10 h-10 text-orange-500" />,
+                title: "Search Jobs",
+                desc: "Filter by skills, price, and location to find the perfect match.",
+              },
+              {
+                icon: <CheckCircle className="w-10 h-10 text-orange-500" />,
+                title: "Hire or Work",
+                desc: "Clients hire the best talent. Freelancers start working.",
+              },
+              {
+                icon: <DollarSign className="w-10 h-10 text-orange-500" />,
+                title: "Safe Payment",
+                desc: "Payments are held in escrow until the job is approved.",
+              },
+            ].map((step, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="relative p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 text-center hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="w-20 h-20 mx-auto bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 transition-transform">
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  {step.desc}
+                </p>
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 border-t-2 border-dashed border-gray-300 dark:border-gray-600 transform -translate-y-1/2"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Popular Categories Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Popular <span className="text-orange-500">Categories</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Browse top talent by category
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: "Development", icon: <Code />, count: "12k+ Jobs" },
+              { name: "Design", icon: <PenTool />, count: "8k+ Jobs" },
+              { name: "Marketing", icon: <Monitor />, count: "5k+ Jobs" },
+              { name: "Writing", icon: <FileText />, count: "3k+ Jobs" },
+              { name: "Mobile Apps", icon: <Smartphone />, count: "4k+ Jobs" },
+              { name: "SEO", icon: <Globe />, count: "6k+ Jobs" },
+              { name: "Data Entry", icon: <Database />, count: "2k+ Jobs" },
+              { name: "Business", icon: <Briefcase />, count: "7k+ Jobs" },
+            ].map((cat, index) => (
+              <div
+                key={index}
+                data-aos="zoom-in"
+                data-aos-delay={index * 50}
+                className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 transition-all cursor-pointer group"
+              >
+                <div className="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                  {cat.icon}
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
+                  {cat.name}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {cat.count}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Featured Jobs Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex flex-col md:flex-row justify-between items-center mb-12"
+            data-aos="fade-up"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                Featured <span className="text-orange-500">Jobs</span>
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Latest opportunities from top companies
+              </p>
+            </div>
+            <button className="hidden md:flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+              View All Jobs <HiOutlineArrowRight />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Senior UI/UX Designer",
+                company: "TechFlow",
+                type: "Remote",
+                salary: "$80k - $120k",
+                time: "2h ago",
+                tags: ["Figma", "React", "Design System"],
+              },
+              {
+                title: "Full Stack Developer",
+                company: "StartupX",
+                type: "Remote",
+                salary: "$100k - $150k",
+                time: "5h ago",
+                tags: ["Node.js", "React", "MongoDB"],
+              },
+              {
+                title: "Marketing Manager",
+                company: "Growth.io",
+                type: "Hybrid",
+                salary: "$70k - $90k",
+                time: "1d ago",
+                tags: ["SEO", "Content", "Analytics"],
+              },
+              {
+                title: "Mobile App Developer",
+                company: "Appify",
+                type: "On-site",
+                salary: "$90k - $130k",
+                time: "1d ago",
+                tags: ["Flutter", "iOS", "Android"],
+              },
+              {
+                title: "DevOps Engineer",
+                company: "CloudScale",
+                type: "Remote",
+                salary: "$120k - $160k",
+                time: "2d ago",
+                tags: ["AWS", "Docker", "Kubernetes"],
+              },
+              {
+                title: "Content Writer",
+                company: "MediaBuzz",
+                type: "Remote",
+                salary: "$40k - $60k",
+                time: "3d ago",
+                tags: ["Copywriting", "SEO", "Blog"],
+              },
+            ].map((job, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-300  shadow-sm   dark:border-gray-700 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-500 font-bold text-xl">
+                    {job.company[0]}
+                  </div>
+                  <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs px-3 py-1 rounded-full">
+                    {job.type}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
+                  {job.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  {job.company}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {job.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-2 py-1 rounded border border-gray-100 dark:border-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    {job.salary}
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-gray-400">
+                    <Clock className="w-3 h-3" />
+                    {job.time}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center md:hidden">
+            <button className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+              View All Jobs <HiOutlineArrowRight />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Testimonials Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              What Users <span className="text-orange-500">Say</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Trusted by thousands of freelancers and businesses
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Jenkins",
+                role: "Product Manager",
+                text: "I found an amazing developer in just 24 hours. The quality of work was outstanding and the process was so smooth.",
+                rating: 5,
+              },
+              {
+                name: "Mike Chen",
+                role: "Startup Founder",
+                text: "This platform saved my business. I scaled my team from 2 to 10 in a month without any overhead. Highly recommended!",
+                rating: 5,
+              },
+              {
+                name: "Emma Wilson",
+                role: "Freelance Designer",
+                text: "The best platform for freelancers. Guaranteed payments and great clients. I've doubled my income in 6 months.",
+                rating: 5,
+              },
+            ].map((review, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-gray-50 dark:bg-gray-800 p-8 border border-base-300 shadow rounded-2xl relative"
+              >
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 italic mb-6">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">
+                      {review.name}
+                    </h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {review.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    
+      <div className=" grid gap-5 grid-cols-1 md:grid-cols-2">
+        {/* 5. FAQ Section */}
+        <section className="py-20  dark:bg-gray-800">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16" data-aos="fade-up">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Frequently Asked{" "}
+                <span className="text-orange-500">Questions</span>
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "How does the payment protection work?",
+                  a: "We hold funds in escrow until the work is completed and approved by the client. This ensures safety for both parties.",
+                },
+                {
+                  q: "Is there a fee for freelancers?",
+                  a: "We charge a small service fee on completed projects. Joining and browsing jobs is completely free.",
+                },
+                {
+                  q: "How do I verify my profile?",
+                  a: "You can verify your profile by submitting ID documents and linking your professional social media accounts.",
+                },
+                {
+                  q: "Can I cancel a project?",
+                  a: "Yes, projects can be cancelled by mutual agreement or through our dispute resolution center if issues arise.",
+                },
+                {
+                  q: "How do I get paid?",
+                  a: "We support various withdrawal methods including PayPal, Bank Transfer, and Payoneer.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  data-aos="fade-up"
+                  className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700"
+                >
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  >
+                    <span className="font-semibold text-gray-900 dark:text-white text-lg">
+                      {item.q}
+                    </span>
+                    {openFaq === index ? (
+                      <ChevronUp className="text-orange-500" />
+                    ) : (
+                      <ChevronDown className="text-gray-400" />
+                    )}
+                  </button>
+                  <div
+                    className={`px-6 pb-6 text-gray-600 dark:text-gray-300 transition-all duration-300 ${
+                      openFaq === index ? "block" : "hidden"
+                    }`}
+                  >
+                    {item.a}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Download App Section */}
+        <section className="py-20 bg-white dark:bg-gray-900 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-orange-500 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -translate-x-1/2 translate-y-1/2"></div>
+
+              <div
+                className="w-full md:w-1/2 text-white relative z-10 mb-10 md:mb-0"
+                data-aos="fade-right"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Get the work done
+                  <br />
+                  <span className="text-gray-100">from anywhere</span>
+                </h2>
+                <p className="text-lg text-orange-100 mb-8 max-w-md">
+                  Download our mobile app to browse jobs, chat with clients, and
+                  get paid on the go. Available for iOS and Android.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="flex items-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <div className="text-2xl">
+                      <Smartphone />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-xs text-gray-500 font-medium">
+                        Download on the
+                      </div>
+                      <div className="text-sm font-bold">App Store</div>
+                    </div>
+                  </button>
+
+                  <button className="flex items-center gap-3 bg-gray-900 text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-gray-700">
+                    <div className="text-2xl">
+                      <Smartphone />
+                    </div>
+                    <div className="text-left">
+                      <div className="text-xs text-gray-400 font-medium">
+                        GET IT ON
+                      </div>
+                      <div className="text-sm font-bold">Google Play</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                className="w-full md:w-1/2 relative z-10 flex justify-center md:justify-end"
+                data-aos="fade-left"
+              >
+                <div className="relative w-64 md:w-80">
+                  <div className="absolute inset-0 bg-white opacity-20 blur-3xl rounded-full"></div>
+                  <div className="relative bg-gray-900 rounded-[2.5rem] border-8 border-gray-800 shadow-2xl overflow-hidden h-[500px] w-full mx-auto">
+                    {/* Screen Content Mockup */}
+                    <div className="bg-white dark:bg-gray-800 h-full w-full p-4 overflow-hidden">
+                      <div className="flex justify-between items-center mb-6">
+                        <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                        <div className="w-20 h-4 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                      </div>
+                      <div className="space-y-4">
+                        <div className="h-32 rounded-xl bg-orange-100 dark:bg-orange-900/20 w-full mb-4"></div>
+                        <div className="h-20 rounded-xl bg-gray-100 dark:bg-gray-700 w-full"></div>
+                        <div className="h-20 rounded-xl bg-gray-100 dark:bg-gray-700 w-full"></div>
+                        <div className="h-20 rounded-xl bg-gray-100 dark:bg-gray-700 w-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section className=" max:w-11/12 mx-auto ">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -1550,7 +1414,11 @@ hover:bg-orange-50 hover:shadow-xl hover:scale-105 group transform"
 
         <Marquee className="">
           <div className="flex items-center gap-x-25 mt-15">
-            <img src={company} alt="Company 1" className="h-8 object-contain mr-4" />
+            <img
+              src={company}
+              alt="Company 1"
+              className="h-8 object-contain mr-4"
+            />
             <img
               src={company2}
               alt="Company 2"

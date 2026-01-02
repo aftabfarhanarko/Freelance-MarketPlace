@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { 
   Menu, X, Home, User, Moon, Sun, 
   ChevronDown, Briefcase, PlusCircle, 
-  CheckCircle, FileText 
+  CheckCircle, FileText, 
+  DollarSign
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../Hooks/UseAuth";
@@ -61,6 +62,13 @@ const Navbar = () => {
             >
               <Home className="w-5 h-5" />
               <span className="font-medium">Home</span>
+            </NavLink>
+            <NavLink
+              to="/pricing"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg ${textSecondary} ${hoverBg} hover:text-orange-500 transition-all duration-200`}
+            >
+              <DollarSign className="w-5 h-5" />
+              <span className="font-medium">Pricing</span>
             </NavLink>
             
             <NavLink
