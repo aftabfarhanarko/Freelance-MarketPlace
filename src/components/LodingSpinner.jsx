@@ -2,7 +2,7 @@ import React from "react";
 
 const LoadingSpinner = () => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center ">
+    <div className="min-h-screen  flex items-center justify-center ">
       <div className="flex flex-col items-center space-y-8">
         {/* Simple Dual-Ring Spinner with Thicker Borders */}
         <div className="relative w-20 h-20">

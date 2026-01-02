@@ -89,6 +89,67 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
+      <section id="New Sections add Prowerfull and reletev features" className="w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24 space-y-24">
+        
+        {/* 1. Trusted By Section */}
+        <div className="text-center" data-aos="fade-in">
+          <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-8">Trusted by 4,000+ companies</p>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+             <img src={company} alt="Company 1" className="h-8 md:h-10 w-auto dark:invert" />
+             <img src={company2} alt="Company 2" className="h-8 md:h-10 w-auto dark:invert" />
+             <img src={company3} alt="Company 3" className="h-8 md:h-10 w-auto dark:invert" />
+             <img src={company4} alt="Company 4" className="h-8 md:h-10 w-auto dark:invert" />
+             <img src={company5} alt="Company 5" className="h-8 md:h-10 w-auto dark:invert" />
+          </div>
+        </div>
+
+        {/* 2. Success Metrics (Stats) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-200 dark:divide-gray-700">
+            <div className="text-center">
+                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={890} duration={2.5} />M</h3>
+                <p className="text-gray-600 dark:text-gray-400">Total Freelancers</p>
+            </div>
+             <div className="text-center">
+                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={750} duration={2.5} />k+</h3>
+                <p className="text-gray-600 dark:text-gray-400">Positive Reviews</p>
+            </div>
+             <div className="text-center">
+                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={100} duration={2.5} />M</h3>
+                <p className="text-gray-600 dark:text-gray-400">Orders Received</p>
+            </div>
+             <div className="text-center">
+                <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-2"><CountUp end={336} duration={2.5} />M</h3>
+                <p className="text-gray-600 dark:text-gray-400">Projects Completed</p>
+            </div>
+        </div>
+
+        {/* 3. Why Choose Us (Value Prop) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-blue-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                   <Shield className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Proof of Quality</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Check any pro’s work samples, client reviews, and identity verification.</p>
+            </div>
+            <div className="bg-green-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay="100">
+                <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 mb-6">
+                   <DollarSign className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">No Cost Until You Hire</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Interview potential fits for your job, negotiate rates, and only pay for work you approve.</p>
+            </div>
+             <div className="bg-purple-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300" data-aos="fade-up" data-aos-delay="200">
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+                   <CheckCircle className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Safe & Secure</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Focus on your work knowing we help protect your data and privacy. We’re here with 24/7 support.</p>
+            </div>
+        </div>
+
+      </section>
+
       <section className=" w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
         <div>
           <h1
@@ -191,7 +252,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-
+      <section id="fiver types"></section>
 
       <section className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24">
         <h1
@@ -1379,8 +1440,6 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </Marquee>
       </section>
 
-      {/* Newsletter Section */}
-     
     </div>
   );
 };
