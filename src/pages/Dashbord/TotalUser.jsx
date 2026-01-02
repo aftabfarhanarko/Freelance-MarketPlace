@@ -47,35 +47,43 @@ const TotalUser = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-3 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl">
-              <User className="w-6 h-6" />
+        {/* Card 1: Primary (Orange) */}
+        <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-2xl shadow-lg shadow-orange-500/20 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <User className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xs font-medium px-2 py-1 bg-green-100 text-green-600 rounded-full">+12%</span>
+            <span className="text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full">+12%</span>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">1,234</h3>
-          <p className="text-sm text-gray-500">Total Users</p>
+          <h3 className="text-3xl font-bold mb-1 relative z-10">1,234</h3>
+          <p className="text-orange-100 text-sm font-medium relative z-10">Total Users</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-3 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-xl">
-              <Shield className="w-6 h-6" />
+
+        {/* Card 2: Secondary (Amber) */}
+        <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-6 rounded-2xl shadow-lg shadow-amber-500/20 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
+          <div className="flex items-center justify-between mb-4 relative z-10">
+             <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Shield className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xs font-medium px-2 py-1 bg-green-100 text-green-600 rounded-full">+5%</span>
+            <span className="text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full">+5%</span>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">856</h3>
-          <p className="text-sm text-gray-500">Freelancers</p>
+          <h3 className="text-3xl font-bold mb-1 relative z-10">856</h3>
+          <p className="text-amber-100 text-sm font-medium relative z-10">Freelancers</p>
         </div>
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-3 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-xl">
-              <Briefcase className="w-6 h-6" />
+
+        {/* Card 3: Background/Neutral (Dark) */}
+        <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-lg shadow-gray-500/20 text-white relative overflow-hidden">
+           <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="flex items-center justify-between mb-4 relative z-10">
+             <div className="p-3 bg-white/10 rounded-xl backdrop-blur-sm">
+              <Briefcase className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xs font-medium px-2 py-1 bg-green-100 text-green-600 rounded-full">+8%</span>
+            <span className="text-xs font-bold px-2 py-1 bg-white/10 text-white rounded-full">+8%</span>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">378</h3>
-          <p className="text-sm text-gray-500">Clients</p>
+          <h3 className="text-3xl font-bold mb-1 relative z-10">378</h3>
+          <p className="text-gray-400 text-sm font-medium relative z-10">Clients</p>
         </div>
       </div>
 
@@ -107,8 +115,8 @@ const TotalUser = () => {
                   <td className="p-4">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                       user.role === 'Freelancer' 
-                        ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400'
-                        : 'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400'
+                        ? 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400'
+                        : 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400'
                     }`}>
                       {user.role}
                     </span>
@@ -116,12 +124,12 @@ const TotalUser = () => {
                   <td className="p-4">
                     <div className="flex items-center gap-2">
                       {user.status === 'Active' ? (
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <CheckCircle className="w-4 h-4 text-amber-500" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-red-500" />
+                        <XCircle className="w-4 h-4 text-orange-500" />
                       )}
                       <span className={`text-sm ${
-                        user.status === 'Active' ? 'text-green-600' : 'text-red-600'
+                        user.status === 'Active' ? 'text-amber-600' : 'text-orange-600'
                       }`}>
                         {user.status}
                       </span>

@@ -72,7 +72,7 @@ export const Table01DividerLine = () => {
                                 </div>
                             </Table.Cell>
                             <Table.Cell>
-                                <BadgeWithDot size="sm" color={item.status === "active" ? "success" : "gray"} type="modern">
+                                <BadgeWithDot size="sm" color={item.status === "active" ? "warning" : "gray"} type="modern">
                                     {item.status === "active" ? "Active" : "Inactive"}
                                 </BadgeWithDot>
                             </Table.Cell>

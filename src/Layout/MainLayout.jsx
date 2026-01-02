@@ -52,10 +52,10 @@ const MainLayout = () => {
           success: {
             duration: 3000,
             style: {
-              color: "#2e8b57", // গাঢ় সবুজ টেক্সট
+              color: "#d97706", // Amber-600
             },
             iconTheme: {
-              primary: "#4aed88",
+              primary: "#f59e0b", // Amber-500
               secondary: "white",
             },
           },
@@ -64,10 +64,10 @@ const MainLayout = () => {
           error: {
             duration: 3000,
             style: {
-              color: "#c0392b", // গাঢ় লাল টেক্সট
+              color: "#ea580c", // Orange-600
             },
             iconTheme: {
-              primary: "#ff6b6b",
+              primary: "#f97316", // Orange-500
               secondary: "white",
             },
           },
@@ -76,11 +76,11 @@ const MainLayout = () => {
           loading: {
             duration: 10000,
             style: {
-              border: "2px solid #3498db",
-              color: "#2980b9",
+              border: "2px solid #F97316", // Orange-500
+              color: "#EA580C", // Orange-600
             },
             iconTheme: {
-              primary: "#3498db",
+              primary: "#F97316",
               secondary: "white",
             },
           },

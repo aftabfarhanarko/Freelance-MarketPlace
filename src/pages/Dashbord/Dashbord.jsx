@@ -48,10 +48,10 @@ const revenueData = [
 ];
 
 const projectStatusData = [
-  { name: "Completed", value: 400, color: "#10B981" }, // Emerald-500
-  { name: "In Progress", value: 300, color: "#3B82F6" }, // Blue-500
+  { name: "Completed", value: 400, color: "#EA580C" }, // Orange-600
+  { name: "In Progress", value: 300, color: "#F97316" }, // Orange-500
   { name: "Pending", value: 300, color: "#F59E0B" }, // Amber-500
-  { name: "Cancelled", value: 100, color: "#EF4444" }, // Red-500
+  { name: "Cancelled", value: 100, color: "#9A3412" }, // Orange-800
 ];
 
 const recentActivity = [
@@ -139,15 +139,15 @@ const quickActions = [
   {
     label: "Find Work",
     icon: Briefcase,
-    color: "bg-blue-500",
+    color: "bg-amber-500",
     text: "text-white",
   },
-  { label: "Messages", icon: Send, color: "bg-purple-500", text: "text-white" },
+  { label: "Messages", icon: Send, color: "bg-gray-800", text: "text-white" },
   {
     label: "Settings",
     icon: Settings,
-    color: "bg-gray-500",
-    text: "text-white",
+    color: "bg-orange-100",
+    text: "text-orange-600",
   },
 ];
 
@@ -202,12 +202,12 @@ const Dashbord = () => {
     value: item.count,
   }));
   const COLORS = [
-  "#F97316", // orange
-  "#3B82F6", // blue
-  "#10B981", // green
-  "#A855F7", // purple
-  "#EF4444", // red
-  "#17B8A6", // teal
+  "#F97316", // Orange-500
+  "#F59E0B", // Amber-500
+  "#EA580C", // Orange-600
+  "#FBBF24", // Amber-400
+  "#FB923C", // Orange-400
+  "#D97706", // Amber-600
 ];
 
 
@@ -287,8 +287,8 @@ const Dashbord = () => {
           trend="+12.5%"
           isPositive={true}
           icon={DollarSign}
-          color="text-emerald-500"
-          bgColor="bg-emerald-50 dark:bg-emerald-900/20"
+          color="text-amber-500"
+          bgColor="bg-amber-50 dark:bg-amber-900/20"
         />
         <StatCard
           title="Active Jobs"
@@ -296,8 +296,8 @@ const Dashbord = () => {
           trend="+5.2%"
           isPositive={true}
           icon={Briefcase}
-          color="text-blue-500"
-          bgColor="bg-blue-50 dark:bg-blue-900/20"
+          color="text-amber-500"
+          bgColor="bg-amber-50 dark:bg-amber-900/20"
         />
         <StatCard
           title="Total Users"
@@ -305,8 +305,8 @@ const Dashbord = () => {
           trend="+2.4%"
           isPositive={true}
           icon={Users}
-          color="text-purple-500"
-          bgColor="bg-purple-50 dark:bg-purple-900/20"
+          color="text-orange-600"
+          bgColor="bg-orange-100 dark:bg-orange-900/40"
         />
         <StatCard
           title="Avg. Response"
@@ -490,12 +490,12 @@ const Dashbord = () => {
                         className={`px-2 py-1 rounded-full text-xs font-medium 
                         ${
                           item.status === "Completed"
-                            ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400"
-                            : item.status === "Pending"
                             ? "bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400"
+                            : item.status === "Pending"
+                            ? "bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400"
                             : item.status === "New"
-                            ? "bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
-                            : "bg-purple-100 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400"
+                            ? "bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400"
+                            : "bg-gray-100 text-gray-600 dark:bg-gray-900/20 dark:text-gray-400"
                         }`}
                       >
                         {item.status}
@@ -577,7 +577,7 @@ const Dashbord = () => {
                 >
                   <div
                     className={`mt-1.5 w-2 h-2 rounded-full ${
-                      item.priority === "High" ? "bg-red-500" : "bg-amber-500"
+                      item.priority === "High" ? "bg-orange-500" : "bg-amber-500"
                     }`}
                   ></div>
                   <div className="flex-1 min-w-0">

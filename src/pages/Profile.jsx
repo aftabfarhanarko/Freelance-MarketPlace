@@ -51,7 +51,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen pt-30 bg-gray-50 dark:bg-gray-900 pb-20">
       {/* 1. Cover Section */}
-      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-r from-orange-400 to-pink-500">
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-r from-orange-400 to-amber-500">
          <div className="absolute inset-0 bg-black opacity-10"></div>
          <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
       </div>
@@ -91,7 +91,7 @@ const Profile = () => {
 
                 {/* Verification Badge */}
                 <div className="flex items-center justify-center gap-2 mb-6">
-                  <span className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                  <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
                     <CheckCircle className="w-3 h-3" /> Verified
                   </span>
                 </div>
@@ -188,7 +188,7 @@ const Profile = () => {
                   </label>
                   <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium flex justify-between items-center">
                     {user?.email}
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">
                       Verified
                     </span>
                   </div>
@@ -228,7 +228,7 @@ const Profile = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
                   <div className="flex items-center gap-4">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg">
+                    <div className="p-2 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-lg">
                       <Calendar className="w-5 h-5" />
                     </div>
                     <div>
@@ -246,7 +246,7 @@ const Profile = () => {
 
                 <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-900 rounded-xl">
                   <div className="flex items-center gap-4">
-                    <div className="p-2 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-lg">
+                    <div className="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-lg">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>

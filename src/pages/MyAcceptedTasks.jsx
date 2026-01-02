@@ -87,7 +87,7 @@ const MyAcceptedTasks = () => {
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl text-green-600 dark:text-green-400">
+            <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-xl text-orange-600 dark:text-orange-400">
               <CheckCircleIcon className="w-6 h-6" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -107,9 +107,9 @@ const MyAcceptedTasks = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
           {[
-            { label: "Total Accepted", value: jobs.length, icon: CheckCircle, color: "green" },
-            { label: "Active Tasks", value: jobs.length, icon: Clock, color: "blue" },
-            { label: "Completed", value: "—", icon: BriefcaseIcon, color: "purple" },
+            { label: "Total Accepted", value: jobs.length, icon: CheckCircle, color: "amber" },
+            { label: "Active Tasks", value: jobs.length, icon: Clock, color: "orange" },
+            { label: "Completed", value: "—", icon: BriefcaseIcon, color: "amber" },
           ].map((stat, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
@@ -134,14 +134,14 @@ const MyAcceptedTasks = () => {
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row gap-4 items-center justify-between"
           >
              {/* Search */}
-             <div className="relative flex-1 w-full">
+             <div className="relative flex-1 w-full md:max-w-md">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                <input 
                  type="text" 
                  placeholder="Search by title or category..." 
                  value={searchTerm}
                  onChange={(e) => setSearchTerm(e.target.value)}
-                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all dark:text-white"
+                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
                />
              </div>
 
@@ -151,7 +151,7 @@ const MyAcceptedTasks = () => {
                    <select 
                      value={sortBy}
                      onChange={(e) => setSortBy(e.target.value)}
-                     className="w-full pl-10 pr-8 py-2.5 appearance-none bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition-all dark:text-white cursor-pointer"
+                     className="w-full pl-10 pr-8 py-2.5 appearance-none bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white cursor-pointer"
                    >
                      <option value="newest">Newest First</option>
                      <option value="oldest">Oldest First</option>
@@ -164,13 +164,13 @@ const MyAcceptedTasks = () => {
                 <div className="flex bg-gray-50 dark:bg-gray-900 p-1 rounded-xl border border-gray-200 dark:border-gray-700 shrink-0">
                   <button 
                     onClick={() => setViewMode("list")}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-800 shadow text-green-500' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'list' ? 'bg-white dark:bg-gray-800 shadow text-orange-500' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
                   >
                     <List className="w-5 h-5" />
                   </button>
                   <button 
                     onClick={() => setViewMode("grid")}
-                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-800 shadow text-green-500' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
+                    className={`p-2 rounded-lg transition-all ${viewMode === 'grid' ? 'bg-white dark:bg-gray-800 shadow text-orange-500' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
                   >
                     <Grid className="w-5 h-5" />
                   </button>
@@ -235,7 +235,7 @@ const MyAcceptedTasks = () => {
                           <div className="flex-1 min-w-0">
                             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                               <div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-500 transition-colors">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors">
                                   {job.title}
                                 </h3>
                                 
@@ -253,7 +253,7 @@ const MyAcceptedTasks = () => {
 
                               <button
                                 onClick={() => handelClear(job._id)}
-                                className="shrink-0 flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-all font-medium text-sm"
+                                className="shrink-0 flex items-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/10 text-orange-600 dark:text-orange-400 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-all font-medium text-sm"
                               >
                                 <XCircleIcon className="w-4 h-4" />
                                 Withdraw
@@ -282,7 +282,7 @@ const MyAcceptedTasks = () => {
                           </div>
                           <button
                             onClick={() => handelClear(job._id)}
-                            className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-red-600 hover:bg-red-50 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0"
+                            className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-orange-600 hover:bg-orange-50 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0"
                             title="Withdraw"
                           >
                             <XCircleIcon className="w-4 h-4" />
@@ -290,7 +290,7 @@ const MyAcceptedTasks = () => {
                         </div>
                         
                         <div className="p-5 flex flex-col flex-1">
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-green-500 transition-colors">
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover:text-orange-500 transition-colors">
                             {job.title}
                           </h3>
                           

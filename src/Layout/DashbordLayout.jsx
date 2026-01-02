@@ -190,7 +190,7 @@ const DashbordLayout = () => {
             </div>
             <button
               onClick={logOut}
-              className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+              className="p-1.5 text-gray-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -251,13 +251,13 @@ const DashbordLayout = () => {
             {/* Messages */}
             <button className="hidden sm:block p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors relative">
               <MessageSquare className="w-5 h-5" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-amber-500 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
             </button>
 
             {/* Notifications */}
             <button className="p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg relative transition-colors">
               <Bell className="w-5 h-5" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
+              <span className="absolute top-2 right-2 w-2 h-2 bg-orange-500 rounded-full ring-2 ring-white dark:ring-gray-900"></span>
             </button>
 
             {/* User Profile Dropdown */}
@@ -317,7 +317,7 @@ const DashbordLayout = () => {
                     <div className="p-2 border-t border-gray-100 dark:border-gray-700">
                       <button
                         onClick={logOut}
-                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors"
                       >
                         <LogOut className="w-4 h-4" />
                         <span>Sign Out</span>

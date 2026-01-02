@@ -131,23 +131,23 @@ const AllJobs = () => {
                   <td className="p-4">
                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
                       job.status === 'Active' 
-                        ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400'
+                        ? 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400'
                         : job.status === 'Closed'
-                        ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400'
-                        : 'bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400'
+                        ? 'bg-gray-100 text-gray-600 dark:bg-gray-900/30 dark:text-gray-400'
+                        : 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400'
                     }`}>
                       {job.status}
                     </span>
                   </td>
                   <td className="p-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button className="p-1.5 text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors" title="View">
+                      <button className="p-1.5 text-gray-500 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors" title="View">
                         <Eye className="w-4 h-4" />
                       </button>
-                      <button className="p-1.5 text-gray-500 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors" title="Edit">
+                      <button className="p-1.5 text-gray-500 hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-lg transition-colors" title="Edit">
                         <Edit className="w-4 h-4" />
                       </button>
-                      <button className="p-1.5 text-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+                      <button className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors" title="Delete">
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>

@@ -119,7 +119,7 @@ const Pricing = () => {
                   <span className="text-gray-500 dark:text-gray-400 mb-1 ml-1">/mo</span>
                 </div>
                 {billingCycle === "yearly" && plan.monthlyPrice > 0 && (
-                   <p className="text-sm text-green-500 font-medium mb-6">
+                   <p className="text-sm text-orange-500 font-medium mb-6">
                      Billed ${plan.yearlyPrice} yearly
                    </p>
                 )}
@@ -159,7 +159,7 @@ const Pricing = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* For Clients */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+              <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center text-amber-600 mb-6">
                 <Users className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">For Clients</h3>
@@ -171,15 +171,15 @@ const Pricing = () => {
               </div>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <CheckCircle className="w-5 h-5 text-amber-500" />
                   <span>Secure Payment Processing</span>
                 </li>
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <CheckCircle className="w-5 h-5 text-amber-500" />
                   <span>Dispute Resolution Support</span>
                 </li>
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <CheckCircle className="w-5 h-5 text-amber-500" />
                   <span>Talent Quality Assurance</span>
                 </li>
               </ul>
@@ -187,7 +187,7 @@ const Pricing = () => {
 
             {/* For Freelancers */}
             <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 mb-6">
+              <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 mb-6">
                 <Briefcase className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">For Freelancers</h3>
@@ -199,15 +199,15 @@ const Pricing = () => {
               </div>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span>Payment Protection</span>
                 </li>
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span>Marketing Tools</span>
                 </li>
                 <li className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span>Invoice Generation</span>
                 </li>
               </ul>
@@ -257,14 +257,14 @@ const Pricing = () => {
                         <div className="text-sm text-gray-400">Total Spend</div>
                         <div className="text-3xl font-bold">$124,500</div>
                      </div>
-                     <div className="text-green-500 bg-green-500/10 px-3 py-1 rounded-full text-sm font-medium">
+                     <div className="text-orange-500 bg-orange-500/10 px-3 py-1 rounded-full text-sm font-medium">
                         +12% vs last month
                      </div>
                   </div>
                   <div className="space-y-4">
                      <div className="flex items-center justify-between p-4 bg-gray-700/50 rounded-xl">
                         <div className="flex items-center gap-3">
-                           <div className="w-10 h-10 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center font-bold">D</div>
+                           <div className="w-10 h-10 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center font-bold">D</div>
                            <div>
                               <div className="font-bold">Design Team</div>
                               <div className="text-xs text-gray-400">5 Active Contracts</div>
@@ -274,7 +274,7 @@ const Pricing = () => {
                      </div>
                      <div className="flex items-center justify-between p-4 bg-gray-700/50 rounded-xl">
                         <div className="flex items-center gap-3">
-                           <div className="w-10 h-10 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center font-bold">E</div>
+                           <div className="w-10 h-10 rounded-full bg-amber-500/20 text-amber-500 flex items-center justify-center font-bold">E</div>
                            <div>
                               <div className="font-bold">Engineering</div>
                               <div className="text-xs text-gray-400">12 Active Contracts</div>
@@ -285,8 +285,8 @@ const Pricing = () => {
                   </div>
                </div>
                {/* Decorative elements */}
-               <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500 opacity-20 rounded-full blur-2xl"></div>
-               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-500 opacity-20 rounded-full blur-2xl"></div>
+               <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-500 opacity-20 rounded-full blur-2xl"></div>
+               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-amber-500 opacity-20 rounded-full blur-2xl"></div>
             </div>
           </div>
         </div>
@@ -311,7 +311,7 @@ const Pricing = () => {
                  </p>
               </div>
               <div className="text-center p-6">
-                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/20 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <DollarSign className="w-8 h-8"/>
                  </div>
                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Money Back Guarantee</h3>
@@ -320,7 +320,7 @@ const Pricing = () => {
                  </p>
               </div>
               <div className="text-center p-6">
-                 <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                 <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/20 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Shield className="w-8 h-8"/>
                  </div>
                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">24/7 Support</h3>

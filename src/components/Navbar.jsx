@@ -195,13 +195,13 @@ const Navbar = () => {
                   <div className="flex items-center gap-2">
                     <Link
                       to="/login"
-                      className="px-4 py-1.5 rounded-lg font-medium text-sm text-[#e85d04] hover:bg-orange-50 transition-colors"
+                      className="px-4 py-1.5 rounded-lg font-medium text-sm text-orange-600 hover:bg-orange-50 transition-colors"
                     >
                       Login
                     </Link>
                     <Link
                       to="/register"
-                      className="px-4 py-1.5 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-[#C2410C] to-[#e85d04] hover:shadow-md transition-all"
+                      className="px-4 py-1.5 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-orange-600 to-orange-500 hover:shadow-md transition-all"
                     >
                       Register
                     </Link>
@@ -271,7 +271,7 @@ const Navbar = () => {
                         handelLogOut();
                         setProfileDropdown(false);
                       }}
-                      className="w-full text-left flex items-center gap-3 px-4 py-2.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
+                      className="w-full text-left flex items-center gap-3 px-4 py-2.5 text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-all"
                     >
                       <svg
                         className="w-4 h-4"
@@ -472,7 +472,7 @@ const Navbar = () => {
                     handelLogOut();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium text-white bg-red-500 hover:bg-red-600 shadow-md transition-all"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 shadow-sm transition-all"
                 >
                   <svg
                     className="w-5 h-5"

@@ -105,7 +105,7 @@ const MyAddedJobs = () => {
             
             <Link 
               to="/creatJob" 
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-600 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition-all hover:-translate-y-0.5"
             >
               <Layers className="w-5 h-5" />
               Post New Job
@@ -121,9 +121,9 @@ const MyAddedJobs = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
           {[
-            { label: "Total Posted", value: jobs.length, icon: Layers, color: "blue" },
-            { label: "Active Jobs", value: jobs.length, icon: CheckCircle, color: "green" }, // Assuming all are active for now
-            { label: "Total Views", value: "1.2k", icon: Eye, color: "purple" }, // Mock data
+            { label: "Total Posted", value: jobs.length, icon: Layers, color: "orange" },
+            { label: "Active Jobs", value: jobs.length, icon: CheckCircle, color: "amber" }, // Assuming all are active for now
+            { label: "Total Views", value: "1.2k", icon: Eye, color: "orange" }, // Mock data
           ].map((stat, index) => (
             <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
@@ -149,7 +149,7 @@ const MyAddedJobs = () => {
             className="bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row gap-4 items-center justify-between"
           >
              {/* Search */}
-             <div className="relative flex-1 w-full">
+             <div className="relative flex-1 w-full md:max-w-md">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                <input 
                  type="text" 
@@ -280,8 +280,8 @@ const MyAddedJobs = () => {
                                     <Clock className="w-4 h-4" />
                                     {new Date(job.create_at || Date.now()).toLocaleDateString()}
                                   </div>
-                                  <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                  <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></div>
                                     Active
                                   </div>
                                 </div>
@@ -297,7 +297,7 @@ const MyAddedJobs = () => {
                                 </Link>
                                 <button
                                   onClick={() => handleDelete(job._id)}
-                                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all font-medium text-sm"
+                                  className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-orange-50 dark:bg-orange-900/10 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-all font-medium text-sm"
                                 >
                                   <TrashIcon className="w-4 h-4" />
                                   Delete
@@ -335,7 +335,7 @@ const MyAddedJobs = () => {
                             </Link>
                             <button
                               onClick={() => handleDelete(job._id)}
-                              className="p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-red-600 hover:bg-red-50 shadow-sm"
+                              className="p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-full text-orange-600 hover:bg-orange-50 shadow-sm"
                               title="Delete"
                             >
                               <TrashIcon className="w-4 h-4" />
@@ -356,8 +356,8 @@ const MyAddedJobs = () => {
                                <Clock className="w-3.5 h-3.5" />
                                {new Date(job.create_at || Date.now()).toLocaleDateString()}
                              </div>
-                             <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs font-medium">
-                               <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                             <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                               <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
                                Active
                              </div>
                           </div>

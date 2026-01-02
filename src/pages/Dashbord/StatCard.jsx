@@ -18,8 +18,8 @@ const StatCard = ({
       <div
         className={`flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-lg ${
           isPositive
-            ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
-            : "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400"
+            ? "bg-amber-50 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400"
+            : "bg-orange-50 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400"
         }`}
       >
         {isPositive ? (

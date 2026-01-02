@@ -80,7 +80,7 @@ const Alljobs = ({ isDashboard = false }) => {
       {!isDashboard && (
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
         </div>
       )}
 
@@ -107,7 +107,7 @@ const Alljobs = ({ isDashboard = false }) => {
             <h1 className="text-4xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white mb-6">
               Find Your Next
               <span className="relative inline-block px-4">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600">Dream Job</span>
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Dream Job</span>
                 <span className="absolute bottom-2 left-0 w-full h-3 bg-orange-200 dark:bg-orange-900/50 -z-0 skew-x-12"></span>
               </span>
             </h1>
@@ -119,7 +119,7 @@ const Alljobs = ({ isDashboard = false }) => {
 
             {/* Search Bar - Public Version */}
             <div className="mt-10 max-w-2xl mx-auto relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-pink-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-amber-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
               <div className="relative flex items-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-2 border border-gray-100 dark:border-gray-700">
                 <div className="pl-4 text-gray-400">
                   <Search className="w-6 h-6" />
@@ -129,7 +129,7 @@ const Alljobs = ({ isDashboard = false }) => {
                   placeholder="Search by job title, keywords, or skills..."
                   className="w-full px-4 py-3 bg-transparent text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none text-lg"
                 />
-                <button className="hidden sm:block px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-orange-500/25">
+                <button className="hidden sm:block px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-orange-500/25">
                   Search
                 </button>
               </div>

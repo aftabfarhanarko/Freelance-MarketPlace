@@ -158,7 +158,7 @@ const AddJob = () => {
                   <div className="space-y-3 group">
                     <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                       <Briefcase className="w-4 h-4 text-orange-500" />
-                      Job Title <span className="text-red-500">*</span>
+                      Job Title <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative">
                       <input
@@ -174,7 +174,7 @@ const AddJob = () => {
                   <div className="space-y-3">
                     <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                       <Layers className="w-4 h-4 text-orange-500" />
-                      Category <span className="text-red-500">*</span>
+                      Category <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative">
                       <select
@@ -202,7 +202,7 @@ const AddJob = () => {
                 <div className="space-y-3">
                   <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                     <FileText className="w-4 h-4 text-orange-500" />
-                    Job Description <span className="text-red-500">*</span>
+                    Job Description <span className="text-orange-500">*</span>
                   </label>
                   <textarea
                     name="textarea"
@@ -240,7 +240,7 @@ const AddJob = () => {
                   <div className="space-y-3">
                     <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                       <User className="w-4 h-4 text-orange-500" />
-                      Your Name <span className="text-red-500">*</span>
+                      Your Name <span className="text-orange-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -254,7 +254,7 @@ const AddJob = () => {
                   <div className="space-y-3">
                     <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                       <Mail className="w-4 h-4 text-orange-500" />
-                      Your Email <span className="text-red-500">*</span>
+                      Your Email <span className="text-orange-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -288,9 +288,9 @@ const AddJob = () => {
             className="space-y-6"
           >
             {/* Pro Tips Card */}
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-3xl p-6 border border-blue-100 dark:border-blue-800">
+            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-3xl p-6 border border-amber-100 dark:border-amber-800">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-blue-100 dark:bg-blue-800 rounded-lg text-blue-600 dark:text-blue-300">
+                <div className="p-2 bg-amber-100 dark:bg-amber-800 rounded-lg text-amber-600 dark:text-amber-300">
                   <Lightbulb className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white">Posting Tips</h3>
@@ -303,7 +303,7 @@ const AddJob = () => {
                   "Check spelling & grammar"
                 ].map((tip, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                    <CheckCircle2 className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                     <span>{tip}</span>
                   </li>
                 ))}
@@ -311,23 +311,23 @@ const AddJob = () => {
             </div>
 
             {/* Market Insights Card */}
-            <div className="bg-purple-50 dark:bg-purple-900/20 rounded-3xl p-6 border border-purple-100 dark:border-purple-800">
+            <div className="bg-orange-50 dark:bg-orange-900/20 rounded-3xl p-6 border border-orange-100 dark:border-orange-800">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 dark:bg-purple-800 rounded-lg text-purple-600 dark:text-purple-300">
+                <div className="p-2 bg-orange-100 dark:bg-orange-800 rounded-lg text-orange-600 dark:text-orange-300">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white">Market Insights</h3>
               </div>
               <div className="space-y-4">
-                <div className="flex justify-between items-center pb-3 border-b border-purple-100 dark:border-purple-800/50">
+                <div className="flex justify-between items-center pb-3 border-b border-orange-100 dark:border-orange-800/50">
                   <span className="text-sm text-gray-600 dark:text-gray-300">Active Freelancers</span>
                   <span className="font-bold text-gray-900 dark:text-white">12k+</span>
                 </div>
-                <div className="flex justify-between items-center pb-3 border-b border-purple-100 dark:border-purple-800/50">
+                <div className="flex justify-between items-center pb-3 border-b border-orange-100 dark:border-orange-800/50">
                   <span className="text-sm text-gray-600 dark:text-gray-300">Avg. Proposal Time</span>
                   <span className="font-bold text-gray-900 dark:text-white">2 hrs</span>
                 </div>
-                <p className="text-xs text-purple-600 dark:text-purple-300 mt-2">
+                <p className="text-xs text-orange-600 dark:text-orange-300 mt-2">
                   *Based on recent platform data
                 </p>
               </div>

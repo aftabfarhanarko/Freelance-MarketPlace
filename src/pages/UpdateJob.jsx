@@ -99,7 +99,7 @@ const UpdateJob = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-1 shadow-lg mb-8"
+          className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl p-1 shadow-lg mb-8"
         >
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
@@ -128,15 +128,15 @@ const UpdateJob = () => {
             {/* Main Form Card */}
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
               {/* Decorative Line */}
-              <div className="h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-red-500"></div>
+              <div className="h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500"></div>
 
               <form onSubmit={handleSubmit} className="p-8 md:p-10 space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Job Title */}
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      Job Title <span className="text-red-500">*</span>
-                    </label>
+                Job Title <span className="text-orange-500">*</span>
+              </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <Briefcase className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
@@ -155,7 +155,7 @@ const UpdateJob = () => {
                   {/* Category */}
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      Category <span className="text-red-500">*</span>
+                      Category <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -206,7 +206,7 @@ const UpdateJob = () => {
                   {/* Job Description */}
                   <div className="space-y-2 md:col-span-2">
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      Job Description <span className="text-red-500">*</span>
+                      Job Description <span className="text-orange-500">*</span>
                     </label>
                     <div className="relative group">
                       <div className="absolute top-3 left-3 pointer-events-none">
@@ -290,11 +290,11 @@ const UpdateJob = () => {
             
             {/* Widget 0: Premium Upgrade (New) */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-xl">
-              <div className="absolute top-0 right-0 -mr-8 -mt-8 h-24 w-24 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 blur-2xl opacity-50"></div>
+              <div className="absolute top-0 right-0 -mr-8 -mt-8 h-24 w-24 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 blur-2xl opacity-50"></div>
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
-                    <Crown className="w-6 h-6 text-yellow-400" />
+                  <div className="p-2 bg-amber-500/20 rounded-lg border border-amber-500/30">
+                    <Crown className="w-6 h-6 text-amber-400" />
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Premium Posting</h4>
@@ -303,19 +303,19 @@ const UpdateJob = () => {
                 </div>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <Zap className="w-4 h-4 text-yellow-400" />
+                    <Zap className="w-4 h-4 text-amber-400" />
                     <span>Featured at top of results</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <Star className="w-4 h-4 text-yellow-400" />
+                    <Star className="w-4 h-4 text-amber-400" />
                     <span>Instant email alerts to candidates</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-300">
-                    <Award className="w-4 h-4 text-yellow-400" />
+                    <Award className="w-4 h-4 text-amber-400" />
                     <span>"Urgent Hiring" badge</span>
                   </div>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold rounded-xl transition-all shadow-lg shadow-orange-500/20 active:scale-[0.98]">
+                <button className="w-full py-3 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-gray-900 font-bold rounded-xl transition-all shadow-lg shadow-orange-500/20 active:scale-[0.98]">
                   Upgrade Now - $19
                 </button>
               </div>
@@ -325,11 +325,11 @@ const UpdateJob = () => {
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
               <div className="flex items-center justify-between mb-6">
                 <h4 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-indigo-500" />
+                  <BarChart3 className="w-5 h-5 text-orange-500" />
                   Job Quality Score
                 </h4>
                 <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                  jobScore >= 70 ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 'bg-yellow-100 text-yellow-600'
+                  jobScore >= 70 ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400'
                 }`}>
                   {jobScore}/100
                 </span>
@@ -337,7 +337,7 @@ const UpdateJob = () => {
               
               <div className="relative pt-1">
                 <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-100 dark:bg-gray-700">
-                  <div style={{ width: `${jobScore}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-1000 ease-out"></div>
+                  <div style={{ width: `${jobScore}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-orange-500 to-amber-500 transition-all duration-1000 ease-out"></div>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                   Your job post is looking good! Add more details to reach a perfect score.
@@ -345,15 +345,15 @@ const UpdateJob = () => {
                 <div className="space-y-2">
                    <div className="flex items-center justify-between text-sm">
                      <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                       <CheckCircle className="w-3 h-3 text-green-500" /> Title Length
+                       <CheckCircle className="w-3 h-3 text-amber-500" /> Title Length
                      </span>
-                     <span className="text-green-500 text-xs">Perfect</span>
+                     <span className="text-amber-500 text-xs">Perfect</span>
                    </div>
                    <div className="flex items-center justify-between text-sm">
                      <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                       <AlertCircle className="w-3 h-3 text-yellow-500" /> Description Depth
+                       <AlertCircle className="w-3 h-3 text-orange-500" /> Description Depth
                      </span>
-                     <span className="text-yellow-500 text-xs">Can improve</span>
+                     <span className="text-orange-500 text-xs">Can improve</span>
                    </div>
                 </div>
               </div>
@@ -368,7 +368,7 @@ const UpdateJob = () => {
               <div className="space-y-4">
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
+                    <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
                       <Eye className="w-4 h-4" />
                     </div>
                     <div>
@@ -376,12 +376,12 @@ const UpdateJob = () => {
                       <p className="font-bold text-gray-900 dark:text-white">1,234</p>
                     </div>
                   </div>
-                  <span className="text-xs font-medium text-green-500">+12%</span>
+                  <span className="text-xs font-medium text-amber-500">+12%</span>
                 </div>
                 
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400">
+                    <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-600 dark:text-amber-400">
                       <User className="w-4 h-4" />
                     </div>
                     <div>
@@ -389,15 +389,15 @@ const UpdateJob = () => {
                       <p className="font-bold text-gray-900 dark:text-white">45</p>
                     </div>
                   </div>
-                  <span className="text-xs font-medium text-green-500">+5%</span>
+                  <span className="text-xs font-medium text-amber-500">+5%</span>
                 </div>
               </div>
             </div>
 
             {/* Widget 2: Posting Tips */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-100 dark:border-blue-800">
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl p-6 border border-orange-100 dark:border-orange-800">
               <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-blue-500" />
+                <AlertCircle className="w-5 h-5 text-orange-500" />
                 Optimization Tips
               </h4>
               <ul className="space-y-3">
@@ -408,7 +408,7 @@ const UpdateJob = () => {
                   "Check for typos before saving"
                 ].map((tip, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                    <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" />
                     <span>{tip}</span>
                   </li>
                 ))}
@@ -418,7 +418,7 @@ const UpdateJob = () => {
             {/* Widget 3: Safety Notice */}
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
               <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-green-500" />
+                <Shield className="w-5 h-5 text-orange-500" />
                 Safety Reminders
               </h4>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">

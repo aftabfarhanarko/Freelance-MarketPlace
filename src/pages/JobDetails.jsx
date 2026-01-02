@@ -170,7 +170,7 @@ const JobDetails = () => {
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}
                      onClick={toggleSave}
-                     className={`p-3 rounded-full backdrop-blur-md transition-all border border-white/10 ${isSaved ? 'bg-red-500/20 text-red-500 border-red-500/30' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                     className={`p-3 rounded-full backdrop-blur-md transition-all border border-white/10 ${isSaved ? 'bg-orange-500/20 text-orange-500 border-orange-500/30' : 'bg-white/10 text-white hover:bg-white/20'}`}
                      title="Save Job"
                    >
                      <Heart className={`w-5 h-5 ${isSaved ? 'fill-current' : ''}`} />
@@ -202,7 +202,7 @@ const JobDetails = () => {
             {/* Features / Details */}
             <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <motion.div variants={fadeInUp} className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 hover:shadow-md transition-shadow">
-                 <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                 <div className="w-12 h-12 bg-amber-50 dark:bg-amber-900/20 rounded-xl flex items-center justify-center text-amber-600 mb-4">
                    <Shield className="w-6 h-6" />
                  </div>
                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Payment Verified</h3>
@@ -212,7 +212,7 @@ const JobDetails = () => {
                </motion.div>
                
                <motion.div variants={fadeInUp} className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6 hover:shadow-md transition-shadow">
-                 <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-xl flex items-center justify-center text-green-600 mb-4">
+                 <div className="w-12 h-12 bg-orange-50 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-orange-600 mb-4">
                    <Globe className="w-6 h-6" />
                  </div>
                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Remote Work</h3>
@@ -227,15 +227,15 @@ const JobDetails = () => {
                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">About the Client</h2>
                <div className="flex items-center gap-6">
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                       {job.postedBy?.charAt(0)}
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 border-4 border-white dark:border-gray-900 rounded-full"></div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-orange-500 border-4 border-white dark:border-gray-900 rounded-full"></div>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
                       {job.postedBy}
-                      <span className="px-2 py-0.5 rounded-md bg-green-100 dark:bg-green-900/30 text-green-600 text-xs font-bold uppercase tracking-wider">Verified</span>
+                      <span className="px-2 py-0.5 rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-600 text-xs font-bold uppercase tracking-wider">Verified</span>
                     </h3>
                     <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 mt-1">
                       <Mail className="w-4 h-4" />
@@ -286,14 +286,14 @@ const JobDetails = () => {
                   <motion.div 
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="text-center p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-100 dark:border-green-800/50"
+                    className="text-center p-6 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-100 dark:border-amber-800/50"
                   >
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center text-green-600 dark:text-green-300 mx-auto mb-3">
-                      <CheckCircle className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-bold text-green-700 dark:text-green-300 mb-1">Proposal Sent!</h3>
-                    <p className="text-sm text-green-600 dark:text-green-400 mb-3">Good luck with your application.</p>
-                    <Link to="/accecptjob" className="text-sm font-semibold underline text-green-700 hover:text-green-800">
+                    <div className="w-12 h-12 bg-amber-100 dark:bg-amber-800 rounded-full flex items-center justify-center text-amber-600 dark:text-amber-300 mx-auto mb-3">
+                    <CheckCircle className="w-6 h-6" />
+                  </div>
+                    <h3 className="text-lg font-bold text-amber-700 dark:text-amber-300 mb-1">Proposal Sent!</h3>
+                    <p className="text-sm text-amber-600 dark:text-amber-400 mb-3">Good luck with your application.</p>
+                    <Link to="/accecptjob" className="text-sm font-semibold underline text-amber-700 hover:text-amber-800">
                       View My Bids
                     </Link>
                   </motion.div>
@@ -333,10 +333,10 @@ const JobDetails = () => {
                  initial={{ opacity: 0, x: 20 }}
                  animate={{ opacity: 1, x: 0 }}
                  transition={{ delay: 0.7 }}
-                 className="bg-blue-50 dark:bg-blue-900/10 rounded-2xl p-6 border border-blue-100 dark:border-blue-800/30"
+                 className="bg-orange-50 dark:bg-orange-900/10 rounded-2xl p-6 border border-orange-100 dark:border-orange-800/30"
               >
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-800/50 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                  <div className="w-10 h-10 bg-orange-100 dark:bg-orange-800/50 rounded-full flex items-center justify-center text-orange-600 dark:text-orange-400 shrink-0">
                     <Shield className="w-5 h-5" />
                   </div>
                   <div>
@@ -353,10 +353,10 @@ const JobDetails = () => {
                  initial={{ opacity: 0, x: 20 }}
                  animate={{ opacity: 1, x: 0 }}
                  transition={{ delay: 0.8 }}
-                 className="flex gap-3 p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-800/30"
+                 className="flex gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-800/30"
               >
-                 <AlertCircle className="w-5 h-5 text-yellow-600 dark:text-yellow-500 shrink-0" />
-                 <p className="text-xs text-yellow-700 dark:text-yellow-400 leading-relaxed">
+                 <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-500 shrink-0" />
+                 <p className="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">
                    Never pay outside of the platform. Report any suspicious behavior immediately to support.
                  </p>
               </motion.div>

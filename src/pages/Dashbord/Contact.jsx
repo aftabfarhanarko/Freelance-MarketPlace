@@ -65,7 +65,7 @@ const Contact = () => {
 
                         {/* Info Card 2 */}
                         <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mb-4 text-blue-600 dark:text-blue-400">
+                            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center mb-4 text-amber-600 dark:text-amber-400">
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Office</h3>
@@ -80,14 +80,14 @@ const Contact = () => {
 
                         {/* Info Card 3 */}
                         <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-4 text-purple-600 dark:text-purple-400">
+                            <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center mb-4 text-orange-600 dark:text-orange-400">
                                 <Phone className="w-6 h-6" />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Phone</h3>
                             <p className="text-gray-500 dark:text-gray-400 mb-4">
                                 Mon-Fri from 8am to 5pm.
                             </p>
-                            <a href="tel:+1(555)000-0000" className="text-purple-500 font-semibold hover:text-purple-600 transition-colors">
+                            <a href="tel:+1(555)000-0000" className="text-orange-500 font-semibold hover:text-orange-600 transition-colors">
                                 +1 (555) 000-0000
                             </a>
                         </div>
@@ -157,7 +157,7 @@ const Contact = () => {
                                     <div className="flex items-center justify-end">
                                         <button 
                                             type="submit"
-                                            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transform hover:-translate-y-0.5 transition-all duration-200"
+                                            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/30 transform hover:-translate-y-0.5 transition-all duration-200"
                                         >
                                             <span>Send Message</span>
                                             <Send className="w-4 h-4" />
@@ -178,7 +178,7 @@ const Contact = () => {
                             <p className="text-sm text-gray-500 dark:text-gray-400">Always here for you</p>
                         </div>
                         <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-                            <Globe className="w-8 h-8 text-blue-500 mx-auto mb-4" />
+                            <Globe className="w-8 h-8 text-amber-500 mx-auto mb-4" />
                             <h4 className="font-bold text-gray-900 dark:text-white mb-2">Global Reach</h4>
                             <p className="text-sm text-gray-500 dark:text-gray-400">Support in 30+ languages</p>
                         </div>

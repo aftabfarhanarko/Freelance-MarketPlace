@@ -56,7 +56,7 @@ const TotalAcceptsJobs = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <CheckCircle className="w-6 h-6 text-green-500" />
+            <CheckCircle className="w-6 h-6 text-orange-500" />
             Accepted Jobs
           </h1>
           <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
@@ -69,7 +69,7 @@ const TotalAcceptsJobs = () => {
              <input 
                type="text" 
                placeholder="Search jobs..." 
-               className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500"
+               className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
                value={searchTerm}
                onChange={(e) => setSearchTerm(e.target.value)}
              />
@@ -89,22 +89,22 @@ const TotalAcceptsJobs = () => {
                 <img src={job.image} alt={job.title} className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3">
                    <span className={`px-2 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-white ${
-                     job.status === 'Completed' ? 'bg-green-500/90' : 'bg-blue-500/90'
+                     job.status === 'Completed' ? 'bg-amber-500' : 'bg-orange-500'
                    }`}>
                      {job.status}
                    </span>
                 </div>
               </div>
-              <div className="p-5 flex-1 flex flex-col justify-between">
+              <div className="p-5 flex-1 flex flex-col justify-between bg-white dark:bg-gray-800">
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1">{job.title}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 hover:text-orange-500 transition-colors cursor-pointer">{job.title}</h3>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                      <User className="w-4 h-4 text-gray-400" />
+                      <User className="w-4 h-4 text-orange-500" />
                       <span>Freelancer: <span className="font-medium">{job.freelancer}</span></span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                      <Briefcase className="w-4 h-4 text-gray-400" />
+                      <Briefcase className="w-4 h-4 text-amber-500" />
                       <span>Client: <span className="font-medium">{job.client}</span></span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
@@ -115,12 +115,12 @@ const TotalAcceptsJobs = () => {
                 </div>
                 
                 <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-green-600 font-bold text-lg">
-                    <DollarSign className="w-5 h-5" />
+                  <div className="flex items-center gap-1 text-gray-900 dark:text-white font-bold text-lg">
+                    <DollarSign className="w-5 h-5 text-amber-500" />
                     {job.price}
                   </div>
-                  <button className="flex items-center gap-1 text-sm text-blue-500 hover:text-blue-600 font-medium">
-                    View Details <ExternalLink className="w-3 h-3" />
+                  <button className="flex items-center gap-1 text-sm text-orange-500 hover:text-orange-600 font-medium group">
+                    View Details <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 </div>
               </div>

@@ -163,10 +163,10 @@ const Home = () => {
         {/* 3. Why Choose Us (Value Prop) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
-            className="bg-blue-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            className="bg-orange-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300 border border-orange-100 dark:border-gray-700"
             data-aos="fade-up"
           >
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+            <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 mb-6">
               <Shield className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -178,11 +178,11 @@ const Home = () => {
             </p>
           </div>
           <div
-            className="bg-green-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            className="bg-amber-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300 border border-amber-100 dark:border-gray-700"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600 mb-6">
+            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center text-amber-600 mb-6">
               <DollarSign className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -194,11 +194,11 @@ const Home = () => {
             </p>
           </div>
           <div
-            className="bg-purple-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300"
+            className="bg-orange-50 dark:bg-gray-800 p-8 rounded-3xl transition-transform hover:-translate-y-2 duration-300 border border-orange-100 dark:border-gray-700"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600 mb-6">
+            <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center text-orange-600 mb-6">
               <CheckCircle className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
@@ -355,7 +355,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
             {/* Glow Effect on Hover */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             {/* Image with Parallax Zoom */}
             <motion.div
@@ -425,7 +425,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             whileHover={{ y: -12, scale: 1.02 }}
             className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
               className="overflow-hidden h-52 w-full"
@@ -472,7 +472,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             whileHover={{ y: -12, scale: 1.02 }}
             className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
               className="overflow-hidden h-52 w-full"
@@ -519,7 +519,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
             whileHover={{ y: -12, scale: 1.02 }}
             className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700 hover:border-orange-200"
           >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500 -z-10"></div>
 
             <motion.div
               className="overflow-hidden h-52 w-full"
@@ -696,7 +696,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                     className="w-24 h-24 rounded-full object-cover"
                   />
                 </div>
-                <span className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full shadow-sm"></span>
+                <span className="absolute bottom-2 right-2 w-5 h-5 bg-orange-500 border-4 border-white dark:border-gray-800 rounded-full shadow-sm"></span>
               </div>
 
               {/* Name & Role */}
@@ -1096,7 +1096,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                     key={i}
                     className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300"
                   >
-                    <Check className="w-5 h-5 text-green-500" /> {feature}
+                    <Check className="w-5 h-5 text-orange-500" /> {feature}
                   </li>
                 ))}
               </ul>
@@ -1173,7 +1173,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                     key={i}
                     className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300"
                   >
-                    <Check className="w-5 h-5 text-green-500" /> {feature}
+                    <Check className="w-5 h-5 text-orange-500" /> {feature}
                   </li>
                 ))}
               </ul>
@@ -1394,7 +1394,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                 data-aos-delay={index * 100}
                 className="bg-gray-50 dark:bg-gray-800 p-8 border border-base-300 shadow rounded-2xl relative"
               >
-                <div className="flex text-yellow-400 mb-4">
+                <div className="flex text-amber-400 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
@@ -1478,7 +1478,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                     className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform"
                   />
                   <div className="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-100 dark:border-gray-700 shadow-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 fill-current" />
+                    <CheckCircle className="w-4 h-4 text-orange-500 fill-current" />
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -1488,7 +1488,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                   {freelancer.role}
                 </p>
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
                   <span className="font-bold text-gray-900 dark:text-white">
                     {freelancer.rating}
                   </span>
@@ -1555,7 +1555,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
                 <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">
                   {skill.name}
                 </span>
-                <span className="text-xs font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">
+                <span className="text-xs font-bold text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded-full">
                   {skill.growth}
                 </span>
               </div>

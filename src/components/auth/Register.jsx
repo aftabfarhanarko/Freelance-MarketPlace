@@ -150,7 +150,7 @@ const Register = () => {
 
             {/* Password Error */}
             {passErr && (
-              <p className="text-sm font-medium text-red-600 dark:text-red-400 -mt-3">
+              <p className="text-sm font-medium text-orange-600 dark:text-orange-400 -mt-3">
                 {passErr}
               </p>
             )}
