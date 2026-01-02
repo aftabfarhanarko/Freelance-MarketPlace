@@ -991,6 +991,82 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
+      {/* NEW SECTION: Membership / Pricing Plans */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Simple, Transparent <span className="text-orange-500">Pricing</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Choose the plan that fits your needs. No hidden fees.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Basic Plan */}
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative" data-aos="fade-up" data-aos-delay="0">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Basic</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">For casual freelancers</p>
+              <div className="flex items-baseline mb-6">
+                <span className="text-4xl font-bold text-gray-900 dark:text-white">Free</span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                {['5 Bids per month', 'Basic Profile', 'Standard Support', '5% Service Fee'].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                    <Check className="w-5 h-5 text-green-500" /> {feature}
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-3 rounded-xl border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Get Started
+              </button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-gray-900 dark:bg-gray-800 rounded-2xl p-8 shadow-2xl border border-orange-500 transform scale-105 relative z-10" data-aos="fade-up" data-aos-delay="100">
+              <div className="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">POPULAR</div>
+              <h3 className="text-xl font-bold text-white mb-2">Pro</h3>
+              <p className="text-gray-400 text-sm mb-6">For serious professionals</p>
+              <div className="flex items-baseline mb-6">
+                <span className="text-4xl font-bold text-white">$19</span>
+                <span className="text-gray-400">/mo</span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                {['50 Bids per month', 'Verified Badge', 'Priority Support', '2% Service Fee', 'Highlighted Proposals'].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
+                    <Check className="w-5 h-5 text-orange-500" /> {feature}
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-3 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold transition-all shadow-lg shadow-orange-500/30">
+                Upgrade Now
+              </button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 relative" data-aos="fade-up" data-aos-delay="200">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Enterprise</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">For agencies & teams</p>
+              <div className="flex items-baseline mb-6">
+                <span className="text-4xl font-bold text-gray-900 dark:text-white">$99</span>
+                <span className="text-gray-400">/mo</span>
+              </div>
+              <ul className="space-y-4 mb-8">
+                {['Unlimited Bids', 'Team Management', 'Dedicated Manager', '0% Service Fee', 'Custom Contracts'].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                    <Check className="w-5 h-5 text-green-500" /> {feature}
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full py-3 rounded-xl border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                Contact Sales
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. Popular Categories Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1228,7 +1304,141 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
     
-      <div className=" max-w-11/12 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2">
+  
+
+      {/* 6. Top Rated Freelancers Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Top Rated <span className="text-orange-500">Talent</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Work with the best freelancers in the industry
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { name: "Alex Morgan", role: "Product Designer", rate: "$65/hr", rating: 4.9, img: "https://i.ibb.co.com/HfKz1QK0/image.png" },
+              { name: "Sarah Connor", role: "React Developer", rate: "$80/hr", rating: 5.0, img: "https://i.ibb.co.com/Mk5bvwKv/image.png" },
+              { name: "John Doe", role: "SEO Specialist", rate: "$50/hr", rating: 4.8, img: "https://i.ibb.co.com/QZZvhNf/image.png" },
+              { name: "Emily Blunt", role: "Content Writer", rate: "$45/hr", rating: 4.9, img: "https://i.ibb.co.com/R49nK4FZ/image.png" },
+            ].map((freelancer, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all group text-center"
+              >
+                <div className="relative w-24 h-24 mx-auto mb-4">
+                  <div className="absolute inset-0 bg-orange-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity transform scale-110"></div>
+                  <img src={freelancer.img} alt={freelancer.name} className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform" />
+                  <div className="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 fill-current" />
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{freelancer.name}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{freelancer.role}</p>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                  <span className="font-bold text-gray-900 dark:text-white">{freelancer.rating}</span>
+                  <span className="text-gray-400 text-sm">({Math.floor(Math.random() * 50) + 10} jobs)</span>
+                </div>
+                <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                  <span className="font-bold text-gray-900 dark:text-white">{freelancer.rate}</span>
+                  <button className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">View Profile</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Trending Skills Section */}
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+             <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  Trending <span className="text-orange-500">Skills</span>
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Skills that are in high demand right now
+                </p>
+             </div>
+             <a href="#" className="text-orange-500 font-semibold hover:underline mt-4 md:mt-0">View all skills</a>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            {[
+              { name: "Generative AI", growth: "+120%" },
+              { name: "React Native", growth: "+85%" },
+              { name: "Video Editing", growth: "+60%" },
+              { name: "SEO Writing", growth: "+45%" },
+              { name: "Data Analysis", growth: "+90%" },
+              { name: "Shopify", growth: "+55%" },
+              { name: "Figma", growth: "+70%" },
+              { name: "Python", growth: "+65%" },
+              { name: "3D Modeling", growth: "+40%" },
+              { name: "Blockchain", growth: "+30%" },
+            ].map((skill, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                className="group flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-700 hover:border-orange-500 transition-all cursor-pointer"
+              >
+                <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">{skill.name}</span>
+                <span className="text-xs font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded-full">{skill.growth}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Newsletter Section */}
+      <section className="py-20">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="relative overflow-hidden bg-gradient-to-r from-orange-600 to-orange-400 rounded-3xl p-10 md:p-16 text-center md:text-left"
+            data-aos="zoom-in"
+          >
+            {/* Abstract Shapes */}
+            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-60 h-60 bg-yellow-300 opacity-20 rounded-full blur-2xl"></div>
+
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Stay ahead of the curve
+                </h2>
+                <p className="text-orange-100 text-lg mb-8">
+                  Get the latest freelance tips, industry trends, and job opportunities delivered to your inbox.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    className="flex-1 px-6 py-4 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-lg"
+                  />
+                  <button className="px-8 py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition-colors shadow-lg">
+                    Subscribe
+                  </button>
+                </div>
+                <p className="text-orange-100 text-sm mt-4">
+                  We care about your data in our <a href="#" className="underline hover:text-white">privacy policy</a>.
+                </p>
+              </div>
+              <div className="hidden md:flex justify-center">
+                <Mail className="w-48 h-48 text-white opacity-90 rotate-12" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <div className=" max-w-11/12 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2">
         {/* 5. FAQ Section */}
         <section className="py-20  ">
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">

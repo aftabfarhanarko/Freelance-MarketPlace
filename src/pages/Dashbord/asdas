@@ -1,0 +1,14 @@
+    const axiosScrure = usePrivetApi()
+  const { user } = useAuth();
+  const { theme } = useTheme();
+  const [categories ,setCategories] = useState("")
+const fetchdata = async () => {
+  try {
+    const res = await axiosScrure.get("/categoryJob");
+    console.log(res.data);
+    setCategories(res.data);
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+};
+console.log(categories);
