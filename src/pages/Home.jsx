@@ -63,6 +63,8 @@ import {
   Download,
   Shield,
   Zap,
+  Mail,
+  Send,
 } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
@@ -87,7 +89,7 @@ const Home = () => {
         <Banner></Banner>
       </section>
 
-      <section className=" max-w-11/12 mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
+      <section className=" w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
         <div>
           <h1
             data-aos="fade-up"
@@ -189,87 +191,9 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-      <section className="mb-16 md:mb-24 max-w-7xl mx-auto">
-        <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-24 justify-between items-center">
-          {/* Left side text animation */}
-          <motion.div
-            initial={{ x: -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true, amount: 0.5 }}
-            className="flex flex-col justify-center space-y-5 text-center lg:text-left w-full lg:w-1/2"
-          >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
-              Experience a quicker, simpler
-              <span className="block text-orange-500 mt-2">
-                more effective job search
-              </span>
-            </h1>
 
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              Our platform offers intuitive tools, personalized job
-              recommendations, and valuable resources to streamline your job
-              search process.
-            </p>
 
-            <div className="space-y-3 text-gray-700 dark:text-gray-200">
-              <div className="flex items-center justify-center lg:justify-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <p className="text-base sm:text-lg font-medium">
-                  Easily browse job listings with smart filters
-                </p>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <p className="text-base sm:text-lg font-medium">
-                  Receive personalized job suggestions
-                </p>
-              </div>
-              <div className="flex items-center justify-center lg:justify-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <p className="text-base sm:text-lg font-medium">
-                  Access resources to improve your resume
-                </p>
-              </div>
-            </div>
-
-            {/* CTA button */}
-            {/* <button className="relative flex mt-6 mx-auto lg:mx-0 items-center gap-2 py-3 px-8 border-2 border-orange-500 font-bold text-lg text-orange-500 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-white group">
-              <span className="relative z-10">View Profile</span>
-              <HiOutlineArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
-            </button> */}
-          </motion.div>
-
-          {/* Right side image animation */}
-          <motion.div
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true, amount: 0.5 }}
-            className="relative w-full lg:w-1/2 flex justify-center"
-          >
-            <div className="relative w-full max-w-lg mx-auto">
-              <img
-                src={news}
-                alt="News main"
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-              <img
-                src={news2}
-                alt="News secondary"
-                className="absolute -right-4 md:-right-8 top-10 border-4 border-white dark:border-gray-800 bg-white rounded-xl w-24 sm:w-32 shadow-xl animate-bounce-slow"
-              />
-              <img
-                src={news3}
-                alt="News tertiary"
-                className="absolute -left-4 md:-left-8 bottom-10 border-4 border-white dark:border-gray-800 bg-white rounded-xl w-24 sm:w-32 shadow-xl animate-bounce-slow-delay"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="max-w-11/12 mx-auto mb-16 md:mb-24">
+      <section className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24">
         <h1
           data-aos="fade-up"
           data-aos-duration="1000"
@@ -510,20 +434,11 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
           </motion.div>
         </motion.div>
 
-        <div className="flex justify-center mt-12 md:mt-16">
-          <div className="flex gap-2">
-            <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-            <span className="w-2 h-2 rounded-full bg-gray-900"></span>
-            <span className="w-2 h-2 rounded-full bg-gray-400"></span>
-          </div>
-          <button className="p-2 sm:p-3 rounded-full border hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-            <HiOutlineArrowRight className="text-lg sm:text-xl text-gray-700 dark:text-gray-300" />
-          </button>
-        </div>
+       
       </section>
 
       {/* res */}
-      <section id="job-finnd sections" className="max-w-11/12 mx-auto mb-16 md:mb-24">
+      <section id="job-finnd sections" className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -729,8 +644,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-      <section className=" max-w-11/12  bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-15 md:mb-20">
-        <div className="w-11/12 mx-auto py-16 " ref={ref}>
+      <section className=" w-full  bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-800 mb-15 md:mb-20">
+        <div className="w-11/12 max-w-7xl mx-auto py-16 " ref={ref}>
           {/* Header Part */}
           <div className="text-center mb-12 px-4">
             <h2
@@ -823,8 +738,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
       {/* Website About Sections */}
-      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 mb-10 md:mb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-800 mb-10 md:mb-20">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -957,8 +872,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
       {/* 1. How It Works Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               How It <span className="text-orange-500">Works</span>
@@ -1017,7 +932,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
 
       {/* 2. Popular Categories Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Popular <span className="text-orange-500">Categories</span>
@@ -1060,8 +975,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
       {/* 3. Featured Jobs Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="flex flex-col md:flex-row justify-between items-center mb-12"
             data-aos="fade-up"
@@ -1186,8 +1101,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
       {/* 4. Testimonials Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               What Users <span className="text-orange-500">Say</span>
@@ -1252,10 +1167,10 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
       </section>
 
     
-      <div className=" grid gap-5 grid-cols-1 md:grid-cols-2">
+      <div className=" max-w-11/12 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2">
         {/* 5. FAQ Section */}
-        <section className="py-20  dark:bg-gray-800">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20  ">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16" data-aos="fade-up">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 Frequently Asked{" "}
@@ -1318,8 +1233,8 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </section>
 
         {/* Download App Section */}
-        <section className="py-20 bg-white dark:bg-gray-900 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20  overflow-hidden">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-orange-500 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center relative overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
@@ -1394,7 +1309,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </section>
       </div>
 
-      <section className=" max:w-11/12 mx-auto ">
+      <section className=" w-11/12 max-w-7xl mx-auto ">
         <h1
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -1463,6 +1378,9 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
           </div>
         </Marquee>
       </section>
+
+      {/* Newsletter Section */}
+     
     </div>
   );
 };
