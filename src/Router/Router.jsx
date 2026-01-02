@@ -13,8 +13,7 @@ import JobDetails from "../pages/JobDetails";
 import UpdateJob from "../pages/UpdateJob";
 import Pricing from "../pages/Pricing";
 import Dashbord from "../pages/Dashbord/Dashbord";
-
-
+import DashbordLayout from "../Layout/DashbordLayout";
 
 export const router = createBrowserRouter([
   {
@@ -34,41 +33,48 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-       path:"/alljob",
-       element: <Alljobs></Alljobs>
+        path: "/alljob",
+        element: <Alljobs></Alljobs>,
       },
       {
-       path:"/creatJob",
-       element:<AddJod></AddJod>
+        path: "/creatJob",
+        element: <AddJod></AddJod>,
       },
       {
-       path:"/myAddjobs",
-       element: <MyAddedJobs></MyAddedJobs>
+        path: "/myAddjobs",
+        element: <MyAddedJobs></MyAddedJobs>,
       },
       {
-       path:"/pricing",
-       element: <Pricing />
+        path: "/pricing",
+        element: <Pricing />,
       },
       {
-       path:"/accecptjob",
-       element: <MyAcceptedTasks></MyAcceptedTasks>
+        path: "/accecptjob",
+        element: <MyAcceptedTasks></MyAcceptedTasks>,
       },
       {
-       path:"/detlise/:id",
-       element: <JobDetails></JobDetails>
+        path: "/detlise/:id",
+        element: <JobDetails></JobDetails>,
       },
       {
-        path:"/edit/:id",
-        element:<UpdateJob></UpdateJob>
+        path: "/edit/:id",
+        element: <UpdateJob></UpdateJob>,
       },
+
       {
-        path:"/dashbord",
-        element:<Dashbord></Dashbord>
+        path: "*",
+        element: <ErrorPages></ErrorPages>,
       },
+    ],
+  },
+  {
+    path: "/dashbord",
+    element: <DashbordLayout />,
+    children: [
       {
-        path:"*",
-        element:<ErrorPages></ErrorPages>
-      }
+        index: true,
+        element: <Dashbord></Dashbord>,
+      },
     ],
   },
 ]);

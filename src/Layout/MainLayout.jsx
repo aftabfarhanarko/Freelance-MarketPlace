@@ -1,11 +1,14 @@
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Footer from "../components/Footer";
 import { Toaster } from "react-hot-toast";
 // import { Toaster, toast } from 'sonner'
 
 
 const MainLayout = () => {
+  const location = useLocation();
+  const isDashboard = location.pathname === "/dashbord";
+
   return (
     <div>
       <nav>
@@ -13,13 +16,15 @@ const MainLayout = () => {
       </nav>
       {/* Spacer for fixed navbar */}
       <div className="h-16"></div>
-      <main className="pb-20 min-h-[calc(100vh-300px)]">
+      <main className={`${isDashboard ? '' : 'pb-20'} min-h-[calc(100vh-300px)]`}>
         <Outlet></Outlet>
       </main>
 
-      <footer>
-        <Footer></Footer>
-      </footer>
+      {!isDashboard && (
+        <footer>
+          <Footer></Footer>
+        </footer>
+      )}
       {/* <Toaster position="top-center" /> */}
       <Toaster
         position="top-center"

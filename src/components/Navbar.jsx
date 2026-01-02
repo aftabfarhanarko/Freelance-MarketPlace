@@ -17,26 +17,17 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../Hooks/UseAuth";
+import { useTheme } from "../Context/ThemeContext";
 import logo from "../assets/oooo.png";
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 
 const Navbar = () => {
   const { user, logOutUser } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdown, setProfileDropdown] = useState(false);
 
-  console.log(user);
-  
-  // THEME STATE
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [darkMode, setDarkMode] = useState(theme === "dark");
-
-  useEffect(() => {
-    const html = document.documentElement;
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-    setDarkMode(theme === "dark");
-  }, [theme]);
+  const darkMode = theme === "dark";
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -51,7 +42,7 @@ const Navbar = () => {
   }, [mobileMenuOpen]);
 
   const handleThemeToggle = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    toggleTheme();
   };
 
   const handelLogOut = () => {
