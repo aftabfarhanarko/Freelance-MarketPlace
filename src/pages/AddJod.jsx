@@ -1,12 +1,28 @@
+import { 
+  Briefcase, 
+  Image as ImageIcon, 
+  User, 
+  Mail, 
+  FileText, 
+  Layers, 
+  ArrowLeft,
+  Send,
+  Sparkles,
+  Lightbulb,
+  TrendingUp,
+  HelpCircle,
+  CheckCircle2,
+  AlertCircle
+} from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import LodingSpinner from "../components/LodingSpinner";
 import usePrivetApi from "../Hooks/PriverAPI";
-import { Link, useNavigate } from "react-router-dom"; // Fixed: react-router instead of react-router
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BiLeftArrowAlt } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const AddJod = () => {
   const { user } = useAuth();
@@ -63,159 +79,257 @@ const AddJod = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 py-12 px-4">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 py-12 px-4">
+      <div className="max-w-7xl mx-auto">
         {/* Back Link */}
-        <Link
-          to="/alljob"
-          className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium text-lg hover:gap-3 transition-all duration-300 mb-10 group"
-          data-aos="fade-right"
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
         >
-          <BiLeftArrowAlt className="text-2xl group-hover:-translate-x-1 transition-transform" />
-          Back to All Jobs
-        </Link>
+          <Link
+            to="/alljob"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400 font-medium mb-8 transition-colors group"
+          >
+            <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm group-hover:shadow-md transition-all border border-gray-100 dark:border-gray-700">
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            </div>
+            <span>Back to All Jobs</span>
+          </Link>
+        </motion.div>
 
-        {/* Header */}
-        <div className="text-center mb-12" data-aos="fade-up">
-          <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-            Post a New Job
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Connect with top freelancers worldwide. Describe your project and get proposals in hours.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden h-fit"
+          >
+            {/* Header Section */}
+            <div className="bg-gradient-to-r from-orange-600 to-amber-600 p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-white tracking-wide border border-white/20">
+                    POST A JOB
+                  </span>
+                  <span className="flex items-center gap-1 text-orange-100 text-xs font-medium">
+                    <Sparkles className="w-3 h-3" /> Premium Listing
+                  </span>
+                </div>
+                
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Find Your Perfect Freelancer
+                </h1>
+                <p className="text-orange-100 text-lg max-w-xl">
+                  Create a detailed job post to attract top talent. Be specific about your requirements and budget.
+                </p>
+              </div>
+            </div>
 
-        {/* Form Card with Glass Effect */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white/80 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700 overflow-hidden"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          {/* Hero Header */}
-          <div className="bg-gradient-to-r from-orange-500 to-amber-500 p-10 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-black/10"></div>
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold flex items-center gap-3">
-                Create Your Job Post
-                <span className="animate-pulse">✨</span>
-              </h2>
-              <p className="mt-3 text-orange-100 text-lg">
-                Attract the best talent with a clear and compelling job post
+            <form onSubmit={handleSubmit} className="p-8 md:p-12">
+              <div className="grid gap-8">
+                
+                {/* Job Title & Category Row */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3 group">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <Briefcase className="w-4 h-4 text-orange-500" />
+                      Job Title <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="title"
+                        required
+                        placeholder="e.g. Senior React Developer"
+                        className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <Layers className="w-4 h-4 text-orange-500" />
+                      Category <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="category"
+                        required
+                        className="w-full pl-4 pr-10 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all appearance-none dark:text-white cursor-pointer"
+                      >
+                        <option value="">Select a category</option>
+                        <option>Web Development</option>
+                        <option>Mobile App Development</option>
+                        <option>Graphics Designing</option>
+                        <option>Digital Marketing</option>
+                        <option>Content Writing</option>
+                        <option>Video Editing</option>
+                        <option>UI/UX Design</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="space-y-3">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <FileText className="w-4 h-4 text-orange-500" />
+                    Job Description <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    name="textarea"
+                    rows="6"
+                    required
+                    placeholder="Describe the project scope, required skills, and deliverables..."
+                    className="w-full p-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all resize-none dark:text-white"
+                  />
+                </div>
+
+                {/* Cover Image */}
+                <div className="space-y-3">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <ImageIcon className="w-4 h-4 text-orange-500" />
+                    Cover Image URL
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="coverImage"
+                      required
+                      placeholder="https://example.com/image.jpg"
+                      className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    Recommended size: 1200x600px. Supports JPG, PNG.
+                  </p>
+                </div>
+
+                <div className="h-px bg-gray-100 dark:bg-gray-700 my-4"></div>
+
+                {/* User Info Row */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <User className="w-4 h-4 text-orange-500" />
+                      Your Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      defaultValue={user?.displayName || ""}
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <Mail className="w-4 h-4 text-orange-500" />
+                      Your Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      defaultValue={user?.email || ""}
+                      disabled
+                      className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400 cursor-not-allowed"
+                    />
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="pt-6">
+                  <button
+                    type="submit"
+                    className="w-full md:w-auto ml-auto px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold rounded-xl shadow-lg hover:shadow-orange-500/30 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <span>Post Job Now</span>
+                    <Send className="w-5 h-5" />
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </motion.div>
+
+          {/* Sidebar Section */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-6"
+          >
+            {/* Pro Tips Card */}
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-3xl p-6 border border-blue-100 dark:border-blue-800">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-blue-100 dark:bg-blue-800 rounded-lg text-blue-600 dark:text-blue-300">
+                  <Lightbulb className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white">Posting Tips</h3>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "Write a clear, descriptive title",
+                  "Include budget range & timeline",
+                  "List specific skills required",
+                  "Check spelling & grammar"
+                ].map((tip, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                    <CheckCircle2 className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
+                    <span>{tip}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Market Insights Card */}
+            <div className="bg-purple-50 dark:bg-purple-900/20 rounded-3xl p-6 border border-purple-100 dark:border-purple-800">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-purple-100 dark:bg-purple-800 rounded-lg text-purple-600 dark:text-purple-300">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white">Market Insights</h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center pb-3 border-b border-purple-100 dark:border-purple-800/50">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Active Freelancers</span>
+                  <span className="font-bold text-gray-900 dark:text-white">12k+</span>
+                </div>
+                <div className="flex justify-between items-center pb-3 border-b border-purple-100 dark:border-purple-800/50">
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Avg. Proposal Time</span>
+                  <span className="font-bold text-gray-900 dark:text-white">2 hrs</span>
+                </div>
+                <p className="text-xs text-purple-600 dark:text-purple-300 mt-2">
+                  *Based on recent platform data
+                </p>
+              </div>
+            </div>
+
+            {/* Help Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg text-orange-600 dark:text-orange-400">
+                  <HelpCircle className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white">Need Help?</h3>
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                Not sure how to structure your job post? Our support team can assist you.
               </p>
-            </div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-300/30 rounded-full blur-3xl"></div>
-          </div>
-
-          {/* Form Fields */}
-          <div className="p-8 md:p-12 space-y-10">
-            {/* Job Title */}
-            <div data-aos="fade-up" data-aos-delay="300">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Job Title <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="title"
-                required
-                placeholder="e.g. Need a Full-Stack React Developer for SaaS App"
-                className="w-full px-5 py-4 text-gray-800 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300"
-              />
-            </div>
-
-            {/* Category */}
-            <div data-aos="fade-up" data-aos-delay="400">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                required
-                className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300"
-              >
-                <option value="">Select a category</option>
-                <option>Web Development</option>
-                <option>Mobile App Development</option>
-                <option>Graphics Designing</option>
-                <option>Digital Marketing</option>
-                <option>Content Writing</option>
-                <option>Video Editing</option>
-                <option>UI/UX Design</option>
-              </select>
-            </div>
-
-            {/* Cover Image */}
-            <div data-aos="fade-up" data-aos-delay="500">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Cover Image URL
-              </label>
-              <input
-                type="url"
-                name="coverImage"
-                required
-                placeholder="https://i.ibb.co/... (Recommended: imgbb)"
-                className="w-full px-5 py-4 text-gray-800 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300"
-              />
-              <p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
-                Recommended: 1200×600px • Use high-quality banner images
-              </p>
-            </div>
-
-            {/* Description */}
-            <div data-aos="fade-up" data-aos-delay="600">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Job Description <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                name="textarea"
-                rows="10"
-                required
-                placeholder="Describe your project in detail... Include scope, required skills, timeline, budget range, and deliverables."
-                className="w-full px-5 py-4 text-gray-800 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300 resize-none"
-              />
-            </div>
-
-            {/* Name */}
-            <div data-aos="fade-up" data-aos-delay="700">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Your Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                defaultValue={user?.displayName || ""}
-                required
-                className="w-full px-5 py-4 text-gray-800 dark:text-white bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-4 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300"
-              />
-            </div>
-
-            {/* Email (Disabled) */}
-            <div data-aos="fade-up" data-aos-delay="800">
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">
-                Your Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                defaultValue={user?.email || ""}
-                disabled
-                className="w-full px-5 py-4 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-2xl cursor-not-allowed"
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 px-8 md:px-12 py-8 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                className="px-12 py-4 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-lg rounded-2xl shadow-2xl transform hover:scale-105 hover:shadow-orange-500/30 transition-all duration-300 flex items-center gap-3"
-              >
-                Post Job Now
-                <span className="animate-pulse">🚀</span>
+              <button className="w-full py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-colors">
+                Contact Support
               </button>
             </div>
-          </div>
-        </form>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
