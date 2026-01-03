@@ -8,9 +8,6 @@ import {
 import { FaRegHandshake } from "react-icons/fa6";
 import { HiOutlineCreditCard } from "react-icons/hi";
 import { HiOutlineSupport } from "react-icons/hi";
-import news from "../assets/h21.png";
-import news2 from "../assets/h22.png";
-import news3 from "../assets/h23.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import blog1 from "../assets/blog-1.jpg";
@@ -180,7 +177,387 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
+    
+      {/* 2. Popular Categories Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Popular <span className="text-orange-500">Categories</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Browse top talent by category
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: "Development", icon: <Code />, count: "12k+ Jobs" },
+              { name: "Design", icon: <PenTool />, count: "8k+ Jobs" },
+              { name: "Marketing", icon: <Monitor />, count: "5k+ Jobs" },
+              { name: "Writing", icon: <FileText />, count: "3k+ Jobs" },
+              { name: "Mobile Apps", icon: <Smartphone />, count: "4k+ Jobs" },
+              { name: "SEO", icon: <Globe />, count: "6k+ Jobs" },
+              { name: "Data Entry", icon: <Database />, count: "2k+ Jobs" },
+              { name: "Business", icon: <Briefcase />, count: "7k+ Jobs" },
+            ].map((cat, index) => (
+              <div
+                key={index}
+                data-aos="zoom-in"
+                data-aos-delay={index * 50}
+                className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 transition-all cursor-pointer group"
+              >
+                <div className="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                  {cat.icon}
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
+                  {cat.name}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {cat.count}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Featured Jobs Section */}
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex flex-col md:flex-row justify-between items-center mb-12"
+            data-aos="fade-up"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                Featured <span className="text-orange-500">Jobs</span>
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Latest opportunities from top companies
+              </p>
+            </div>
+            <button className="hidden md:flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+              View All Jobs <HiOutlineArrowRight />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Senior UI/UX Designer",
+                company: "TechFlow",
+                type: "Remote",
+                salary: "$80k - $120k",
+                time: "2h ago",
+                tags: ["Figma", "React", "Design System"],
+              },
+              {
+                title: "Full Stack Developer",
+                company: "StartupX",
+                type: "Remote",
+                salary: "$100k - $150k",
+                time: "5h ago",
+                tags: ["Node.js", "React", "MongoDB"],
+              },
+              {
+                title: "Marketing Manager",
+                company: "Growth.io",
+                type: "Hybrid",
+                salary: "$70k - $90k",
+                time: "1d ago",
+                tags: ["SEO", "Content", "Analytics"],
+              },
+              {
+                title: "Mobile App Developer",
+                company: "Appify",
+                type: "On-site",
+                salary: "$90k - $130k",
+                time: "1d ago",
+                tags: ["Flutter", "iOS", "Android"],
+              },
+              {
+                title: "DevOps Engineer",
+                company: "CloudScale",
+                type: "Remote",
+                salary: "$120k - $160k",
+                time: "2d ago",
+                tags: ["AWS", "Docker", "Kubernetes"],
+              },
+              {
+                title: "Content Writer",
+                company: "MediaBuzz",
+                type: "Remote",
+                salary: "$40k - $60k",
+                time: "3d ago",
+                tags: ["Copywriting", "SEO", "Blog"],
+              },
+            ].map((job, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-300  shadow-sm   dark:border-gray-700 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-500 font-bold text-xl">
+                    {job.company[0]}
+                  </div>
+                  <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs px-3 py-1 rounded-full">
+                    {job.type}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
+                  {job.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  {job.company}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {job.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-2 py-1 rounded border border-gray-100 dark:border-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300">
+                    <DollarSign className="w-4 h-4" />
+                    {job.salary}
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-gray-400">
+                    <Clock className="w-3 h-3" />
+                    {job.time}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center md:hidden">
+            <button className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
+              View All Jobs <HiOutlineArrowRight />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Testimonials Section */}
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              What Users <span className="text-orange-500">Say</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Trusted by thousands of freelancers and businesses
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Jenkins",
+                role: "Product Manager",
+                text: "I found an amazing developer in just 24 hours. The quality of work was outstanding and the process was so smooth.",
+                rating: 5,
+              },
+              {
+                name: "Mike Chen",
+                role: "Startup Founder",
+                text: "This platform saved my business. I scaled my team from 2 to 10 in a month without any overhead. Highly recommended!",
+                rating: 5,
+              },
+              {
+                name: "Emma Wilson",
+                role: "Freelance Designer",
+                text: "The best platform for freelancers. Guaranteed payments and great clients. I've doubled my income in 6 months.",
+                rating: 5,
+              },
+            ].map((review, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-gray-50 dark:bg-gray-800 p-8 border border-base-300 shadow rounded-2xl relative"
+              >
+                <div className="flex text-amber-400 mb-4">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 italic mb-6">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">
+                      {review.name}
+                    </h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {review.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Top Rated Freelancers Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Top Rated <span className="text-orange-500">Talent</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Work with the best freelancers in the industry
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Alex Morgan",
+                role: "Product Designer",
+                rate: "$65/hr",
+                rating: 4.9,
+                img: "https://i.ibb.co.com/HfKz1QK0/image.png",
+              },
+              {
+                name: "Sarah Connor",
+                role: "React Developer",
+                rate: "$80/hr",
+                rating: 5.0,
+                img: "https://i.ibb.co.com/Mk5bvwKv/image.png",
+              },
+              {
+                name: "John Doe",
+                role: "SEO Specialist",
+                rate: "$50/hr",
+                rating: 4.8,
+                img: "https://i.ibb.co.com/QZZvhNf/image.png",
+              },
+              {
+                name: "Emily Blunt",
+                role: "Content Writer",
+                rate: "$45/hr",
+                rating: 4.9,
+                img: "https://i.ibb.co.com/R49nK4FZ/image.png",
+              },
+            ].map((freelancer, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all group text-center"
+              >
+                <div className="relative w-24 h-24 mx-auto mb-4">
+                  <div className="absolute inset-0 bg-orange-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity transform scale-110"></div>
+                  <img
+                    src={freelancer.img}
+                    alt={freelancer.name}
+                    className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <CheckCircle className="w-4 h-4 text-orange-500 fill-current" />
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                  {freelancer.name}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  {freelancer.role}
+                </p>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {freelancer.rating}
+                  </span>
+                  <span className="text-gray-400 text-sm">
+                    ({Math.floor(Math.random() * 50) + 10} jobs)
+                  </span>
+                </div>
+                <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {freelancer.rate}
+                  </span>
+                  <button className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
+                    View Profile
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Trending Skills Section */}
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex flex-col md:flex-row justify-between items-end mb-12"
+            data-aos="fade-up"
+          >
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Trending <span className="text-orange-500">Skills</span>
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Skills that are in high demand right now
+              </p>
+            </div>
+            <a
+              href="#"
+              className="text-orange-500 font-semibold hover:underline mt-4 md:mt-0"
+            >
+              View all skills
+            </a>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            {[
+              { name: "Generative AI", growth: "+120%" },
+              { name: "React Native", growth: "+85%" },
+              { name: "Video Editing", growth: "+60%" },
+              { name: "SEO Writing", growth: "+45%" },
+              { name: "Data Analysis", growth: "+90%" },
+              { name: "Shopify", growth: "+55%" },
+              { name: "Figma", growth: "+70%" },
+              { name: "Python", growth: "+65%" },
+              { name: "3D Modeling", growth: "+40%" },
+              { name: "Blockchain", growth: "+30%" },
+            ].map((skill, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                className="group flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-700 hover:border-orange-500 transition-all cursor-pointer"
+              >
+                <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">
+                  {skill.name}
+                </span>
+                <span className="text-xs font-bold text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded-full">
+                  {skill.growth}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+        <section className=" w-11/12 max-w-7xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
         <div>
           <h1
             data-aos="fade-up"
@@ -282,8 +659,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-      <section id="fiver types"></section>
-
+    
       <section className="w-11/12 max-w-7xl mx-auto mb-16 md:mb-24">
         <h1
           data-aos="fade-up"
@@ -1153,384 +1529,6 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </div>
       </section>
 
-      {/* 2. Popular Categories Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Popular <span className="text-orange-500">Categories</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              Browse top talent by category
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: "Development", icon: <Code />, count: "12k+ Jobs" },
-              { name: "Design", icon: <PenTool />, count: "8k+ Jobs" },
-              { name: "Marketing", icon: <Monitor />, count: "5k+ Jobs" },
-              { name: "Writing", icon: <FileText />, count: "3k+ Jobs" },
-              { name: "Mobile Apps", icon: <Smartphone />, count: "4k+ Jobs" },
-              { name: "SEO", icon: <Globe />, count: "6k+ Jobs" },
-              { name: "Data Entry", icon: <Database />, count: "2k+ Jobs" },
-              { name: "Business", icon: <Briefcase />, count: "7k+ Jobs" },
-            ].map((cat, index) => (
-              <div
-                key={index}
-                data-aos="zoom-in"
-                data-aos-delay={index * 50}
-                className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 transition-all cursor-pointer group"
-              >
-                <div className="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
-                  {cat.icon}
-                </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {cat.count}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Featured Jobs Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
-        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="flex flex-col md:flex-row justify-between items-center mb-12"
-            data-aos="fade-up"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                Featured <span className="text-orange-500">Jobs</span>
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Latest opportunities from top companies
-              </p>
-            </div>
-            <button className="hidden md:flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-              View All Jobs <HiOutlineArrowRight />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Senior UI/UX Designer",
-                company: "TechFlow",
-                type: "Remote",
-                salary: "$80k - $120k",
-                time: "2h ago",
-                tags: ["Figma", "React", "Design System"],
-              },
-              {
-                title: "Full Stack Developer",
-                company: "StartupX",
-                type: "Remote",
-                salary: "$100k - $150k",
-                time: "5h ago",
-                tags: ["Node.js", "React", "MongoDB"],
-              },
-              {
-                title: "Marketing Manager",
-                company: "Growth.io",
-                type: "Hybrid",
-                salary: "$70k - $90k",
-                time: "1d ago",
-                tags: ["SEO", "Content", "Analytics"],
-              },
-              {
-                title: "Mobile App Developer",
-                company: "Appify",
-                type: "On-site",
-                salary: "$90k - $130k",
-                time: "1d ago",
-                tags: ["Flutter", "iOS", "Android"],
-              },
-              {
-                title: "DevOps Engineer",
-                company: "CloudScale",
-                type: "Remote",
-                salary: "$120k - $160k",
-                time: "2d ago",
-                tags: ["AWS", "Docker", "Kubernetes"],
-              },
-              {
-                title: "Content Writer",
-                company: "MediaBuzz",
-                type: "Remote",
-                salary: "$40k - $60k",
-                time: "3d ago",
-                tags: ["Copywriting", "SEO", "Blog"],
-              },
-            ].map((job, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-300  shadow-sm   dark:border-gray-700 hover:shadow-lg transition-all duration-300 group"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-500 font-bold text-xl">
-                    {job.company[0]}
-                  </div>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs px-3 py-1 rounded-full">
-                    {job.type}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
-                  {job.title}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                  {job.company}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {job.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 px-2 py-1 rounded border border-gray-100 dark:border-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
-                  <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-300">
-                    <DollarSign className="w-4 h-4" />
-                    {job.salary}
-                  </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-400">
-                    <Clock className="w-3 h-3" />
-                    {job.time}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center md:hidden">
-            <button className="inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-600 transition-colors">
-              View All Jobs <HiOutlineArrowRight />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Testimonials Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
-        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              What Users <span className="text-orange-500">Say</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              Trusted by thousands of freelancers and businesses
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Jenkins",
-                role: "Product Manager",
-                text: "I found an amazing developer in just 24 hours. The quality of work was outstanding and the process was so smooth.",
-                rating: 5,
-              },
-              {
-                name: "Mike Chen",
-                role: "Startup Founder",
-                text: "This platform saved my business. I scaled my team from 2 to 10 in a month without any overhead. Highly recommended!",
-                rating: 5,
-              },
-              {
-                name: "Emma Wilson",
-                role: "Freelance Designer",
-                text: "The best platform for freelancers. Guaranteed payments and great clients. I've doubled my income in 6 months.",
-                rating: 5,
-              },
-            ].map((review, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="bg-gray-50 dark:bg-gray-800 p-8 border border-base-300 shadow rounded-2xl relative"
-              >
-                <div className="flex text-amber-400 mb-4">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 italic mb-6">
-                  "{review.text}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-gray-500">
-                    {review.name[0]}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 dark:text-white">
-                      {review.name}
-                    </h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {review.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Top Rated Freelancers Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Top Rated <span className="text-orange-500">Talent</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              Work with the best freelancers in the industry
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Alex Morgan",
-                role: "Product Designer",
-                rate: "$65/hr",
-                rating: 4.9,
-                img: "https://i.ibb.co.com/HfKz1QK0/image.png",
-              },
-              {
-                name: "Sarah Connor",
-                role: "React Developer",
-                rate: "$80/hr",
-                rating: 5.0,
-                img: "https://i.ibb.co.com/Mk5bvwKv/image.png",
-              },
-              {
-                name: "John Doe",
-                role: "SEO Specialist",
-                rate: "$50/hr",
-                rating: 4.8,
-                img: "https://i.ibb.co.com/QZZvhNf/image.png",
-              },
-              {
-                name: "Emily Blunt",
-                role: "Content Writer",
-                rate: "$45/hr",
-                rating: 4.9,
-                img: "https://i.ibb.co.com/R49nK4FZ/image.png",
-              },
-            ].map((freelancer, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all group text-center"
-              >
-                <div className="relative w-24 h-24 mx-auto mb-4">
-                  <div className="absolute inset-0 bg-orange-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity transform scale-110"></div>
-                  <img
-                    src={freelancer.img}
-                    alt={freelancer.name}
-                    className="w-full h-full object-cover rounded-full border-2 border-white dark:border-gray-700 shadow-md group-hover:scale-105 transition-transform"
-                  />
-                  <div className="absolute bottom-0 right-0 bg-white dark:bg-gray-800 rounded-full p-1 border border-gray-100 dark:border-gray-700 shadow-sm">
-                    <CheckCircle className="w-4 h-4 text-orange-500 fill-current" />
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                  {freelancer.name}
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                  {freelancer.role}
-                </p>
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <span className="font-bold text-gray-900 dark:text-white">
-                    {freelancer.rating}
-                  </span>
-                  <span className="text-gray-400 text-sm">
-                    ({Math.floor(Math.random() * 50) + 10} jobs)
-                  </span>
-                </div>
-                <div className="flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
-                  <span className="font-bold text-gray-900 dark:text-white">
-                    {freelancer.rate}
-                  </span>
-                  <button className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors">
-                    View Profile
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Trending Skills Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
-        <div className="w-11/12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="flex flex-col md:flex-row justify-between items-end mb-12"
-            data-aos="fade-up"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Trending <span className="text-orange-500">Skills</span>
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Skills that are in high demand right now
-              </p>
-            </div>
-            <a
-              href="#"
-              className="text-orange-500 font-semibold hover:underline mt-4 md:mt-0"
-            >
-              View all skills
-            </a>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            {[
-              { name: "Generative AI", growth: "+120%" },
-              { name: "React Native", growth: "+85%" },
-              { name: "Video Editing", growth: "+60%" },
-              { name: "SEO Writing", growth: "+45%" },
-              { name: "Data Analysis", growth: "+90%" },
-              { name: "Shopify", growth: "+55%" },
-              { name: "Figma", growth: "+70%" },
-              { name: "Python", growth: "+65%" },
-              { name: "3D Modeling", growth: "+40%" },
-              { name: "Blockchain", growth: "+30%" },
-            ].map((skill, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-                className="group flex items-center gap-3 px-6 py-3 bg-gray-50 dark:bg-gray-900 rounded-full border border-gray-200 dark:border-gray-700 hover:border-orange-500 transition-all cursor-pointer"
-              >
-                <span className="font-semibold text-gray-700 dark:text-gray-200 group-hover:text-orange-500 transition-colors">
-                  {skill.name}
-                </span>
-                <span className="text-xs font-bold text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded-full">
-                  {skill.growth}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 8. Newsletter Section */}
       <section className="py-20">
@@ -1739,7 +1737,7 @@ transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group h-full"
         </p>
       </section>
       {/* Trusted By Section */}
-      <section className="py-12 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-700">
+      <section className="py-12  dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-700">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest">
             Trusted by 10,000+ Companies Worldwide

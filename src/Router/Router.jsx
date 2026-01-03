@@ -20,6 +20,7 @@ import AddJob from "../pages/AddJob";
 import TotalUser from "../pages/Dashbord/TotalUser";
 import TotalAcceptsJobs from "../pages/Dashbord/TotalAcceptsJobs";
 import AllJobs from "../pages/Dashbord/AllJobs";
+import Setting from "../pages/Dashbord/Setting";
 
 export const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashbord/allJobs",
         element:<AllJobs></AllJobs>
+      },
+      {
+        path: "/dashbord/setting",
+        element:<Setting></Setting>
       },
     ],
   },

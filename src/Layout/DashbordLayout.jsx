@@ -27,8 +27,10 @@ import {
   CheckCircle,
   LifeBuoy,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const DashbordLayout = () => {
+  const naviget = useNavigate();
   const { user, logOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -57,6 +59,23 @@ const DashbordLayout = () => {
       {active && <ChevronRight className="w-4 h-4 ml-auto" />}
     </Link>
   );
+
+  const handelHepl = () => {
+    naviget("/dashbord/support");
+  };
+
+  const handelProfile = () => {
+    naviget("/dashbord/profile");
+    console.log("Profile");
+  };
+
+  const hnadelSetting = () => {
+    naviget("/dashbord/setting");
+  };
+
+  const hnnadelSupport = () => {
+    naviget("/dashbord/contact");
+  };
 
   return (
     <div className="h-screen bg-gray-50 dark:bg-gray-900 flex overflow-hidden">
@@ -124,22 +143,22 @@ const DashbordLayout = () => {
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
             Platform Management
           </div>
-          <SidebarItem 
-            icon={Users} 
-            label="Total Users" 
-            to="/dashbord/totalUser" 
+          <SidebarItem
+            icon={Users}
+            label="Total Users"
+            to="/dashbord/totalUser"
             active={location.pathname === "/dashbord/totalUser"}
           />
-          <SidebarItem 
-            icon={CheckCircle} 
-            label="Total Accepted Jobs" 
-            to="/dashbord/totalAcceptsJobs" 
+          <SidebarItem
+            icon={CheckCircle}
+            label="Total Accepted Jobs"
+            to="/dashbord/totalAcceptsJobs"
             active={location.pathname === "/dashbord/totalAcceptsJobs"}
           />
-          <SidebarItem 
-            icon={Briefcase} 
-            label="All Jobs" 
-            to="/dashbord/allJobs" 
+          <SidebarItem
+            icon={Briefcase}
+            label="All Jobs"
+            to="/dashbord/allJobs"
             active={location.pathname === "/dashbord/allJobs"}
           />
 
@@ -147,10 +166,10 @@ const DashbordLayout = () => {
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
             Resources
           </div>
-          <SidebarItem 
-            icon={BookOpen} 
-            label="Blog & News" 
-            to="/dashbord/blog" 
+          <SidebarItem
+            icon={BookOpen}
+            label="Blog & News"
+            to="/dashbord/blog"
             active={location.pathname === "/dashbord/blog"}
           />
 
@@ -158,16 +177,16 @@ const DashbordLayout = () => {
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">
             Support
           </div>
-          <SidebarItem 
-            icon={LifeBuoy} 
-            label="Help Center" 
-            to="/dashbord/support" 
+          <SidebarItem
+            icon={LifeBuoy}
+            label="Help Center"
+            to="/dashbord/support"
             active={location.pathname === "/dashbord/support"}
           />
-          <SidebarItem 
-            icon={HelpCircle} 
-            label="Contact Support" 
-            to="/dashbord/contact" 
+          <SidebarItem
+            icon={HelpCircle}
+            label="Contact Support"
+            to="/dashbord/contact"
             active={location.pathname === "/dashbord/contact"}
           />
         </div>
@@ -297,19 +316,31 @@ const DashbordLayout = () => {
                       </p>
                     </div>
                     <div className="p-2 space-y-1">
-                      <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
+                      <button
+                        onClick={handelProfile}
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+                      >
                         <User className="w-4 h-4" />
                         <span>Profile</span>
                       </button>
-                      <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
+                      <button
+                        onClick={hnadelSetting}
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+                      >
                         <Settings className="w-4 h-4" />
                         <span>Settings</span>
                       </button>
-                      <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
+                      <button
+                        onClick={hnnadelSupport}
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+                      >
                         <Shield className="w-4 h-4" />
-                        <span>Privacy</span>
+                        <span>Support</span>
                       </button>
-                      <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors">
+                      <button
+                        onClick={handelHepl}
+                        className="w-full flex items-center gap-3 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+                      >
                         <HelpCircle className="w-4 h-4" />
                         <span>Help Center</span>
                       </button>
