@@ -15,6 +15,8 @@ import {
   Pie,
   Cell,
   Legend,
+  LineChart,
+  Line,
 } from "recharts";
 import {
   DollarSign,
@@ -35,6 +37,7 @@ import {
 import StatCard from "./StatCard";
 import { useQuery } from "@tanstack/react-query";
 import usePrivateApi from "../../Hooks/PrivateAPI";
+import { useEffect, useState } from "react";
 
 // Mock Data for Charts
 const revenueData = [
@@ -54,107 +57,12 @@ const projectStatusData = [
   { name: "Cancelled", value: 100, color: "#9A3412" }, // Orange-800
 ];
 
-const recentActivity = [
-  {
-    id: 1,
-    user: "Alice Johnson",
-    action: "Posted a new job",
-    project: "E-commerce Website",
-    time: "2 mins ago",
-    status: "New",
-  },
-  {
-    id: 2,
-    user: "Bob Smith",
-    action: "Applied to job",
-    project: "Logo Design",
-    time: "15 mins ago",
-    status: "Pending",
-  },
-  {
-    id: 3,
-    user: "Charlie Brown",
-    action: "Completed milestone",
-    project: "Mobile App",
-    time: "1 hour ago",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    user: "Diana Prince",
-    action: "Left a review",
-    project: "SEO Optimization",
-    time: "3 hours ago",
-    status: "Review",
-  },
-  {
-    id: 5,
-    user: "Evan Wright",
-    action: "Posted a new job",
-    project: "Mobile Game",
-    time: "5 hours ago",
-    status: "New",
-  },
-  {
-    id: 6,
-    user: "Fiona Gallagher",
-    action: "Applied to job",
-    project: "Content Writing",
-    time: "6 hours ago",
-    status: "Pending",
-  },
-];
-
-const upcomingDeadlines = [
-  {
-    id: 1,
-    task: "Submit Proposal",
-    project: "E-commerce App",
-    due: "Today, 5 PM",
-    priority: "High",
-  },
-  {
-    id: 2,
-    task: "Client Meeting",
-    project: "Logo Design",
-    due: "Tomorrow, 10 AM",
-    priority: "Medium",
-  },
-  {
-    id: 3,
-    task: "Final Delivery",
-    project: "SEO Audit",
-    due: "Oct 25",
-    priority: "High",
-  },
-];
-
-const quickActions = [
-  {
-    label: "Post a Job",
-    icon: Plus,
-    color: "bg-orange-500",
-    text: "text-white",
-  },
-  {
-    label: "Find Work",
-    icon: Briefcase,
-    color: "bg-amber-500",
-    text: "text-white",
-  },
-  { label: "Messages", icon: Send, color: "bg-gray-800", text: "text-white" },
-  {
-    label: "Settings",
-    icon: Settings,
-    color: "bg-orange-100",
-    text: "text-orange-600",
-  },
-];
 
 const Dashbord = () => {
   const { user } = useAuth();
   const { theme } = useTheme();
   const axiosScrure = usePrivateApi();
+  const [udsaser, setUdsaser] = useState([]);
   const isDark = theme === "dark";
   const chartGridColor = isDark ? "#374151" : "#E5E7EB";
   const chartTextColor = isDark ? "#9CA3AF" : "#9CA3AF";
@@ -188,9 +96,7 @@ const Dashbord = () => {
 
   // Daynamick Daya
 
-  const {
-    data: categories = [],
-  } = useQuery({
+  const { data: categories = [] } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
       const res = await axiosScrure.get("categoryJob");
@@ -202,16 +108,22 @@ const Dashbord = () => {
     value: item.count,
   }));
   const COLORS = [
-  "#F97316", // Orange-500
-  "#F59E0B", // Amber-500
-  "#EA580C", // Orange-600
-  "#FBBF24", // Amber-400
-  "#FB923C", // Orange-400
-  "#D97706", // Amber-600
-];
+    "#F97316", // Orange-500
+    "#F59E0B", // Amber-500
+    "#EA580C", // Orange-600
+    "#FBBF24", // Amber-400
+    "#FB923C", // Orange-400
+    "#D97706", // Amber-600
+  ];
+  // console.log(categoryData);
 
+  useEffect(() => {
+    axiosScrure.get("allusersPipeline").then((res) => {
+      setUdsaser(res.data.result);
+    });
+  }, [axiosScrure]);
 
-  console.log(categoryData);
+  console.log(udsaser);
 
   return (
     <motion.div
@@ -223,7 +135,7 @@ const Dashbord = () => {
       {/* Welcome Banner */}
       <motion.div
         variants={itemVariants}
-        className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl shadow-orange-500/20"
+        className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 text-white relative overflow-hidden  "
       >
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -252,28 +164,6 @@ const Dashbord = () => {
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-20 w-60 h-60 bg-amber-300 opacity-20 rounded-full blur-2xl"></div>
-      </motion.div>
-
-      {/* Quick Actions */}
-      <motion.div
-        variants={itemVariants}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4"
-      >
-        {quickActions.map((action, index) => (
-          <button
-            key={index}
-            className="flex flex-col items-center justify-center p-5 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-orange-200 dark:hover:border-orange-900/50 transition-all group"
-          >
-            <div
-              className={`p-3 rounded-xl mb-3 ${action.color} ${action.text} shadow-lg shadow-orange-500/20 group-hover:scale-110 transition-transform duration-300`}
-            >
-              <action.icon className="w-6 h-6" />
-            </div>
-            <span className="font-semibold text-gray-700 dark:text-gray-300 group-hover:text-orange-600 dark:group-hover:text-orange-400">
-              {action.label}
-            </span>
-          </button>
-        ))}
       </motion.div>
 
       {/* Quick Stats Grid */}
@@ -439,75 +329,67 @@ const Dashbord = () => {
 
       {/* Recent Activity & Category Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Activity Table */}
+        {/* Recent Activity Chart */}
         <motion.div
           variants={itemVariants}
-          className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
+          className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
         >
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Recent Activity
+              User Registration Analytics
             </h3>
-            <button className="text-sm text-orange-500 hover:text-orange-600 font-medium">
-              View All
+            <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-gray-500">
+              <Filter className="w-4 h-4" />
             </button>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">
-                  <th className="pb-3 pl-2">User</th>
-                  <th className="pb-3">Action</th>
-                  <th className="pb-3">Project</th>
-                  <th className="pb-3">Status</th>
-                  <th className="pb-3 pr-2 text-right">Time</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-                {recentActivity.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="group hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
-                  >
-                    <td className="py-3 pl-2">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900 dark:to-amber-900 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-xs">
-                          {item.user.charAt(0)}
-                        </div>
-                        <span className="font-medium text-gray-900 dark:text-white text-sm">
-                          {item.user}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 text-sm text-gray-600 dark:text-gray-300">
-                      {item.action}
-                    </td>
-                    <td className="py-3 text-sm text-gray-600 dark:text-gray-300">
-                      {item.project}
-                    </td>
-                    <td className="py-3">
-                      <span
-                        className={`px-2 py-1 rounded-full text-xs font-medium 
-                        ${
-                          item.status === "Completed"
-                            ? "bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400"
-                            : item.status === "Pending"
-                            ? "bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400"
-                            : item.status === "New"
-                            ? "bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400"
-                            : "bg-gray-100 text-gray-600 dark:bg-gray-900/20 dark:text-gray-400"
-                        }`}
-                      >
-                        {item.status}
-                      </span>
-                    </td>
-                    <td className="py-3 pr-2 text-right text-xs text-gray-400">
-                      {item.time}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="h-[400px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={udsaser}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke={chartGridColor}
+                  opacity={0.3}
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fill: chartTextColor, fontSize: 12 }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <YAxis
+                  tick={{ fill: chartTextColor, fontSize: 12 }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <Tooltip
+                  cursor={{ fill: "transparent" }}
+                  contentStyle={tooltipStyle}
+                  itemStyle={{ color: isDark ? "#fff" : "#111827" }}
+                />
+                <Bar
+                  dataKey="count"
+                  fill="#F97316"
+                  radius={[4, 4, 0, 0]}
+                  barSize={40}
+                >
+                  {udsaser.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </motion.div>
 
@@ -559,7 +441,7 @@ const Dashbord = () => {
           </motion.div>
 
           {/* Upcoming Deadlines Widget */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
           >
@@ -594,7 +476,7 @@ const Dashbord = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
