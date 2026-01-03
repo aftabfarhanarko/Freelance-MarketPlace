@@ -14,9 +14,14 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
+import toast from "react-hot-toast";
+import { useAxiosData } from "../Hooks/DataFetch";
 
 const Profile = () => {
   const { user, logOutUser } = useAuth();
+  const axioss = useAxiosData() ;
+
+  // updeatNowUser/:id
 
   // Format date helper
   const formatDate = (dateString) => {
@@ -28,11 +33,12 @@ const Profile = () => {
     });
   };
 
+
   const handleLogout = () => {
     logOutUser()
       .then(() => {
         // Optional: Add toast success here if library available
-        // toast.success("Logged out successfully");
+        toast.success("Logged out successfully");
       })
       .catch((error) => {
         console.error("Logout failed", error);

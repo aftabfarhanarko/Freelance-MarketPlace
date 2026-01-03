@@ -113,22 +113,21 @@ const Navbar = () => {
               <span className="font-medium text-sm">Find Jobs</span>
             </NavLink>
 
-            <NavLink
-              to="/creatJob"
-              className={({ isActive }) =>
-                `flex items-center gap-2 px-3 py-2 rounded-lg ${
-                  isActive
-                    ? "text-orange-500 bg-orange-50 dark:bg-orange-900/10"
-                    : textSecondary
-                } ${hoverBg} hover:text-orange-500 transition-all duration-200`
-              }
-            >
-              <PlusCircle className="w-4 h-4" />
-              <span className="font-medium text-sm">Post Job</span>
-            </NavLink>
-
             {user && (
               <>
+                <NavLink
+                  to="/creatJob"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 px-3 py-2 rounded-lg ${
+                      isActive
+                        ? "text-orange-500 bg-orange-50 dark:bg-orange-900/10"
+                        : textSecondary
+                    } ${hoverBg} hover:text-orange-500 transition-all duration-200`
+                  }
+                >
+                  <PlusCircle className="w-4 h-4" />
+                  <span className="font-medium text-sm">Post Job</span>
+                </NavLink>
                 <NavLink
                   to="/accecptjob"
                   className={({ isActive }) =>

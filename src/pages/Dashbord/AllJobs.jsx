@@ -32,7 +32,11 @@ const AllJobs = () => {
   const skip = (page - 1) * limit;
   const totalPage = Math.ceil(allBook / limit);
 
-  const { data: jobs = [], refetch, isLoading } = useQuery({
+  const {
+    data: jobs = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["alljobs", page],
     queryFn: async () => {
       const res = await nextapi.get(
@@ -74,8 +78,8 @@ const AllJobs = () => {
     // or just show it's clicked
   };
 
-  if(isLoading){
-    return <LoadingSpinner />
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
   return (
@@ -238,25 +242,12 @@ const AllJobs = () => {
                   {new Date(job.create_at).toLocaleDateString()}
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
-                    <button
-                      onClick={() => handleStatusChange(job._id, "Active")}
-                      className="px-2 py-1 text-xs font-medium rounded transition-all bg-white dark:bg-gray-600 text-green-600 shadow-sm"
-                    >
-                      Active
-                    </button>
-                    <button
-                      onClick={() => handleStatusChange(job._id, "Closed")}
-                      className="px-2 py-1 text-xs font-medium rounded transition-all text-gray-500 hover:text-gray-700 dark:text-gray-400"
-                    >
-                      Close
-                    </button>
-                  </div>
                   <button
                     onClick={() => handleDelete(job._id)}
-                    className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors text-sm font-medium flex-1"
                   >
                     <Trash2 className="w-4 h-4" />
+                    Delete
                   </button>
                 </div>
               </div>
