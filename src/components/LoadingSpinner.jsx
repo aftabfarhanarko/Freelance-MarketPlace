@@ -1,28 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Lottie from "lottie-react";
 
 const LoadingSpinner = () => {
-  return (
-    <div className="min-h-screen  flex items-center justify-center ">
-      <div className="flex flex-col items-center space-y-8">
-        {/* Simple Dual-Ring Spinner with Thicker Borders */}
-        <div className="relative w-20 h-20">
-          {/* Outer ring - blue */}
-          <div className="absolute inset-0 rounded-full border-8 border-gray-200 border-t-blue-600 animate-spin"></div>
-          {/* Inner ring - orange, spinning opposite direction */}
-          <div className="absolute inset-0 rounded-full border-8 border-transparent border-t-orange-500 animate-spin-reverse"></div>
-        </div>
+  const [animationData, setAnimationData] = useState(null);
 
-        {/* Clean Loading Text with Bouncing Dots */}
-        <div className="flex flex-col items-center space-y-3">
-          <h3 className="text-xl font-semibold text-gray-800">Loading</h3>
-          <div className="flex space-x-1">
-            <span className="w-2 h-2 bg-gray-600 rounded-full animate-bounce"></span>
-            <span className="w-2 h-2 bg-gray-600 rounded-full animate-bounce delay-150"></span>
-            <span className="w-2 h-2 bg-gray-600 rounded-full animate-bounce delay-300"></span>
-          </div>
-          <p className="text-sm text-gray-500">Please wait a moment...</p>
-        </div>
+  useEffect(() => {
+    fetch("/SandyLoading.json")
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error("Lottie load error:", err));
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900">
+      <div className="w-64 h-64 md:w-80 md:h-80">
+        {animationData ? (
+          <Lottie animationData={animationData} loop={true} autoplay={true} />
+        ) : (
+          <div className="h-16 w-16 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin" />
+        )}
       </div>
+      <p className="mt-6 text-lg font-semibold text-orange-600 dark:text-orange-400 animate-pulse">
+        Loading...
+      </p>
     </div>
   );
 };

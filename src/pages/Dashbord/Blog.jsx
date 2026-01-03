@@ -38,7 +38,7 @@ const Blog = () => {
       author: "Alex Thompson",
       date: "Jan 05, 2024",
       category: "Trends",
-      image: "https://images.unsplash.com/photo-1593642632823-8f7853647efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://i.ibb.co.com/9kpvjJtY/image.png"
     },
     {
       id: 5,
@@ -47,7 +47,7 @@ const Blog = () => {
       author: "David Wilson",
       date: "Jan 02, 2024",
       category: "Finance",
-      image: "https://images.unsplash.com/photo-1554224154-260327c00c40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      image: "https://i.ibb.co.com/Hy0Lk2V/image.png"
     },
     {
       id: 6,

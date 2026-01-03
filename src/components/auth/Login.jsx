@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaCopy } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
@@ -14,6 +14,11 @@ const Login = () => {
   const navigate = useNavigate();
   const axioxSechore = usePrivateApi();
   const nextAPi = useAxiosData();
+
+  const copyToClipboard = (text, label) => {
+    navigator.clipboard.writeText(text);
+    toast.success(`${label} copied to clipboard!`);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -78,7 +83,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-orange-950 dark:to-amber-950 px-4 transition-all duration-1000">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center pt-10 justify-center bg-gray-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-orange-950 dark:to-amber-950 px-4 transition-all duration-1000">
       {/* Subtle orange decorative overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
@@ -95,6 +100,44 @@ const Login = () => {
             <p className="mt-4 text-gray-600 dark:text-gray-300 text-lg">
               Sign in to continue
             </p>
+          </div>
+
+          {/* Admin Credentials */}
+          <div className="mb-8 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800/50">
+            <h3 className="text-sm font-bold text-orange-800 dark:text-orange-300 mb-3 uppercase tracking-wider">
+              Admin Credentials
+            </h3>
+            <div className="space-y-3">
+              {/* Admin Email */}
+              <div className="flex items-center justify-between bg-white dark:bg-black/40 p-3 rounded-lg border border-orange-100 dark:border-orange-800/30">
+                <div className="flex flex-col">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Email</span>
+                  <span className="text-sm font-mono text-gray-800 dark:text-gray-200">adminemail@example.com</span>
+                </div>
+                <button
+                  onClick={() => copyToClipboard("adminemail@example.com", "Admin Email")}
+                  className="p-2 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-full transition-colors"
+                  title="Copy Email"
+                >
+                  <FaCopy size={16} />
+                </button>
+              </div>
+
+              {/* Admin Password */}
+              <div className="flex items-center justify-between bg-white dark:bg-black/40 p-3 rounded-lg border border-orange-100 dark:border-orange-800/30">
+                <div className="flex flex-col">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">Password</span>
+                  <span className="text-sm font-mono text-gray-800 dark:text-gray-200">Admin@@123</span>
+                </div>
+                <button
+                  onClick={() => copyToClipboard("Admin@@123", "Admin Password")}
+                  className="p-2 text-orange-600 dark:text-orange-400 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-full transition-colors"
+                  title="Copy Password"
+                >
+                  <FaCopy size={16} />
+                </button>
+              </div>
+            </div>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">

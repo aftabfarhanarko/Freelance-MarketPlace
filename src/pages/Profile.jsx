@@ -17,9 +17,10 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAxiosData } from "../Hooks/DataFetch";
+import { useQuery } from "@tanstack/react-query";
 
 const Profile = () => {
-  const { user, logOutUser, updateUserInfo } = useAuth();
+  const { user, logOutUser } = useAuth();
   const axioss = useAxiosData();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -27,11 +28,24 @@ const Profile = () => {
     photoURL: "",
   });
   const [updating, setUpdating] = useState(false);
+ 
+  const {data:database, refetch} = useQuery({
+    queryKey:[user?.email],
+    queryFn: async () => {
+      const res = await axioss.get(`updeatProfile?email=${user?.email}`);
+      console.log(res);
+      
+      return res.data;
+    }
+  })
+
+  console.log(database, user?.email);
+  
 
   const openModal = () => {
     setFormData({
-      displayName: user?.displayName || "",
-      photoURL: user?.photoURL || "",
+      displayName: database?.displayName || user?.displayName || "",
+      photoURL: database?.photoURL || user?.photoURL || "",
     });
     setIsModalOpen(true);
   };
@@ -40,12 +54,21 @@ const Profile = () => {
     e.preventDefault();
     setUpdating(true);
     try {
-      await updateUserInfo({
+      const data = {
         displayName: formData.displayName,
         photoURL: formData.photoURL,
-      });
-      toast.success("Profile updated successfully!");
-      setIsModalOpen(false);
+      };
+      
+      const res = await axioss.patch(`updateUserData/${database?._id}`, data);
+      
+      if (res.data.modifiedCount > 0 || res.data.matchedCount > 0) {
+        toast.success("Profile updated successfully!");
+        refetch();
+        setIsModalOpen(false);
+      } else {
+        toast("No changes were made to the profile.");
+        setIsModalOpen(false);
+      }
     } catch (error) {
       console.error("Update failed", error);
       toast.error("Failed to update profile");
@@ -53,6 +76,8 @@ const Profile = () => {
       setUpdating(false);
     }
   };
+
+
 
   // updeatNowUser/:id
 
@@ -66,7 +91,6 @@ const Profile = () => {
     });
   };
 
-
   const handleLogout = () => {
     logOutUser()
       .then(() => {
@@ -79,20 +103,20 @@ const Profile = () => {
   };
 
   // Check if user is loading (user is null or empty array)
-  if (!user || (Array.isArray(user) && user.length === 0)) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
-      </div>
-    );
-  }
+  // if (!user || (Array.isArray(user) && user.length === 0)) {
+  //   return (
+  //     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+  //       <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen pt-30 bg-gray-50 dark:bg-gray-900 pb-20">
       {/* 1. Cover Section */}
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-r from-orange-400 to-amber-500">
-         <div className="absolute inset-0 bg-black opacity-10"></div>
-         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
       </div>
 
       <div className="w-11/12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -110,8 +134,12 @@ const Profile = () => {
                 <div className="relative inline-block mb-4">
                   <div className="w-32 h-32 rounded-full p-1 bg-white dark:bg-gray-700 shadow-lg mx-auto">
                     <img
-                      src={user?.photoURL || "https://via.placeholder.com/150"}
-                      alt={user?.displayName}
+                      src={
+                        database?.photoURL ||
+                        user?.photoURL ||
+                        "https://via.placeholder.com/150"
+                      }
+                      alt={database?.displayName || user?.displayName}
                       className="w-full h-full rounded-full object-cover"
                     />
                   </div>
@@ -122,10 +150,10 @@ const Profile = () => {
 
                 {/* Name & Role */}
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                  {user?.displayName || "User Name"}
+                  {database?.displayName || user?.displayName || "User Name"}
                 </h2>
                 <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
-                  Freelancer / Client
+                  {database?.role || "Freelancer / Client"}
                 </p>
 
                 {/* Verification Badge */}
@@ -155,7 +183,9 @@ const Profile = () => {
                 <div className="space-y-3 text-left border-t border-gray-100 dark:border-gray-700 pt-6">
                   <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                     <Mail className="w-5 h-5 text-gray-400" />
-                    <span className="text-sm truncate">{user?.email}</span>
+                    <span className="text-sm truncate">
+                      {database?.email || user?.email}
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                     <MapPin className="w-5 h-5 text-gray-400" />
@@ -220,7 +250,7 @@ const Profile = () => {
                     Full Name
                   </label>
                   <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium">
-                    {user?.displayName || "Not set"}
+                    {database?.displayName || user?.displayName || "Not set"}
                   </div>
                 </div>
 
@@ -228,9 +258,11 @@ const Profile = () => {
                   <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                     Email Address
                   </label>
-                  <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium flex justify-between items-center">
-                    {user?.email}
-                    <span className="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-medium flex justify-between items-center gap-2">
+                    <span className="truncate" title={database?.email || user?.email}>
+                      {database?.email || user?.email}
+                    </span>
+                    <span className="shrink-0 text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded-full">
                       Verified
                     </span>
                   </div>
