@@ -34,6 +34,9 @@ import {
   Settings,
   Zap,
   CheckCircle,
+  FileText,
+  Server,
+  Database,
 } from "lucide-react";
 import StatCard from "./StatCard";
 import { useQuery } from "@tanstack/react-query";
@@ -55,6 +58,8 @@ const Dashbord = () => {
   const [udsaser, setUdsaser] = useState([]);
   const [countData, setCountData] = useState({});
   const [chartData, setChartData] = useState([]);
+  const [letesUser, setLetesUser] = useState([]);
+  const [letesJobs, setLetesJobs] = useState([]);
 
   const isDark = theme === "dark";
   const chartGridColor = isDark ? "#374151" : "#E5E7EB";
@@ -128,7 +133,7 @@ const Dashbord = () => {
       setChartData(res?.data);
     });
   }, [axiosScrure]);
-  console.log(chartData.dailyData);
+  // console.log(chartData.dailyData);
   const revenueData = (chartData?.dailyData || []).map((item) => ({
     name: new Date(item.date).toLocaleDateString("en-US", {
       month: "short",
@@ -137,6 +142,21 @@ const Dashbord = () => {
     revenue: item.totalSalary,
     jobs: item.count,
   }));
+
+  // User and Job
+
+  useEffect(() => {
+    axiosScrure.get("allusernadJob").then((res) => {
+      console.log(res.data);
+      setLetesUser(res.data.latestUsers);
+      setLetesJobs(res.data.latestJobs);
+    });
+  }, [axiosScrure]);
+
+  console.log({
+    letesJobs,
+    letesUser,
+  });
 
   return (
     <motion.div
@@ -593,6 +613,238 @@ const Dashbord = () => {
         </div>
       </div>
 
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div>
+          {/* Letes Jobes */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Recent Jobs Posts
+              </h3>
+              <button className="text-sm text-orange-500 hover:text-orange-600 font-medium">
+                View All
+              </button>
+            </div>
+            {/* Desktop Table View */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">
+                    <th className="pb-3 pl-2">Job Title</th>
+                    <th className="pb-3">Posted By</th>
+                    {/* <th className="pb-3">Category</th> */}
+                    <th className="pb-3">Salary</th>
+                    <th className="pb-3 pr-2 text-right">Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                  {letesJobs.map((item) => (
+                    <tr
+                      key={item._id}
+                      className="group hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
+                    >
+                      <td className="py-3 pl-2">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <img
+                              src={item.coverImage}
+                              alt={item.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <span className="font-medium text-gray-900 dark:text-white text-sm">
+                            {item.title}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-3 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="flex flex-col">
+                          <span className="font-medium text-gray-900 dark:text-white">
+                            {item.postedBy}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            {item.userEmail}
+                          </span>
+                        </div>
+                      </td>
+                      {/* <td className="py-3 text-sm text-gray-600 dark:text-gray-300">
+                        <span className="px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-600 dark:bg-orange-900/20 dark:text-orange-400">
+                          {item.Category}
+                        </span>
+                      </td> */}
+                      <td className="py-3 text-sm font-semibold text-gray-900 dark:text-white">
+                        ${item["sallery "] || 5555}
+                      </td>
+                      <td className="py-3 pr-2 text-right text-xs text-gray-400">
+                        {new Date(item.create_at).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-4">
+              {letesJobs.map((item) => (
+                <div
+                  key={item._id}
+                  className="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-xl space-y-3"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shrink-0">
+                        <img
+                          src={item.coverImage}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white text-sm line-clamp-1">
+                          {item.title}
+                        </h4>
+                        <span className="text-xs text-gray-500 block mt-0.5">
+                          {new Date(item.create_at).toLocaleDateString()}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="font-bold text-gray-900 dark:text-white text-sm shrink-0">
+                      ${item["sallery "] || 5555}
+                    </span>
+                  </div>
+                  <div className="pt-2 border-t border-gray-200 dark:border-gray-700/50">
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-500 mb-0.5">
+                        Posted by
+                      </span>
+                      <span className="text-sm font-medium text-gray-900 dark:text-white">
+                        {item.postedBy}
+                      </span>
+                      <span className="text-xs text-gray-500 truncate">
+                        {item.userEmail}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        <div>
+          {/* Letes User Add */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                Recent Users
+              </h3>
+              <button className="text-sm text-orange-500 hover:text-orange-600 font-medium">
+                View All
+              </button>
+            </div>
+            {/* Desktop Table View */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider border-b border-gray-100 dark:border-gray-700">
+                    <th className="pb-3 pl-2">User</th>
+                    <th className="pb-3">Role</th>
+                    <th className="pb-3 pr-2 text-right">Joined</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
+                  {letesUser.map((user) => (
+                    <tr
+                      key={user._id || user.email}
+                      className="group hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
+                    >
+                      <td className="py-3 pl-2">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <img
+                              src={user.photoURL}
+                              alt={user.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="font-medium text-gray-900 dark:text-white text-sm">
+                              {user.name}
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              {user.email}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="py-3">
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            user.role === "admin"
+                              ? "bg-purple-100 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400"
+                              : "bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                          }`}
+                        >
+                          {user.role}
+                        </span>
+                      </td>
+                      <td className="py-3 pr-2 text-right text-xs text-gray-400">
+                        {new Date(user.createdAt).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* Mobile Card View */}
+            <div className="md:hidden space-y-4">
+              {letesUser.map((user) => (
+                <div
+                  key={user._id || user.email}
+                  className="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-xl flex items-center justify-between"
+                >
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700 shrink-0">
+                      <img
+                        src={user.photoURL}
+                        alt={user.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm truncate">
+                        {user.name}
+                      </h4>
+                      <p className="text-xs text-gray-500 truncate">
+                        {user.email}
+                      </p>
+                      <p className="text-[10px] text-gray-400 mt-0.5">
+                        Joined: {new Date(user.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className={`shrink-0 px-2 py-1 rounded-full text-xs font-medium ${
+                      user.role === "admin"
+                        ? "bg-purple-100 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400"
+                        : "bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                    }`}
+                  >
+                    {user.role}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
       {/* Mobile Floating Action Button - Kept as part of page content for now */}
       <motion.button
         initial={{ scale: 0 }}
@@ -601,6 +853,121 @@ const Dashbord = () => {
       >
         <Plus className="w-6 h-6" />
       </motion.button>
+
+      {/* Control Center & System Health */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Quick Actions */}
+        <motion.div
+          variants={itemVariants}
+          className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Quick Actions
+            </h3>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              {
+                icon: Plus,
+                label: "Post Job",
+                color: "text-orange-600",
+                bg: "bg-orange-100",
+              },
+              {
+                icon: Users,
+                label: "Manage Users",
+                color: "text-blue-600",
+                bg: "bg-blue-100",
+              },
+              {
+                icon: FileText,
+                label: "Reports",
+                color: "text-emerald-600",
+                bg: "bg-emerald-100",
+              },
+              {
+                icon: Settings,
+                label: "Settings",
+                color: "text-gray-600",
+                bg: "bg-gray-100",
+              },
+            ].map((action, idx) => (
+              <button
+                key={idx}
+                className="flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 group"
+              >
+                <div
+                  className={`p-3 rounded-full ${action.bg} dark:bg-opacity-10 mb-3 group-hover:scale-110 transition-transform`}
+                >
+                  <action.icon className={`w-6 h-6 ${action.color}`} />
+                </div>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {action.label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* System Health */}
+        <motion.div
+          variants={itemVariants}
+          className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              System Health
+            </h3>
+            <span className="flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Operational
+            </span>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                label: "Server Latency",
+                value: "24ms",
+                icon: Server,
+                status: "Good",
+              },
+              {
+                label: "Database Status",
+                value: "Connected",
+                icon: Database,
+                status: "Good",
+              },
+              {
+                label: "API Uptime",
+                value: "99.9%",
+                icon: Activity,
+                status: "Good",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-700/30"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-white dark:bg-gray-600 text-gray-500 dark:text-gray-300 shadow-sm">
+                    <item.icon className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {item.label}
+                  </span>
+                </div>
+                <span className="text-sm font-bold text-gray-900 dark:text-white">
+                  {item.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

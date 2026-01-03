@@ -21,6 +21,8 @@ import TotalUser from "../pages/Dashbord/TotalUser";
 import TotalAcceptsJobs from "../pages/Dashbord/TotalAcceptsJobs";
 import AllJobs from "../pages/Dashbord/AllJobs";
 import Setting from "../pages/Dashbord/Setting";
+import YouAreNotAdmin from "../pages/YouAreNotAdmin";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +73,10 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: <Profile></Profile>,
       },
+      {
+        path: "/notadmin",
+        element: <YouAreNotAdmin></YouAreNotAdmin>,
+      },
 
       {
         path: "*",
@@ -80,7 +86,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashbord",
-    element: <DashbordLayout />,
+    element: (
+      <AdminRoute>
+        <DashbordLayout ></DashbordLayout>
+      </AdminRoute>
+    ),
     children: [
       {
         index: true,
@@ -108,19 +118,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashbord/totalUser",
-        element:<TotalUser></TotalUser>
+        element: <TotalUser></TotalUser>,
       },
       {
         path: "/dashbord/totalAcceptsJobs",
-        element:<TotalAcceptsJobs></TotalAcceptsJobs>
+        element: <TotalAcceptsJobs></TotalAcceptsJobs>,
       },
       {
         path: "/dashbord/allJobs",
-        element:<AllJobs></AllJobs>
+        element: <AllJobs></AllJobs>,
       },
       {
         path: "/dashbord/setting",
-        element:<Setting></Setting>
+        element: <Setting></Setting>,
       },
     ],
   },
