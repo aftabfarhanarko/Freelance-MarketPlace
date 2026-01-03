@@ -151,7 +151,7 @@ const DashbordLayout = () => {
           />
           <SidebarItem
             icon={CheckCircle}
-            label="Total Accepted Jobs"
+            label="Accepted Jobs"
             to="/dashbord/totalAcceptsJobs"
             active={location.pathname === "/dashbord/totalAcceptsJobs"}
           />

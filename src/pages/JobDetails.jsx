@@ -49,6 +49,7 @@ const JobDetails = () => {
       postedBy: job.postedBy,
       category: job.category,
       sallery: job.sallery,
+      acceptsUserName: user.displayName,
       acceptsUserEmail: user.email,
       coverImage: job.coverImage,
       summary: job.summary,
