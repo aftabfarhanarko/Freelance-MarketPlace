@@ -209,7 +209,7 @@ const Dashbord = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <h1 className="text-3xl sm:text-4xl lg:text-7xl font-black tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                  <h1 className=" text-3xl md:text-5xl  font-black tracking-tight text-gray-900 dark:text-white leading-[1.1]">
                     Welcome back, <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-400 dark:to-amber-300">
                       {user?.displayName?.split(" ")[0] || "Admin"}
@@ -572,44 +572,6 @@ const Dashbord = () => {
               </ResponsiveContainer>
             </div>
           </motion.div>
-
-          {/* Upcoming Deadlines Widget */}
-          {/* <motion.div
-            variants={itemVariants}
-            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
-          >
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Upcoming Deadlines
-              </h3>
-              <Calendar className="w-5 h-5 text-gray-400" />
-            </div>
-            <div className="space-y-4">
-              {upcomingDeadlines.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-start gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-700"
-                >
-                  <div
-                    className={`mt-1.5 w-2 h-2 rounded-full ${
-                      item.priority === "High" ? "bg-orange-500" : "bg-amber-500"
-                    }`}
-                  ></div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                      {item.task}
-                    </h4>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                      {item.project}
-                    </p>
-                  </div>
-                  <div className="text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-lg whitespace-nowrap">
-                    {item.due}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div> */}
         </div>
       </div>
 
