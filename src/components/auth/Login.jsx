@@ -5,13 +5,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
 import usePrivateApi from "../../Hooks/PrivateAPI";
+import { useAxiosData } from "../../Hooks/DataFetch";
 
 const Login = () => {
   const [show, setShow] = useState(true);
   const { emailpasswordLoginUser, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const axiosScrure = usePrivateApi();
+  const axioxSechore = usePrivateApi();
+  const nextAPi = useAxiosData();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,17 +23,22 @@ const Login = () => {
     emailpasswordLoginUser(email, password)
       .then(async (res) => {
         toast.success("Login Successful!");
-        console.log("User", res.user);
+        // console.log("User", res.user);
         const userData = {
           name: res?.user?.displayName,
           email: res?.user?.email,
           photoURL: res?.user?.photoURL,
-          role:"user",
-          providerId: res?.user?.providerId,
+          role: "user",
+          password: password,
+          providerId: "Types",
           createdAt: new Date().toISOString(),
         };
-        const response = await axiosScrure.post("users", userData);
-        // console.log("API response:", response.data);
+        nextAPi.post("users", userData).then((ress) => {
+          // console.log(ress.data.message, userData);
+          if (ress?.data?.insertedId) {
+            toast.success(ress.data.message);
+          }
+        });
         navigate(location.state || "/");
       })
       .catch((err) => {
@@ -42,30 +49,29 @@ const Login = () => {
   const handleGoogle = () => {
     toast.loading("Logging in with Google...");
     googleLogin()
-      .then(async (res) => {
-        toast.dismiss(); // remove loading
+      .then((res) => {
+        // toast.dismiss(); // remove loading
         toast.success("Login Successful!");
         console.log("Google login res:", res);
-
         const userData = {
           name: res?.user?.displayName,
           email: res?.user?.email,
           photoURL: res?.user?.photoURL,
-          role:"user",
+          role: "user",
+          // password: password,
           providerId: res?.user?.providerId,
           createdAt: new Date().toISOString(),
         };
-          console.log(userData);
-          
-        // const response = await axiosScrure.post("users", userData);
-        // console.log("API response:", response.data);
-
-        // Confirm navigate is working
-        console.log("Navigating to:", location.state || "/");
+        nextAPi.post("users", userData).then((ress) => {
+          console.log(ress.data.message, userData);
+          if (ress?.data?.insertedId) {
+            toast.success(ress.data.message);
+          }
+        });
         navigate(location.state || "/");
       })
       .catch((err) => {
-        toast.dismiss();
+        // toast.dismiss();
         console.error("Google login error:", err);
         toast.error(err.code || "Google login failed");
       });
@@ -155,7 +161,7 @@ const Login = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-orange-600 to-amber-600 
+              className="w-full py-3 hover:scale-105 duration-600 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-orange-600 to-amber-600 
                        hover:from-orange-700 hover:to-amber-700 transform hover:scale-[1.02] shadow-xl 
                        hover:shadow-orange-500/30 dark:hover:shadow-amber-500/30 transition-all duration-500 
                        relative overflow-hidden group"
@@ -178,7 +184,7 @@ const Login = () => {
           <button
             type="button"
             onClick={handleGoogle}
-            className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-gray-300 dark:border-white/20 
+            className="w-full flex items-center justify-center gap-4 py-3 hover:scale-105 duration-600 rounded-2xl border border-gray-300 dark:border-white/20 
                      bg-white/50 dark:bg-white/5 hover:bg-white/70 dark:hover:bg-white/10 backdrop-blur-sm 
                      transition-all duration-300 group"
           >

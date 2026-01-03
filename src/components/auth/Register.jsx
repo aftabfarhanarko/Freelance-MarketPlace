@@ -13,6 +13,7 @@ const Register = () => {
   const { signUpUser, updateUserInfo, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const axioxSechore = usePrivateApi();
+  const nextAPi = useAxiosData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,27 +37,28 @@ const Register = () => {
       .then((result) => {
         return updateUserInfo({ displayName, photoURL });
       })
-      .then( (res) => {
+      .then((res) => {
         // toast.success("Account created successfully!");
-        // navigate("/");
         console.log(res);
         const userData = {
           name: displayName,
           email: email,
           photoURL: photoURL,
-          role:"user",
+          role: "user",
           providerId: "Types",
           password: password,
           createdAt: new Date().toISOString(),
         };
-        
-         axioxSechore.post("users", userData)
-         .then(res => {
-          console.log(res);
-          
-         })
-        
-        
+
+        axioxSechore
+          .post("users", userData)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            toast.error(err.code);
+          });
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err.code || "Registration failed");
@@ -65,8 +67,24 @@ const Register = () => {
 
   const handleGoogleRegister = () => {
     googleLogin()
-      .then(() => {
+      .then((res) => {
         toast.success("Signed up with Google!");
+        const userData = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photoURL: res?.user?.photoURL,
+          role: "user",
+          // password: password,
+          providerId: res?.user?.providerId,
+          createdAt: new Date().toISOString(),
+        };
+        nextAPi.post("users", userData).then((ress) => {
+          console.log(ress.data.message, userData);
+          if (ress?.data?.insertedId) {
+            toast.success(ress.data.message);
+          }
+        });
+        console.log("This is Googhle Login Data", userData);
         navigate("/");
       })
       .catch((err) => {
@@ -199,9 +217,9 @@ const Register = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-orange-600 to-amber-600 
+              className="w-full py-3 hover:scale-105 duration-600 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-orange-600 to-amber-600 
                        hover:from-orange-700 hover:to-amber-700 transform hover:scale-[1.02] shadow-xl 
-                       hover:shadow-orange-500/30 dark:hover:shadow-amber-500/30 transition-all duration-500 
+                       hover:shadow-orange-500/30 dark:hover:shadow-amber-500/30 transition-all 
                        relative overflow-hidden group"
             >
               <span className="relative z-10">Create Account</span>
@@ -222,9 +240,9 @@ const Register = () => {
           <button
             type="button"
             onClick={handleGoogleRegister}
-            className="w-full flex items-center justify-center gap-4 py-4 rounded-2xl border border-gray-300 dark:border-white/20 
+            className="w-full flex items-center justify-center gap-4 py-3 hover:scale-105 duration-600 rounded-2xl border border-gray-300 dark:border-white/20 
                      bg-white/50 dark:bg-white/5 hover:bg-white/70 dark:hover:bg-white/10 backdrop-blur-sm 
-                     transition-all duration-300 group"
+                     transition-all  group"
           >
             <svg
               className="w-6 h-6"
