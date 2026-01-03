@@ -268,10 +268,14 @@ const MyAcceptedTasks = () => {
                                 "https://via.placeholder.com/300x200"
                               }
                               alt={job.title}
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "https://via.placeholder.com/300x200";
+                              }}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                             <div className="absolute top-2 left-2 px-2 py-1 bg-black/50 backdrop-blur-md rounded text-xs font-medium text-white">
-                              {job.category}
+                              {job.category || "General"}
                             </div>
                           </div>
 
@@ -285,7 +289,7 @@ const MyAcceptedTasks = () => {
                                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mt-3">
                                   <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300">
                                     <User className="w-3.5 h-3.5" />
-                                    Posted by: {job.postedBy}
+                                    Posted by: {job.postedBy || "Unknown"}
                                   </div>
                                   <div className="flex items-center gap-1.5">
                                     <Clock className="w-4 h-4" />
@@ -325,10 +329,14 @@ const MyAcceptedTasks = () => {
                               "https://via.placeholder.com/300x200"
                             }
                             alt={job.title}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "https://via.placeholder.com/300x200";
+                            }}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 dark:bg-black/70 backdrop-blur-md rounded-lg text-xs font-semibold text-gray-900 dark:text-white shadow-sm">
-                            {job.category}
+                            {job.category || "General"}
                           </div>
                           <button
                             onClick={() => handelClear(job._id)}
@@ -348,7 +356,7 @@ const MyAcceptedTasks = () => {
                             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                               <User className="w-4 h-4" />
                               <span className="truncate">
-                                By {job.postedBy}
+                                By {job.postedBy || "Unknown"}
                               </span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">

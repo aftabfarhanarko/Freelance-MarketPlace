@@ -38,7 +38,11 @@ const JobDetails = () => {
   const pageNaviget = useNavigate();
   const reafernc = useRef();
 
-  const { data: rewiewData, refetch, isLoading } = useQuery({
+  const {
+    data: rewiewData,
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["jobs", id],
     queryFn: async () => {
       const res = await apise.get(`reviewsJobs/${id}`);
@@ -58,28 +62,31 @@ const JobDetails = () => {
   const handleAcceptJob = () => {
     setIsAccepted(true);
     const postDataNow = {
-      title: job.title,
-      postedBy: job.postedBy,
-      category: job.category,
-      sallery: job.sallery,
+      title: job.data.title,
+      postedBy: job.data.postedBy,
+      category: job.data.category,
+      sallery: job.data.sallery,
       acceptsUserName: user?.displayName,
       acceptsUserEmail: user?.email,
-      coverImage: job.coverImage,
-      summary: job.summary,
+      coverImage: job.data.coverImage,
+      summary: job.data.summary,
       create_at: new Date(),
     };
+    // console.log(postDataNow);
 
     apise.post("task", postDataNow).then((result) => {
       // console.log(result.data);
       if (result.data.acknowledged) {
         refetch();
         toast.success("Congratulations! You have accepted this job.");
-        
+
         reafernc.current.showModal();
       }
     });
     // console.log(postDataNow);
   };
+
+  console.log(job);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -150,7 +157,7 @@ const JobDetails = () => {
     },
   };
 
-  if (!loding , isLoading) {
+  if ((!loding, isLoading)) {
     return <LoadingSpinner></LoadingSpinner>;
   }
 

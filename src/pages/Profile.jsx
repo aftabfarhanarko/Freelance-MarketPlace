@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import { motion } from "framer-motion";
 import {
@@ -13,13 +13,46 @@ import {
   LogOut,
   Clock,
   CheckCircle,
+  X,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAxiosData } from "../Hooks/DataFetch";
 
 const Profile = () => {
-  const { user, logOutUser } = useAuth();
-  const axioss = useAxiosData() ;
+  const { user, logOutUser, updateUserInfo } = useAuth();
+  const axioss = useAxiosData();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    displayName: "",
+    photoURL: "",
+  });
+  const [updating, setUpdating] = useState(false);
+
+  const openModal = () => {
+    setFormData({
+      displayName: user?.displayName || "",
+      photoURL: user?.photoURL || "",
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    setUpdating(true);
+    try {
+      await updateUserInfo({
+        displayName: formData.displayName,
+        photoURL: formData.photoURL,
+      });
+      toast.success("Profile updated successfully!");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Update failed", error);
+      toast.error("Failed to update profile");
+    } finally {
+      setUpdating(false);
+    }
+  };
 
   // updeatNowUser/:id
 
@@ -104,7 +137,10 @@ const Profile = () => {
 
                 {/* Action Buttons */}
                 <div className="grid grid-cols-2 gap-3 mb-6">
-                  <button className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm">
+                  <button
+                    onClick={openModal}
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors text-sm"
+                  >
                     <Edit3 className="w-4 h-4" /> Edit
                   </button>
                   <button
@@ -272,6 +308,102 @@ const Profile = () => {
           </div>
         </div>
       </div>
+
+      {/* Edit Profile Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md overflow-hidden border border-gray-100 dark:border-gray-700"
+          >
+            <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                Edit Profile
+              </h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdate} className="p-6 space-y-4">
+              {/* Photo Preview */}
+              <div className="flex justify-center mb-4">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-orange-500 bg-gray-100 dark:bg-gray-700">
+                  <img
+                    src={formData.photoURL || "https://via.placeholder.com/150"}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://via.placeholder.com/150";
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={formData.displayName}
+                  onChange={(e) =>
+                    setFormData({ ...formData, displayName: e.target.value })
+                  }
+                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Photo URL
+                </label>
+                <input
+                  type="url"
+                  value={formData.photoURL}
+                  onChange={(e) =>
+                    setFormData({ ...formData, photoURL: e.target.value })
+                  }
+                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 outline-none transition-all"
+                  placeholder="https://example.com/photo.jpg"
+                />
+              </div>
+
+              <div className="flex gap-3 mt-6">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={updating}
+                  className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {updating ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Saving...
+                    </>
+                  ) : (
+                    "Save Changes"
+                  )}
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };
