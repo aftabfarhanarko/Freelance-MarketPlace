@@ -74,6 +74,7 @@ const JobDetails = () => {
       if (result.data.acknowledged) {
         refetch();
         toast.success("Congratulations! You have accepted this job.");
+        
         reafernc.current.showModal();
       }
     });
