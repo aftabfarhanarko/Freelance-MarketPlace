@@ -49,7 +49,7 @@ const TotalUser = () => {
     },
   });
 
-  console.log("This is Query data:", users);
+  // console.log("This is Query data:", users);
 
   const HandelUpdet = (role, id) => {
     console.log(role, id);
@@ -78,12 +78,12 @@ const TotalUser = () => {
     console.log("Delete set", user._id);
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "This job post will be permanently deleted",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#f97316",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
         testApi.delete(`usersdelete/${user._id}`).then((res) => {
