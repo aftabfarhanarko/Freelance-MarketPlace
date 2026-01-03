@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Search,
   Filter,
@@ -11,6 +11,9 @@ import {
   UserMinus,
   UserCircle,
   Calendar,
+  Download,
+  ChevronDown,
+  ArrowUpDown,
 } from "lucide-react";
 import Briefcase from "../../Shire/Briefcase";
 import usePrivateApi from "../../Hooks/PrivateAPI";
@@ -20,96 +23,59 @@ import CountUp from "react-countup";
 import { useQuery } from "@tanstack/react-query";
 import useUpdateRole from "../../Hooks/Mouteded";
 import { useAxiosData } from "../../Hooks/DataFetch";
+import { motion, AnimatePresence } from "framer-motion";
 
 const TotalUser = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterRole, setFilterRole] = useState("all");
+  const [sortConfig, setSortConfig] = useState({
+    key: "createdAt",
+    direction: "desc",
+  });
   const nextapi = usePrivateApi();
   const { mutate } = useUpdateRole();
   const testApi = useAxiosData();
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    nextapi.get("userData").then((res) => {
-      setUsers(res.data.result);
-    });
-  }, [nextapi]);
+  // useQuery diye data fetch korchi
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const res = await nextapi.get("userData");
+      return res.data.result;
+    },
+  });
+
+  console.log("This is Query data:", users);
 
   const HandelUpdet = (role, id) => {
     console.log(role, id);
-    mutate({ role, id });
+    mutate(
+      { role, id },
+      {
+        onSuccess: () => {
+          refetch(); // Role update howar por data refresh korbe
+          toast.success(`User role updated to ${role}`);
+        },
+      }
+    );
   };
 
   const handleMakeAdmin = (id) => {
-    console.log("Adminn set", id);
+    console.log("Admin set", id);
     HandelUpdet("admin", id);
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: `Do you want to promote ${user.name} to Admin?`,
-    //   icon: "question",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#f97316",
-    //   cancelButtonColor: "#6b7280",
-    //   confirmButtonText: "Yes, Make Admin",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     nextapi
-    //       .patch(`users/admin/${user._id}`)
-    //       .then((res) => {
-    //         if (res.data.modifiedCount > 0) {
-    //           toast.success(`${user.name} is now an Admin!`);
-    //           // Update local state
-    //           setUsers(
-    //             users.map((u) =>
-    //               u._id === user._id ? { ...u, role: "admin" } : u
-    //             )
-    //           );
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         console.log(err);
-    //         toast.error("Failed to update role");
-    //       });
-    //   }
-    // });
   };
 
   const handleMakeUser = (id) => {
     console.log("User set", id);
     HandelUpdet("user", id);
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: `Do you want to demote ${user.name} to User?`,
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#f59e0b",
-    //   cancelButtonColor: "#6b7280",
-    //   confirmButtonText: "Yes, Make User",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     nextapi
-    //       .patch(`users/user/${user._id}`)
-    //       .then((res) => {
-    //         if (res.data.modifiedCount > 0) {
-    //           toast.success(`${user.name} is now a User!`);
-    //           // Update local state
-    //           setUsers(
-    //             users.map((u) =>
-    //               u._id === user._id ? { ...u, role: "user" } : u
-    //             )
-    //           );
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         console.log(err);
-    //         toast.error("Failed to update role");
-    //       });
-    //   }
-    // });
   };
 
   const handleDeleteUser = (user) => {
-    console.log("Delet set", user._id);
-
+    console.log("Delete set", user._id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -122,319 +88,474 @@ const TotalUser = () => {
       if (result.isConfirmed) {
         testApi.delete(`usersdelete/${user._id}`).then((res) => {
           console.log(res);
-
           if (res.data.deletedCount) {
-            //   toast.success("User deleted successfully");
-            setUsers(users.filter((u) => u._id !== user._id));
+            toast.success("User deleted successfully");
+            refetch(); // Delete howar por data refresh korbe
+            Swal.fire({
+              title: "Deleted!",
+              text: "User has been deleted.",
+              icon: "success",
+            });
           }
-        });
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
         });
       }
     });
   };
 
-  return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            <User className="w-6 h-6 text-orange-500" />
-            Total Users
-            <span className="ml-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full text-sm font-bold">
-              <CountUp end={users.length} duration={2} />
-            </span>
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
-            Manage and monitor all registered users.
+  // Search, Filter, and Sort logic
+  const filteredAndSortedUsers = users
+    .filter((user) => {
+      const matchesSearch =
+        user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email?.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesRole = filterRole === "all" || user.role === filterRole;
+      return matchesSearch && matchesRole;
+    })
+    .sort((a, b) => {
+      if (sortConfig.key === "name") {
+        return sortConfig.direction === "asc"
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
+      } else if (sortConfig.key === "createdAt") {
+        return sortConfig.direction === "asc"
+          ? new Date(a.createdAt) - new Date(b.createdAt)
+          : new Date(b.createdAt) - new Date(a.createdAt);
+      }
+      return 0;
+    });
+
+  const handleSort = (key) => {
+    setSortConfig((current) => ({
+      key,
+      direction:
+        current.key === key && current.direction === "asc" ? "desc" : "asc",
+    }));
+  };
+
+  const handleExport = () => {
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      "Name,Email,Role,Joined Date\n" +
+      filteredAndSortedUsers
+        .map(
+          (u) =>
+            `${u.name},${u.email},${u.role},${new Date(
+              u.createdAt
+            ).toLocaleDateString()}`
+        )
+        .join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "users_list.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    toast.success("User list exported!");
+  };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-600 dark:text-gray-400 font-medium">
+            Loading users...
           </p>
         </div>
-        <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="relative flex-1 md:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search users..."
-              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <button className="p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700">
-            <Filter className="w-4 h-4" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
+      {/* Header & Controls */}
+      <div className="max-w-7xl mx-auto mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-3">
+            Total Users
+            <span className="text-sm font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-full">
+              {users.length} Active
+            </span>
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            Manage permissions and monitor user growth.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={handleExport}
+            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Export CSV
           </button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Card 1: Primary (Orange) */}
-        <div className="bg-gradient-to-br from-orange-500 to-orange-600 p-6 rounded-2xl shadow-lg shadow-orange-500/20 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
-          <div className="flex items-center justify-between mb-4 relative z-10">
-            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
-              <User className="w-6 h-6 text-white" />
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden group"
+        >
+          <div className="absolute right-0 top-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700"></div>
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-4">
+              <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+                <User className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold bg-white/20 px-2 py-1 rounded-full backdrop-blur-sm">
+                +12% vs last month
+              </span>
             </div>
-            <span className="text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full">
-              +12%
-            </span>
+            <h3 className="text-4xl font-bold mb-1">
+              <CountUp end={users.length} duration={2} />
+            </h3>
+            <p className="text-orange-100 font-medium">
+              Total Registered Users
+            </p>
           </div>
-          <h3 className="text-3xl font-bold mb-1 relative z-10">
-            {users.length}
-          </h3>
-          <p className="text-orange-100 text-sm font-medium relative z-10">
-            Total Users
-          </p>
-        </div>
+        </motion.div>
 
-        {/* Card 2: Secondary (Amber) */}
-        <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-6 rounded-2xl shadow-lg shadow-amber-500/20 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
-          <div className="flex items-center justify-between mb-4 relative z-10">
-            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
-              <Shield className="w-6 h-6 text-white" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+        >
+          <div className="absolute right-0 top-0 w-32 h-32 bg-amber-500/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700"></div>
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-4">
+              <div className="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-xl">
+                <ShieldCheck className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+              </div>
+              <span className="text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">
+                Active
+              </span>
             </div>
-            <span className="text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full">
-              +5%
-            </span>
+            <h3 className="text-4xl font-bold mb-1 text-gray-900 dark:text-white">
+              <CountUp
+                end={users.filter((u) => u.role === "admin").length}
+                duration={2}
+              />
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">
+              Administrators
+            </p>
           </div>
-          <h3 className="text-3xl font-bold mb-1 relative z-10">
-            {users.length - 1}{" "}
-          </h3>
-          <p className="text-amber-100 text-sm font-medium relative z-10">
-            Freelancers
-          </p>
-        </div>
+        </motion.div>
 
-        {/* Card 3: Background/Neutral (Dark) */}
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-lg shadow-gray-500/20 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
-          <div className="flex items-center justify-between mb-4 relative z-10">
-            <div className="p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-              <Briefcase className="w-6 h-6 text-white" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700 relative overflow-hidden group"
+        >
+          <div className="absolute right-0 top-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-150 duration-700"></div>
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-4">
+              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+                <UserCircle className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              </div>
+              <span className="text-xs font-bold bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">
+                Active
+              </span>
             </div>
-            <span className="text-xs font-bold px-2 py-1 bg-white/10 text-white rounded-full">
-              +8%
-            </span>
+            <h3 className="text-4xl font-bold mb-1 text-gray-900 dark:text-white">
+              <CountUp
+                end={users.filter((u) => u.role === "user").length}
+                duration={2}
+              />
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">
+              Standard Users
+            </p>
           </div>
-          <h3 className="text-3xl font-bold mb-1 relative z-10">
-            {users.length - 3}
-          </h3>
-          <p className="text-gray-400 text-sm font-medium relative z-10">
-            Clients
-          </p>
+        </motion.div>
+      </div>
+
+      {/* Filters & Search */}
+      <div className="max-w-7xl mx-auto mb-6 flex flex-col md:flex-row justify-between gap-4">
+        <div className="relative w-full md:max-w-xl flex-1">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search by name or email..."
+            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div className="flex gap-3 w-full md:w-auto">
+          <div className="relative min-w-[150px] flex-1 md:flex-none">
+            <select
+              value={filterRole}
+              onChange={(e) => setFilterRole(e.target.value)}
+              className="w-full appearance-none pl-4 pr-10 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none cursor-pointer"
+            >
+              <option value="all">All Roles</option>
+              <option value="admin">Admins</option>
+              <option value="user">Users</option>
+            </select>
+            <Filter className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          </div>
+          <button
+            onClick={() => handleSort("createdAt")}
+            className={`flex-1 md:flex-none justify-center flex items-center gap-2 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+              sortConfig.key === "createdAt"
+                ? "text-orange-600 border-orange-200 bg-orange-50 dark:bg-orange-900/20"
+                : "text-gray-600 dark:text-gray-300"
+            }`}
+          >
+            <ArrowUpDown className="w-4 h-4" />
+            <span className="hidden sm:inline">Sort Date</span>
+          </button>
         </div>
       </div>
 
-      {/* Users List - Desktop Table & Mobile Cards */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
-        {/* Desktop View */}
-        <div className="hidden md:block overflow-x-auto">
-          <table className="w-full text-left border-collapse whitespace-nowrap">
-            <thead>
-              <tr className="bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider">
-                <th className="p-4 font-semibold">
-                  <div className="flex items-center gap-2">
-                    <UserCircle className="w-4 h-4 text-gray-400" />
-                    Info
-                  </div>
-                </th>
-                <th className="p-4 font-semibold">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-gray-400" />
-                    Role
-                  </div>
-                </th>
-                <th className="p-4 font-semibold">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-gray-400" />
-                    Status
-                  </div>
-                </th>
-                <th className="p-4 font-semibold">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-gray-400" />
-                    Joined Date
-                  </div>
-                </th>
-                <th className="p-4 font-semibold text-center">Role Update </th>
-                <th className="p-4 font-semibold text-center">
-                  Actions Delete
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
-              {users.map((user) => (
-                <tr
-                  key={user._id}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
-                >
-                  <td className="p-4">
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={user.photoURL}
-                        alt={user.name}
-                        className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-700"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                          {user.name}
-                        </p>
-                        <p className="text-xs text-gray-500">{user.email}</p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="p-4">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${
-                          user.role === "admin"
-                            ? "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
-                            : "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
-                        }`}
-                      >
-                        {user.role === "admin" ? (
-                          <ShieldCheck className="w-3 h-3" />
+      {/* Empty State */}
+      {filteredAndSortedUsers.length === 0 ? (
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-12 text-center">
+            <UserCircle className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              No users found
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Try adjusting your search or filter criteria
+            </p>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Users List - Desktop Table */}
+          <div className="max-w-7xl mx-auto">
+            <div className="hidden md:block bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+              <table className="w-full">
+                <thead className="bg-gray-50 dark:bg-gray-700">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                      Info
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                      Role
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                      Status
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">
+                      Joined Date
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
+                      Role Update
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
+                      Delete
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                  {filteredAndSortedUsers.map((user) => (
+                    <tr
+                      key={user._id}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                    >
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 font-bold overflow-hidden">
+                            {user.photoURL ? (
+                              <img
+                                src={user.photoURL}
+                                alt={user.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <span>{user.name?.charAt(0).toUpperCase()}</span>
+                            )}
+                          </div>
+                          <div>
+                            <div className="font-medium text-gray-900 dark:text-white">
+                              {user.name}
+                            </div>
+                            <div className="text-sm text-gray-500 dark:text-gray-400">
+                              {user.email}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-2">
+                          {user.role === "admin" ? (
+                            <div className="flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 px-3 py-1.5 rounded-full">
+                              <div className="p-1 bg-orange-600 rounded-full">
+                                <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              <span className="text-sm font-medium capitalize text-orange-700 dark:text-orange-300">
+                                {user.role}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-2 bg-gradient-to-r from-gray-100 to-slate-100 dark:from-gray-800/50 dark:to-slate-800/50 px-3 py-1.5 rounded-full">
+                              <div className="p-1 bg-gray-600 dark:bg-gray-500 rounded-full">
+                                <User className="w-3.5 h-3.5 text-white" />
+                              </div>
+                              <span className="text-sm font-medium capitalize text-gray-700 dark:text-gray-300">
+                                {user.role}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 rounded-full text-sm">
+                          <CheckCircle className="w-4 h-4" />
+                          Active
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
+                        {new Date(user.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="px-6 py-4">
+                        {user.role === "user" ? (
+                          <button
+                            onClick={() => handleMakeAdmin(user._id)}
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                          >
+                            <Shield className="w-4 h-4" />
+                            Make Admin
+                          </button>
                         ) : (
-                          <User className="w-3 h-3" />
+                          <button
+                            onClick={() => handleMakeUser(user._id)}
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                          >
+                            <UserMinus className="w-4 h-4" />
+                            Make User
+                          </button>
                         )}
-                        {user.role}
-                      </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <button
+                          onClick={() => handleDeleteUser(user)}
+                          className="flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile View (Cards) */}
+            <div className="md:hidden space-y-4">
+              {filteredAndSortedUsers.map((user) => (
+                <motion.div
+                  key={user._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 font-bold text-xl overflow-hidden flex-shrink-0">
+                      {user.photoURL ? (
+                        <img
+                          src={user.photoURL}
+                          alt={user.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span>{user.name?.charAt(0).toUpperCase()}</span>
+                      )}
                     </div>
-                  </td>
-                  <td className="p-4">
-                    {/* Status placeholder since API data doesn't explicitly have it, assuming active if exists */}
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-sm text-green-600">Active</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-lg text-gray-900 dark:text-white break-words">
+                        {user.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                        {user.email}
+                      </p>
                     </div>
-                  </td>
-                  <td className="p-4 text-sm text-gray-500 dark:text-gray-400">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-gray-400" />
-                      {new Date(user.createdAt).toLocaleDateString()}
-                    </div>
-                  </td>
-                  <td className="p-4 text-center">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm capitalize flex-shrink-0">
+                      {user.role === "admin" ? (
+                        <div className="flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 px-3 py-1.5 rounded-full">
+                          <div className="p-1 bg-orange-600 rounded-full">
+                            <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <span className="text-sm font-medium capitalize text-orange-700 dark:text-orange-300">
+                            {user.role}
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2 bg-gradient-to-r from-gray-100 to-slate-100 dark:from-gray-800/50 dark:to-slate-800/50 px-3 py-1.5 rounded-full">
+                          <div className="p-1 bg-gray-600 dark:bg-gray-500 rounded-full">
+                            <User className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <span className="text-sm font-medium capitalize text-gray-700 dark:text-gray-300">
+                            {user.role}
+                          </span>
+                        </div>
+                      )}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mb-4 text-sm text-gray-600 dark:text-gray-400">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Active</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 mb-4 text-sm text-gray-600 dark:text-gray-400">
+                    <Calendar className="w-4 h-4" />
+                    Joined: {new Date(user.createdAt).toLocaleDateString()}
+                  </div>
+
+                  <div className="flex gap-2">
                     {user.role === "user" ? (
                       <button
                         onClick={() => handleMakeAdmin(user._id)}
-                        className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                        className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-lg transition-colors text-sm font-medium flex-1"
                       >
-                        <ShieldCheck className="w-4 h-4" />
+                        <Shield className="w-4 h-4" />
                         Make Admin
                       </button>
                     ) : (
                       <button
                         onClick={() => handleMakeUser(user._id)}
-                        className="flex items-center justify-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                        className="flex items-center justify-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded-lg transition-colors text-sm font-medium flex-1"
                       >
                         <UserMinus className="w-4 h-4" />
                         Make User
                       </button>
                     )}
-                  </td>
-                  <td className="p-4 text-center">
                     <button
                       onClick={() => handleDeleteUser(user)}
-                      className="flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors text-sm font-medium mx-auto"
+                      className="flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors text-sm font-medium flex-1"
                     >
                       <Trash2 className="w-4 h-4" />
                       Delete
                     </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Mobile View (Cards) */}
-        <div className="md:hidden flex flex-col divide-y divide-gray-100 dark:divide-gray-700">
-          {users.map((user) => (
-            <div key={user._id} className="p-4 space-y-4">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={user.photoURL}
-                    alt={user.name}
-                    className="w-12 h-12 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-700"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
-                      {user.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 break-all">
-                      {user.email}
-                    </p>
                   </div>
-                </div>
-                <span
-                  className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                    user.role === "admin"
-                      ? "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
-                      : "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400"
-                  }`}
-                >
-                  {user.role}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700/30 p-3 rounded-xl">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
-                  <span className="text-green-600 font-medium">Active</span>
-                </div>
-                <span>
-                  Joined: {new Date(user.createdAt).toLocaleDateString()}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                {user.role === "user" ? (
-                  <button
-                    onClick={() => handleMakeAdmin(user._id)}
-                    className="flex items-center justify-center gap-2 px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 hover:bg-orange-100 dark:hover:bg-orange-900/40 rounded-lg transition-colors text-sm font-medium"
-                  >
-                    <ShieldCheck className="w-4 h-4" />
-                    Make Admin
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => handleMakeUser(user._id)}
-                    className="flex items-center justify-center gap-2 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded-lg transition-colors text-sm font-medium"
-                  >
-                    <UserMinus className="w-4 h-4" />
-                    Make User
-                  </button>
-                )}
-
-                <button
-                  onClick={() => handleDeleteUser(user)}
-                  className="flex items-center justify-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg transition-colors text-sm font-medium"
-                >
-                  <Trash2 className="w-4 h-4" />
-                  Delete
-                </button>
-              </div>
+                </motion.div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="p-4 border-t border-gray-100 dark:border-gray-700 flex justify-center">
-          <button className="text-sm text-orange-500 font-medium hover:underline">
-            View All Users
-          </button>
-        </div>
-      </div>
+            {/* Pagination Info */}
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 dark:text-gray-400">
+                Showing {filteredAndSortedUsers.length} of {users.length} users
+              </p>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
-
-// Helper icon component since Briefcase was used but not imported in the card section
 
 export default TotalUser;

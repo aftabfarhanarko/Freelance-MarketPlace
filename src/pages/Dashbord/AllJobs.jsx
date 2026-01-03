@@ -22,10 +22,12 @@ const AllJobs = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    nextapi.get("jobs").then((res) => {
+    nextapi.get("alljobsShowDashbord").then((res) => {
       setJobs(res.data);
     });
   }, [nextapi]);
+  console.log(jobs);
+  
 
   const handleDelete = (id) => {
     // Implement delete logic here
@@ -43,7 +45,7 @@ const AllJobs = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-11/12 mx-auto">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>

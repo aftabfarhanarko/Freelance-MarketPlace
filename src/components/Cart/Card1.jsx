@@ -12,7 +12,7 @@ const Card1 = ({ job }) => {
     });
   }, []);
  
-  console.log(job);
+  // console.log(job);
   
   const { title, postedBy, category, summary, coverImage, userEmail, _id , sallery = 1200  } =
     job;

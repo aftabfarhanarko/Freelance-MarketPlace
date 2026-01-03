@@ -88,7 +88,7 @@ export const router = createBrowserRouter([
     path: "/dashbord",
     element: (
       <AdminRoute>
-        <DashbordLayout ></DashbordLayout>
+        <DashbordLayout></DashbordLayout>
       </AdminRoute>
     ),
     children: [
