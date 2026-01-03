@@ -132,12 +132,12 @@ const DashbordLayout = () => {
             to="/dashbord"
             active={location.pathname === "/dashbord"}
           />
-          <SidebarItem
+          {/* <SidebarItem
             icon={Briefcase}
             label="Browse Jobs"
             to="/alljob"
             active={location.pathname === "/alljob"}
-          />
+          /> */}
 
           {/* Job Management Section */}
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mt-8 mb-4 px-2">

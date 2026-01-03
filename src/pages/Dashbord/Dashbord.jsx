@@ -17,6 +17,7 @@ import {
   Legend,
   LineChart,
   Line,
+  ComposedChart,
 } from "recharts";
 import {
   DollarSign,
@@ -38,17 +39,7 @@ import StatCard from "./StatCard";
 import { useQuery } from "@tanstack/react-query";
 import usePrivateApi from "../../Hooks/PrivateAPI";
 import { useEffect, useState } from "react";
-
-// Mock Data for Charts
-const revenueData = [
-  { name: "Jan", revenue: 4000, jobs: 24 },
-  { name: "Feb", revenue: 3000, jobs: 18 },
-  { name: "Mar", revenue: 5000, jobs: 35 },
-  { name: "Apr", revenue: 2780, jobs: 15 },
-  { name: "May", revenue: 6890, jobs: 42 },
-  { name: "Jun", revenue: 5390, jobs: 30 },
-  { name: "Jul", revenue: 8490, jobs: 55 },
-];
+import { format } from "date-fns";
 
 const projectStatusData = [
   { name: "Completed", value: 400, color: "#EA580C" }, // Orange-600
@@ -57,12 +48,14 @@ const projectStatusData = [
   { name: "Cancelled", value: 100, color: "#9A3412" }, // Orange-800
 ];
 
-
 const Dashbord = () => {
   const { user } = useAuth();
   const { theme } = useTheme();
   const axiosScrure = usePrivateApi();
   const [udsaser, setUdsaser] = useState([]);
+  const [countData, setCountData] = useState({});
+  const [chartData, setChartData] = useState([]);
+
   const isDark = theme === "dark";
   const chartGridColor = isDark ? "#374151" : "#E5E7EB";
   const chartTextColor = isDark ? "#9CA3AF" : "#9CA3AF";
@@ -122,8 +115,28 @@ const Dashbord = () => {
       setUdsaser(res.data.result);
     });
   }, [axiosScrure]);
+  // console.log(udsaser);
 
-  console.log(udsaser);
+  useEffect(() => {
+    axiosScrure.get("allcountdata").then((res) => {
+      setCountData(res?.data);
+    });
+  }, [axiosScrure]);
+
+  useEffect(() => {
+    axiosScrure.get("acceptsSallery").then((res) => {
+      setChartData(res?.data);
+    });
+  }, [axiosScrure]);
+  console.log(chartData.dailyData);
+  const revenueData = (chartData?.dailyData || []).map((item) => ({
+    name: new Date(item.date).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    }), // অথবা format(item.date, 'MMM d') যদি date-fns ইউজ করো
+    revenue: item.totalSalary,
+    jobs: item.count,
+  }));
 
   return (
     <motion.div
@@ -132,81 +145,182 @@ const Dashbord = () => {
       initial="hidden"
       animate="visible"
     >
-      {/* Welcome Banner */}
+      {/* Welcome Banner & Stats Overview */}
       <motion.div
         variants={itemVariants}
-        className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 text-white relative overflow-hidden  "
+        className="relative overflow-hidden rounded-2xl  bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl shadow-gray-200/50 dark:shadow-black/50 isolate"
       >
-        <div className="relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                Welcome back, {user?.displayName?.split(" ")[0] || "User"}!
-              </h1>
-              <p className="text-orange-50 opacity-90 max-w-xl text-lg">
-                You have{" "}
-                <span className="font-bold text-white">4 active projects</span>{" "}
-                and{" "}
-                <span className="font-bold text-white">12 new proposals</span>{" "}
-                waiting for review.
-              </p>
+        {/* Background Patterns - Adaptive */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Noise Texture */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 dark:opacity-10 mix-blend-overlay"></div>
+
+          {/* Subtle Gradient Orbs */}
+          <div className="absolute top-0 right-0 -mt-24 -mr-24 w-64 h-64 lg:w-96 lg:h-96 bg-gradient-to-br from-orange-500/20 to-amber-500/20 dark:from-orange-500/10 dark:to-amber-500/10 rounded-full blur-[80px] animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 -mb-24 -ml-24 w-56 h-56 lg:w-80 lg:h-80 bg-gradient-to-tr from-orange-600/10 to-rose-500/10 dark:from-orange-600/10 dark:to-rose-500/10 rounded-full blur-[60px]"></div>
+
+          {/* Decorative Grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        </div>
+
+        <div className="relative z-10 p-6 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Welcome & Actions */}
+            <div className="lg:col-span-7 space-y-6 lg:space-y-8">
+              <div className="space-y-4 lg:space-y-6">
+                {/* Status Badge */}
+                <div className="inline-flex flex-wrap items-center gap-2 lg:gap-2.5 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full bg-orange-50 dark:bg-white/5 border border-orange-100 dark:border-white/10 backdrop-blur-xl">
+                  <span className="relative flex h-2.5 w-2.5 lg:h-3 lg:w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 lg:h-3 lg:w-3 bg-green-500"></span>
+                  </span>
+                  <span className="text-xs lg:text-sm font-medium text-gray-700 dark:text-gray-300 tracking-wide">
+                    System Online
+                  </span>
+                  <div className="h-3 lg:h-4 w-px bg-gray-300 dark:bg-white/20 mx-0.5 lg:mx-1"></div>
+                  <span className="text-xs lg:text-sm font-medium text-orange-600 dark:text-orange-400 flex items-center gap-1.5 lg:gap-2">
+                    <Calendar className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                    {new Date().toLocaleDateString(undefined, {
+                      weekday: "long",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h1 className="text-3xl sm:text-4xl lg:text-7xl font-black tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                    Welcome back, <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 dark:from-orange-400 dark:to-amber-300">
+                      {user?.displayName?.split(" ")[0] || "Admin"}
+                    </span>
+                  </h1>
+                  <p className="text-base lg:text-lg text-gray-500 dark:text-gray-400 max-w-xl leading-relaxed font-medium">
+                    Here's what's happening today. You have{" "}
+                    <span className="text-gray-900 dark:text-white font-bold bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded-md">
+                      12 new proposals
+                    </span>{" "}
+                    and{" "}
+                    <span className="text-gray-900 dark:text-white font-bold bg-gray-100 dark:bg-white/10 px-2 py-0.5 rounded-md">
+                      4 active projects
+                    </span>{" "}
+                    requiring your attention.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:gap-4">
+                <button className="group relative px-6 py-3 lg:px-8 lg:py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-xl lg:rounded-2xl shadow-xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative flex justify-center items-center gap-2 group-hover:text-white transition-colors text-sm lg:text-base">
+                    <Plus className="w-4 h-4 lg:w-5 lg:h-5" /> Create New
+                    Project
+                  </span>
+                </button>
+                <button className="px-6 py-3 lg:px-8 lg:py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-xl lg:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 text-sm lg:text-base">
+                  View Reports
+                </button>
+              </div>
             </div>
-            <div className="flex gap-3">
-              <button className="px-5 py-2.5 bg-white/10 backdrop-blur-md text-white font-semibold rounded-xl hover:bg-white/20 transition-colors border border-white/20">
-                View Reports
-              </button>
-              <button className="px-5 py-2.5 bg-white text-orange-600 font-bold rounded-xl shadow-sm hover:bg-orange-50 transition-colors">
-                New Project
-              </button>
+
+            {/* Right Column: Unified Stats Grid */}
+            <div className="lg:col-span-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+                {/* Stat 1: Revenue */}
+                <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-orange-200 dark:hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="flex justify-between items-start mb-3 lg:mb-4">
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform duration-300">
+                      <DollarSign className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+                      Total Revenue
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        ${countData?.totalSalary}
+                      </h3>
+                      <span className="flex items-center gap-1 text-[10px] lg:text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full border border-emerald-200 dark:border-emerald-500/10">
+                        +12.5%{" "}
+                        <ArrowUpRight className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stat 2: Active Jobs */}
+                <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-orange-200 dark:hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="flex justify-between items-start mb-3 lg:mb-4">
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-amber-100 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform duration-300">
+                      <Briefcase className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+                      Active Jobs
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        {countData?.totalJobs}
+                      </h3>
+                      <span className="flex items-center gap-1 text-[10px] lg:text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full border border-emerald-200 dark:border-emerald-500/10">
+                        +5.2%{" "}
+                        <ArrowUpRight className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stat 3: Total Users */}
+                <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-orange-200 dark:hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="flex justify-between items-start mb-3 lg:mb-4">
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                      <Users className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+                      Total Users
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        {countData?.totalUsers}
+                      </h3>
+                      <span className="flex items-center gap-1 text-[10px] lg:text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-500/10 px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full border border-emerald-200 dark:border-emerald-500/10">
+                        +2.4%{" "}
+                        <ArrowUpRight className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stat 4: Avg Response */}
+                <div className="p-4 lg:p-6 rounded-2xl lg:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-orange-200 dark:hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="flex justify-between items-start mb-3 lg:mb-4">
+                    <div className="p-2 lg:p-3 rounded-xl lg:rounded-2xl bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform duration-300">
+                      <Activity className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs lg:text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+                      Avg.Accepted Jobs
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        {countData?.totalAcceptedJobs}
+                      </h3>
+                      <span className="flex items-center gap-1 text-[10px] lg:text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-100 dark:bg-rose-500/10 px-2 lg:px-2.5 py-0.5 lg:py-1 rounded-full border border-rose-200 dark:border-rose-500/10">
+                        -15%{" "}
+                        <ArrowDownRight className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-20 w-60 h-60 bg-amber-300 opacity-20 rounded-full blur-2xl"></div>
-      </motion.div>
-
-      {/* Quick Stats Grid */}
-      <motion.div
-        variants={itemVariants}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-      >
-        <StatCard
-          title="Total Revenue"
-          value="$24,500"
-          trend="+12.5%"
-          isPositive={true}
-          icon={DollarSign}
-          color="text-amber-500"
-          bgColor="bg-amber-50 dark:bg-amber-900/20"
-        />
-        <StatCard
-          title="Active Jobs"
-          value="124"
-          trend="+5.2%"
-          isPositive={true}
-          icon={Briefcase}
-          color="text-amber-500"
-          bgColor="bg-amber-50 dark:bg-amber-900/20"
-        />
-        <StatCard
-          title="Total Users"
-          value="8,432"
-          trend="+2.4%"
-          isPositive={true}
-          icon={Users}
-          color="text-orange-600"
-          bgColor="bg-orange-100 dark:bg-orange-900/40"
-        />
-        <StatCard
-          title="Avg. Response"
-          value="2.4h"
-          trend="-15%"
-          isPositive={false}
-          icon={Activity}
-          color="text-orange-500"
-          bgColor="bg-orange-50 dark:bg-orange-900/20"
-        />
       </motion.div>
 
       {/* Charts Section */}
@@ -281,11 +395,10 @@ const Dashbord = () => {
             </ResponsiveContainer>
           </div>
         </motion.div>
-
         {/* Pie Chart - Project Status */}
         <motion.div
           variants={itemVariants}
-          className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
+          className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
             Project Status
@@ -332,7 +445,7 @@ const Dashbord = () => {
         {/* Recent Activity Chart */}
         <motion.div
           variants={itemVariants}
-          className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
+          className="lg:col-span-2 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
         >
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -342,7 +455,7 @@ const Dashbord = () => {
               <Filter className="w-4 h-4" />
             </button>
           </div>
-          <div className="h-[400px] w-full">
+          <div className="h-[300px] sm:h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={udsaser}
@@ -398,7 +511,7 @@ const Dashbord = () => {
           {/* Categories Bar Chart */}
           <motion.div
             variants={itemVariants}
-            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
+            className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700"
           >
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
               Jobs by Category
@@ -408,15 +521,15 @@ const Dashbord = () => {
                 <BarChart
                   data={categoryData}
                   layout="vertical"
-                  margin={{ top: 10, right: 0, left: 40, bottom: 10 }}
+                  margin={{ top: 10, right: 0, left: 0, bottom: 10 }}
                 >
                   <XAxis type="number" hide />
 
                   <YAxis
                     type="category"
                     dataKey="name"
-                    width={120}
-                    tick={{ fill: chartTextColor, fontSize: 13 }}
+                    width={100}
+                    tick={{ fill: chartTextColor, fontSize: 11 }}
                     axisLine={false}
                     tickLine={false}
                   />
@@ -484,7 +597,7 @@ const Dashbord = () => {
       <motion.button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        className="md:hidden fixed bottom-6 right-6 w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center z-40 transition-colors"
+        className="md:hidden fixed bottom-20 right-4 w-12 h-12 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center z-40 transition-colors"
       >
         <Plus className="w-6 h-6" />
       </motion.button>
