@@ -11,8 +11,10 @@ const Card1 = ({ job }) => {
       easing: "ease-out-cubic",
     });
   }, []);
-
-  const { title, postedBy, category, summary, coverImage, userEmail, _id } =
+ 
+  console.log(job);
+  
+  const { title, postedBy, category, summary, coverImage, userEmail, _id , sallery = 1200  } =
     job;
 
   return (
@@ -65,6 +67,11 @@ const Card1 = ({ job }) => {
         {/* Summary */}
         <p className="text-gray-600 text-base leading-relaxed line-clamp-3">
           {summary}
+        </p>
+
+        {/* Salary */}
+        <p className="text-lg font-bold text-gray-800">
+           Salary: <span className="text-orange-600">${sallery}</span>
         </p>
 
         {/* Bottom Actions */}

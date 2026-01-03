@@ -48,6 +48,7 @@ const JobDetails = () => {
       title: job.title,
       postedBy: job.postedBy,
       category: job.category,
+      sallery: job.sallery,
       acceptsUserEmail: user.email,
       coverImage: job.coverImage,
       summary: job.summary,
@@ -152,6 +153,11 @@ const JobDetails = () => {
                      <span className="flex items-center gap-2">
                        <Clock className="w-4 h-4 text-orange-500" />
                        Posted on {time}
+                     </span>
+                     <span className="hidden md:block text-gray-600">•</span>
+                     <span className="flex items-center gap-2">
+                       <DollarSign className="w-4 h-4 text-orange-500" />
+                       Salary: ${job.sallery || 1200}
                      </span>
                    </motion.div>
                  </div>

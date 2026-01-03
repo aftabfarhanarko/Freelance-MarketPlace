@@ -36,7 +36,7 @@ const Register = () => {
       .then((result) => {
         return updateUserInfo({ displayName, photoURL });
       })
-      .then(async (res) => {
+      .then( (res) => {
         // toast.success("Account created successfully!");
         // navigate("/");
         console.log(res);
@@ -44,13 +44,18 @@ const Register = () => {
           name: displayName,
           email: email,
           photoURL: photoURL,
+          role:"user",
           providerId: "Types",
           password: password,
           createdAt: new Date().toISOString(),
         };
-        console.log(userData);
-        const myData  = await axioxSechore.post("users", userData);
-        console.log(myData.data);
+        
+         axioxSechore.post("users", userData)
+         .then(res => {
+          console.log(res);
+          
+         })
+        
         
       })
       .catch((err) => {

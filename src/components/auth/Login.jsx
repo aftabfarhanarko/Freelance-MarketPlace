@@ -26,6 +26,7 @@ const Login = () => {
           name: res?.user?.displayName,
           email: res?.user?.email,
           photoURL: res?.user?.photoURL,
+          role:"user",
           providerId: res?.user?.providerId,
           createdAt: new Date().toISOString(),
         };
@@ -50,6 +51,7 @@ const Login = () => {
           name: res?.user?.displayName,
           email: res?.user?.email,
           photoURL: res?.user?.photoURL,
+          role:"user",
           providerId: res?.user?.providerId,
           createdAt: new Date().toISOString(),
         };

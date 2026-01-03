@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
 import { 
   PencilIcon, TrashIcon, BriefcaseIcon, Layers, CheckCircle, Eye, 
-  Calendar, User, Search, Grid, List, Filter, ArrowUpDown, Clock
+  Calendar, User, Search, Grid, List, Filter, ArrowUpDown, Clock,
+  DollarSign
 } from "lucide-react";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
@@ -280,6 +281,10 @@ const MyAddedJobs = () => {
                                     <Clock className="w-4 h-4" />
                                     {new Date(job.create_at || Date.now()).toLocaleDateString()}
                                   </div>
+                                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium text-xs">
+                                    <DollarSign className="w-3.5 h-3.5" />
+                                    ${job.sallery || 1200}
+                                  </div>
                                   <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-medium">
                                     <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></div>
                                     Active
@@ -351,6 +356,11 @@ const MyAddedJobs = () => {
                             {job.summary}
                           </p>
                           
+                          <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-orange-600 dark:text-orange-400">
+                            <DollarSign className="w-4 h-4" />
+                            <span>${job.sallery || 1200}</span>
+                          </div>
+
                           <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700 mt-auto">
                              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
                                <Clock className="w-3.5 h-3.5" />

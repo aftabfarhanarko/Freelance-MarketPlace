@@ -1,6 +1,6 @@
 import { 
   CheckCircleIcon, XCircleIcon, BriefcaseIcon, Search, Filter, 
-  ArrowUpDown, Grid, List, Clock, User, CheckCircle
+  ArrowUpDown, Grid, List, Clock, User, CheckCircle, DollarSign
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
@@ -248,6 +248,10 @@ const MyAcceptedTasks = () => {
                                     <Clock className="w-4 h-4" />
                                     {time}
                                   </div>
+                                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium">
+                                    <DollarSign className="w-3.5 h-3.5" />
+                                    ${job.sallery || 1200}
+                                  </div>
                                 </div>
                               </div>
 
@@ -302,6 +306,10 @@ const MyAcceptedTasks = () => {
                              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                                <Clock className="w-4 h-4" />
                                <span>{time}</span>
+                             </div>
+                             <div className="flex items-center gap-2 text-sm font-semibold text-orange-600 dark:text-orange-400">
+                               <DollarSign className="w-4 h-4" />
+                               <span>${job.sallery || 1200}</span>
                              </div>
                           </div>
                         </div>

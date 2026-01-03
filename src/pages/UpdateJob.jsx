@@ -5,10 +5,29 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import usePrivateApi from "../Hooks/PrivateAPI";
-import { 
-  ArrowLeft, Briefcase, Globe, Image as ImageIcon, FileText, User, Mail, Save,
-  Sparkles, Shield, AlertCircle, CheckCircle, TrendingUp, Clock, Eye, Crown, Zap, Star, Award, BarChart3
+import {
+  ArrowLeft,
+  Briefcase,
+  Globe,
+  Image as ImageIcon,
+  FileText,
+  User,
+  Mail,
+  Save,
+  Sparkles,
+  Shield,
+  AlertCircle,
+  CheckCircle,
+  TrendingUp,
+  Clock,
+  Eye,
+  Crown,
+  Zap,
+  Star,
+  Award,
+  BarChart3,
 } from "lucide-react";
+import { FaDollarSign } from "react-icons/fa";
 
 const UpdateJob = () => {
   const [loading, setLoading] = useState(false);
@@ -36,8 +55,8 @@ const UpdateJob = () => {
     const coverImage = e.target.coverImage.value;
     const create_at = new Date();
     const userEmail = user.email;
-   console.log("Dara");
-   
+    console.log("Dara");
+
     const postDataNow = {
       title,
       postedBy,
@@ -62,7 +81,7 @@ const UpdateJob = () => {
     <section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -95,7 +114,7 @@ const UpdateJob = () => {
         </motion.div>
 
         {/* Top Feature Banner */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -107,11 +126,18 @@ const UpdateJob = () => {
                 <Sparkles className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 dark:text-white text-lg">Pro Tip: Boost Your Visibility</h3>
-                <p className="text-gray-500 dark:text-gray-400">Detailed job descriptions get 3x more qualified applicants.</p>
+                <h3 className="font-bold text-gray-900 dark:text-white text-lg">
+                  Pro Tip: Boost Your Visibility
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Detailed job descriptions get 3x more qualified applicants.
+                </p>
               </div>
             </div>
-            <button type="button" className="px-5 py-2.5 bg-gray-900 dark:bg-gray-700 text-white rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors whitespace-nowrap">
+            <button
+              type="button"
+              className="px-5 py-2.5 bg-gray-900 dark:bg-gray-700 text-white rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors whitespace-nowrap"
+            >
               View Analytics
             </button>
           </div>
@@ -119,7 +145,7 @@ const UpdateJob = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Form Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -135,8 +161,8 @@ const UpdateJob = () => {
                   {/* Job Title */}
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                Job Title <span className="text-orange-500">*</span>
-              </label>
+                      Job Title <span className="text-orange-500">*</span>
+                    </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <Briefcase className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
@@ -165,9 +191,11 @@ const UpdateJob = () => {
                         name="category"
                         defaultValue={job?.category}
                         required
-                        className="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all appearance-none cursor-pointer"
+                        className="block select w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all appearance-none cursor-pointer"
                       >
-                        <option value="" disabled>Select a category</option>
+                        <option value="" disabled>
+                          Select a category
+                        </option>
                         <option>Web Development</option>
                         <option>Mobile App Development</option>
                         <option>Graphics Designing</option>
@@ -177,19 +205,31 @@ const UpdateJob = () => {
                         <option>UI/UX Design</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                        <svg
+                          className="h-5 w-5 text-gray-400"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </div>
                     </div>
                   </div>
 
                   {/* Cover Image URL */}
-                  <div className="space-y-2 md:col-span-2">
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                      Cover Image URL
-                    </label>
+                </div>
+                <div className=" grid md:grid-cols-2 gap-5">
+                  {/* Cover Image */}
+                  <div className="space-y-3">
                     <div className="relative group">
+                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Cover Image URL
+                      </label>
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <ImageIcon className="h-5 w-5 text-gray-400 group-focus-within:text-orange-500 transition-colors" />
                       </div>
@@ -200,6 +240,26 @@ const UpdateJob = () => {
                         placeholder="https://example.com/image.jpg"
                         className="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all"
                       />
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        Recommended size: 1200x600px. Supports JPG, PNG.
+                      </p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <FaDollarSign className="w-4 h-4 text-orange-500" />
+                        Sallery
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="number"
+                          name="sallery"
+                          defaultValue={job?.sallery}
+                          required
+                          placeholder="Job Sallery"
+                          className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -262,12 +322,12 @@ const UpdateJob = () => {
 
                 {/* Submit Action */}
                 <div className="pt-6 border-t border-gray-100 dark:border-gray-700 flex items-center justify-end gap-4">
-                   <Link 
-                     to="/myAddjobs"
-                     className="px-6 py-3 rounded-xl text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                   >
-                     Cancel
-                   </Link>
+                  <Link
+                    to="/myAddjobs"
+                    className="px-6 py-3 rounded-xl text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    Cancel
+                  </Link>
                   <button
                     type="submit"
                     className="inline-flex items-center gap-2 px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -281,13 +341,12 @@ const UpdateJob = () => {
           </motion.div>
 
           {/* Sidebar Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="space-y-6"
           >
-            
             {/* Widget 0: Premium Upgrade (New) */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-xl">
               <div className="absolute top-0 right-0 -mr-8 -mt-8 h-24 w-24 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 blur-2xl opacity-50"></div>
@@ -298,7 +357,9 @@ const UpdateJob = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Premium Posting</h4>
-                    <p className="text-xs text-gray-400">Get 10x more visibility</p>
+                    <p className="text-xs text-gray-400">
+                      Get 10x more visibility
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-3 mb-6">
@@ -328,33 +389,43 @@ const UpdateJob = () => {
                   <BarChart3 className="w-5 h-5 text-orange-500" />
                   Job Quality Score
                 </h4>
-                <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                  jobScore >= 70 ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400'
-                }`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-bold ${
+                    jobScore >= 70
+                      ? "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400"
+                      : "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
+                  }`}
+                >
                   {jobScore}/100
                 </span>
               </div>
-              
+
               <div className="relative pt-1">
                 <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-100 dark:bg-gray-700">
-                  <div style={{ width: `${jobScore}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-orange-500 to-amber-500 transition-all duration-1000 ease-out"></div>
+                  <div
+                    style={{ width: `${jobScore}%` }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-orange-500 to-amber-500 transition-all duration-1000 ease-out"
+                  ></div>
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                  Your job post is looking good! Add more details to reach a perfect score.
+                  Your job post is looking good! Add more details to reach a
+                  perfect score.
                 </p>
                 <div className="space-y-2">
-                   <div className="flex items-center justify-between text-sm">
-                     <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                       <CheckCircle className="w-3 h-3 text-amber-500" /> Title Length
-                     </span>
-                     <span className="text-amber-500 text-xs">Perfect</span>
-                   </div>
-                   <div className="flex items-center justify-between text-sm">
-                     <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
-                       <AlertCircle className="w-3 h-3 text-orange-500" /> Description Depth
-                     </span>
-                     <span className="text-orange-500 text-xs">Can improve</span>
-                   </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-amber-500" /> Title
+                      Length
+                    </span>
+                    <span className="text-amber-500 text-xs">Perfect</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-300 flex items-center gap-2">
+                      <AlertCircle className="w-3 h-3 text-orange-500" />{" "}
+                      Description Depth
+                    </span>
+                    <span className="text-orange-500 text-xs">Can improve</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -372,24 +443,36 @@ const UpdateJob = () => {
                       <Eye className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Total Views</p>
-                      <p className="font-bold text-gray-900 dark:text-white">1,234</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        Total Views
+                      </p>
+                      <p className="font-bold text-gray-900 dark:text-white">
+                        1,234
+                      </p>
                     </div>
                   </div>
-                  <span className="text-xs font-medium text-amber-500">+12%</span>
+                  <span className="text-xs font-medium text-amber-500">
+                    +12%
+                  </span>
                 </div>
-                
+
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-600 dark:text-amber-400">
                       <User className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">Applicants</p>
-                      <p className="font-bold text-gray-900 dark:text-white">45</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        Applicants
+                      </p>
+                      <p className="font-bold text-gray-900 dark:text-white">
+                        45
+                      </p>
                     </div>
                   </div>
-                  <span className="text-xs font-medium text-amber-500">+5%</span>
+                  <span className="text-xs font-medium text-amber-500">
+                    +5%
+                  </span>
                 </div>
               </div>
             </div>
@@ -405,9 +488,12 @@ const UpdateJob = () => {
                   "Use a clear, standard job title",
                   "Include specific skills required",
                   "Mention salary range in description",
-                  "Check for typos before saving"
+                  "Check for typos before saving",
                 ].map((tip, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300"
+                  >
                     <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" />
                     <span>{tip}</span>
                   </li>
@@ -422,7 +508,9 @@ const UpdateJob = () => {
                 Safety Reminders
               </h4>
               <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-                Never ask for sensitive personal information like bank details or passwords. Keep all communication within the platform for your safety.
+                Never ask for sensitive personal information like bank details
+                or passwords. Keep all communication within the platform for
+                your safety.
               </p>
               <button className="mt-4 text-sm text-orange-500 font-medium hover:text-orange-600 hover:underline">
                 Read Community Guidelines

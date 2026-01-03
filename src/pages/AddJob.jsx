@@ -1,10 +1,10 @@
-import { 
-  Briefcase, 
-  Image as ImageIcon, 
-  User, 
-  Mail, 
-  FileText, 
-  Layers, 
+import {
+  Briefcase,
+  Image as ImageIcon,
+  User,
+  Mail,
+  FileText,
+  Layers,
   ArrowLeft,
   Send,
   Sparkles,
@@ -14,7 +14,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ChevronRight,
-  Home
+  Home,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/UseAuth";
@@ -25,6 +25,7 @@ import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
+import { FaDollarSign } from "react-icons/fa";
 
 const AddJob = () => {
   const { user } = useAuth();
@@ -48,6 +49,8 @@ const AddJob = () => {
     const category = form.category.value;
     const summary = form.textarea.value;
     const coverImage = form.coverImage.value;
+    const sallery = form.sallery.value;
+    
     const userEmail = user?.email;
     const create_at = new Date();
 
@@ -55,6 +58,7 @@ const AddJob = () => {
       title,
       postedBy,
       category,
+      sallery,
       summary,
       coverImage,
       userEmail,
@@ -84,27 +88,34 @@ const AddJob = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Professional Page Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="bg-white dark:bg-gray-800 rounded-2xl p-6 mb-8 shadow-lg border border-gray-100 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          
+
           <div className="flex items-center gap-4 relative z-10">
             <div className="p-4 bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/40 dark:to-amber-900/40 rounded-2xl border border-orange-200 dark:border-orange-700/50 shadow-inner">
               <Briefcase className="w-8 h-8 text-orange-600 dark:text-orange-400" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Post a New Job</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                Post a New Job
+              </h1>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-1.5">
-                <Link to="/" className="flex items-center gap-1 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                <Link
+                  to="/"
+                  className="flex items-center gap-1 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
+                >
                   <Home className="w-3.5 h-3.5" />
                   Home
                 </Link>
                 <ChevronRight className="w-4 h-4 text-gray-300 dark:text-gray-600" />
-                <span className="text-gray-900 dark:text-white font-medium bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs">Post Job</span>
+                <span className="text-gray-900 dark:text-white font-medium bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-xs">
+                  Post Job
+                </span>
               </div>
             </div>
           </div>
@@ -120,7 +131,7 @@ const AddJob = () => {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -130,7 +141,7 @@ const AddJob = () => {
             <div className="bg-gradient-to-r from-orange-600 to-amber-600 p-8 md:p-12 relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-              
+
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-white tracking-wide border border-white/20">
@@ -140,19 +151,19 @@ const AddJob = () => {
                     <Sparkles className="w-3 h-3" /> Premium Listing
                   </span>
                 </div>
-                
+
                 <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Find Your Perfect Freelancer
                 </h1>
                 <p className="text-orange-100 text-lg max-w-xl">
-                  Create a detailed job post to attract top talent. Be specific about your requirements and budget.
+                  Create a detailed job post to attract top talent. Be specific
+                  about your requirements and budget.
                 </p>
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className="p-8 md:p-12">
               <div className="grid gap-8">
-                
                 {/* Job Title & Category Row */}
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3 group">
@@ -180,7 +191,7 @@ const AddJob = () => {
                       <select
                         name="category"
                         required
-                        className="w-full pl-4 pr-10 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all appearance-none dark:text-white cursor-pointer"
+                        className="w-full select pl-4 pr-10 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all appearance-none dark:text-white cursor-pointer"
                       >
                         <option value="">Select a category</option>
                         <option>Web Development</option>
@@ -192,7 +203,19 @@ const AddJob = () => {
                         <option>UI/UX Design</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg
+                          className="w-4 h-4 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M19 9l-7 7-7-7"
+                          ></path>
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -213,26 +236,44 @@ const AddJob = () => {
                   />
                 </div>
 
-                {/* Cover Image */}
-                <div className="space-y-3">
-                  <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    <ImageIcon className="w-4 h-4 text-orange-500" />
-                    Cover Image URL
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="url"
-                      name="coverImage"
-                      required
-                      placeholder="https://example.com/image.jpg"
-                      className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
-                    />
+                <div className=" grid md:grid-cols-2 gap-5">
+                  {/* Cover Image */}
+                  <div className="space-y-3">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <ImageIcon className="w-4 h-4 text-orange-500" />
+                      Cover Image URL
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="url"
+                        name="coverImage"
+                        required
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Recommended size: 1200x600px. Supports JPG, PNG.
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Recommended size: 1200x600px. Supports JPG, PNG.
-                  </p>
+                  <div className="space-y-3">
+                    <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                      <FaDollarSign className="w-4 h-4 text-orange-500" />
+                      Sallery
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        name="sallery"
+                        required
+                        placeholder="Job Sallery"
+                        className="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all dark:text-white"
+                      />
+                    </div>
+                  
+                  </div>
+                      
                 </div>
-
                 <div className="h-px bg-gray-100 dark:bg-gray-700 my-4"></div>
 
                 {/* User Info Row */}
@@ -275,13 +316,12 @@ const AddJob = () => {
                     <Send className="w-5 h-5" />
                   </button>
                 </div>
-
               </div>
             </form>
           </motion.div>
 
           {/* Sidebar Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -293,16 +333,21 @@ const AddJob = () => {
                 <div className="p-2 bg-amber-100 dark:bg-amber-800 rounded-lg text-amber-600 dark:text-amber-300">
                   <Lightbulb className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-white">Posting Tips</h3>
+                <h3 className="font-bold text-gray-900 dark:text-white">
+                  Posting Tips
+                </h3>
               </div>
               <ul className="space-y-3">
                 {[
                   "Write a clear, descriptive title",
                   "Include budget range & timeline",
                   "List specific skills required",
-                  "Check spelling & grammar"
+                  "Check spelling & grammar",
                 ].map((tip, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300"
+                  >
                     <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                     <span>{tip}</span>
                   </li>
@@ -316,16 +361,26 @@ const AddJob = () => {
                 <div className="p-2 bg-orange-100 dark:bg-orange-800 rounded-lg text-orange-600 dark:text-orange-300">
                   <TrendingUp className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-white">Market Insights</h3>
+                <h3 className="font-bold text-gray-900 dark:text-white">
+                  Market Insights
+                </h3>
               </div>
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-orange-100 dark:border-orange-800/50">
-                  <span className="text-sm text-gray-600 dark:text-gray-300">Active Freelancers</span>
-                  <span className="font-bold text-gray-900 dark:text-white">12k+</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">
+                    Active Freelancers
+                  </span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    12k+
+                  </span>
                 </div>
                 <div className="flex justify-between items-center pb-3 border-b border-orange-100 dark:border-orange-800/50">
-                  <span className="text-sm text-gray-600 dark:text-gray-300">Avg. Proposal Time</span>
-                  <span className="font-bold text-gray-900 dark:text-white">2 hrs</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">
+                    Avg. Proposal Time
+                  </span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    2 hrs
+                  </span>
                 </div>
                 <p className="text-xs text-orange-600 dark:text-orange-300 mt-2">
                   *Based on recent platform data
@@ -339,10 +394,13 @@ const AddJob = () => {
                 <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg text-orange-600 dark:text-orange-400">
                   <HelpCircle className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-white">Need Help?</h3>
+                <h3 className="font-bold text-gray-900 dark:text-white">
+                  Need Help?
+                </h3>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Not sure how to structure your job post? Our support team can assist you.
+                Not sure how to structure your job post? Our support team can
+                assist you.
               </p>
               <button className="w-full py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-xl text-sm font-medium transition-colors">
                 Contact Support
