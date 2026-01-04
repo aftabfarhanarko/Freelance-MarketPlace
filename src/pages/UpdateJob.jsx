@@ -41,10 +41,15 @@ const UpdateJob = () => {
   useEffect(() => {
     setLoading(true);
     apies.get(`jobs/${id}`).then((result) => {
-      setJob(result.data);
+      console.log("This is Result ",result.data.data);
+      
+      setJob(result.data.data);
       setLoading(false);
     });
   }, [id, apies]);
+
+  // console.log(job);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,8 +72,10 @@ const UpdateJob = () => {
       create_at,
     };
 
-    apies.patch(`jobs/${job._id}`, postDataNow).then((result) => {
+    apies.patch(`modifeyjobes/${job._id}`, postDataNow).then((result) => {
+      console.log(result);
       if (result.data.modifiedCount) {
+        
         toast.success("Job Updated Successfully");
         navigate("/alljob");
       }
